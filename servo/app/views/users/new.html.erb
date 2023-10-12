@@ -1,0 +1,34 @@
+<h1>Create Account</h1>
+
+<div class="form">
+    <form method="post" id="sign-in-form" action="<%= users_url %>">
+        <%= auth_token %>
+
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" name="user[first_name]" value=<%= @user.first_name%>>
+
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" name="user[last_name]" value=<%= @user.last_name%>>
+
+        <label for="phone_number">Phone Number</label>
+        <input type="text" id="phone_number" name="user[phone_number]" value=<%= @user.phone_number%>>
+
+        <label for="email">Email</label>
+        <input type="text" id="email" name="user[email]" value=<%= @user.email%>>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="user[password]">
+
+        <%# <label for="confirm_password">Confirm Password</label>
+        <input type="password" id="confirm_password" name="user[confirm_password]"> %>
+
+        <input type="submit" value="Sign Up">
+    </form>
+</div>
+<% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+    <ul>
+        <li><%= error %></li>
+    </ul>
+    <% end %>
+<% end %>
