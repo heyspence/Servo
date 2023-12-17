@@ -1,0 +1,99 @@
+.restaurant-show{
+    color: var(--primary-black);
+    margin: 0 5% 5% 5%;
+    overflow-y: auto;
+}
+
+.restaurant-show h1{
+    margin-top: 20px;
+    font-size: 35px;
+    font-weight: bold;
+    max-width: 25%;
+}
+
+@media screen and (max-width: 599px){
+    .restaurant-show h1{
+        max-width: 90%
+    }
+}
+
+.restaurant-show .image-placeholder{
+    background-color: var(--primary-red);
+    width: 100%;
+    height: 210px;
+    border-radius: 0 0 10px 10px;
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    object-fit: cover;
+}
+
+.white-background{
+    background-color: var(--primary-white);
+}
+
+.restaurant-logo{
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    border: 2px solid var(--primary-white);
+    box-shadow: 0px 0px 3px 0px var(--primary-black);
+    z-index: 8;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+}
+
+.store-info-container{
+    margin: 15px;
+    position: absolute;
+}
+
+.restaurant-show-reviews{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    margin-left: -20px;
+    transform: scale(0.8);
+    color: var(--primary-gray)
+}
+
+.menu-item-index-container{
+    margin-bottom: 30px;
+}
+
+.reviews-container{
+    position: relative;
+}
+
+.review-button{
+    background-color: rgb(231, 231, 231);
+    color: black;
+    width: auto;
+    position: absolute;
+    right: 20px;
+    top: -40px;
+    font-size: 12px;
+    height: auto;
+    padding: 7px 10px;
+}
+
+.review-button:hover{
+    background-color: var(--secondary-gray)
+}
+
+.see-more-button{
+    background-color: var(--primary-white);
+    border: 1px solid var(--primary-black);
+    color: var(--primary-black);
+    width: auto;
+    margin: 10px 0 0 -10px;
+    font-size: 12px;
+    height: auto;
+    padding: 7px 10px;
+}
+
+.see-more-button:hover{
+    background-color: var(--primary-white);
+}

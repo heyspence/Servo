@@ -1,0 +1,41 @@
+.main-nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    color: var(--primary-white);
+    margin: 0 3%;
+    z-index: 50;
+  }
+  
+  .main-nav-logo{
+    left: 3%;
+    position: absolute;
+    width: 150px;
+    background-color: var(--primary-red);
+    border-radius: 10px;
+  }
+
+  @media screen and (max-width: 599px){
+    .main-nav-logo{
+      width: 150px;
+    }
+  }
+
+  .main-nav-icon{
+    position: relative;
+    max-width: 42px;
+    height: auto;
+    margin: 0 auto;
+    transform: translate(-38%, 0);
+  }
+
+  .main-sign-up-button {
+    color: var(--secondary-black);
+    background-color: var(--primary-white);
+    min-width: 130px;
+  }
+
+  .main-sign-up-button:hover {
+    background-color: var(--primary-white);
+  }

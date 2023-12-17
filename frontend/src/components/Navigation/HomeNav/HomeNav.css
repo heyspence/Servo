@@ -1,0 +1,96 @@
+.home-nav{
+    color: var(--primary-red);
+    background-color: var(--primary-white);
+    display: flex;
+    justify-content: space-between;
+    height: 65px;
+    width: 100%;
+    border-bottom: 1px solid rgb(231 231 231);
+    user-select: none;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 20;
+}
+
+.delivery-btn{
+    background-color: var(--primary-yellow);
+    font-size: 12px;
+    max-height: 30px;
+    padding-left: 11px;
+    padding-right: 11px;
+    margin-left: 20px;
+}
+
+.delivery-btn:hover{
+    background-color: var(--primary-black);
+}
+
+/* .home-nav h1{
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+} */
+
+.main-logo{
+    width: 90px;
+    margin: 0 10px;
+}
+
+@media screen and (max-width: 599px) {
+    .home-nav h1{
+      display: none;
+    }
+
+    .main-logo{
+        content: url("https://spencerheywood.com/images/servo/logos/logo_blue_yellow_copy2.png");
+        width: 20px;
+    }
+  }
+
+.hamburger-menu{
+    fill: var(--primary-gray);
+    color: var(--primary-gray);
+    flex-shrink: 0;
+}
+
+.home-nav svg:hover{
+    cursor: pointer;
+}
+
+.logo-container{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.home-nav-left{
+    /* width: 40%; */
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    margin-left: 5%;
+}
+
+.home-nav-left-inner-container{
+    width: 25vw;
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+/* .home-nav-left img{
+    max-width: 35px;
+    height: auto;
+} */
+
+.home-nav-right{
+    margin-right: 7%;
+    display: flex;
+    align-items: center;
+}
+
+.home-nav-right svg{
+    color: var(--primary-gray)
+}

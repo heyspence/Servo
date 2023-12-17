@@ -1,0 +1,12 @@
+.home-main{
+    color: var(--primary-black);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+@media screen and (max-width: 599px){
+    .home-main{
+        margin-left: 0;
+        overflow-x: auto;
+    }
+}
