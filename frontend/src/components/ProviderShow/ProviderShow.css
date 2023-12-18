@@ -118,17 +118,37 @@
     overflow-y: hidden;
 }
 
+.provider-gallery, .pricing-calculator{
+    height: 372px;
+    padding: 10px;
+    flex-shrink: 0;
+}
+
 .provider-gallery{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     overflow-x: auto;
-    height: 372px;
-    padding: 10px;
     box-sizing: border-box;
-    flex-shrink: 0;
 }
 
+.gallery-placeholder{
+    width: 100%;
+    height: 50px;
+    background-color: var(--secondary-white);
+    display: flex;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    align-items: center;
+    padding: 30px 10px;
+}
+
+.view-gallery-button{
+    /* background-color: var(--secondary-white) !important; */
+    background-color: white !important;
+    color: var(--primary-red) !important;
+    font-size: 20px
+}
 
 .provider-photo{
     height: 158px;
@@ -152,6 +172,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+    font-weight: bold;
 }
 
 .pricing-preview, .scheduling-preview{
@@ -162,19 +183,25 @@
     border-radius: 8px;
     display: flex;
     align-items: center;
-    font-weight: bold;
+    line-height: 20px;
 }
 
-.get-price-button, .schedule-button{
+.get-price-button, .schedule-button, .view-gallery-button{
     background-color: var(--primary-red);
     border-radius: 8px;
-    width: 150px;
+    width: 120px;
     height: 40px;
     font-size: 15px;
+    flex-shrink: 0;
+    flex-grow: 0;
 }
 
 .get-price-button:hover, .schedule-button:hover{
     background-color: var(--secondary-red);
+}
+
+.minimize{
+    display: none;
 }
 
 @media screen and (max-width: 599px){

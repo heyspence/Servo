@@ -10,6 +10,9 @@ const RestaurantIndexItem = ({ id, name, imageUrl = '' }) => {
 
     const restaurantRedirect = (e) => {
         e.stopPropagation();
+        window.scrollTo({
+            top: 0
+        })
         history.push(`/under-construction/vendor/${id}`)
     }
 

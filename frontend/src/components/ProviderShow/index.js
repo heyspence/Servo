@@ -7,6 +7,8 @@ import { isLoggedIn } from '../store/session'
 import { fetchRestaurants } from '../store/restaurant'
 import { fetchReviews } from '../store/reviews'
 import ReviewIndexItem from '../Reviews/ReviewIndexItem'
+import PricingCalculator from '../PricingCalculator'
+import AppointmentScheduling from '../AppointmentScheduling'
 
 const ProviderShow = () => {
     const category = "Window Cleaning"
@@ -19,6 +21,9 @@ const ProviderShow = () => {
     const reviews = useSelector(state => state?.reviews ? Object.values(state.reviews) : [])
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
+    const [pricingOpen, setPricingOpen] = useState(false);
+    const [schedulingOpen, setSchedulingOpen] = useState(false);
+
     const photoUrls = [ 
         "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-12.jpg", 
         "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-13.jpg", 
@@ -45,6 +50,21 @@ const ProviderShow = () => {
         reviewCount++
         total += review.score
     })
+
+    const handleScheduleClick = () => {
+        setSchedulingOpen(true);
+        setPricingOpen(false);
+    }
+
+    const handleGetPriceClick = () => {
+        setPricingOpen(true);
+        setSchedulingOpen(false);
+    }
+
+    const handleGalleryOpen = () => {
+        setPricingOpen(false);
+        setSchedulingOpen(false);
+    }
 
     return (
         <>
@@ -77,18 +97,23 @@ const ProviderShow = () => {
                 </div>
 
                 <div className="provider-show-right">
-                    <div className="provider-gallery">
+                    <div onClick={handleGalleryOpen} className={`gallery-placeholder ${pricingOpen || schedulingOpen ? '' : 'minimize'}`}>
+                        <button className="view-gallery-button">View Gallery</button>
+                    </div>
+                    <PricingCalculator pricingOpen={pricingOpen}/>
+                    <AppointmentScheduling schedulingOpen={schedulingOpen}/>
+                    <div className={`provider-gallery ${pricingOpen || schedulingOpen ? 'minimize' : ''}`}>
                         {photoUrls && photoUrls.map(photo => {
                             return <img className="provider-photo" src={photo} alt={vendor?.name} />
                         })}
                     </div>
-                    <div className="provider-pricing">
-                        <div className="pricing-preview">Starting at: $25</div>
-                        <button className="get-price-button">Get Price</button>
+                    <div className={`provider-pricing ${pricingOpen ? 'minimize' : ''}`}>
+                        <div className="pricing-preview">Starting at: <br/>$25</div>
+                        <button onClick={handleGetPriceClick} className="get-price-button">Get Price</button>
                     </div>
-                    <div className="provider-sheduling">
-                        <div className="scheduling-preview">Next Available Appointment: <br />Wed, Dec 24th </div>
-                        <button className="schedule-button">Schedule</button>
+                    <div className={`provider-sheduling ${schedulingOpen ? 'minimize' : ''}`}>
+                        <div className="scheduling-preview">Next Available Appointment: <br/>Wed, Dec 24th </div>
+                        <button onClick={handleScheduleClick} className="schedule-button">Schedule</button>
                     </div>
                 </div>
             </div>
