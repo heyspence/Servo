@@ -8,7 +8,6 @@ const RestaurantIndex = () => {
     const restaurants = useSelector(state => state?.restaurants)
     const dispatch = useDispatch();
 
-    console.log(restaurants)
     useEffect(() => {
         dispatch(fetchRestaurants());
     },[dispatch])

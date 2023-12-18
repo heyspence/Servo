@@ -22,7 +22,7 @@ function App({ store }) {
             <Route exact path="/restaurants/:id" component={RestaurantShow} />
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/orders" component={Orders} />
-            <Route exact path="/under-construction" component={ProviderShow} />
+            <Route exact path="/under-construction/vendor/:id" component={ProviderShow} />
             <Route path="/" component={SplashPage} />
           </Switch>
         </BrowserRouter>

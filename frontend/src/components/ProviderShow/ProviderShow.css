@@ -1,0 +1,119 @@
+.provider-show{
+    position: relative;
+    display: flex;
+    background-color: var(--secondary-white);
+    height: 65vh;
+    min-height: 600px;
+    width: 80%;
+    min-width: 300px;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 75px 0 0 130px;
+}
+
+.provider-show-right{
+    position: relative;
+    height: 100%;
+    width: calc(60% - 15px);
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.provider-show-left{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-right: 15px;
+}
+
+.provider-show-left > *{
+    padding: 15px;
+    border-radius: 8px;
+    margin: 0 15px 15px 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.meta-info-container{
+    background-color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.provider-name{
+    font-weight: 500;
+    font-size: 27px;
+}
+
+.provider-category{
+    position: absolute;
+    left: 0px;
+    top: 90px;
+    transform: translate(100%, 10%);
+    background-color: var(--secondary-white);
+    padding: 15px 20px 30px 20px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    font-size: 25px;
+}
+
+.review-tag{
+    color: var(--secondary-gray);
+    margin-top: 10px;
+}
+
+.location-details-container{
+    background-color: white;
+    display: flex;
+    padding: 15px;
+    color: var(--primary-red);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.promotions-header, .reviews-header{
+    font-size: 16px;
+    margin: 0 15px 15px 0;
+}
+
+.promotions{
+    background-color: var(--secondary-white);
+    background-color: white;
+    width: 100%;
+}
+
+.promotion{
+    background-color: rgba(99, 196, 102, 0.9);
+    color: white;
+    height: 33px;
+    border-radius: 6px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.promotion:hover{
+    background-color: rgba(99, 196, 102, 1);
+}
+
+
+.reviews{
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    background-color: white;
+}
+
+.provider-review-index{
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+}

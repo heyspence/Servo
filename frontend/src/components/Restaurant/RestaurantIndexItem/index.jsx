@@ -10,7 +10,7 @@ const RestaurantIndexItem = ({ id, name, imageUrl = '' }) => {
 
     const restaurantRedirect = (e) => {
         e.stopPropagation();
-        history.push(`/restaurants/${id}`)
+        history.push(`/under-construction/vendor/${id}`)
     }
 
     const fetchRestaurantReviews = async id => {
