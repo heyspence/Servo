@@ -20,13 +20,14 @@ const SplashPage = props => {
         // backgroundSize: 'cover',
         // backgroundPosition: 'center',
         // backgroundRepeat: 'no-repeat'
-        backgroundColor: 'var(--primary-white)'
+        backgroundColor: 'var(--secondary-white)'
     };
 
     return (
         <main>
             <div className='splash-page-main main-section' style={backgroundStyle}>
-                <h1><span className="header-subtext">St George, UT</span><br />Home Services</h1>
+                <img src="https://spencerheywood.com/images/servo/logos/logo_-01.png" />
+                {/* <h1><span className="header-subtext">St George, UT</span><br />Home Services</h1> */}
             </div>
             <div className="splash-page-second main-section">
                 <div className="main-section-text">

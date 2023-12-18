@@ -29,7 +29,7 @@ const HomeNav = ({ display, toggleMenu, toggleCart }) => {
                         <img className="main-logo" alt="servo main logo" src="https://spencerheywood.com/images/servo/logos/logo_blue_yellow%20copy.png" />
                         {/* <h1>DASHDOOR</h1> */}
                     </div>
-                    <button className="delivery-btn">BETA</button>
+                    <button className="delivery-btn">SITE UNDER CONSTRUCTION</button>
                 </div>
             </div>
             <div className="home-nav-right">

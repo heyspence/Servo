@@ -39,7 +39,6 @@
 }
 
 .meta-info-container{
-    /* background-color: white; */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -119,13 +118,71 @@
     overflow-y: hidden;
 }
 
+.provider-gallery{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    height: 372px;
+    padding: 10px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+
+.provider-photo{
+    height: 158px;
+    width: 158px;
+    margin: 8px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.provider-photo:hover{
+    transform: scale(1.01);
+}
+
+.provider-pricing, .provider-sheduling{
+    width: 100%;
+    height: calc(100% - 482px);
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: var(--secondary-white);
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.pricing-preview, .scheduling-preview{
+    color: var(--primary-red);
+    font-size: 16px;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.get-price-button, .schedule-button{
+    background-color: var(--primary-red);
+    border-radius: 8px;
+    width: 150px;
+    height: 40px;
+    font-size: 15px;
+}
+
+.get-price-button:hover, .schedule-button:hover{
+    background-color: var(--secondary-red);
+}
 
 @media screen and (max-width: 599px){
     .provider-show{
         flex-direction: column;
         overflow: auto;
         margin: 75px 0;
-        width: 100%;
+        width: calc(100vw - 40px);
         height: 100%;
     }
 
@@ -133,7 +190,7 @@
         transform: translate(20%, 10%);
     }
 
-    .provider-show-left{
+    .provider-show-left, .provider-show-right{
         width: 100%;
     }
 }

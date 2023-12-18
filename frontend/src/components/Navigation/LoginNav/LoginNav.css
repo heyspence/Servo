@@ -4,14 +4,14 @@
     justify-content: space-between;
     height: 80px;
     color: var(--primary-white);
-    margin: 0 3%;
     z-index: 50;
+    background-color: var(--secondary-white);
   }
   
   .main-nav-logo{
     left: 5%;
     position: absolute;
-    width: 150px;
+    width: 400px;
     /* background-color: var(--primary-red); */
     border-radius: 10px;
   }
@@ -19,6 +19,7 @@
   @media screen and (max-width: 599px){
     .main-nav-logo{
       width: 150px;
+      font-size: 18px;
     }
   }
 
@@ -28,6 +29,10 @@
     height: auto;
     margin: 0 auto;
     transform: translate(-38%, 0);
+  }
+
+  .main-nav-links{
+    margin-right: 5%
   }
 
   .main-sign-up-button {

@@ -27,10 +27,18 @@
     z-index: 5;
     display: flex;
     flex-direction: column;
-    height: 275px;
+    height: 300px;
 }
 
-.splash-page-main h1{
+.splash-page-main img{
+    z-index: 15;
+    max-width: 30vw;
+    min-width: 300px;
+    position: relative;
+    transform: translate(2%, 30%);
+}
+
+/* .splash-page-main h1{
     font-size: 55px;
     font-weight: 400;
     letter-spacing: 1.1px;
@@ -39,7 +47,7 @@
     position: relative;
     padding: 20px 40px 40px 40px;
     border-radius: 15px;
-}
+} */
 
 .header-subtext{
     font-size: 28px;
@@ -139,8 +147,8 @@
     }
 }
 
-@media screen and (max-width: 1199px){
+/* @media screen and (max-width: 1199px){
     .splash-page-main h1{
         font-size: 50px;
     }
-}
+} */

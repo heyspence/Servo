@@ -19,7 +19,18 @@ const ProviderShow = () => {
     const reviews = useSelector(state => state?.reviews ? Object.values(state.reviews) : [])
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
-    
+    const photoUrls = [ 
+        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-12.jpg", 
+        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-13.jpg", 
+        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-14.jpg",  
+        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-11.jpg", 
+        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-12.jpg",  
+        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-18.jpg", 
+        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-25.jpg", 
+        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-26.jpg",  
+        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-28.jpg", 
+        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-29.jpg"]
+
     if(!userLoggedIn) history.push('/')
 
     useEffect(() => {
@@ -66,7 +77,19 @@ const ProviderShow = () => {
                 </div>
 
                 <div className="provider-show-right">
-
+                    <div className="provider-gallery">
+                        {photoUrls && photoUrls.map(photo => {
+                            return <img className="provider-photo" src={photo} alt={vendor?.name} />
+                        })}
+                    </div>
+                    <div className="provider-pricing">
+                        <div className="pricing-preview">Starting at: $25</div>
+                        <button className="get-price-button">Get Price</button>
+                    </div>
+                    <div className="provider-sheduling">
+                        <div className="scheduling-preview">Next Available Appointment: <br />Wed, Dec 24th </div>
+                        <button className="schedule-button">Schedule</button>
+                    </div>
                 </div>
             </div>
         </>
