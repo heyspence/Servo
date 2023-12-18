@@ -39,10 +39,10 @@ const LoginNav = ({ display }) => {
             <div></div>
 
             {/* <h1 className='main-nav-logo'>DASHDOOR</h1> */}
-            <img className="main-nav-logo" src="https://spencerheywood.com/images/servo/logos/logo_-05.png" />
+            <img className="main-nav-logo" src="https://spencerheywood.com/images/servo/logos/logo_-06.png" />
             <div className='main-nav-links'>
-                <button className='main-sign-in-button button' onClick={handleSignInOpen}>Sign In</button>
                 <button className='main-sign-up-button button'onClick={handleSignUpOpen}>Create Account</button>
+                <button className='main-sign-in-button button' onClick={handleSignInOpen}>Sign In</button>
                 <Modal isOpen={isSignUpOpen} onClose={handleSignUpClose}>
                     <SignUpForm />
                 </Modal>

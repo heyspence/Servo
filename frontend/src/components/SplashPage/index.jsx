@@ -1,4 +1,4 @@
-import splashPageImage from '../../assets/images/servo_landing_banner.png'
+// import splashPageImage from '../../assets/images/servo_landing_banner.png'
 import './SplashPage.css'
 import { useSelector } from 'react-redux';
 import { isLoggedIn } from '../store/session';
@@ -16,10 +16,11 @@ const SplashPage = props => {
     }
 
     const backgroundStyle = {
-        backgroundImage: `url(${splashPageImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        // backgroundImage: `url(${splashPageImage})`,
+        // backgroundSize: 'cover',
+        // backgroundPosition: 'center',
+        // backgroundRepeat: 'no-repeat'
+        backgroundColor: 'var(--primary-white)'
     };
 
     return (

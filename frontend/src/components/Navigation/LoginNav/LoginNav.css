@@ -9,10 +9,10 @@
   }
   
   .main-nav-logo{
-    left: 3%;
+    left: 5%;
     position: absolute;
     width: 150px;
-    background-color: var(--primary-red);
+    /* background-color: var(--primary-red); */
     border-radius: 10px;
   }
 
@@ -31,7 +31,7 @@
   }
 
   .main-sign-up-button {
-    color: var(--secondary-black);
+    color: var(--primary-red);
     background-color: var(--primary-white);
     min-width: 130px;
   }

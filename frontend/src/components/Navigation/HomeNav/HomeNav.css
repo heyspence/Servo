@@ -43,8 +43,9 @@
     }
 
     .main-logo{
-        content: url("https://spencerheywood.com/images/servo/logos/logo_blue_yellow_copy2.png");
-        width: 20px;
+        content: url("https://spencerheywood.com/images/servo/icons/icons-07.png");
+        width: 50px;
+        transform: translate(10%, -10%);
     }
   }
 
