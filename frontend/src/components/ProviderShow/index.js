@@ -11,18 +11,25 @@ import PricingCalculator from '../PricingCalculator'
 import AppointmentScheduling from '../AppointmentScheduling'
 
 const ProviderShow = () => {
-    const category = "Window Cleaning"
-
-    const { id }= useParams()
-    const userLoggedIn = useSelector(isLoggedIn)
+    const { id }= useParams();
+    const userLoggedIn = useSelector(isLoggedIn);
     const history = useHistory();
     const dispatch = useDispatch();
-    const vendor = useSelector((state)=> state.restaurants[id])
-    const reviews = useSelector(state => state?.reviews ? Object.values(state.reviews) : [])
+    const vendor = useSelector((state)=> state.restaurants[id]);
+    const reviews = useSelector(state => state?.reviews ? Object.values(state.reviews) : []);
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
     const [pricingOpen, setPricingOpen] = useState(false);
     const [schedulingOpen, setSchedulingOpen] = useState(false);
+    const window_cleaning = "Window Cleaning";
+    const house_cleaning = "House Cleaning";
+    const pest_control = "Pest Control";
+    const carpet_cleaning = "Carpet Cleaning";
+    const garbage_can_cleaning = "Garbage Can Cleaning"
+    const car_detailing = "Auto Detailing"
+    const phoneNumber = vendor?.phoneNumber
+    const formattedPhoneNumber = "(" + phoneNumber?.slice(0, 3) + ") " + phoneNumber?.slice(3, 6) + "-" + phoneNumber?.slice(6, 10)
+
 
     const photoUrls = [ 
         "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-12.jpg", 
@@ -68,7 +75,7 @@ const ProviderShow = () => {
 
     return (
         <>
-            <h1 className="provider-category">Window Cleaning</h1>
+            {/* <h1 className="provider-category">{eval(vendor?.category)}</h1> */}
             <div className="provider-show">
                 <div className="provider-show-left">
                     <div className="meta-info-container">
@@ -76,8 +83,8 @@ const ProviderShow = () => {
                         <p className="review-tag">{(total/reviewCount).toFixed(1)}<StarSvg className="review-star-svg"/>{ reviewCount} ratings</p>
                     </div>
                     <div className="location-details-container">
-                        <p>(971) 777-1485</p>
-                        <p style={{margin: "10px 0"}}>support@easewindows.com</p>
+                        <p>{formattedPhoneNumber}</p>
+                        <p style={{margin: "10px 0"}}>{vendor?.email}</p>
                         <p>{vendor?.address}</p>
                     </div>
                     <div className="promotions">
@@ -102,18 +109,28 @@ const ProviderShow = () => {
                     </div>
                     <PricingCalculator pricingOpen={pricingOpen}/>
                     <AppointmentScheduling schedulingOpen={schedulingOpen}/>
-                    <div className={`provider-gallery ${pricingOpen || schedulingOpen ? 'minimize' : ''}`}>
-                        {photoUrls && photoUrls.map(photo => {
-                            return <img className="provider-photo" src={photo} alt={vendor?.name} />
-                        })}
+                    <div className={`gallery-container ${pricingOpen || schedulingOpen ? 'minimize' : ''}`}>
+                        <h3 className="gallery-header">Gallery</h3>
+                        <div className="provider-gallery">
+                            {photoUrls && photoUrls.map(photo => {
+                                return <img className="provider-photo" src={photo} alt={vendor?.name} />
+                            })}
+                        </div>
                     </div>
                     <div className={`provider-pricing ${pricingOpen ? 'minimize' : ''}`}>
                         <div className="pricing-preview">Starting at: <br/>$25</div>
                         <button onClick={handleGetPriceClick} className="get-price-button">Get Price</button>
                     </div>
-                    <div className={`provider-sheduling ${schedulingOpen ? 'minimize' : ''}`}>
+                    <div className={`provider-scheduling ${schedulingOpen ? 'minimize' : ''}`}>
                         <div className="scheduling-preview">Next Available Appointment: <br/>Wed, Dec 24th </div>
                         <button onClick={handleScheduleClick} className="schedule-button">Schedule</button>
+                    </div>
+                    <div className="disclaimer">
+                        Please note that while we strive to connect you with top-quality service providers, 
+                        SERVO is a third-party platform and does not directly endorse or guarantee the services 
+                        provided by independent contractors listed on our site. For detailed terms and conditions, 
+                        please refer to our Terms of Service. Your privacy is important to us; learn more about how 
+                        we handle your information in our Privacy Policy.
                     </div>
                 </div>
             </div>

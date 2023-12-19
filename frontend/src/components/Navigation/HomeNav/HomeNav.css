@@ -24,7 +24,8 @@
 }
 
 .delivery-btn:hover{
-    background-color: var(--primary-black);
+    background-color: var(--primary-yellow);
+    cursor: auto;
 }
 
 /* .home-nav h1{

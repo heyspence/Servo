@@ -11,18 +11,18 @@ require "open-uri"
 puts "Creating Restaurants"
 
 restaurant = Restaurant.create([
-    { name: 'Ease Window Cleaning', image_url: "https://spencerheywood.com/images/servo/highlights/E22A2993.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/starbucks-logo.05"},
-    { name: 'Ease Window Cleaning', image_url: "https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_2/E22A3554.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/the-cheesecake-factory-logo.avif"},
-    { name: "Jdog Carpet Cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-11.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/wendys-logo.avif"},
-    { name: "Refresh Garbage Can Cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-30.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/dunkin-logo.avif"},
-    { name: 'Refresh Garbage Can Cleaning', image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-42.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/pizza-hut-logo.avif"},
-    { name: 'Refresh Garbage Can Cleaning', image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-34.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/panda-logo.avif"},
-    { name: 'Dead Aim Pest Control', image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-1.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/subway-logo.avif"},
-    { name: 'Dead Aim Pest Control', image_url: "https://spencerheywood.com/images/servo/Pictures/Highlights/Servo%20Pictures-6.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/papa-johns-logo.avif"},
-    { name: 'Lily Maid House Cleaning', image_url: "https://spencerheywood.com/images/servo/highlights/Lily%20Maid%20Cleaning%20Shoot-49.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/popeyes-logo.avif"},
-    { name: 'Lily Maid House Cleaning', image_url: "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning/Lily%20Maid%20Cleaning%20Shoot-50.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/sonic-logo.avif"},
-    { name: 'Onsite Detail', image_url: "https://spencerheywood.com/images/servo/highlights/52-09282019_OnsiteDetail052.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/taco-bell-logo.avif"},
-    { name: "Onsite Detail", image_url: "https://spencerheywood.com/images/servo/Pictures/onsite_detail/11-09282019_OnsiteDetail011.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/mcdonalds-logo.avif"}, 
+    { name: 'Ease Window Cleaning', phone_number: "9717771485", email:"easewindows@gmail.com", category:"window_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/E22A2993.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/starbucks-logo.05"},
+    { name: 'Ease Window Cleaning', phone_number: "9717771485", email:"easewindows@gmail.com", category:"window_cleaning", image_url: "https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_2/E22A3554.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/the-cheesecake-factory-logo.avif"},
+    { name: "Jdog Carpet Cleaning", phone_number: "9717771485", email:"easewindows@gmail.com", category:"carpet_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-11.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/wendys-logo.avif"},
+    { name: "Refresh Garbage Can Cleaning", phone_number: "4356453890", email:"refreshgarbagecleaning@gmail.com", category:"garbage_can_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-30.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/dunkin-logo.avif"},
+    { name: 'Refresh Garbage Can Cleaning', phone_number: "4356453890", email:"refreshgarbagecleaning@gmail.com", category:"garbage_can_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-42.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/pizza-hut-logo.avif"},
+    { name: 'Refresh Garbage Can Cleaning', phone_number: "4356453890", email:"refreshgarbagecleaning@gmail.com", category:"garbage_can_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-34.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/panda-logo.avif"},
+    { name: 'Dead Aim Pest Control', phone_number: "4356453890", email:"deadaimpest@gmail.com", category:"pest_control", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-1.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/subway-logo.avif"},
+    { name: 'Dead Aim Pest Control', phone_number: "4356453890", email:"deadaimpest@gmail.com", category:"pest_control", image_url: "https://spencerheywood.com/images/servo/Pictures/Highlights/Servo%20Pictures-6.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/papa-johns-logo.avif"},
+    { name: 'Lily Maid House Cleaning', phone_number: "4356453890", email:"lilymaidhousecleaning@gmail.com", category:"house_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Lily%20Maid%20Cleaning%20Shoot-49.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/popeyes-logo.avif"},
+    { name: 'Lily Maid House Cleaning', phone_number: "4356453890", email:"lilymaidhousecleaning@gmail.com", category:"house_cleaning", image_url: "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning/Lily%20Maid%20Cleaning%20Shoot-50.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/sonic-logo.avif"},
+    { name: 'Onsite Detail', phone_number: "4356453890", email:"help@onsite.com", category:"car_detailing", image_url: "https://spencerheywood.com/images/servo/highlights/52-09282019_OnsiteDetail052.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/taco-bell-logo.avif"},
+    { name: "Onsite Detail", phone_number: "4356453890", email:"help@onsite.com", category:"car_detailing", image_url: "https://spencerheywood.com/images/servo/Pictures/onsite_detail/11-09282019_OnsiteDetail011.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/mcdonalds-logo.avif"}, 
 ])
 
 puts "Creating demo user"
@@ -209,18 +209,18 @@ review = Review.create([
 puts "Creating Addresses"
 
 address = Address.create([
-    {address: "1730 Pennsylvania Avenue NW, Washington, DC 20006", latitude: 38.898808067979665, longitude: -77.0403556322412, restaurant_id: 1},
-    {address: "50 Massachusetts Ave NE, Washington, DC 20002", latitude: 38.90334726359773, longitude: -77.00480020327345, restaurant_id: 2},
-    {address: "901 E St NW Suite 104, Washington, DC 20004", latitude: 38.90275499987932, longitude: -77.02368310867804, restaurant_id: 3},
-    {address: "3900 Georgia Ave NW, Washington, DC 20011", latitude: 38.943563620493634, longitude:  -77.02539987810022, restaurant_id: 4},
-    {address: "1322 14th St NW, Washington, DC 20005", latitude: 38.913859796747104, longitude: -77.03123652015837, restaurant_id: 5},
-    {address: "1101 14th St NW Ste 102, Washington, DC 20005", latitude: 38.90258127078925, longitude: -77.03020670782361, restaurant_id: 6},
-    {address: "313 H St NW, Washington, DC 20001", latitude: 38.907807481012746, longitude: -77.01694860450546, restaurant_id: 7},
-    {address: "1501 A&B Maryland Ave NE, Washington, DC 20002", latitude: 38.90713986135493, longitude: -76.9792201390115, restaurant_id: 8},
-    {address: "1426 H St NW, Washington, DC 20005", latitude: 38.90628046175839, longitude: -77.03380860725424, restaurant_id: 9},
-    {address: "429 L'Enfant Plaza SW, Washington, DC 20024", latitude: 38.88992360655783, longitude:  -77.02591234052085, restaurant_id: 10},
-    {address: "2205 W Patapsco Ave, Baltimore, MD 21230", latitude: 39.26682768252805, longitude: -76.65116402435393, restaurant_id: 11},
-    {address: "2328 Georgia Ave NW, Washington, DC 20001", latitude: 38.93545426364675, longitude: -77.01545017678886, restaurant_id: 12}
+    {address: "435 N 300 W St George, UT 84790", latitude: 38.898808067979665, longitude: -77.0403556322412, restaurant_id: 1},
+    {address: "436 N 300 W St George, UT 84770", latitude: 38.90334726359773, longitude: -77.00480020327345, restaurant_id: 2},
+    {address: "437 N 300 W St George, UT 84790", latitude: 38.90275499987932, longitude: -77.02368310867804, restaurant_id: 3},
+    {address: "438 N 300 W St George, UT 84770", latitude: 38.943563620493634, longitude:  -77.02539987810022, restaurant_id: 4},
+    {address: "4359 N 300 W St George, UT 84790", latitude: 38.913859796747104, longitude: -77.03123652015837, restaurant_id: 5},
+    {address: "43 N 300 W St George, UT 84770", latitude: 38.90258127078925, longitude: -77.03020670782361, restaurant_id: 6},
+    {address: "425 N 300 W St George, UT 84790", latitude: 38.907807481012746, longitude: -77.01694860450546, restaurant_id: 7},
+    {address: "564 N 300 W St George, UT 84770", latitude: 38.90713986135493, longitude: -76.9792201390115, restaurant_id: 8},
+    {address: "4351 N 300 W St George, UT 84790", latitude: 38.90628046175839, longitude: -77.03380860725424, restaurant_id: 9},
+    {address: "4352 N 300 W St George, UT 84770", latitude: 38.88992360655783, longitude:  -77.02591234052085, restaurant_id: 10},
+    {address: "4353 N 300 W St George, UT 84790", latitude: 39.26682768252805, longitude: -76.65116402435393, restaurant_id: 11},
+    {address: "4354 N 300 W St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, restaurant_id: 12}
 ])
 
 puts "Done!"
