@@ -3,8 +3,8 @@ class CreateImages < ActiveRecord::Migration[7.0]
     create_table :images do |t|
       t.string :url, null: false
       t.string :alt, null: false
-      t.string :type
-      t.references :restaurants, null: false, foreign_key: true
+      t.string :image_type
+      t.references :restaurant, null: false, foreign_key: true
       t.timestamps
     end
   end

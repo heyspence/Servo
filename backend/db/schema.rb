@@ -62,11 +62,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_212331) do
   create_table "images", force: :cascade do |t|
     t.string "url", null: false
     t.string "alt", null: false
-    t.string "type"
-    t.bigint "restaurants_id", null: false
+    t.string "image_type"
+    t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["restaurants_id"], name: "index_images_on_restaurants_id"
+    t.index ["restaurant_id"], name: "index_images_on_restaurant_id"
   end
 
   create_table "menu_items", force: :cascade do |t|
@@ -142,7 +142,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_212331) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_items", "menu_items"
   add_foreign_key "cart_items", "users"
-  add_foreign_key "images", "restaurants", column: "restaurants_id"
+  add_foreign_key "images", "restaurants"
   add_foreign_key "menu_items", "restaurants"
   add_foreign_key "order_details", "menu_items"
   add_foreign_key "order_details", "orders"

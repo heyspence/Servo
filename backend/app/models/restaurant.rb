@@ -17,4 +17,5 @@ class Restaurant < ApplicationRecord
     has_many_attached :photo
     has_many :reviews
     has_one :address
+    has_many :images
 end

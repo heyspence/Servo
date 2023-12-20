@@ -273,7 +273,7 @@
     margin-left: 3px;
 }
 
-@media screen and (max-width: 599px){
+@media screen and (max-width: 999px){
     .provider-show{
         flex-direction: column;
         overflow: auto;
