@@ -9,6 +9,7 @@ import { fetchReviews } from '../store/reviews'
 import ReviewIndexItem from '../Reviews/ReviewIndexItem'
 import PricingCalculator from '../PricingCalculator'
 import AppointmentScheduling from '../AppointmentScheduling'
+import { fetchImages } from '../store/images'
 
 const ProviderShow = () => {
     const { id }= useParams();
@@ -17,6 +18,7 @@ const ProviderShow = () => {
     const dispatch = useDispatch();
     const vendor = useSelector((state)=> state.restaurants[id]);
     const reviews = useSelector(state => state?.reviews ? Object.values(state.reviews) : []);
+    const images = useSelector(state => state?.images ? Object.values(state.images) : []);
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
     const [pricingOpen, setPricingOpen] = useState(false);
@@ -29,7 +31,6 @@ const ProviderShow = () => {
     const car_detailing = "Auto Detailing"
     const phoneNumber = vendor?.phoneNumber
     const formattedPhoneNumber = "(" + phoneNumber?.slice(0, 3) + ") " + phoneNumber?.slice(3, 6) + "-" + phoneNumber?.slice(6, 10)
-
 
     const photoUrls = [ 
         "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-12.jpg", 
@@ -48,6 +49,7 @@ const ProviderShow = () => {
     useEffect(() => {
         dispatch(fetchRestaurants());
         dispatch(fetchReviews(id));
+        dispatch(fetchImages(id));
     },[dispatch, id])
 
     let reviewCount = 0
@@ -117,8 +119,8 @@ const ProviderShow = () => {
                     <div className={`gallery-container ${pricingOpen || schedulingOpen ? 'minimize' : ''}`}>
                         <h3 className="gallery-header">Gallery</h3>
                         <div className="provider-gallery">
-                            {photoUrls && photoUrls.map(photo => {
-                                return <img className="provider-photo" src={photo} alt={vendor?.name} />
+                            {images && images.map(image => {
+                                return <img className="provider-photo" src={image.url} alt={image.alt} />
                             })}
                         </div>
                     </div>

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :restaurants, only: [:index, :show] do
       resources :menu_items, only: [:index]
       resources :reviews, only: [:index, :create]
+      resources :images, only: [:index]
     end
     resources :menu_items, only: [:show]
     resources :reviews, only: [:destroy, :show, :update]
