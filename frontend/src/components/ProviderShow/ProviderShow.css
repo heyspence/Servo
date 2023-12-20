@@ -37,11 +37,38 @@
     width: 100%;
 }
 
+.meta-info-block{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 15px 0!important;
+    padding: 0 !important;
+}
+
+.vendor-logo{
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+}
+
+.vendor-logo-background{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    min-width: 100px;
+    padding: 10px;
+    /* box-sizing: border-box; */
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
 .meta-info-container{
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .provider-name{

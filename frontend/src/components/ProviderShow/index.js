@@ -78,9 +78,14 @@ const ProviderShow = () => {
             {/* <h1 className="provider-category">{eval(vendor?.category)}</h1> */}
             <div className="provider-show">
                 <div className="provider-show-left">
-                    <div className="meta-info-container">
-                        <h2 className="provider-name">{vendor?.name}</h2>
-                        <p className="review-tag">{(total/reviewCount).toFixed(1)}<StarSvg className="review-star-svg"/>{ reviewCount} ratings</p>
+                    <div className="meta-info-block">
+                        <div className="vendor-logo-background">
+                            <img className="vendor-logo" src={vendor?.iconImageUrl} />
+                        </div>
+                        <div className="meta-info-container">
+                            <h2 className="provider-name">{vendor?.name}</h2>
+                            <p className="review-tag">{(total/reviewCount).toFixed(1)}<StarSvg className="review-star-svg"/>{ reviewCount} ratings</p>
+                        </div>
                     </div>
                     <div className="location-details-container">
                         <p>{formattedPhoneNumber}</p>
@@ -90,8 +95,8 @@ const ProviderShow = () => {
                     <div className="promotions">
                         <h3 className="promotions-header">Promotions</h3>
                         <div className="promotion">Save $5 on $100 or more</div>
-                        {/* <div className="promotion">10% Off 2/Year Service</div> */}
-                        {/* <div className="promotion">15% Off 4/year service</div> */}
+                        <div className="promotion">10% Off 2/Year Service</div>
+                        <div className="promotion">15% Off 4/year service</div>
                     </div>
                     <div className="reviews">
                         <h3 className="reviews-header">Reviews</h3>

@@ -8,7 +8,9 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  icon_image_url :string
-#  address_id     :bigint           not null
+#  category       :string           not null
+#  email          :string           not null
+#  phone_number   :string           not null
 #
 class Restaurant < ApplicationRecord
     has_many :menu_items

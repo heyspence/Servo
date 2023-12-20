@@ -11,18 +11,18 @@ require "open-uri"
 puts "Creating Restaurants"
 
 restaurant = Restaurant.create([
-    { name: 'Ease Window Cleaning', phone_number: "9717771485", email:"easewindows@gmail.com", category:"window_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/E22A2993.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/starbucks-logo.05"},
-    { name: 'Ease Window Cleaning', phone_number: "9717771485", email:"easewindows@gmail.com", category:"window_cleaning", image_url: "https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_2/E22A3554.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/the-cheesecake-factory-logo.avif"},
-    { name: "Jdog Carpet Cleaning", phone_number: "9717771485", email:"easewindows@gmail.com", category:"carpet_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-11.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/wendys-logo.avif"},
-    { name: "Refresh Garbage Can Cleaning", phone_number: "4356453890", email:"refreshgarbagecleaning@gmail.com", category:"garbage_can_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-30.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/dunkin-logo.avif"},
-    { name: 'Refresh Garbage Can Cleaning', phone_number: "4356453890", email:"refreshgarbagecleaning@gmail.com", category:"garbage_can_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-42.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/pizza-hut-logo.avif"},
-    { name: 'Refresh Garbage Can Cleaning', phone_number: "4356453890", email:"refreshgarbagecleaning@gmail.com", category:"garbage_can_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-34.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/panda-logo.avif"},
-    { name: 'Dead Aim Pest Control', phone_number: "4356453890", email:"deadaimpest@gmail.com", category:"pest_control", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-1.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/subway-logo.avif"},
-    { name: 'Dead Aim Pest Control', phone_number: "4356453890", email:"deadaimpest@gmail.com", category:"pest_control", image_url: "https://spencerheywood.com/images/servo/Pictures/Highlights/Servo%20Pictures-6.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/papa-johns-logo.avif"},
-    { name: 'Lily Maid House Cleaning', phone_number: "4356453890", email:"lilymaidhousecleaning@gmail.com", category:"house_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Lily%20Maid%20Cleaning%20Shoot-49.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/popeyes-logo.avif"},
-    { name: 'Lily Maid House Cleaning', phone_number: "4356453890", email:"lilymaidhousecleaning@gmail.com", category:"house_cleaning", image_url: "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning/Lily%20Maid%20Cleaning%20Shoot-50.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/sonic-logo.avif"},
-    { name: 'Onsite Detail', phone_number: "4356453890", email:"help@onsite.com", category:"car_detailing", image_url: "https://spencerheywood.com/images/servo/highlights/52-09282019_OnsiteDetail052.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/taco-bell-logo.avif"},
-    { name: "Onsite Detail", phone_number: "4356453890", email:"help@onsite.com", category:"car_detailing", image_url: "https://spencerheywood.com/images/servo/Pictures/onsite_detail/11-09282019_OnsiteDetail011.jpg", icon_image_url: "http://spencerheywood.com/images/dash_door/mcdonalds-logo.avif"}, 
+    { name: 'Ease Window Cleaning', phone_number: "9717771485", email:"easewindows@gmail.com", category:"window_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/E22A2993.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Ease-Logo-A1%20%282%29%20%283%29%20copy%202.png"},
+    { name: 'Ease Window Cleaning', phone_number: "9717771485", email:"easewindows@gmail.com", category:"window_cleaning", image_url: "https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_2/E22A3554.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Ease-Logo-A1%20%282%29%20%283%29%20copy%202.png"},
+    { name: "Jdog Carpet Cleaning", phone_number: "9717771485", email:"easewindows@gmail.com", category:"carpet_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-11.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/logo237190-1594648885.jpeg"},
+    { name: "Eco Refresh Garbage Can Cleaning", phone_number: "4356453890", email:"refreshgarbagecleaning@gmail.com", category:"garbage_can_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-30.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/refresh-ecowash-logo.png"},
+    { name: 'Eco Refresh Garbage Can Cleaning', phone_number: "4356453890", email:"refreshgarbagecleaning@gmail.com", category:"garbage_can_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-42.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/refresh-ecowash-logo.png"},
+    { name: 'Eco Refresh Garbage Can Cleaning', phone_number: "4356453890", email:"refreshgarbagecleaning@gmail.com", category:"garbage_can_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-34.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/refresh-ecowash-logo.png"},
+    { name: 'Dead Aim Pest Control', phone_number: "4356453890", email:"deadaimpest@gmail.com", category:"pest_control", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-1.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Screen%20Shot%202021-06-21%20at%2010.19.09%20PM.png"},
+    { name: 'Dead Aim Pest Control', phone_number: "4356453890", email:"deadaimpest@gmail.com", category:"pest_control", image_url: "https://spencerheywood.com/images/servo/Pictures/Highlights/Servo%20Pictures-6.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Screen%20Shot%202021-06-21%20at%2010.19.09%20PM.png"},
+    { name: 'Lily Maid House Cleaning', phone_number: "4356453890", email:"lilymaidhousecleaning@gmail.com", category:"house_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Lily%20Maid%20Cleaning%20Shoot-49.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png"},
+    { name: 'Lily Maid House Cleaning', phone_number: "4356453890", email:"lilymaidhousecleaning@gmail.com", category:"house_cleaning", image_url: "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning/Lily%20Maid%20Cleaning%20Shoot-50.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png"},
+    { name: 'Onsite Detail', phone_number: "4356453890", email:"help@onsite.com", category:"car_detailing", image_url: "https://spencerheywood.com/images/servo/highlights/52-09282019_OnsiteDetail052.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/logo-dark%20copy%204.png"},
+    { name: "Onsite Detail", phone_number: "4356453890", email:"help@onsite.com", category:"car_detailing", image_url: "https://spencerheywood.com/images/servo/Pictures/onsite_detail/11-09282019_OnsiteDetail011.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/logo-dark%20copy%204.png"}, 
 ])
 
 puts "Creating demo user"
@@ -222,5 +222,26 @@ address = Address.create([
     {address: "4353 N 300 W St George, UT 84790", latitude: 39.26682768252805, longitude: -76.65116402435393, restaurant_id: 11},
     {address: "4354 N 300 W St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, restaurant_id: 12}
 ])
+
+# TODO: Image Seed Files
+# images = Image.create([
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"},
+#     {url:"", alt:"", restaurant_id: type: "gallery"}
+# ])
 
 puts "Done!"
