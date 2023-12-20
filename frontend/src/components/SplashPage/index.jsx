@@ -41,7 +41,7 @@ const SplashPage = props => {
             <div className="splash-page-third main-section">
                 <img className="splash-page-third-img" src="https://spencerheywood.com/images/servo/highlights/E22A3073.jpg" alt="woman eating a tortilla on a picknick" />
                 <div className="main-section-text third-section-text">
-                    <h2>Recurring Services with Servo: </h2>
+                    <h2>Recurring Services with Servo</h2>
                     <h3>Set It and Forget It</h3>
                     <p>Discover Servo's hassle-free recurring services. Our St. George clients enjoy simple scheduling and management of home maintenance from anywhere. Benefit from automated bookings, local expertise, and consistent care. Join Servo for a streamlined home service experience.</p>
                     <button onClick={handleCreateAccount}>Create Account</button>

@@ -90,8 +90,8 @@ const ProviderShow = () => {
                     <div className="promotions">
                         <h3 className="promotions-header">Promotions</h3>
                         <div className="promotion">Save $5 on $100 or more</div>
-                        <div className="promotion">15% Off 4/year service</div>
-                        <div className="promotion">10% Off 2/Year Service</div>
+                        {/* <div className="promotion">10% Off 2/Year Service</div> */}
+                        {/* <div className="promotion">15% Off 4/year service</div> */}
                     </div>
                     <div className="reviews">
                         <h3 className="reviews-header">Reviews</h3>
@@ -118,17 +118,18 @@ const ProviderShow = () => {
                         </div>
                     </div>
                     <div className={`provider-pricing ${pricingOpen ? 'minimize' : ''}`}>
+                        <img className="provider-price-icon" src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-04.png" alt="get price icon servo instance price" />
                         <div className="pricing-preview">Starting at: <br/>$25</div>
                         <button onClick={handleGetPriceClick} className="get-price-button">Get Price</button>
                     </div>
                     <div className={`provider-scheduling ${schedulingOpen ? 'minimize' : ''}`}>
+                        <img className="provider-calendar-icon" src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-08.png" alt="schedule now servo icon" />
                         <div className="scheduling-preview">Next Available Appointment: <br/>Wed, Dec 24th </div>
                         <button onClick={handleScheduleClick} className="schedule-button">Schedule</button>
                     </div>
                     <div className="disclaimer">
                         Please note that while we strive to connect you with top-quality service providers, 
-                        SERVO is a third-party platform and does not directly endorse or guarantee the services 
-                        provided by independent contractors listed on our site. For detailed terms and conditions, 
+                        SERVO is a third-party platform. For detailed terms and conditions, 
                         please refer to our Terms of Service. Your privacy is important to us; learn more about how 
                         we handle your information in our Privacy Policy.
                     </div>

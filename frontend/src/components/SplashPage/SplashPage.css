@@ -32,7 +32,7 @@
 
 .splash-page-main img{
     z-index: 15;
-    max-width: 30vw;
+    max-width: 25vw;
     min-width: 300px;
     position: relative;
     transform: translate(2%, 30%);
@@ -52,6 +52,7 @@
 .header-subtext{
     font-size: 28px;
     font-weight: bold;
+    color: var(--primary-yellow)
 }
 
 .splash-page-second{
