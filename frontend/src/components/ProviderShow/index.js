@@ -32,18 +32,6 @@ const ProviderShow = () => {
     const phoneNumber = vendor?.phoneNumber
     const formattedPhoneNumber = "(" + phoneNumber?.slice(0, 3) + ") " + phoneNumber?.slice(3, 6) + "-" + phoneNumber?.slice(6, 10)
 
-    const photoUrls = [ 
-        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-12.jpg", 
-        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-13.jpg", 
-        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-14.jpg",  
-        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-11.jpg", 
-        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-12.jpg",  
-        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-18.jpg", 
-        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-25.jpg", 
-        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-26.jpg",  
-        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-28.jpg", 
-        "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-29.jpg"]
-
     if(!userLoggedIn) history.push('/')
 
     useEffect(() => {
@@ -77,7 +65,7 @@ const ProviderShow = () => {
 
     return (
         <>
-            {/* <h1 className="provider-category">{eval(vendor?.category)}</h1> */}
+            <h1 className="provider-category">{eval(vendor?.category)}</h1>
             <div className="provider-show">
                 <div className="provider-show-left">
                     <div className="meta-info-block">
@@ -120,7 +108,7 @@ const ProviderShow = () => {
                         <h3 className="gallery-header">Gallery</h3>
                         <div className="provider-gallery">
                             {images && images.map(image => {
-                                return <img className="provider-photo" src={image.url} alt={image.alt} />
+                                return <img className="provider-photo" src={image.url} alt={image.alt} loading="lazy" key={image.id} />
                             })}
                         </div>
                     </div>

@@ -16,7 +16,7 @@ const RestaurantIndex = () => {
         <>
             <div className="restaurant-index-container">
                 <div className="restaurant-index">
-                <h1>Cleaning Services - St. George, UT<div className="status-green"> </div></h1>
+                <h1>St George, UT<div className="status-green"> </div></h1>
                     <ul>
                         {Object.values(restaurants).map((restaurant => {
                             return <RestaurantIndexItem 

@@ -29,7 +29,7 @@
 .status-green{
     height: 10px;
     width: 10px;
-    background-color: var(--primary-yellow);
+    background-color: green;
     border-radius: 50%;
     display: inline-block;
     margin: 0 0 4px 10px;

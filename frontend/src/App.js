@@ -9,6 +9,7 @@ import Checkout from "./components/Checkout";
 import Orders from "./components/Orders";
 import ErrorBanner from "./components/ErrorBanner";
 import ProviderShow from "./components/ProviderShow"
+import Footer from "./components/Footer";
 
 function App({ store }) {
   return (
@@ -25,6 +26,7 @@ function App({ store }) {
             <Route exact path="/under-construction/vendor/:id" component={ProviderShow} />
             <Route path="/" component={SplashPage} />
           </Switch>
+          <Footer />
         </BrowserRouter>
       </Provider>
     </>

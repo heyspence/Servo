@@ -8,8 +8,8 @@
     min-width: 300px;
     border-radius: 10px;
     padding: 20px;
-    margin: 50px auto;
-    /* margin: 75px auto; */
+    /* margin: 50px auto; */
+    margin: 75px auto;
 }
 
 .provider-show-right{
@@ -133,6 +133,7 @@
 
 .promotion:hover{
     background-color: rgba(99, 196, 102, 1);
+    cursor: pointer;
 }
 
 
@@ -193,8 +194,6 @@
 }
 
 .provider-photo{
-    /* height: 140px;
-    width: 140px; */
     height: 160px;
     width: 160px;
     margin: 8px;
@@ -257,7 +256,7 @@
 }
 
 .minimize{
-    display: none;
+    display: none !important;
 }
 
 .provider-price-icon{
