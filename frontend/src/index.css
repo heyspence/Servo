@@ -64,6 +64,8 @@ table {
     --primary-gray: rgb(73 73 73);
     --secondary-gray: rgb(178, 178, 178);
     --primary-yellow: rgb(244 188 70);
+    --primary-green: rgb(99 196 102 / 90%);
+    --secondary-green: rgb(99 196 102);
 }
 
 

@@ -205,7 +205,7 @@
     transform: scale(1.01);
 }
 
-.provider-pricing, .provider-scheduling{
+.provider-pricing, .provider-scheduling, .provider-summary{
     width: 100%;
     /* height: calc(100% - 200px); */
     display: flex;
@@ -220,6 +220,12 @@
     background-color: white;
 }
 
+.gray-out{
+    background-color: var(--secondary-white) !important;
+    color: var(--secondary-gray) !important;
+    cursor: not-allowed !important;
+}
+
 .pricing-preview, .scheduling-preview{
     color: var(--primary-red);
     font-size: 16px;
@@ -232,7 +238,7 @@
     position: relative
 }
 
-.get-price-button, .schedule-button, .view-gallery-button{
+.get-price-button, .schedule-button, .view-gallery-button, .summary-button, .add-to-cart-button{
     background-color: var(--primary-red);
     border-radius: 8px;
     width: 120px;
@@ -240,6 +246,15 @@
     font-size: 15px;
     flex-shrink: 0;
     flex-grow: 0;
+}
+
+.summary-button{
+    background-color: var(--primary-yellow);
+    color: white;
+}
+
+.summary-button:hover{
+    background-color: var(--primary-yellow);
 }
 
 .get-price-button:hover, .schedule-button:hover{
@@ -265,17 +280,24 @@
     margin-right: 5px
 }
 
-.provider-calendar-icon{
+.provider-calendar-icon, .provider-summary-icon{
     width: 45px;
     height: auto;
     margin-right: 10px;
     margin-left: 3px;
 }
 
+.provider-summary-icon{
+    width: 60px;
+    transform: translate(-5%, -10%);
+    margin: 0px;
+}
+
 @media screen and (max-width: 999px){
     .provider-show{
         flex-direction: column;
-        overflow: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
         margin: 75px 0;
         width: calc(100vw - 40px);
         height: 100%;

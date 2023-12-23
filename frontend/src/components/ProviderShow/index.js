@@ -23,6 +23,7 @@ const ProviderShow = () => {
     const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
     const [pricingOpen, setPricingOpen] = useState(false);
     const [schedulingOpen, setSchedulingOpen] = useState(false);
+    const [summaryOpen, setSummaryOpen] = useState(false);
     const window_cleaning = "Window Cleaning";
     const house_cleaning = "House Cleaning";
     const pest_control = "Pest Control";
@@ -51,14 +52,23 @@ const ProviderShow = () => {
     const handleScheduleClick = () => {
         setSchedulingOpen(true);
         setPricingOpen(false);
+        setSummaryOpen(false);
     }
 
     const handleGetPriceClick = () => {
         setPricingOpen(true);
         setSchedulingOpen(false);
+        setSummaryOpen(false);
     }
 
     const handleGalleryOpen = () => {
+        setPricingOpen(false);
+        setSchedulingOpen(false);
+        setSummaryOpen(false);
+    }
+
+    const handleSummaryOpen = () =>{
+        setSummaryOpen(true);
         setPricingOpen(false);
         setSchedulingOpen(false);
     }
@@ -91,8 +101,8 @@ const ProviderShow = () => {
                     <div className="reviews">
                         <h3 className="reviews-header">Reviews</h3>
                         <div className="provider-review-index">
-                            {reviews && reviews.map(review => {
-                                return <ReviewIndexItem review={review}/>
+                            {reviews && reviews.map((review, index) => {
+                                return <ReviewIndexItem review={review} key={index}/>
                             })}
                         </div>
                     </div>
@@ -107,8 +117,8 @@ const ProviderShow = () => {
                     <div className={`gallery-container ${pricingOpen || schedulingOpen ? 'minimize' : ''}`}>
                         <h3 className="gallery-header">Gallery</h3>
                         <div className="provider-gallery">
-                            {images && images.map(image => {
-                                return <img className="provider-photo" src={image.url} alt={image.alt} loading="lazy" key={image.id} />
+                            {images && images.map((image, index) => {
+                                return <img className="provider-photo" src={image.url} alt={image.alt} loading={index > 4 ? 'lazy' : undefined} key={image.id} />
                             })}
                         </div>
                     </div>
@@ -121,6 +131,12 @@ const ProviderShow = () => {
                         <img className="provider-calendar-icon" src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-08.png" alt="schedule now servo icon" />
                         <div className="scheduling-preview">Next Available Appointment: <br/>Wed, Dec 24th </div>
                         <button onClick={handleScheduleClick} className="schedule-button">Schedule</button>
+                    </div>
+                    <div className={`provider-summary ${summaryOpen ? 'minimize' : ''}`}>
+                        <img className="provider-summary-icon" src={"https://spencerheywood.com/images/servo/icons/icons-07.png"} alt="mobile checkout icon" />
+                        <div className="scheduling-preview">Summary</div>
+                        <button className="summary-button gray-out">Checkout</button>
+                        <button className="add-to-cart-button gray-out">Add to Cart</button>
                     </div>
                     <div className="disclaimer">
                         Please note that while we strive to connect you with top-quality service providers, 

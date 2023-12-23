@@ -17,7 +17,6 @@ const imagesReducer = (state = {}, action) =>{
     let newState = {...state}
     switch(action.type){
         case RECEIVE_IMAGES:
-            console.log(action)
             return { ...action.images}
         default:
             return newState

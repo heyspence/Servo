@@ -7,7 +7,7 @@ const Selector = ({name, title, options}) => {
             <select id={name}>
                 <option>Select One</option>
                 {options && options.map((option, index) => {
-                    return <option key="index">{option}</option>
+                    return <option key={index}>{option}</option>
                 })}
             </select>
         </div>
