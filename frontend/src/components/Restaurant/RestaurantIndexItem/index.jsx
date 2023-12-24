@@ -13,7 +13,7 @@ const RestaurantIndexItem = ({ id, name, imageUrl = '' }) => {
         window.scrollTo({
             top: 0
         })
-        history.push(`/under-construction/vendor/${id}`)
+        history.push(`/vendor/${id}`)
     }
 
     const fetchRestaurantReviews = async id => {

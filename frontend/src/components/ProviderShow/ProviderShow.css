@@ -18,6 +18,9 @@
     width: calc(60% - 15px);
     display: flex;
     flex-direction: column;
+    /* max-height: 650px;
+    overflow-y: auto;
+    box-sizing: border-box; */
 }
 
 .provider-show-left{
@@ -268,6 +271,7 @@
     position: relative;
     top: 15px;
     left: 0px;
+    margin: 15px 0;
 }
 
 .minimize{

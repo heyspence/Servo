@@ -16,3 +16,16 @@
     align-items: center;
     padding: 10px;
 }
+
+.discounts{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--primary-green);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.discounts p{
+    color: white
+}

@@ -20,8 +20,9 @@ const PricingCalculator = ({pricingOpen}) => {
                 <div className="calculator-main">
                     <form>
                         <Selector name="floors" title="Floors" options={options}/>
-                        <Selector name="People" title="People" options={options}/>
-                        <Selector name="Sprinklers" title="Sprinklers" options={options}/>
+                        <Selector name="people" title="People" options={options}/>
+                        <Selector name="sprinklers" title="Sprinklers" options={options}/>
+                        <Selector name="other" title="Other" options={options}/>
                     </form>
                 </div>
             </div>
@@ -36,10 +37,9 @@ const PricingCalculator = ({pricingOpen}) => {
                 <div className="recurring-options">
                     <RadioButton options={[{name: "Once a Year", value: 1},{name: "Twice a Year", value: 2}, {name:"4 Times a Year", value: 3}]}/>
                     <Selector name="test" title="Clean Type" options={["Outside Only", "Inside and Out", "Alternating Outside Only / Inside and Out (Most Popular)"]}/>
-                    <Selector name="test" title="Additional Options" options={["Outside Only", "Inside and Out", "Alternating Outside Only / Inside and Out (Most Popular)"]}/>
                 </div>
                 <CalculatorResults price={50} duration={1.5}/>
-                <button className="accept-button">Continue - $50.23</button>
+                <button className="accept-button">Continue - $42.50</button>
             </div>
         </div>
     )

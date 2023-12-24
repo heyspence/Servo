@@ -10,6 +10,8 @@ import Orders from "./components/Orders";
 import ErrorBanner from "./components/ErrorBanner";
 import ProviderShow from "./components/ProviderShow"
 import Footer from "./components/Footer";
+import UserAccount from "./components/UserAccount";
+import RecurringOrders from "./components/RecurringOrders";
 
 function App({ store }) {
   return (
@@ -20,10 +22,11 @@ function App({ store }) {
           <ErrorBanner />
           <Switch>
             <Route exact path="/home" component={Home}/>
-            <Route exact path="/restaurants/:id" component={RestaurantShow} />
+            <Route exact path="/vendor/:id" component={ProviderShow} />
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/orders" component={Orders} />
-            <Route exact path="/under-construction/vendor/:id" component={ProviderShow} />
+            <Route exact path="/account" component={UserAccount} />
+            <Route exact path="/recurring-orders" component={RecurringOrders} />
             <Route path="/" component={SplashPage} />
           </Switch>
           <Footer />
