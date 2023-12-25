@@ -43,13 +43,13 @@
     transform: scale(0.9);
 }
 
-span :nth-child(1){
+.macro-review-container :nth-child(1){
     font-weight: bold;
     color: var(--primary-gray);
     font-size: 13px;
 }
 
-span :nth-child(3){
+.macro-review-container :nth-child(3){
     color: var(--secondary-gray);
     font-size: 12px;
 }

@@ -25,7 +25,7 @@ const Orders = () => {
         <div className="orders">
             <div className="orders-main-container">
                 <div className="orders-index">
-                    <h2>Orders</h2>
+                    <h1>Orders</h1>
                     { orders && orders.reverse().map(order => {
                         return <OrderIndexItem key={order.id} order={order}/>
                     })}

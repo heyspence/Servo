@@ -1,0 +1,97 @@
+.recurring-orders{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--secondary-white);
+    min-height: 600px;
+}
+
+.recurring-orders-container{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.recurring-orders-container h1{
+    margin: 30px 0 15px 0;
+}
+
+.recurring-service{
+    width: 100%;
+    border-radius: 6px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    margin: 7px 0;
+    background-color: white;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--primary-red)
+}
+
+.recurring-service h4{
+    color: var(--primary-red);
+}
+
+.recurring-vendor-info h3{
+    font-weight: normal;
+    color: var(--secondary-gray);
+    position: relative;
+}
+
+.recurring-vendor-info h3:hover{
+    cursor: pointer;
+}
+
+.align-first{
+    position: absolute;
+    left: 30px;
+}
+
+.align-second{
+    position: absolute;
+    left: 25%;
+}
+
+.align-third{
+    position: absolute;
+    left: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+}
+
+.align-fourth{
+    position: absolute;
+    left: calc(100% - 150px);
+    font-size: 18px;
+}
+
+.right-cheveron{
+    color: var(--secondary-gray);
+    transform: translate(-25%, 25%) scale(0.8);
+}
+
+.frequency-top{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.add-circle{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.minus-circle{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.add-circle:hover, .minus-circle:hover{
+    cursor: pointer;
+}

@@ -28,8 +28,8 @@ const ProviderShow = () => {
     const house_cleaning = "House Cleaning";
     const pest_control = "Pest Control";
     const carpet_cleaning = "Carpet Cleaning";
-    const garbage_can_cleaning = "Garbage Can Cleaning"
-    const car_detailing = "Auto Detailing"
+    const garbage_can_cleaning = "Garbage Can Cleaning";
+    const car_detailing = "Auto Detailing";
     const phoneNumber = vendor?.phoneNumber
     const formattedPhoneNumber = "(" + phoneNumber?.slice(0, 3) + ") " + phoneNumber?.slice(3, 6) + "-" + phoneNumber?.slice(6, 10)
 

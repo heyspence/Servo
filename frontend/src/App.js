@@ -22,7 +22,7 @@ function App({ store }) {
           <ErrorBanner />
           <Switch>
             <Route exact path="/home" component={Home}/>
-            <Route exact path="/vendor/:id" component={ProviderShow} />
+            <Route exact path="/vendors/:id" component={ProviderShow} />
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/orders" component={Orders} />
             <Route exact path="/account" component={UserAccount} />
