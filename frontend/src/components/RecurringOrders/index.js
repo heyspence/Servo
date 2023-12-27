@@ -15,10 +15,10 @@ const RecurringOrders = () => {
     }
 
     const recurringServices = [
-        {type: "pest_control", frequency: 4, vendor: "Dave's Pest Control", vendorId: 4, nextAppointment: 153, price: 45.20},
-        {type: "window_cleaning", frequency: 3, vendor: "Ease Window Cleaning", vendorId: 1, nextAppointment: 153, price: 122.00},
-        {type: "house_cleaning", frequency: 1, vendor: "Lily Maid Cleaning", vendorId: 5, nextAppointment: 75, price: 75.21},
-        {type: "carpet_cleaning", frequency: 12, vendor: "JDog Carpet Cleaning", vendorId: 2, nextAppointment: 320, price: 320.50}
+        {type: "pest_control", frequency: 4, vendor: "Dave's Pest Control", vendorId: 4, nextAppointment: {id: 152, datetime: "Wed, Dec 25th 2:00PM"}, price: 45.20},
+        {type: "window_cleaning", frequency: 3, vendor: "Ease Window Cleaning", vendorId: 1, nextAppointment: {id: 223, datetime: "Mon, Nov 5th 1:00PM"}, price: 122.00},
+        {type: "house_cleaning", frequency: 1, vendor: "Lily Maid Cleaning", vendorId: 5, nextAppointment: {id: 12234, datetime: "Sat, Feb 20th 2:00PM"}, price: 75.21},
+        {type: "carpet_cleaning", frequency: 12, vendor: "JDog Carpet Cleaning", vendorId: 2, nextAppointment: {id: 15, datetime: "Sat, Mar 12th 9:00AM"}, price: 320.50}
     ]
 
     const servicesData = {
@@ -34,10 +34,15 @@ const RecurringOrders = () => {
         history.push(`/vendors/${vendorId}`)
     }
 
+    const handleOrderHistory = () => {
+        history.push("/orders")
+    }
+
     return (
         <div className="recurring-orders">
             <div className="recurring-orders-container">
-                <h1>Your Recurring Services</h1>
+                <h1>Recurring Services</h1>
+                <button onClick={handleOrderHistory} className="order-history-button">Service History</button>
                 {recurringServices && recurringServices.map((service, index) => {
                     const serviceData = servicesData[service.type];
                     return (
@@ -45,6 +50,10 @@ const RecurringOrders = () => {
                             <div className="recurring-vendor-info align-first">
                                 <h2>{serviceData?.name}</h2>
                                 <h3 onClick={() => handleVendorClick(service?.vendorId)}>{service?.vendor} <span><RightCheveron className="right-cheveron"/></span></h3>
+                            </div>
+                            <div className="recurring-next-appointment align-second">
+                                <a>Upcoming Appointment</a>
+                                <p>{service.nextAppointment?.datetime}</p>
                             </div>
                             <div className="align-third">
                                 <AddCircle className="add-circle" />

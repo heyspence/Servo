@@ -8,7 +8,7 @@ const ReviewForm = ({ restaurantName, restaurantId, onClose }) => {
     const user = useSelector(state => state.session?.user)
     const dispatch = useDispatch();
     const [reviewBody, setReviewBody] = useState('');
-    const [score, setScore] = useState(1);
+    const [score, setScore] = useState(undefined);
 
     const handleInputChange = e => {
         setReviewBody(e.target.value)
@@ -27,7 +27,7 @@ const ReviewForm = ({ restaurantName, restaurantId, onClose }) => {
                 score 
             }
         }
-        if(reviewBody.length > 10){
+        if(reviewBody.length > 10 && score !== undefined){
             dispatch(createReview(restaurantId, review)).then(()=>{onClose();})
         }
     }
@@ -43,11 +43,12 @@ const ReviewForm = ({ restaurantName, restaurantId, onClose }) => {
                     <p className="public-review-tag">Public Review </p>
                 </div>
                 <select onChange={handleScoreChange}>
-                    <option value={1}>1</option>
-                    <option value={2}>2</option>
-                    <option value={3}>3</option>
-                    <option value={4}>4</option>
-                    <option value={5}>5</option>
+                    <option>Select One</option>
+                    <option value={1}>1 Star</option>
+                    <option value={2}>2 Stars</option>
+                    <option value={3}>3 Stars</option>
+                    <option value={4}>4 Stars</option>
+                    <option value={5}>5 Stars</option>
                 </select>
                 <textarea className="review-body"
                     value={reviewBody} 

@@ -10,6 +10,24 @@
     width: 80%;
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.order-history-button{
+    background-color: white;
+    color: var(--primary-red);
+    font-size: 20px;
+    border-radius: 8px;
+    width: 120px;
+    height: 40px;
+    font-size: 15px;
+    position: absolute;
+    right: 0px;
+    top: 20px;
+}
+
+.order-history-button:hover{
+    background-color: white;
 }
 
 .recurring-orders-container h1{
@@ -19,24 +37,48 @@
 .recurring-service{
     width: 100%;
     border-radius: 6px;
-    height: 90px;
+    height: 100px;
     display: flex;
     align-items: center;
-    margin: 7px 0;
+    margin: 10px 0;
     background-color: white;
     overflow: hidden;
     position: relative;
-    border: 1px solid var(--primary-red)
+    /* border: 2px solid var(--secondary-gray); */
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
 }
 
 .recurring-service h4{
     color: var(--primary-red);
 }
 
-.recurring-vendor-info h3{
+.recurring-next-appointment{
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translate(0, -5%);
+}
+
+.recurring-vendor-info h2{
+    font-size: 24px;
+}
+
+.recurring-vendor-info h3, .recurring-next-appointment a{
     font-weight: normal;
     color: var(--secondary-gray);
     position: relative;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.recurring-next-appointment p{
+    /* font-weight: bold; */
+    font-size: 18px;
+}
+
+.recurring-vendor-info h3{
+    margin-top: -5px
 }
 
 .recurring-vendor-info h3:hover{
@@ -50,7 +92,7 @@
 
 .align-second{
     position: absolute;
-    left: 25%;
+    left: 32%;
 }
 
 .align-third{
@@ -70,11 +112,11 @@
 
 .right-cheveron{
     color: var(--secondary-gray);
-    transform: translate(-25%, 25%) scale(0.8);
+    transform: translate(-40%, 30%) scale(0.6);
 }
 
 .frequency-top{
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -82,14 +124,14 @@
     position: absolute;
     right: 0;
     top: 50%;
-    transform: translate(0, -50%);
+    transform: translate(0, -40%);
 }
 
 .minus-circle{
     position: absolute;
     left: 0;
     top: 50%;
-    transform: translate(0, -50%);
+    transform: translate(0, -40%);
 }
 
 .add-circle:hover, .minus-circle:hover{

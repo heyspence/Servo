@@ -10,6 +10,8 @@ import ReviewIndexItem from '../Reviews/ReviewIndexItem'
 import PricingCalculator from '../PricingCalculator'
 import AppointmentScheduling from '../AppointmentScheduling'
 import { fetchImages } from '../store/images'
+import Modal from '../Modal'
+import ReviewForm from '../Reviews/ReviewForm'
 
 const ProviderShow = () => {
     const { id }= useParams();
@@ -73,6 +75,10 @@ const ProviderShow = () => {
         setSchedulingOpen(false);
     }
 
+    const toggleReviewModal = () => {
+        setReviewModalOpen(!reviewModalOpen)
+    }
+
     return (
         <>
             <h1 className="provider-category">{eval(vendor?.category)}</h1>
@@ -100,6 +106,7 @@ const ProviderShow = () => {
                     </div>
                     <div className="reviews">
                         <h3 className="reviews-header">Reviews</h3>
+                        <button className="vendor-review-button" onClick={toggleReviewModal}>Add a Review</button>
                         <div className="provider-review-index">
                             {reviews && reviews.map((review, index) => {
                                 return <ReviewIndexItem review={review} key={index}/>
@@ -146,6 +153,9 @@ const ProviderShow = () => {
                     </div>
                 </div>
             </div>
+            <Modal isOpen={reviewModalOpen} onClose={toggleReviewModal}>
+                <ReviewForm restaurantName={vendor?.name} restaurantId={id} onClose={toggleReviewModal} />
+            </Modal>
         </>
     )
 }
