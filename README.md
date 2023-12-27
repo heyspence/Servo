@@ -1,25 +1,37 @@
-# DashDoor
+# SERVO
 
-DashDoor is a full-stack, mobile-optimized web application that mirrors the styling and functionality of DoorDash. It's built using a Rails/React stack, showcasing sleek and stylish design elements. The app is self-hosted with DNS connectivity at spencerheywood.com.
-
-I am happy with how this project has turned out! Lots of attention was spent on styling, seed data, conventional writing, scalability, and resourcefully cheap code. 
+This repo is the next iteration of BookServo.com set to launch in the 4rth quarter of 2024. Built from the ground up, fully customized for recurring and individual bookings.
 
 ## MVP & Features
-With  `DashDoor` users can:
+With  `Servo` users can:
 
 * Log-in/Log-out
     * Bcrypt backend password digest storage
     * Secure password validation
     * Error handling
-* View restaurants and their menu items
-* Write/read reviews
+* View service providers and their meta info
+    * Get instant pricing
+    * Get real-time scheduling data
+    * Book/edit appointments
+    * Schedule/edit recurring appointments
+* Vendor portal
+    * Dashboard + sales total
+    * View / edit upcoming appointments
+    * Detailed appointment history
+    * Edit availability
+    * Edit pricing
+    * Edit info + images
+    * Impression info?
+    * Sponsorship options?
+* Recieve email notifications 
+* Write/read/edit reviews
     * Write public reviews
     * View real-time restaurant review average
     * View individual reviews w/ authors + score
 * Hold a cart
-    * Add/remove items
+    * Add/remove services
     * Persist between sessions
-* Place orders
+* Book services
     * Order histoy
     * Persist between sessions
 
