@@ -1,7 +1,7 @@
 class Api::ReviewsController < ApplicationController
     def index
-        @restaurant = Restaurant.find(params[:restaurant_id])
-        @reviews = @restaurant.reviews
+        @vendor = Vendor.find(params[:vendor_id])
+        @reviews = @vendor.reviews
         render :index
     end
 
@@ -11,8 +11,8 @@ class Api::ReviewsController < ApplicationController
     end
 
     def create
-        @restaurant = Restaurant.find(params[:restaurant_id])
-        @review = @restaurant.reviews.new(review_params)
+        @vendor = Vendor.find(params[:vendor_id])
+        @review = @vendor.reviews.new(review_params)
         if @review.save
             render :show
         else

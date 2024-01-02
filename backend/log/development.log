@@ -4968,3 +4968,223 @@ Completed 200 OK in 5ms (Views: 1.4ms | ActiveRecord: 0.9ms | Allocations: 2981)
 Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 1.2ms | Allocations: 4152)
 
 
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7082450925342785265)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RenameRestaurants (20240102201031)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "restaurants" RENAME TO "vendors"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER INDEX "restaurants_pkey" RENAME TO "vendors_pkey"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "public"."restaurants_id_seq" RENAME TO "vendors_id_seq"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "addresses" RENAME COLUMN "restaurant_id" TO "vendor_id"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER INDEX "index_addresses_on_restaurant_id" RENAME TO "index_addresses_on_vendor_id"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "images" RENAME COLUMN "restaurant_id" TO "vendor_id"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER INDEX "index_images_on_restaurant_id" RENAME TO "index_images_on_vendor_id"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "menu_items" RENAME COLUMN "restaurant_id" TO "vendor_id"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER INDEX "index_menu_items_on_restaurant_id" RENAME TO "index_menu_items_on_vendor_id"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "orders" RENAME COLUMN "restaurant_id" TO "vendor_id"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER INDEX "index_orders_on_restaurant_id" RENAME TO "index_orders_on_vendor_id"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "reviews" RENAME COLUMN "restaurant_id" TO "vendor_id"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER INDEX "index_reviews_on_restaurant_id" RENAME TO "index_reviews_on_vendor_id"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER INDEX "index_reviews_on_user_id_and_restaurant_id" RENAME TO "index_reviews_on_user_id_and_vendor_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20240102201031"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(7082450925342785265)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/api/session" for 127.0.0.1 at 2024-01-02 15:13:56 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.7ms | Allocations: 441)
+Completed 200 OK in 8ms (Views: 1.4ms | ActiveRecord: 1.0ms | Allocations: 6988)
+
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:13:57 -0500
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mCartItem Load (0.6ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 3.4ms | Allocations: 2365)
+Completed 200 OK in 8ms (Views: 3.4ms | ActiveRecord: 0.8ms | Allocations: 6184)
+
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:13:57 -0500
+Started GET "/api/restaurants" for 127.0.0.1 at 2024-01-02 15:13:57 -0500
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+
+ActionController::RoutingError - uninitialized constant Api::RestaurantsController
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+            raise MissingController.new(error.message, error.name)
+            ^^^^^:
+
+  [1m[36mCartItem Load (1.9ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 3.2ms | Allocations: 5097)
+Completed 200 OK in 17ms (Views: 2.4ms | ActiveRecord: 4.4ms | Allocations: 14203)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2024-01-02 15:17:41 -0500
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 364)
+Completed 200 OK in 14ms (Views: 0.7ms | ActiveRecord: 8.1ms | Allocations: 6940)
+
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:17:42 -0500
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 3.3ms | Allocations: 2492)
+Completed 200 OK in 7ms (Views: 2.1ms | ActiveRecord: 1.9ms | Allocations: 6242)
+
+
+Started GET "/api/restaurants" for 127.0.0.1 at 2024-01-02 15:17:42 -0500
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:17:42 -0500
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+
+ActionController::RoutingError - uninitialized constant Api::RestaurantsController
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+            raise MissingController.new(error.message, error.name)
+            ^^^^^:
+
+  [1m[36mCartItem Load (1.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 3.5ms | Allocations: 5986)
+Completed 200 OK in 17ms (Views: 3.1ms | ActiveRecord: 5.6ms | Allocations: 16084)
+
+
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:19:43 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 3608)
+
+
+
+Zeitwerk::NameError - expected file /Users/spencerheywood/Documents/Servo/backend/app/models/vendor.rb to define constant Vendor, but didn't
+      raise Zeitwerk::NameError.new(msg, cref.last)
+      ^^^^^:
+  app/controllers/api/reviews_controller.rb:3:in `index'
+
+Started GET "/api/vendor/1/reviews" for 127.0.0.1 at 2024-01-02 15:19:45 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/vendor/1/reviews"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1129)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:19:47 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 2725)
+
+
+
+NameError - uninitialized constant Api::ReviewsController::Vendor
+        @vendor = Vendor.find(params[:vendor_id])
+                  ^^^^^^:
+  app/controllers/api/reviews_controller.rb:3:in `index'
+
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:20:17 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mVendor Load (0.6ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 17.7ms | Allocations: 11424)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 13.3ms | Allocations: 20312)
+
+
+
+NoMethodError - undefined method `restaurant_id' for #<Review id: 1, score: 4.0, vendor_id: 1, user_id: 3, body: "Ease Window Cleaning left my windows spotless and ...", created_at: "2023-12-23 21:28:09.095773000 +0000", updated_at: "2023-12-23 21:28:09.095773000 +0000">
+Did you mean?  restaurant
+               restaurant=:
+  app/views/api/reviews/index.json.jbuilder:4
+  app/views/api/reviews/index.json.jbuilder:3
+  app/views/api/reviews/index.json.jbuilder:2
+  app/views/api/reviews/index.json.jbuilder:1
+  app/controllers/api/reviews_controller.rb:5:in `index'
+
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:21:28 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 5.2ms | Allocations: 1437)
+Completed 200 OK in 13ms (Views: 7.4ms | ActiveRecord: 0.7ms | Allocations: 2891)
+
+
+Started GET "/api/vendors/1/" for 127.0.0.1 at 2024-01-02 15:21:46 -0500
+
+SyntaxError - class/module name must be CONSTANT
+class Api::vendorsController < ApplicationController
+           ^~~~~~~~~~~~~~~~~:
+  app/controllers/api/vendors_controller.rb:1:in `'
+
+Started GET "/api/vendors/1" for 127.0.0.1 at 2024-01-02 15:21:47 -0500
+
+SyntaxError - class/module name must be CONSTANT
+class Api::vendorsController < ApplicationController
+           ^~~~~~~~~~~~~~~~~:
+  app/controllers/api/vendors_controller.rb:1:in `'
+
+Started GET "/api/vendors/1" for 127.0.0.1 at 2024-01-02 15:22:21 -0500
+
+SyntaxError - class/module name must be CONSTANT
+class Api::vendorsController < ApplicationController
+           ^~~~~~~~~~~~~~~~~:
+  app/controllers/api/vendors_controller.rb:1:in `'
+
+Started GET "/api/vendors/1" for 127.0.0.1 at 2024-01-02 15:22:33 -0500
+Processing by Api::VendorsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mVendor Load (1.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/vendors_controller.rb:8:in `show'
+  [1m[36mAddress Load (1.0ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/vendors_controller.rb:9:in `show'
+  Rendering api/vendors/show.json.jbuilder
+  Rendered api/vendors/show.json.jbuilder (Duration: 0.8ms | Allocations: 429)
+Completed 200 OK in 22ms (Views: 1.7ms | ActiveRecord: 10.1ms | Allocations: 12449)
+
+
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:22:38 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (1.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 9.8ms | Allocations: 4603)
+Completed 200 OK in 16ms (Views: 4.0ms | ActiveRecord: 6.8ms | Allocations: 7671)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m

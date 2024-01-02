@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resources :order_details, only: [:index]
     end
 
-    resources :restaurants, only: [:index, :show] do
+    resources :vendors, only: [:index, :show] do
       resources :menu_items, only: [:index]
       resources :reviews, only: [:index, :create]
       resources :images, only: [:index]

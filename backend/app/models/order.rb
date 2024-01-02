@@ -8,7 +8,7 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  order_details_id :bigint
-#  restaurant_id    :bigint           not null
+#  vendor_id        :bigint           not null
 #
 class Order < ApplicationRecord
     belongs_to :user

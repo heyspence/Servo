@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: restaurants
+# Table name: vendors
 #
 #  id             :bigint           not null, primary key
 #  name           :string           not null
@@ -12,7 +12,7 @@
 #  email          :string           not null
 #  phone_number   :string           not null
 #
-class Restaurant < ApplicationRecord
+class Vendor < ApplicationRecord
     has_many :menu_items
     has_many_attached :photo
     has_many :reviews
