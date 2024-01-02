@@ -142,7 +142,7 @@ const ProviderShow = () => {
                     <div className={`provider-summary ${summaryOpen ? 'minimize' : ''}`}>
                         <img className="provider-summary-icon" src={"https://spencerheywood.com/images/servo/icons/icons-07.png"} alt="mobile checkout icon" />
                         <div className="scheduling-preview">Summary</div>
-                        <button className="summary-button gray-out">Checkout</button>
+                        <button className="summary-button gray-out">Checkout</button> or
                         <button className="add-to-cart-button gray-out">Add to Cart</button>
                     </div>
                     <div className="disclaimer">

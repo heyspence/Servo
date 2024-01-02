@@ -326,6 +326,10 @@
     background-color: var(--secondary-white)
 }
 
+.provider-summary{
+    color: var(--primary-red)
+}
+
 @media screen and (max-width: 999px){
     .provider-show{
         flex-direction: column;
