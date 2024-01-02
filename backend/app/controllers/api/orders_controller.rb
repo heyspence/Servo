@@ -18,6 +18,6 @@ class Api::OrdersController < ApplicationController
     end
 
     def order_detail_params
-        params.require(:order_details).permit(:menu_item_id, :price)
+        params.require(:order_details).permit(:service_id, :price)
     end
 end

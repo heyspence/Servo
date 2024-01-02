@@ -21,11 +21,11 @@ Rails.application.routes.draw do
     end
 
     resources :vendors, only: [:index, :show] do
-      resources :menu_items, only: [:index]
+      resources :services, only: [:index]
       resources :reviews, only: [:index, :create]
       resources :images, only: [:index]
     end
-    resources :menu_items, only: [:show]
+    resources :services, only: [:show]
     resources :reviews, only: [:destroy, :show, :update]
   end
 

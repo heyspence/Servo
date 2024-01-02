@@ -7912,3 +7912,1503 @@ Processing by Api::UsersController#show as JSON
 Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1156)
 
 
+Started GET "/api/vendors/3/reviews" for 127.0.0.1 at 2024-01-02 17:26:39 -0500
+Started GET "/api/vendors/5/reviews" for 127.0.0.1 at 2024-01-02 17:26:39 -0500
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 17:26:39 -0500
+Started GET "/api/vendors/2/reviews" for 127.0.0.1 at 2024-01-02 17:26:39 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+Started GET "/api/vendors/4/reviews" for 127.0.0.1 at 2024-01-02 17:26:39 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"3"}
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"5"}
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"4"}
+  [1m[36mVendor Load (0.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mVendor Load (1.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mVendor Load (2.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  Rendering api/reviews/index.json.jbuilder
+  Rendering api/reviews/index.json.jbuilder
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  Rendering api/reviews/index.json.jbuilder
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.7ms | Allocations: 2670)
+  Rendered api/reviews/index.json.jbuilder (Duration: 4.7ms | Allocations: 3838)
+  [1m[36mReview Load (0.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 4]]
+Completed 200 OK in 45ms (Views: 3.0ms | ActiveRecord: 20.4ms | Allocations: 21373)
+
+
+Completed 200 OK in 49ms (Views: 6.4ms | ActiveRecord: 20.3ms | Allocations: 23626)
+
+
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 4.3ms | Allocations: 3732)
+Completed 200 OK in 47ms (Views: 5.4ms | ActiveRecord: 19.3ms | Allocations: 22839)
+
+
+  [1m[36mReview Load (1.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 4.4ms | Allocations: 4282)
+Completed 200 OK in 45ms (Views: 7.4ms | ActiveRecord: 16.3ms | Allocations: 20582)
+
+
+  Rendered api/reviews/index.json.jbuilder (Duration: 7.1ms | Allocations: 6092)
+Completed 200 OK in 48ms (Views: 7.3ms | ActiveRecord: 15.4ms | Allocations: 23250)
+
+
+Started GET "/api/vendors/6/reviews" for 127.0.0.1 at 2024-01-02 17:26:39 -0500
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 17:26:39 -0500
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 17:26:39 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"6"}
+  [1m[36mVendor Load (0.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.5ms | Allocations: 1245)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.4ms | Allocations: 2625)
+
+
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  [1m[36mAddress Load (0.6ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  Rendered api/cart_items/index.json.jbuilder (Duration: 1.7ms | Allocations: 1468)
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Completed 200 OK in 6ms (Views: 1.9ms | ActiveRecord: 1.1ms | Allocations: 4063)
+
+
+  [1m[36mMenuItem Load (0.5ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.0ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 12.0ms | Allocations: 11262)
+Completed 200 OK in 13ms (Views: 10.1ms | ActiveRecord: 2.2ms | Allocations: 11702)
+
+
+Started GET "/api/users/5" for 127.0.0.1 at 2024-01-02 17:26:40 -0500
+Started GET "/api/users/3" for 127.0.0.1 at 2024-01-02 17:26:40 -0500
+Started GET "/api/users/2" for 127.0.0.1 at 2024-01-02 17:26:40 -0500
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 17:26:40 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"5"}
+Started GET "/api/users/1" for 127.0.0.1 at 2024-01-02 17:26:40 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"3"}
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering api/users/show.json.jbuilder
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendered api/users/show.json.jbuilder (Duration: 0.7ms | Allocations: 280)
+  Rendering api/users/show.json.jbuilder
+Completed 200 OK in 9ms (Views: 2.4ms | ActiveRecord: 1.6ms | Allocations: 3220)
+
+
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 8ms (Views: 2.5ms | ActiveRecord: 1.7ms | Allocations: 3255)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (5.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+Started GET "/api/users/6" for 127.0.0.1 at 2024-01-02 17:26:40 -0500
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 276)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Completed 200 OK in 12ms (Views: 1.2ms | ActiveRecord: 5.8ms | Allocations: 5129)
+
+
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 0.8ms | Allocations: 2794)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+Started GET "/api/vendors/4/images" for 127.0.0.1 at 2024-01-02 17:26:40 -0500
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 1.3ms | Allocations: 2269)
+
+
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 17:26:40 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"6"}
+Started GET "/api/vendors/4/reviews" for 127.0.0.1 at 2024-01-02 17:26:40 -0500
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 276)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 1640)
+
+
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+Processing by Api::ImagesController#index as JSON
+  Parameters: {"vendor_id"=>"4"}
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"4"}
+  [1m[36mVendor Load (1.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mVendor Load (0.8ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  [1m[36mVendor Load (3.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering api/reviews/index.json.jbuilder
+  ↳ app/controllers/api/images_controller.rb:3:in `index'
+  Rendering api/images/index.json.jbuilder
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.7ms | Allocations: 1256)
+Completed 200 OK in 7ms (Views: 1.7ms | ActiveRecord: 1.3ms | Allocations: 3347)
+
+
+  [1m[36mAddress Load (1.0ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.5ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mImage Load (1.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/images/index.json.jbuilder:2
+  Rendered api/images/index.json.jbuilder (Duration: 5.8ms | Allocations: 3814)
+  [1m[36mAddress Load (0.7ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+Completed 200 OK in 13ms (Views: 4.9ms | ActiveRecord: 4.3ms | Allocations: 6949)
+
+
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 17:26:40 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+Started GET "/api/users/1" for 127.0.0.1 at 2024-01-02 17:26:40 -0500
+  [1m[36mMenuItem Load (5.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  Rendering api/users/show.json.jbuilder
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 5ms (Views: 1.6ms | ActiveRecord: 0.6ms | Allocations: 3097)
+
+
+  [1m[36mMenuItem Load (0.6ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Processing by Api::UsersController#show as JSON
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  Parameters: {"id"=>"1"}
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered api/vendors/index.json.jbuilder (Duration: 31.5ms | Allocations: 19113)
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+Completed 200 OK in 33ms (Views: 20.9ms | ActiveRecord: 11.2ms | Allocations: 19920)
+
+
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 276)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.7ms | Allocations: 2997)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (5045.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "servo_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (5046.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "servo_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (5051.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "servo_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (46.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "servo_development"[0m
+  [1m[35m (38.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "servo_test"[0m
+  [1m[35m (57.7ms)[0m  [1m[35mCREATE DATABASE "servo_development" ENCODING = 'unicode'[0m
+  [1m[35m (44.7ms)[0m  [1m[35mCREATE DATABASE "servo_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "addresses" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "addresses" ("id" bigserial primary key, "latitude" float, "longitude" float, "address" character varying, "vendor_id" bigint)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_addresses_on_vendor_id" ON "addresses" ("vendor_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "cart_items" CASCADE[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "cart_items" ("id" bigserial primary key, "user_id" bigint NOT NULL, "menu_item_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_cart_items_on_menu_item_id" ON "cart_items" ("menu_item_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_cart_items_on_user_id" ON "cart_items" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "images" CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "images" ("id" bigserial primary key, "url" character varying NOT NULL, "alt" character varying NOT NULL, "image_type" character varying, "vendor_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_images_on_vendor_id" ON "images" ("vendor_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "menu_items" CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "menu_items" ("id" bigserial primary key, "name" character varying NOT NULL, "price" float NOT NULL, "vendor_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "image_url" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_menu_items_on_vendor_id" ON "menu_items" ("vendor_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "order_details" CASCADE[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "order_details" ("id" bigserial primary key, "order_id" bigint NOT NULL, "menu_item_id" bigint NOT NULL, "price" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_order_details_on_menu_item_id" ON "order_details" ("menu_item_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_order_details_on_order_id" ON "order_details" ("order_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders" CASCADE[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "orders" ("id" bigserial primary key, "user_id" bigint NOT NULL, "total" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "order_details_id" bigint, "vendor_id" bigint NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_orders_on_order_details_id" ON "orders" ("order_details_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_orders_on_user_id" ON "orders" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_orders_on_vendor_id" ON "orders" ("vendor_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "reviews" CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "score" float NOT NULL, "vendor_id" bigint NOT NULL, "user_id" bigint NOT NULL, "body" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_reviews_on_user_id_and_vendor_id" ON "reviews" ("user_id", "vendor_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_vendor_id" ON "reviews" ("vendor_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "phone_number" character varying, "email" character varying NOT NULL, "country" character varying, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_session_token" ON "users" ("session_token")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "vendors" CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "vendors" ("id" bigserial primary key, "name" character varying NOT NULL, "image_url" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "icon_image_url" character varying, "category" character varying NOT NULL, "email" character varying NOT NULL, "phone_number" character varying NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "cart_items" ADD CONSTRAINT "fk_rails_1ec089f35d"
+FOREIGN KEY ("menu_item_id")
+  REFERENCES "menu_items" ("id")
+[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "cart_items" ADD CONSTRAINT "fk_rails_fcb2cbf0bc"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "images" ADD CONSTRAINT "fk_rails_21a3beb965"
+FOREIGN KEY ("vendor_id")
+  REFERENCES "vendors" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "menu_items" ADD CONSTRAINT "fk_rails_36fd804c88"
+FOREIGN KEY ("vendor_id")
+  REFERENCES "vendors" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "order_details" ADD CONSTRAINT "fk_rails_06a1202b13"
+FOREIGN KEY ("menu_item_id")
+  REFERENCES "menu_items" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "order_details" ADD CONSTRAINT "fk_rails_e5976611fd"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_f868b47f6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_977677f0d8"
+FOREIGN KEY ("vendor_id")
+  REFERENCES "vendors" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20240102201031)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20231107004836),
+(20231113222413),
+(20231113223622),
+(20231115210505),
+(20231117144845),
+(20231117184406),
+(20231120002722),
+(20231120215939),
+(20231123160302),
+(20231123160758),
+(20231123161320),
+(20231123165044),
+(20231124193805),
+(20231218210641),
+(20231220212331),
+(20240102200248);
+
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2024-01-02 22:29:05.513471"], ["updated_at", "2024-01-02 22:29:05.513471"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "dcc0cae57371192a63390e8c976bbc6d7d4a5fbe"], ["created_at", "2024-01-02 22:29:05.516683"], ["updated_at", "2024-01-02 22:29:05.516683"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "addresses" CASCADE[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "addresses" ("id" bigserial primary key, "latitude" float, "longitude" float, "address" character varying, "vendor_id" bigint)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_addresses_on_vendor_id" ON "addresses" ("vendor_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "cart_items" CASCADE[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "cart_items" ("id" bigserial primary key, "user_id" bigint NOT NULL, "menu_item_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_cart_items_on_menu_item_id" ON "cart_items" ("menu_item_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_cart_items_on_user_id" ON "cart_items" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "images" CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "images" ("id" bigserial primary key, "url" character varying NOT NULL, "alt" character varying NOT NULL, "image_type" character varying, "vendor_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_images_on_vendor_id" ON "images" ("vendor_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "menu_items" CASCADE[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "menu_items" ("id" bigserial primary key, "name" character varying NOT NULL, "price" float NOT NULL, "vendor_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "image_url" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_menu_items_on_vendor_id" ON "menu_items" ("vendor_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "order_details" CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "order_details" ("id" bigserial primary key, "order_id" bigint NOT NULL, "menu_item_id" bigint NOT NULL, "price" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_order_details_on_menu_item_id" ON "order_details" ("menu_item_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_order_details_on_order_id" ON "order_details" ("order_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders" CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "orders" ("id" bigserial primary key, "user_id" bigint NOT NULL, "total" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "order_details_id" bigint, "vendor_id" bigint NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_orders_on_order_details_id" ON "orders" ("order_details_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_orders_on_user_id" ON "orders" ("user_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_orders_on_vendor_id" ON "orders" ("vendor_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "reviews" CASCADE[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "score" float NOT NULL, "vendor_id" bigint NOT NULL, "user_id" bigint NOT NULL, "body" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_reviews_on_user_id_and_vendor_id" ON "reviews" ("user_id", "vendor_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_vendor_id" ON "reviews" ("vendor_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "phone_number" character varying, "email" character varying NOT NULL, "country" character varying, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_session_token" ON "users" ("session_token")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "vendors" CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "vendors" ("id" bigserial primary key, "name" character varying NOT NULL, "image_url" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "icon_image_url" character varying, "category" character varying NOT NULL, "email" character varying NOT NULL, "phone_number" character varying NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "cart_items" ADD CONSTRAINT "fk_rails_1ec089f35d"
+FOREIGN KEY ("menu_item_id")
+  REFERENCES "menu_items" ("id")
+[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "cart_items" ADD CONSTRAINT "fk_rails_fcb2cbf0bc"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "images" ADD CONSTRAINT "fk_rails_21a3beb965"
+FOREIGN KEY ("vendor_id")
+  REFERENCES "vendors" ("id")
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "menu_items" ADD CONSTRAINT "fk_rails_36fd804c88"
+FOREIGN KEY ("vendor_id")
+  REFERENCES "vendors" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "order_details" ADD CONSTRAINT "fk_rails_06a1202b13"
+FOREIGN KEY ("menu_item_id")
+  REFERENCES "menu_items" ("id")
+[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "order_details" ADD CONSTRAINT "fk_rails_e5976611fd"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_f868b47f6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_977677f0d8"
+FOREIGN KEY ("vendor_id")
+  REFERENCES "vendors" ("id")
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20240102201031)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20231107004836),
+(20231113222413),
+(20231113223622),
+(20231115210505),
+(20231117144845),
+(20231117184406),
+(20231120002722),
+(20231120215939),
+(20231123160302),
+(20231123160758),
+(20231123161320),
+(20231123165044),
+(20231124193805),
+(20231218210641),
+(20231220212331),
+(20240102200248);
+
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2024-01-02 22:29:05.566132"], ["updated_at", "2024-01-02 22:29:05.566132"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2024-01-02 22:29:05.568198"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "dcc0cae57371192a63390e8c976bbc6d7d4a5fbe"], ["created_at", "2024-01-02 22:29:05.569929"], ["updated_at", "2024-01-02 22:29:05.569929"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Create (0.3ms)[0m  [1m[32mINSERT INTO "vendors" ("name", "image_url", "created_at", "updated_at", "icon_image_url", "category", "email", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Ease Window Cleaning"], ["image_url", "https://spencerheywood.com/images/servo/highlights/E22A2993.jpg"], ["created_at", "2024-01-02 22:29:05.603011"], ["updated_at", "2024-01-02 22:29:05.603011"], ["icon_image_url", "https://spencerheywood.com/images/servo/logos_and_icons/Ease-Logo-A1%20%282%29%20%283%29%20copy%202.png"], ["category", "window_cleaning"], ["email", "easewindows@gmail.com"], ["phone_number", "9717771485"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Create (0.1ms)[0m  [1m[32mINSERT INTO "vendors" ("name", "image_url", "created_at", "updated_at", "icon_image_url", "category", "email", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Jdog Carpet Cleaning"], ["image_url", "https://spencerheywood.com/images/servo/highlights/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-11.jpg"], ["created_at", "2024-01-02 22:29:05.605369"], ["updated_at", "2024-01-02 22:29:05.605369"], ["icon_image_url", "https://spencerheywood.com/images/servo/logos_and_icons/logo237190-1594648885.jpeg"], ["category", "carpet_cleaning"], ["email", "jdog@gmail.com"], ["phone_number", "9717771485"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Create (0.1ms)[0m  [1m[32mINSERT INTO "vendors" ("name", "image_url", "created_at", "updated_at", "icon_image_url", "category", "email", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Eco Refresh Garbage Can Cleaning"], ["image_url", "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-30.jpg"], ["created_at", "2024-01-02 22:29:05.607277"], ["updated_at", "2024-01-02 22:29:05.607277"], ["icon_image_url", "https://spencerheywood.com/images/servo/logos_and_icons/refresh-ecowash-logo.png"], ["category", "garbage_can_cleaning"], ["email", "refreshgarbagecleaning@gmail.com"], ["phone_number", "4356453890"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Create (0.1ms)[0m  [1m[32mINSERT INTO "vendors" ("name", "image_url", "created_at", "updated_at", "icon_image_url", "category", "email", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Dead Aim Pest Control"], ["image_url", "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-1.jpg"], ["created_at", "2024-01-02 22:29:05.608872"], ["updated_at", "2024-01-02 22:29:05.608872"], ["icon_image_url", "https://spencerheywood.com/images/servo/logos_and_icons/Screen%20Shot%202021-06-21%20at%2010.19.09%20PM.png"], ["category", "pest_control"], ["email", "deadaimpest@gmail.com"], ["phone_number", "4356453890"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Create (0.1ms)[0m  [1m[32mINSERT INTO "vendors" ("name", "image_url", "created_at", "updated_at", "icon_image_url", "category", "email", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Lily Maid House Cleaning"], ["image_url", "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning/Lily%20Maid%20Cleaning%20Shoot-50.jpg"], ["created_at", "2024-01-02 22:29:05.610487"], ["updated_at", "2024-01-02 22:29:05.610487"], ["icon_image_url", "https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png"], ["category", "house_cleaning"], ["email", "lilymaidhousecleaning@gmail.com"], ["phone_number", "4356453890"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Create (0.1ms)[0m  [1m[32mINSERT INTO "vendors" ("name", "image_url", "created_at", "updated_at", "icon_image_url", "category", "email", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Onsite Detail"], ["image_url", "https://spencerheywood.com/images/servo/highlights/52-09282019_OnsiteDetail052.jpg"], ["created_at", "2024-01-02 22:29:05.611994"], ["updated_at", "2024-01-02 22:29:05.611994"], ["icon_image_url", "https://spencerheywood.com/images/servo/logos_and_icons/logo-dark%20copy%204.png"], ["category", "car_detailing"], ["email", "help@onsite.com"], ["phone_number", "4356453890"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:67:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:67:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@dashdoor.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "phone_number", "email", "country", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Demo"], ["last_name", "User"], ["phone_number", "1002003000"], ["email", "demo@dashdoor.com"], ["country", nil], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2024-01-02 22:29:05.887410"], ["updated_at", "2024-01-02 22:29:05.887410"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:67:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:67:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joe@dashdoor.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "phone_number", "email", "country", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Joe"], ["last_name", "Burrows"], ["phone_number", "1002003001"], ["email", "joe@dashdoor.com"], ["country", nil], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2024-01-02 22:29:06.153350"], ["updated_at", "2024-01-02 22:29:06.153350"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:67:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:67:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demi@dashdoor.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "phone_number", "email", "country", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Demi"], ["last_name", "Levato"], ["phone_number", "1002003002"], ["email", "demi@dashdoor.com"], ["country", nil], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2024-01-02 22:29:06.418369"], ["updated_at", "2024-01-02 22:29:06.418369"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:67:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:67:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bob@dashdoor.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "phone_number", "email", "country", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Bob"], ["last_name", "Saget"], ["phone_number", "1002003003"], ["email", "bob@dashdoor.com"], ["country", nil], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2024-01-02 22:29:06.695714"], ["updated_at", "2024-01-02 22:29:06.695714"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:67:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:67:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mary@dashdoor.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "phone_number", "email", "country", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Mary"], ["last_name", "Jane"], ["phone_number", "1002003004"], ["email", "mary@dashdoor.com"], ["country", nil], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2024-01-02 22:29:06.960047"], ["updated_at", "2024-01-02 22:29:06.960047"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:67:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:67:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "donald@dashdoor.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "phone_number", "email", "country", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Donald"], ["last_name", "Trump"], ["phone_number", "1002003005"], ["email", "donald@dashdoor.com"], ["country", nil], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2024-01-02 22:29:07.223776"], ["updated_at", "2024-01-02 22:29:07.223776"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 3], ["vendor_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReview Create (1.7ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 4.0], ["vendor_id", 1], ["user_id", 3], ["body", "Ease Window Cleaning left my windows spotless and let in so much light. I just wish they offered more frequent scheduling options. Overall, very professional."], ["created_at", "2024-01-02 22:29:07.244219"], ["updated_at", "2024-01-02 22:29:07.244219"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 2], ["vendor_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReview Create (0.5ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 2.0], ["vendor_id", 1], ["user_id", 2], ["body", "I like the clarity of my windows after a visit from Ease Window Cleaning, but they sometimes arrive later than scheduled. Reasonable rates, but I might look elsewhere next time."], ["created_at", "2024-01-02 22:29:07.250639"], ["updated_at", "2024-01-02 22:29:07.250639"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 4], ["vendor_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 2.0], ["vendor_id", 1], ["user_id", 4], ["body", "Recently, Ease Window Cleaning has been a letdown. The last few times, they missed spots, and the crew seemed rushed. Hoping for improvement."], ["created_at", "2024-01-02 22:29:07.254523"], ["updated_at", "2024-01-02 22:29:07.254523"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 5], ["vendor_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 5.0], ["vendor_id", 1], ["user_id", 5], ["body", "Fantastic job by Ease Window Cleaning! They were thorough and my windows have never looked cleaner. Great customer service, highly recommended."], ["created_at", "2024-01-02 22:29:07.258049"], ["updated_at", "2024-01-02 22:29:07.258049"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 6], ["vendor_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 1.0], ["vendor_id", 1], ["user_id", 6], ["body", "Unsatisfactory service from Ease Window Cleaning. The team was impolite, missed their appointment time, and left streaks. Not using them again."], ["created_at", "2024-01-02 22:29:07.262118"], ["updated_at", "2024-01-02 22:29:07.262118"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 2], ["vendor_id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 2.0], ["vendor_id", 2], ["user_id", 2], ["body", "Jdog Carpet Cleaning was once my go-to for fresh carpets, but the last service was subpar. The cleaning team missed spots and seemed to be in a hurry."], ["created_at", "2024-01-02 22:29:07.265926"], ["updated_at", "2024-01-02 22:29:07.265926"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 5], ["vendor_id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 3.0], ["vendor_id", 2], ["user_id", 5], ["body", "I use Jdog Carpet Cleaning now and then, but the results vary. Sometimes my carpets look renewed, other times not so much. They are affordable, though."], ["created_at", "2024-01-02 22:29:07.269561"], ["updated_at", "2024-01-02 22:29:07.269561"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 4], ["vendor_id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 2.0], ["vendor_id", 2], ["user_id", 4], ["body", "Jdog Carpet Cleaning is convenient, but the cleaning doesn't always live up to my expectations. Carpets are cleaner but not as fresh as I'd like."], ["created_at", "2024-01-02 22:29:07.273078"], ["updated_at", "2024-01-02 22:29:07.273078"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 2], ["vendor_id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 4.0], ["vendor_id", 3], ["user_id", 2], ["body", "Eco Refresh does wonders for dirty bins. They come back smelling fresh, but the booking process could be smoother."], ["created_at", "2024-01-02 22:29:07.276366"], ["updated_at", "2024-01-02 22:29:07.276366"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 2], ["vendor_id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 3], ["vendor_id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 3.0], ["vendor_id", 3], ["user_id", 3], ["body", "The cleanliness of my bins after Eco Refresh's visit is noticeable, but they could improve their scheduling flexibility."], ["created_at", "2024-01-02 22:29:07.283140"], ["updated_at", "2024-01-02 22:29:07.283140"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 4], ["vendor_id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 2.0], ["vendor_id", 3], ["user_id", 4], ["body", "Eco Refresh's cleaning service was underwhelming. The bins were cleaner, but the lingering smell wasn't fully removed. Expected better."], ["created_at", "2024-01-02 22:29:07.287037"], ["updated_at", "2024-01-02 22:29:07.287037"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 5], ["vendor_id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 5.0], ["vendor_id", 3], ["user_id", 5], ["body", "Eco Refresh does an exceptional job with garbage can cleaning. Their attention to detail is impressive, and my cans have never been cleaner."], ["created_at", "2024-01-02 22:29:07.290680"], ["updated_at", "2024-01-02 22:29:07.290680"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 6], ["vendor_id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 1.0], ["vendor_id", 3], ["user_id", 6], ["body", "Had a poor experience with Eco Refresh. The crew was late, and the cleaning was superficial. Not worth the cost."], ["created_at", "2024-01-02 22:29:07.294337"], ["updated_at", "2024-01-02 22:29:07.294337"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 4], ["vendor_id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 4.0], ["vendor_id", 4], ["user_id", 4], ["body", "Dead Aim Pest Control tackled our ant problem efficiently. Very knowledgeable staff, but I wish they had more flexible scheduling."], ["created_at", "2024-01-02 22:29:07.297980"], ["updated_at", "2024-01-02 22:29:07.297980"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 5], ["vendor_id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 5.0], ["vendor_id", 5], ["user_id", 5], ["body", "Lily Maid House Cleaning does an impeccable job. Every nook and cranny shines, and the cleaners are courteous and punctual."], ["created_at", "2024-01-02 22:29:07.304377"], ["updated_at", "2024-01-02 22:29:07.304377"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReview Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."vendor_id" = $2 LIMIT $3[0m  [["user_id", 3], ["vendor_id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("score", "vendor_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["score", 4.0], ["vendor_id", 6], ["user_id", 3], ["body", "Onsite Detail left my car looking brand new. Great attention to detail, although it took a bit longer than expected."], ["created_at", "2024-01-02 22:29:07.308199"], ["updated_at", "2024-01-02 22:29:07.308199"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAddress Create (1.3ms)[0m  [1m[32mINSERT INTO "addresses" ("latitude", "longitude", "address", "vendor_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["latitude", 38.898808067979665], ["longitude", -77.0403556322412], ["address", "435 N 300 W St George, UT 84790"], ["vendor_id", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAddress Create (0.2ms)[0m  [1m[32mINSERT INTO "addresses" ("latitude", "longitude", "address", "vendor_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["latitude", 38.90334726359773], ["longitude", -77.00480020327345], ["address", "436 N 300 W St George, UT 84770"], ["vendor_id", 2]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mAddress Create (0.2ms)[0m  [1m[32mINSERT INTO "addresses" ("latitude", "longitude", "address", "vendor_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["latitude", 38.90275499987932], ["longitude", -77.02368310867804], ["address", "437 N 300 W St George, UT 84790"], ["vendor_id", 3]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAddress Create (0.2ms)[0m  [1m[32mINSERT INTO "addresses" ("latitude", "longitude", "address", "vendor_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["latitude", 38.943563620493634], ["longitude", -77.02539987810022], ["address", "438 N 300 W St George, UT 84770"], ["vendor_id", 4]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAddress Create (0.2ms)[0m  [1m[32mINSERT INTO "addresses" ("latitude", "longitude", "address", "vendor_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["latitude", 38.913859796747104], ["longitude", -77.03123652015837], ["address", "4359 N 300 W St George, UT 84790"], ["vendor_id", 5]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAddress Create (0.3ms)[0m  [1m[32mINSERT INTO "addresses" ("latitude", "longitude", "address", "vendor_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["latitude", 38.90258127078925], ["longitude", -77.03020670782361], ["address", "43 N 300 W St George, UT 84770"], ["vendor_id", 6]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mImage Create (1.8ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9928.jpg"], ["alt", "ease window cleaner"], ["image_type", "gallery"], ["vendor_id", 1], ["created_at", "2024-01-02 22:29:07.350613"], ["updated_at", "2024-01-02 22:29:07.350613"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9955.jpg"], ["alt", "three window cleaners cleaning windows"], ["image_type", "gallery"], ["vendor_id", 1], ["created_at", "2024-01-02 22:29:07.354660"], ["updated_at", "2024-01-02 22:29:07.354660"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9963.jpg"], ["alt", "two window cleaners cleaning windows"], ["image_type", "gallery"], ["vendor_id", 1], ["created_at", "2024-01-02 22:29:07.356991"], ["updated_at", "2024-01-02 22:29:07.356991"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mImage Create (0.4ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9975.jpg"], ["alt", "window cleaner on rooftop"], ["image_type", "gallery"], ["vendor_id", 1], ["created_at", "2024-01-02 22:29:07.359262"], ["updated_at", "2024-01-02 22:29:07.359262"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mImage Create (0.4ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9985.jpg"], ["alt", "window cleaning truck"], ["image_type", "gallery"], ["vendor_id", 1], ["created_at", "2024-01-02 22:29:07.361824"], ["updated_at", "2024-01-02 22:29:07.361824"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mImage Create (0.4ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9982.jpg"], ["alt", "window cleaner on metal roof with ladder"], ["image_type", "gallery"], ["vendor_id", 1], ["created_at", "2024-01-02 22:29:07.364219"], ["updated_at", "2024-01-02 22:29:07.364219"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mImage Create (0.4ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/E22A3531%20copy.jpg"], ["alt", "detailed window track cleaning with towel"], ["image_type", "gallery"], ["vendor_id", 1], ["created_at", "2024-01-02 22:29:07.366780"], ["updated_at", "2024-01-02 22:29:07.366780"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mImage Create (0.4ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9972.jpg"], ["alt", "window cleaner wiping down window"], ["image_type", "gallery"], ["vendor_id", 1], ["created_at", "2024-01-02 22:29:07.369138"], ["updated_at", "2024-01-02 22:29:07.369138"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9901.jpg"], ["alt", "window cleaner cleaning a window on a ladder"], ["image_type", "gallery"], ["vendor_id", 1], ["created_at", "2024-01-02 22:29:07.371536"], ["updated_at", "2024-01-02 22:29:07.371536"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/jdog_carpet_cleaning/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-1.jpg"], ["alt", "carpet cleaning truck"], ["image_type", "gallery"], ["vendor_id", 2], ["created_at", "2024-01-02 22:29:07.373634"], ["updated_at", "2024-01-02 22:29:07.373634"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/jdog_carpet_cleaning/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-10.jpg"], ["alt", "carpet cleaning nozzel"], ["image_type", "gallery"], ["vendor_id", 2], ["created_at", "2024-01-02 22:29:07.375893"], ["updated_at", "2024-01-02 22:29:07.375893"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mImage Create (0.2ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/jdog_carpet_cleaning/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-14.jpg"], ["alt", "carpet cleaner cleaning carpets"], ["image_type", "gallery"], ["vendor_id", 2], ["created_at", "2024-01-02 22:29:07.378013"], ["updated_at", "2024-01-02 22:29:07.378013"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mImage Create (0.2ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/jdog_carpet_cleaning/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-3.jpg"], ["alt", "carpet cleaner machine"], ["image_type", "gallery"], ["vendor_id", 2], ["created_at", "2024-01-02 22:29:07.380189"], ["updated_at", "2024-01-02 22:29:07.380189"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mImage Create (0.2ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/jdog_carpet_cleaning/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-15.jpg"], ["alt", "carpet cleaner guage"], ["image_type", "gallery"], ["vendor_id", 2], ["created_at", "2024-01-02 22:29:07.382206"], ["updated_at", "2024-01-02 22:29:07.382206"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mImage Create (0.4ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-29.jpg"], ["alt", "garbage can cleaner in action"], ["image_type", "gallery"], ["vendor_id", 3], ["created_at", "2024-01-02 22:29:07.384380"], ["updated_at", "2024-01-02 22:29:07.384380"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-22.jpg"], ["alt", "freshly cleaned garbage can"], ["image_type", "gallery"], ["vendor_id", 3], ["created_at", "2024-01-02 22:29:07.386722"], ["updated_at", "2024-01-02 22:29:07.386722"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-38%20copyss.png"], ["alt", "garbage cans being cleaned in truck"], ["image_type", "gallery"], ["vendor_id", 3], ["created_at", "2024-01-02 22:29:07.389047"], ["updated_at", "2024-01-02 22:29:07.389047"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-34.jpg"], ["alt", "two trash cans being cleaed"], ["image_type", "gallery"], ["vendor_id", 3], ["created_at", "2024-01-02 22:29:07.391308"], ["updated_at", "2024-01-02 22:29:07.391308"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-43.jpg"], ["alt", "garbage can being pressure washed"], ["image_type", "gallery"], ["vendor_id", 3], ["created_at", "2024-01-02 22:29:07.393569"], ["updated_at", "2024-01-02 22:29:07.393569"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-1.jpg"], ["alt", "pest control truck"], ["image_type", "gallery"], ["vendor_id", 4], ["created_at", "2024-01-02 22:29:07.395950"], ["updated_at", "2024-01-02 22:29:07.395950"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mImage Create (3.7ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-3.jpg"], ["alt", "pest control technician spraying chemicals"], ["image_type", "gallery"], ["vendor_id", 4], ["created_at", "2024-01-02 22:29:07.398256"], ["updated_at", "2024-01-02 22:29:07.398256"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mImage Create (0.2ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-7.jpg"], ["alt", "close up of pest control technician spraying home"], ["image_type", "gallery"], ["vendor_id", 4], ["created_at", "2024-01-02 22:29:07.403963"], ["updated_at", "2024-01-02 22:29:07.403963"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mImage Create (0.1ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-9.jpg"], ["alt", "pest control technician loading up truck"], ["image_type", "gallery"], ["vendor_id", 4], ["created_at", "2024-01-02 22:29:07.405973"], ["updated_at", "2024-01-02 22:29:07.405973"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mImage Create (0.2ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-12.jpg"], ["alt", "house cleaner cleaning bathroom sink"], ["image_type", "gallery"], ["vendor_id", 5], ["created_at", "2024-01-02 22:29:07.407861"], ["updated_at", "2024-01-02 22:29:07.407861"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-13.jpg"], ["alt", "close up shot of house cleaner cleaning bathroom sink"], ["image_type", "gallery"], ["vendor_id", 5], ["created_at", "2024-01-02 22:29:07.409811"], ["updated_at", "2024-01-02 22:29:07.409811"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-14.jpg"], ["alt", "house cleaner wiping down shower door"], ["image_type", "gallery"], ["vendor_id", 5], ["created_at", "2024-01-02 22:29:07.412002"], ["updated_at", "2024-01-02 22:29:07.412002"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mImage Create (0.2ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-11.jpg"], ["alt", "house cleaner making bed"], ["image_type", "gallery"], ["vendor_id", 5], ["created_at", "2024-01-02 22:29:07.415946"], ["updated_at", "2024-01-02 22:29:07.415946"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-18.jpg"], ["alt", "two house cleaners cleaning a bathroom"], ["image_type", "gallery"], ["vendor_id", 5], ["created_at", "2024-01-02 22:29:07.418357"], ["updated_at", "2024-01-02 22:29:07.418357"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-25.jpg"], ["alt", "two house cleaners cleaning kitchen"], ["image_type", "gallery"], ["vendor_id", 5], ["created_at", "2024-01-02 22:29:07.420595"], ["updated_at", "2024-01-02 22:29:07.420595"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mImage Create (0.2ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-26.jpg"], ["alt", "close up of house cleaner wiping down kitchen counter"], ["image_type", "gallery"], ["vendor_id", 5], ["created_at", "2024-01-02 22:29:07.422776"], ["updated_at", "2024-01-02 22:29:07.422776"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mImage Create (0.2ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-28.jpg"], ["alt", "house cleaner dusting kitchen cabinents"], ["image_type", "gallery"], ["vendor_id", 5], ["created_at", "2024-01-02 22:29:07.424878"], ["updated_at", "2024-01-02 22:29:07.424878"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/onsite_detail_square/11-09282019_OnsiteDetail011.jpg"], ["alt", "auto detailer buffing out truck"], ["image_type", "gallery"], ["vendor_id", 6], ["created_at", "2024-01-02 22:29:07.427049"], ["updated_at", "2024-01-02 22:29:07.427049"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mImage Create (0.2ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/onsite_detail_square/167-09282019_OnsiteDetail0167.jpg"], ["alt", "auto detailer cleaning inside the car"], ["image_type", "gallery"], ["vendor_id", 6], ["created_at", "2024-01-02 22:29:07.429177"], ["updated_at", "2024-01-02 22:29:07.429177"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mImage Create (0.2ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/onsite_detail_square/196-09282019_OnsiteDetail0196.jpg"], ["alt", "auto detailer outside of home"], ["image_type", "gallery"], ["vendor_id", 6], ["created_at", "2024-01-02 22:29:07.431479"], ["updated_at", "2024-01-02 22:29:07.431479"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/onsite_detail_square/52-09282019_OnsiteDetail052.jpg"], ["alt", "auto detailer van"], ["image_type", "gallery"], ["vendor_id", 6], ["created_at", "2024-01-02 22:29:07.433725"], ["updated_at", "2024-01-02 22:29:07.433725"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("url", "alt", "image_type", "vendor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["url", "https://spencerheywood.com/images/servo/Pictures/onsite_detail_square/60-09282019_OnsiteDetail060.jpg"], ["alt", "auto detailer wiping down truck"], ["image_type", "gallery"], ["vendor_id", 6], ["created_at", "2024-01-02 22:29:07.435973"], ["updated_at", "2024-01-02 22:29:07.435973"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/session" for 127.0.0.1 at 2024-01-02 17:29:17 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `current_user'
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 2.1ms | Allocations: 7694)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2024-01-02 17:29:20 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"demo@dashdoor.com", "password"=>"[FILTERED]", "session"=>{"email"=>"demo@dashdoor.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@dashdoor.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `find_by_credentials'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:67:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:60:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@dashdoor.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:60:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:60:in `reset_session_token!'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2024-01-02 22:29:20.718894"], ["id", 1]]
+  ↳ app/models/user.rb:60:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:60:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.9ms | Allocations: 654)
+Completed 200 OK in 318ms (Views: 7.0ms | ActiveRecord: 5.4ms | Allocations: 16958)
+
+
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 17:29:20 -0500
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 17:29:20 -0500
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mVendor Load (0.6ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mAddress Load (0.6ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mMenuItem Load (0.6ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.6ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/cart_items/index.json.jbuilder (Duration: 4.8ms | Allocations: 7054)
+Completed 200 OK in 29ms (Views: 3.2ms | ActiveRecord: 14.4ms | Allocations: 34623)
+
+
+  [1m[36mAddress Load (1.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 41.4ms | Allocations: 40226)
+Completed 200 OK in 46ms (Views: 30.7ms | ActiveRecord: 11.2ms | Allocations: 43920)
+
+
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 17:29:20 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mVendor Load (0.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+Started GET "/api/vendors/2/reviews" for 127.0.0.1 at 2024-01-02 17:29:20 -0500
+Started GET "/api/vendors/3/reviews" for 127.0.0.1 at 2024-01-02 17:29:20 -0500
+Started GET "/api/vendors/4/reviews" for 127.0.0.1 at 2024-01-02 17:29:20 -0500
+  [1m[36mReview Load (1.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+Started GET "/api/vendors/5/reviews" for 127.0.0.1 at 2024-01-02 17:29:20 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"3"}
+  Rendered api/reviews/index.json.jbuilder (Duration: 28.8ms | Allocations: 11049)
+Completed 200 OK in 47ms (Views: 21.3ms | ActiveRecord: 10.4ms | Allocations: 16066)
+
+
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"5"}
+  [1m[36mVendor Load (0.6ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendering api/reviews/index.json.jbuilder
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.9ms | Allocations: 2182)
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"4"}
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.0ms | Allocations: 2275)
+Completed 200 OK in 7ms (Views: 3.3ms | ActiveRecord: 0.5ms | Allocations: 5708)
+
+
+Completed 200 OK in 11ms (Views: 3.2ms | ActiveRecord: 1.1ms | Allocations: 10794)
+
+
+Started GET "/api/vendors/6/reviews" for 127.0.0.1 at 2024-01-02 17:29:20 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"6"}
+  [1m[36mVendor Load (0.6ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.4ms | Allocations: 1492)
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 1.1ms | Allocations: 3099)
+
+
+  [1m[36mVendor Load (0.8ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.0ms | Allocations: 1578)
+Completed 200 OK in 23ms (Views: 1.8ms | ActiveRecord: 11.1ms | Allocations: 19995)
+
+
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.6ms | Allocations: 859)
+Completed 200 OK in 18ms (Views: 1.3ms | ActiveRecord: 7.9ms | Allocations: 13078)
+
+
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 17:29:21 -0500
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 17:29:21 -0500
+Started GET "/api/vendors/1/images" for 127.0.0.1 at 2024-01-02 17:29:21 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+  [1m[36mVendor Load (0.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+Processing by Api::ImagesController#index as JSON
+  [1m[36mAddress Load (0.9ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  Rendered api/reviews/index.json.jbuilder (Duration: 3.9ms | Allocations: 3247)
+  Parameters: {"vendor_id"=>"1"}
+Completed 200 OK in 8ms (Views: 4.0ms | ActiveRecord: 1.4ms | Allocations: 5638)
+
+
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/images_controller.rb:3:in `index'
+  [1m[36mMenuItem Load (1.0ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (1.6ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  Rendering api/images/index.json.jbuilder
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mImage Load (1.0ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/images/index.json.jbuilder:2
+  [1m[36mAddress Load (0.8ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/images/index.json.jbuilder (Duration: 11.2ms | Allocations: 11040)
+  [1m[36mAddress Load (2.9ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+Completed 200 OK in 17ms (Views: 7.7ms | ActiveRecord: 5.6ms | Allocations: 16328)
+
+
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 17:29:21 -0500
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.6ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Started GET "/api/users/3" for 127.0.0.1 at 2024-01-02 17:29:21 -0500
+  [1m[36mAddress Load (0.9ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 30.3ms | Allocations: 25506)
+Completed 200 OK in 31ms (Views: 20.3ms | ActiveRecord: 10.6ms | Allocations: 25962)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2024-01-02 17:29:21 -0500
+Started GET "/api/users/5" for 127.0.0.1 at 2024-01-02 17:29:21 -0500
+Started GET "/api/users/6" for 127.0.0.1 at 2024-01-02 17:29:21 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"3"}
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 1.2ms | Allocations: 349)
+Completed 200 OK in 7ms (Views: 2.1ms | ActiveRecord: 0.9ms | Allocations: 3102)
+
+
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 1.5ms | Allocations: 276)
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+Completed 200 OK in 19ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 4169)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 23ms (Views: 1.7ms | ActiveRecord: 1.9ms | Allocations: 6047)
+
+
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 1.7ms | Allocations: 3762)
+
+
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.1ms | Allocations: 276)
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.9ms | Allocations: 3835)
+
+
+Started GET "/api/vendors/3/reviews" for 127.0.0.1 at 2024-01-02 17:29:25 -0500
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 17:29:25 -0500
+Started GET "/api/vendors/2/reviews" for 127.0.0.1 at 2024-01-02 17:29:25 -0500
+Started GET "/api/vendors/5/reviews" for 127.0.0.1 at 2024-01-02 17:29:25 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+Started GET "/api/vendors/4/reviews" for 127.0.0.1 at 2024-01-02 17:29:25 -0500
+  [1m[36mVendor Load (1.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"3"}
+  [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.1ms | Allocations: 1557)
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 2.2ms | Allocations: 3354)
+
+
+Processing by Api::ReviewsController#index as JSON
+  [1m[36mVendor Load (0.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Parameters: {"vendor_id"=>"5"}
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.9ms | Allocations: 1681)
+  [1m[36mVendor Load (2.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Completed 200 OK in 8ms (Views: 3.3ms | ActiveRecord: 0.7ms | Allocations: 5228)
+
+
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mVendor Load (0.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (1.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 17:29:25 -0500
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.5ms | Allocations: 2034)
+Processing by Api::ReviewsController#index as JSON
+Completed 200 OK in 9ms (Views: 1.9ms | ActiveRecord: 3.4ms | Allocations: 6097)
+
+
+  Parameters: {"vendor_id"=>"4"}
+  [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  [1m[36mVendor Load (0.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  Rendered api/reviews/index.json.jbuilder (Duration: 4.5ms | Allocations: 3366)
+Completed 200 OK in 9ms (Views: 5.2ms | ActiveRecord: 1.4ms | Allocations: 6548)
+
+
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 4]]
+Started GET "/api/vendors/6/reviews" for 127.0.0.1 at 2024-01-02 17:29:25 -0500
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.3ms | Allocations: 1601)
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 0.8ms | Allocations: 3618)
+
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 17:29:25 -0500
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"6"}
+  [1m[36mVendor Load (0.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mVendor Load (0.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mAddress Load (0.9ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.1ms | Allocations: 2390)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 1.1ms | Allocations: 4061)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  [1m[36mMenuItem Load (0.7ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  Rendering api/cart_items/index.json.jbuilder
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mCartItem Load (1.0ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/cart_items/index.json.jbuilder (Duration: 2.3ms | Allocations: 2081)
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 1.6ms | Allocations: 5590)
+
+
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 14.0ms | Allocations: 14644)
+Completed 200 OK in 15ms (Views: 10.3ms | ActiveRecord: 4.0ms | Allocations: 15112)
+
+
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 17:54:18 -0500
+Started GET "/api/users/5" for 127.0.0.1 at 2024-01-02 17:54:18 -0500
+Started GET "/api/users/2" for 127.0.0.1 at 2024-01-02 17:54:18 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 17:54:18 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"5"}
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+Started GET "/api/users/3" for 127.0.0.1 at 2024-01-02 17:54:18 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 281)
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Completed 200 OK in 34ms (Views: 0.9ms | ActiveRecord: 12.2ms | Allocations: 17202)
+
+
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mAddress Load (1.0ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (Duration: 1.6ms | Allocations: 970)
+Completed 200 OK in 34ms (Views: 3.5ms | ActiveRecord: 9.7ms | Allocations: 19736)
+
+
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  [1m[36mMenuItem Load (0.5ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+Started GET "/api/vendors/2/reviews" for 127.0.0.1 at 2024-01-02 17:54:18 -0500
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 276)
+Completed 200 OK in 29ms (Views: 1.6ms | ActiveRecord: 11.3ms | Allocations: 17670)
+
+
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 276)
+Completed 200 OK in 38ms (Views: 1.5ms | ActiveRecord: 10.2ms | Allocations: 22912)
+
+
+Started GET "/api/users/6" for 127.0.0.1 at 2024-01-02 17:54:18 -0500
+  [1m[36mAddress Load (1.0ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (1.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+Started GET "/api/vendors/2/images" for 127.0.0.1 at 2024-01-02 17:54:18 -0500
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Processing by Api::UsersController#show as JSON
+  [1m[36mMenuItem Load (0.9ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  Parameters: {"id"=>"6"}
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Processing by Api::ReviewsController#index as JSON
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  Parameters: {"vendor_id"=>"2"}
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  [1m[36mMenuItem Load (0.5ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  Rendering api/users/show.json.jbuilder
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 277)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 2860)
+
+
+  Rendered api/vendors/index.json.jbuilder (Duration: 59.8ms | Allocations: 31888)
+Completed 200 OK in 61ms (Views: 48.5ms | ActiveRecord: 12.1ms | Allocations: 32707)
+
+
+Processing by Api::ImagesController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+  [1m[36mVendor Load (5.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mVendor Load (0.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/images_controller.rb:3:in `index'
+  Rendering api/images/index.json.jbuilder
+  [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.0ms | Allocations: 1768)
+Completed 200 OK in 11ms (Views: 1.6ms | ActiveRecord: 5.9ms | Allocations: 6520)
+
+
+  [1m[36mImage Load (0.6ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/images/index.json.jbuilder:2
+  Rendered api/images/index.json.jbuilder (Duration: 2.3ms | Allocations: 2475)
+Completed 200 OK in 8ms (Views: 1.9ms | ActiveRecord: 1.0ms | Allocations: 4142)
+
+
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 17:54:18 -0500
+Started GET "/api/users/2" for 127.0.0.1 at 2024-01-02 17:54:18 -0500
+Started GET "/api/users/5" for 127.0.0.1 at 2024-01-02 17:54:18 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+Processing by Api::UsersController#show as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Parameters: {"id"=>"2"}
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.9ms | Allocations: 2027)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+Processing by Api::UsersController#show as JSON
+  Rendering api/users/show.json.jbuilder
+  Parameters: {"id"=>"5"}
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 276)
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.2ms | Allocations: 2750)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1644)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7082450925342785265)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RenameMenuItems (20240102232902)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "menu_items" RENAME TO "services"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER INDEX "menu_items_pkey" RENAME TO "services_pkey"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "public"."menu_items_id_seq" RENAME TO "services_id_seq"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER INDEX "index_menu_items_on_vendor_id" RENAME TO "index_services_on_vendor_id"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "cart_items" RENAME COLUMN "menu_item_id" TO "service_id"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER INDEX "index_cart_items_on_menu_item_id" RENAME TO "index_cart_items_on_service_id"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "order_details" RENAME COLUMN "menu_item_id" TO "service_id"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER INDEX "index_order_details_on_menu_item_id" RENAME TO "index_order_details_on_service_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20240102232902"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7082450925342785265)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/api/vendors/2/services" for 127.0.0.1 at 2024-01-02 18:37:13 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+ActionController::RoutingError - uninitialized constant Api::ServicesController
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+Did you mean?  Api::ReviewsController
+            raise MissingController.new(error.message, error.name)
+            ^^^^^:
+
+Started GET "/api/vendors/2/menu_items" for 127.0.0.1 at 2024-01-02 18:37:20 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/vendors/2/menu_items"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1157)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Started GET "/api/vendors/2/menuItems" for 127.0.0.1 at 2024-01-02 18:37:24 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/vendors/2/menuItems"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 803)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Started GET "/api/vendors/2/services" for 127.0.0.1 at 2024-01-02 18:38:02 -0500
+
+ActionController::RoutingError - uninitialized constant Api::ServicesController
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+Did you mean?  Api::ReviewsController
+            raise MissingController.new(error.message, error.name)
+            ^^^^^:
+
+Started GET "/api/vendors/2/services" for 127.0.0.1 at 2024-01-02 18:38:18 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+ActionController::RoutingError - uninitialized constant Api::ServicesController
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+Did you mean?  Api::ReviewsController
+            raise MissingController.new(error.message, error.name)
+            ^^^^^:
+
+Started GET "/api/vendors/2/services" for 127.0.0.1 at 2024-01-02 18:39:05 -0500
+Processing by Api::ServicesController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+  [1m[36mVendor Load (1.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/services_controller.rb:4:in `index'
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 6.7ms | Allocations: 24596)
+
+
+
+NameError - Rails couldn't find a valid model for Service association. Please provide the :class_name option on the association declaration. If :class_name is already provided, make sure it's an ActiveRecord::Base subclass.
+          raise NameError, msg
+          ^^^^^:
+  app/controllers/api/services_controller.rb:5:in `index'
+
+Started GET "/api/vendors/2/services" for 127.0.0.1 at 2024-01-02 18:39:40 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ServicesController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+  [1m[36mVendor Load (1.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/services_controller.rb:4:in `index'
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 7.8ms | Allocations: 24640)
+
+
+
+NameError - Rails couldn't find a valid model for Service association. Please provide the :class_name option on the association declaration. If :class_name is already provided, make sure it's an ActiveRecord::Base subclass.
+          raise NameError, msg
+          ^^^^^:
+  app/controllers/api/services_controller.rb:5:in `index'
+
+Started GET "/api/vendors/2/services" for 127.0.0.1 at 2024-01-02 18:40:04 -0500
+Processing by Api::ServicesController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/services_controller.rb:4:in `index'
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 4.4ms | Allocations: 7427)
+
+
+
+TypeError - superclass mismatch for class MenuItem:
+  app/models/service.rb:13:in `<top (required)>'
+  app/controllers/api/services_controller.rb:5:in `index'
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/api/vendors/2/services" for 127.0.0.1 at 2024-01-02 18:41:01 -0500
+Processing by Api::ServicesController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+  [1m[36mVendor Load (0.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/services_controller.rb:4:in `index'
+  Rendering api/services/index.json.jbuilder
+  [1m[36mService Load (0.9ms)[0m  [1m[34mSELECT "services".* FROM "services" WHERE "services"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/services/index.json.jbuilder:2
+  Rendered api/services/index.json.jbuilder (Duration: 6.8ms | Allocations: 3626)
+Completed 200 OK in 24ms (Views: 9.9ms | ActiveRecord: 7.7ms | Allocations: 16159)
+
+
+Started GET "/api/vendors/1/services" for 127.0.0.1 at 2024-01-02 18:41:05 -0500
+Processing by Api::ServicesController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/services_controller.rb:4:in `index'
+  Rendering api/services/index.json.jbuilder
+  [1m[36mService Load (0.3ms)[0m  [1m[34mSELECT "services".* FROM "services" WHERE "services"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/services/index.json.jbuilder:2
+  Rendered api/services/index.json.jbuilder (Duration: 2.4ms | Allocations: 658)
+Completed 200 OK in 7ms (Views: 2.6ms | ActiveRecord: 0.6ms | Allocations: 1687)
+
+
+Started GET "/api/vendors/3/services" for 127.0.0.1 at 2024-01-02 18:41:07 -0500
+Processing by Api::ServicesController#index as JSON
+  Parameters: {"vendor_id"=>"3"}
+  [1m[36mVendor Load (0.8ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/services_controller.rb:4:in `index'
+  Rendering api/services/index.json.jbuilder
+  [1m[36mService Load (0.3ms)[0m  [1m[34mSELECT "services".* FROM "services" WHERE "services"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/services/index.json.jbuilder:2
+  Rendered api/services/index.json.jbuilder (Duration: 1.4ms | Allocations: 650)
+Completed 200 OK in 10ms (Views: 1.5ms | ActiveRecord: 1.1ms | Allocations: 1565)
+
+

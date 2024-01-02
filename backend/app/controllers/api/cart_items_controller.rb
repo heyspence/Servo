@@ -2,7 +2,7 @@ class Api::CartItemsController < ApplicationController
 
     def create
         @cart_item = CartItem.new(
-            menu_item_id: params[:menu_item_id], 
+            service_id: params[:service_id], 
             user_id: params[:user_id])
         if @cart_item.save
             render :show

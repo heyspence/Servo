@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_02_201031) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_02_232902) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,10 +24,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_02_201031) do
 
   create_table "cart_items", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "menu_item_id", null: false
+    t.bigint "service_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["menu_item_id"], name: "index_cart_items_on_menu_item_id"
+    t.index ["service_id"], name: "index_cart_items_on_service_id"
     t.index ["user_id"], name: "index_cart_items_on_user_id"
   end
 
@@ -41,24 +41,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_02_201031) do
     t.index ["vendor_id"], name: "index_images_on_vendor_id"
   end
 
-  create_table "menu_items", force: :cascade do |t|
-    t.string "name", null: false
-    t.float "price", null: false
-    t.bigint "vendor_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "image_url"
-    t.index ["vendor_id"], name: "index_menu_items_on_vendor_id"
-  end
-
   create_table "order_details", force: :cascade do |t|
     t.bigint "order_id", null: false
-    t.bigint "menu_item_id", null: false
+    t.bigint "service_id", null: false
     t.float "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["menu_item_id"], name: "index_order_details_on_menu_item_id"
     t.index ["order_id"], name: "index_order_details_on_order_id"
+    t.index ["service_id"], name: "index_order_details_on_service_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -83,6 +73,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_02_201031) do
     t.index ["user_id", "vendor_id"], name: "index_reviews_on_user_id_and_vendor_id", unique: true
     t.index ["user_id"], name: "index_reviews_on_user_id"
     t.index ["vendor_id"], name: "index_reviews_on_vendor_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "name", null: false
+    t.float "price", null: false
+    t.bigint "vendor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_url"
+    t.index ["vendor_id"], name: "index_services_on_vendor_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -110,13 +110,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_02_201031) do
     t.string "phone_number", null: false
   end
 
-  add_foreign_key "cart_items", "menu_items"
+  add_foreign_key "cart_items", "services"
   add_foreign_key "cart_items", "users"
   add_foreign_key "images", "vendors"
-  add_foreign_key "menu_items", "vendors"
-  add_foreign_key "order_details", "menu_items"
   add_foreign_key "order_details", "orders"
+  add_foreign_key "order_details", "services"
   add_foreign_key "orders", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "reviews", "vendors"
+  add_foreign_key "services", "vendors"
 end

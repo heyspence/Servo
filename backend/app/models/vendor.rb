@@ -13,7 +13,7 @@
 #  phone_number   :string           not null
 #
 class Vendor < ApplicationRecord
-    has_many :menu_items
+    has_many :services
     has_many_attached :photo
     has_many :reviews
     has_one :address

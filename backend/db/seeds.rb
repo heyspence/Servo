@@ -30,9 +30,9 @@ user = User.create([
     { first_name: 'Donald', last_name: 'Trump', email: 'donald@dashdoor.com', password: 'password',phone_number: '1002003005'}
 ])
 
-# puts "Creating menu items"
+# puts "Creating services"
 
-# menu_item = MenuItem.create([
+# services = Service.create([
 #     {name: 'Caffe Latte', price: '4.75', vendor_id: 1, image_url: "http://spencerheywood.com/images/dash_door/starbucks-caffe-latte.avif"},
 #     {name: 'Impossible Breakfast Sandwich', price: '6.95', vendor_id: 1, image_url: "http://spencerheywood.com/images/dash_door/starbucks-impossible-breakfast-sandwich.avif"},
 #     {name: 'Sausage, Cheddar & Egg Sandwich', price: '5.45', vendor_id: 1, image_url: "http://spencerheywood.com/images/dash_door/starbucks-sausage-cheddar-egg-sandwich.avif"},
