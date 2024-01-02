@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './Home.css'
 import { isLoggedIn } from '../store/session';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import RestaurantIndex from '../Restaurant/RestaurantIndex';
+import VendorIndex from '../Vendor/VendorIndex';
 import { getCart } from '../store/cart.js'
 import { useEffect } from 'react';
 
@@ -22,7 +22,7 @@ const Home = () => {
 
    return(
         <div className="home-main">
-            <RestaurantIndex />
+            <VendorIndex />
         </div>
    )
 }

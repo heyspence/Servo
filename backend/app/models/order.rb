@@ -12,6 +12,6 @@
 #
 class Order < ApplicationRecord
     belongs_to :user
-    belongs_to :restaurant
+    belongs_to :vendor
     has_many :order_details
 end

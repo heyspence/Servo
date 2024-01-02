@@ -11,5 +11,5 @@
 #  updated_at :datetime         not null
 #
 class Image < ApplicationRecord
-    belongs_to :restaurant
+    belongs_to :vendor
 end

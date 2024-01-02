@@ -1,11 +1,11 @@
-.restaurant-index-container{
+.vendor-index-container{
     margin: 20px auto;
     width: 80%;
     height: 100%;
 }
 
 @media screen and (max-width: 649px) {
-    .restaurant-index-container{
+    .vendor-index-container{
         width: 100%;
         margin: 20px auto;
         padding: 0 10px;
@@ -13,13 +13,13 @@
     }
 }
 
-.restaurant-index ul{
+.vendor-index ul{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
-.restaurant-index h1{
+.vendor-index h1{
     margin: 18px;
     font-weight: bold;
     font-size: 25px;

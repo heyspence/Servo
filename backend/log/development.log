@@ -5188,3 +5188,2727 @@ Completed 200 OK in 16ms (Views: 4.0ms | ActiveRecord: 6.8ms | Allocations: 7671
 
 
   [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/api/session" for 127.0.0.1 at 2024-01-02 15:24:00 -0500
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.6ms | Allocations: 441)
+Completed 200 OK in 16ms (Views: 1.2ms | ActiveRecord: 8.4ms | Allocations: 7086)
+
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:24:01 -0500
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mCartItem Load (1.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 5.4ms | Allocations: 2591)
+Completed 200 OK in 10ms (Views: 3.2ms | ActiveRecord: 3.3ms | Allocations: 6432)
+
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:24:01 -0500
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:24:01 -0500
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+Processing by Api::VendorsController#index as JSON
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/vendors/index.json.jbuilder
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mCartItem Load (0.8ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 1.5ms | Allocations: 2004)
+Completed 200 OK in 9ms (Views: 1.0ms | ActiveRecord: 2.0ms | Allocations: 7469)
+
+
+  [1m[36mVendor Load (1.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (1.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.7ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 50.4ms | Allocations: 25110)
+Completed 200 OK in 54ms (Views: 24.6ms | ActiveRecord: 26.6ms | Allocations: 28825)
+
+
+Started GET "/api/restaurants/3/reviews" for 127.0.0.1 at 2024-01-02 15:24:01 -0500
+Started GET "/api/restaurants/1/reviews" for 127.0.0.1 at 2024-01-02 15:24:01 -0500
+Started GET "/api/restaurants/2/reviews" for 127.0.0.1 at 2024-01-02 15:24:01 -0500
+Started GET "/api/restaurants/4/reviews" for 127.0.0.1 at 2024-01-02 15:24:01 -0500
+Started GET "/api/restaurants/5/reviews" for 127.0.0.1 at 2024-01-02 15:24:01 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/3/reviews"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1048)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/1/reviews"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 850)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/2/reviews"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 797)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Started GET "/api/restaurants/6/reviews" for 127.0.0.1 at 2024-01-02 15:24:01 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/5/reviews"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 780)
+
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/4/reviews"}
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 780)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/6/reviews"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 778)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Started GET "/api/restaurants/1/reviews" for 127.0.0.1 at 2024-01-02 15:24:03 -0500
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:24:03 -0500
+Started GET "/api/restaurants/1/images" for 127.0.0.1 at 2024-01-02 15:24:03 -0500
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/1/reviews"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 780)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+  [1m[36mVendor Load (3.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mAddress Load (0.7ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/1/images"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 778)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.7ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 21.0ms | Allocations: 25233)
+Completed 200 OK in 22ms (Views: 14.9ms | ActiveRecord: 6.3ms | Allocations: 25742)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2024-01-02 15:24:13 -0500
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 304)
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 1.1ms | Allocations: 1236)
+
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:24:14 -0500
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mCartItem Load (0.6ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 2.4ms | Allocations: 710)
+Completed 200 OK in 8ms (Views: 2.3ms | ActiveRecord: 1.0ms | Allocations: 1663)
+
+
+Started GET "/api/restaurants/1/reviews" for 127.0.0.1 at 2024-01-02 15:24:14 -0500
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:24:14 -0500
+Started GET "/api/vendors/1/images" for 127.0.0.1 at 2024-01-02 15:24:14 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/1/reviews"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 783)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+Processing by Api::ImagesController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mVendor Load (1.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/images_controller.rb:3:in `index'
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (1.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  Rendering api/images/index.json.jbuilder
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (1.5ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mImage Load (0.8ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/images/index.json.jbuilder:2
+  [1m[36mAddress Load (0.8ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  Rendered api/images/index.json.jbuilder (Duration: 9.0ms | Allocations: 9667)
+Completed 200 OK in 14ms (Views: 5.0ms | ActiveRecord: 5.8ms | Allocations: 15609)
+
+
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.5ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 19.0ms | Allocations: 20093)
+Completed 200 OK in 20ms (Views: 12.0ms | ActiveRecord: 7.5ms | Allocations: 20555)
+
+
+Started GET "/api/restaurants/3/reviews" for 127.0.0.1 at 2024-01-02 15:24:18 -0500
+Started GET "/api/restaurants/4/reviews" for 127.0.0.1 at 2024-01-02 15:24:18 -0500
+Started GET "/api/restaurants/6/reviews" for 127.0.0.1 at 2024-01-02 15:24:18 -0500
+Started GET "/api/restaurants/2/reviews" for 127.0.0.1 at 2024-01-02 15:24:18 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/3/reviews"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 816)
+
+
+Started GET "/api/restaurants/1/reviews" for 127.0.0.1 at 2024-01-02 15:24:18 -0500
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/4/reviews"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 778)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/6/reviews"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 778)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/2/reviews"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 780)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Started GET "/api/restaurants/5/reviews" for 127.0.0.1 at 2024-01-02 15:24:18 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/1/reviews"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 785)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:24:18 -0500
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:24:18 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/5/reviews"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 787)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+Processing by Api::CartItemsController#index as JSON
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  Parameters: {"user_id"=>"1"}
+  [1m[36mMenuItem Load (2.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  [1m[36mAddress Load (1.0ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  Rendering api/cart_items/index.json.jbuilder
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mCartItem Load (0.5ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 3.5ms | Allocations: 1605)
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Completed 200 OK in 9ms (Views: 4.0ms | ActiveRecord: 1.4ms | Allocations: 3697)
+
+
+  [1m[36mMenuItem Load (0.6ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 22.9ms | Allocations: 14060)
+Completed 200 OK in 24ms (Views: 17.2ms | ActiveRecord: 6.0ms | Allocations: 14552)
+
+
+Started GET "/api/vendors/2/images" for 127.0.0.1 at 2024-01-02 15:24:19 -0500
+Started GET "/api/restaurants/2/reviews" for 127.0.0.1 at 2024-01-02 15:24:19 -0500
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:24:19 -0500
+Processing by Api::ImagesController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/2/reviews"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 789)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+  [1m[36mVendor Load (2.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/images_controller.rb:3:in `index'
+  Rendering api/images/index.json.jbuilder
+Processing by Api::VendorsController#index as JSON
+  [1m[36mImage Load (0.8ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/images/index.json.jbuilder:2
+  Rendering api/vendors/index.json.jbuilder
+  Rendered api/images/index.json.jbuilder (Duration: 4.8ms | Allocations: 4141)
+Completed 200 OK in 17ms (Views: 4.7ms | ActiveRecord: 3.1ms | Allocations: 10788)
+
+
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (1.0ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.7ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 17.8ms | Allocations: 9980)
+Completed 200 OK in 20ms (Views: 14.7ms | ActiveRecord: 4.6ms | Allocations: 11386)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2024-01-02 15:24:32 -0500
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 304)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 1244)
+
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:24:32 -0500
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mCartItem Load (0.1ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 1.7ms | Allocations: 706)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 1631)
+
+
+Started GET "/api/vendors/2/reviews" for 127.0.0.1 at 2024-01-02 15:24:32 -0500
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:24:32 -0500
+Started GET "/api/vendors/2/images" for 127.0.0.1 at 2024-01-02 15:24:32 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+  [1m[36mVendor Load (0.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+Processing by Api::ImagesController#index as JSON
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  Parameters: {"vendor_id"=>"2"}
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  [1m[36mMenuItem Load (0.6ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  Rendered api/reviews/index.json.jbuilder (Duration: 7.9ms | Allocations: 9571)
+  [1m[36mMenuItem Load (2.0ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Completed 200 OK in 12ms (Views: 4.2ms | ActiveRecord: 5.1ms | Allocations: 13230)
+
+
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.8ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 17.0ms | Allocations: 16268)
+Completed 200 OK in 18ms (Views: 11.0ms | ActiveRecord: 6.2ms | Allocations: 16793)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2024-01-02 15:24:32 -0500
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 15:24:32 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+Started GET "/api/users/5" for 127.0.0.1 at 2024-01-02 15:24:32 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering api/users/show.json.jbuilder
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 342)
+  Rendering api/users/show.json.jbuilder
+Completed 200 OK in 6ms (Views: 1.5ms | ActiveRecord: 0.6ms | Allocations: 4329)
+
+
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+  [1m[36mVendor Load (1.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 3811)
+
+
+  ↳ app/controllers/api/images_controller.rb:3:in `index'
+  Rendering api/images/index.json.jbuilder
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mImage Load (0.5ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/images/index.json.jbuilder:2
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered api/images/index.json.jbuilder (Duration: 2.0ms | Allocations: 1996)
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+Completed 200 OK in 32ms (Views: 1.9ms | ActiveRecord: 16.6ms | Allocations: 26323)
+
+
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.5ms | Allocations: 2709)
+
+
+Started GET "/api/restaurants/2/reviews" for 127.0.0.1 at 2024-01-02 15:24:34 -0500
+Started GET "/api/restaurants/3/reviews" for 127.0.0.1 at 2024-01-02 15:24:34 -0500
+Started GET "/api/restaurants/4/reviews" for 127.0.0.1 at 2024-01-02 15:24:34 -0500
+Started GET "/api/restaurants/5/reviews" for 127.0.0.1 at 2024-01-02 15:24:34 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/2/reviews"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 827)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Started GET "/api/restaurants/1/reviews" for 127.0.0.1 at 2024-01-02 15:24:34 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/3/reviews"}
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/4/reviews"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 778)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by StaticPagesController#frontend_index as */*
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 2437)
+
+
+  Parameters: {"path"=>"api/restaurants/5/reviews"}
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 913)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Started GET "/api/restaurants/6/reviews" for 127.0.0.1 at 2024-01-02 15:24:34 -0500
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:24:34 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/1/reviews"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 786)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:24:34 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/6/reviews"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 780)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mCartItem Load (0.7ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 2.5ms | Allocations: 2189)
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 1.6ms | Allocations: 3942)
+
+
+  [1m[36mMenuItem Load (0.6ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 19.1ms | Allocations: 11592)
+Completed 200 OK in 21ms (Views: 17.0ms | ActiveRecord: 3.3ms | Allocations: 12283)
+
+
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:24:35 -0500
+Started GET "/api/users/5" for 127.0.0.1 at 2024-01-02 15:24:35 -0500
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 15:24:35 -0500
+Started GET "/api/users/2" for 127.0.0.1 at 2024-01-02 15:24:35 -0500
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:24:35 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"5"}
+Processing by Api::ReviewsController#index as JSON
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Parameters: {"vendor_id"=>"1"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 1.6ms | Allocations: 2165)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mVendor Load (2.6ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+Processing by Api::UsersController#show as JSON
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 276)
+  Rendering api/reviews/index.json.jbuilder
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 0.4ms | Allocations: 2223)
+
+
+  Parameters: {"id"=>"2"}
+Started GET "/api/vendors/1/images" for 127.0.0.1 at 2024-01-02 15:24:35 -0500
+  [1m[36mReview Load (1.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Processing by Api::VendorsController#index as JSON
+  Rendered api/reviews/index.json.jbuilder (Duration: 4.9ms | Allocations: 2517)
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/vendors/index.json.jbuilder
+Completed 200 OK in 15ms (Views: 7.2ms | ActiveRecord: 3.7ms | Allocations: 7248)
+
+
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 276)
+  [1m[36mVendor Load (1.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+Completed 200 OK in 9ms (Views: 2.9ms | ActiveRecord: 0.3ms | Allocations: 3711)
+
+
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Processing by Api::ImagesController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mVendor Load (1.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/images_controller.rb:3:in `index'
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  Rendering api/images/index.json.jbuilder
+  [1m[36mImage Load (0.9ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/images/index.json.jbuilder:2
+  [1m[36mMenuItem Load (0.5ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/images/index.json.jbuilder (Duration: 2.9ms | Allocations: 2227)
+Completed 200 OK in 8ms (Views: 4.0ms | ActiveRecord: 1.8ms | Allocations: 5471)
+
+
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Started GET "/api/users/2" for 127.0.0.1 at 2024-01-02 15:24:35 -0500
+  [1m[36mMenuItem Load (1.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Started GET "/api/users/3" for 127.0.0.1 at 2024-01-02 15:24:35 -0500
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 15:24:35 -0500
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.7ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 30.2ms | Allocations: 16144)
+Completed 200 OK in 32ms (Views: 25.0ms | ActiveRecord: 6.3ms | Allocations: 16827)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+Started GET "/api/users/5" for 127.0.0.1 at 2024-01-02 15:24:35 -0500
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 21ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 1818)
+
+
+Started GET "/api/users/6" for 127.0.0.1 at 2024-01-02 15:24:35 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 276)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 1276)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 276)
+Started GET "/api/users/1" for 127.0.0.1 at 2024-01-02 15:24:35 -0500
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 1421)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 276)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 1255)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+Processing by Api::UsersController#show as JSON
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 1595)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 276)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 1576)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2024-01-02 15:25:09 -0500
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (4.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | Allocations: 276)
+Completed 200 OK in 7ms (Views: 1.1ms | ActiveRecord: 4.1ms | Allocations: 1193)
+
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:25:10 -0500
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 1.3ms | Allocations: 706)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.9ms | Allocations: 1610)
+
+
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:25:10 -0500
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:25:10 -0500
+Started GET "/api/vendors/1/images" for 127.0.0.1 at 2024-01-02 15:25:10 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mVendor Load (0.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+Processing by Api::ImagesController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mAddress Load (0.9ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mReview Load (1.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  [1m[36mVendor Load (0.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/images_controller.rb:3:in `index'
+  Rendered api/reviews/index.json.jbuilder (Duration: 4.7ms | Allocations: 3375)
+  [1m[36mMenuItem Load (1.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Completed 200 OK in 8ms (Views: 4.2ms | ActiveRecord: 1.8ms | Allocations: 5360)
+
+
+  Rendering api/images/index.json.jbuilder
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mImage Load (0.9ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/images/index.json.jbuilder:2
+  Rendered api/images/index.json.jbuilder (Duration: 2.3ms | Allocations: 2612)
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Completed 200 OK in 8ms (Views: 2.9ms | ActiveRecord: 1.3ms | Allocations: 6526)
+
+
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 16.7ms | Allocations: 14972)
+Completed 200 OK in 17ms (Views: 12.9ms | ActiveRecord: 4.0ms | Allocations: 15401)
+
+
+Started GET "/api/users/3" for 127.0.0.1 at 2024-01-02 15:25:10 -0500
+Started GET "/api/users/2" for 127.0.0.1 at 2024-01-02 15:25:10 -0500
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 15:25:10 -0500
+Started GET "/api/users/5" for 127.0.0.1 at 2024-01-02 15:25:10 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Started GET "/api/users/6" for 127.0.0.1 at 2024-01-02 15:25:10 -0500
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 276)
+Completed 200 OK in 14ms (Views: 1.8ms | ActiveRecord: 2.3ms | Allocations: 2351)
+
+
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | Allocations: 433)
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.9ms | Allocations: 2413)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"6"}
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Started GET "/api/users/1" for 127.0.0.1 at 2024-01-02 15:25:10 -0500
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 1.4ms | Allocations: 276)
+Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 1.1ms | Allocations: 3729)
+
+
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.6ms | Allocations: 2951)
+
+
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 1.1ms | Allocations: 4331)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1171)
+
+
+Started GET "/api/restaurants/2/reviews" for 127.0.0.1 at 2024-01-02 15:25:13 -0500
+Started GET "/api/restaurants/1/reviews" for 127.0.0.1 at 2024-01-02 15:25:13 -0500
+Started GET "/api/restaurants/4/reviews" for 127.0.0.1 at 2024-01-02 15:25:13 -0500
+Started GET "/api/restaurants/3/reviews" for 127.0.0.1 at 2024-01-02 15:25:13 -0500
+Started GET "/api/restaurants/5/reviews" for 127.0.0.1 at 2024-01-02 15:25:13 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/2/reviews"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 778)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/4/reviews"}
+Processing by StaticPagesController#frontend_index as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 811)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+  Parameters: {"path"=>"api/restaurants/1/reviews"}
+Started GET "/api/restaurants/6/reviews" for 127.0.0.1 at 2024-01-02 15:25:13 -0500
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 784)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/3/reviews"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 829)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:25:13 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/5/reviews"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 785)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:25:13 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/6/reviews"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 778)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+Processing by Api::CartItemsController#index as JSON
+  [1m[36mVendor Load (0.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  Parameters: {"user_id"=>"1"}
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  Rendered api/cart_items/index.json.jbuilder (Duration: 1.3ms | Allocations: 1367)
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.6ms | Allocations: 3863)
+
+
+  [1m[36mMenuItem Load (1.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (3.7ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 38.5ms | Allocations: 11985)
+Completed 200 OK in 39ms (Views: 30.6ms | ActiveRecord: 8.2ms | Allocations: 12410)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2024-01-02 15:25:19 -0500
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 1202)
+
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:25:19 -0500
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mCartItem Load (0.2ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 2.3ms | Allocations: 706)
+Completed 200 OK in 8ms (Views: 2.5ms | ActiveRecord: 0.6ms | Allocations: 1640)
+
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:25:19 -0500
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:25:19 -0500
+Processing by Api::CartItemsController#index as JSON
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  [1m[36mVendor Load (0.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mCartItem Load (0.7ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  [1m[36mAddress Load (0.6ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  Rendered api/cart_items/index.json.jbuilder (Duration: 1.6ms | Allocations: 1143)
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.9ms | Allocations: 2839)
+
+
+  [1m[36mMenuItem Load (0.5ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 15.6ms | Allocations: 11555)
+Completed 200 OK in 19ms (Views: 12.7ms | ActiveRecord: 3.7ms | Allocations: 11982)
+
+
+Started GET "/api/restaurants/1/reviews" for 127.0.0.1 at 2024-01-02 15:25:19 -0500
+Started GET "/api/restaurants/2/reviews" for 127.0.0.1 at 2024-01-02 15:25:19 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/1/reviews"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 778)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Started GET "/api/restaurants/4/reviews" for 127.0.0.1 at 2024-01-02 15:25:19 -0500
+Started GET "/api/restaurants/3/reviews" for 127.0.0.1 at 2024-01-02 15:25:19 -0500
+Started GET "/api/restaurants/5/reviews" for 127.0.0.1 at 2024-01-02 15:25:19 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/2/reviews"}
+Started GET "/api/restaurants/6/reviews" for 127.0.0.1 at 2024-01-02 15:25:19 -0500
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 984)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/4/reviews"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 788)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/3/reviews"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 781)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/5/reviews"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 780)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"api/restaurants/6/reviews"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 786)
+
+
+
+ArgumentError - File /Users/spencerheywood/Documents/Servo/backend/public/index.html does not exist:
+  app/controllers/static_pages_controller.rb:3:in `frontend_index'
+
+Started GET "/api/vendors/3/reviews" for 127.0.0.1 at 2024-01-02 15:26:21 -0500
+Started GET "/api/vendors/6/reviews" for 127.0.0.1 at 2024-01-02 15:26:21 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"3"}
+Started GET "/api/vendors/5/reviews" for 127.0.0.1 at 2024-01-02 15:26:21 -0500
+Processing by Api::ReviewsController#index as JSON
+Started GET "/api/vendors/4/reviews" for 127.0.0.1 at 2024-01-02 15:26:21 -0500
+  [1m[36mVendor Load (0.8ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:26:21 -0500
+  Parameters: {"vendor_id"=>"6"}
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mVendor Load (2.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"5"}
+  [1m[36mReview Load (2.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 4.9ms | Allocations: 2643)
+Completed 200 OK in 13ms (Views: 4.9ms | ActiveRecord: 3.0ms | Allocations: 5629)
+
+
+  [1m[36mVendor Load (0.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+Started GET "/api/vendors/2/reviews" for 127.0.0.1 at 2024-01-02 15:26:21 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"4"}
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  [1m[36mReview Load (0.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 4.6ms | Allocations: 2003)
+Completed 200 OK in 14ms (Views: 4.3ms | ActiveRecord: 1.7ms | Allocations: 5381)
+
+
+  [1m[36mVendor Load (0.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  Rendered api/reviews/index.json.jbuilder (Duration: 13.4ms | Allocations: 4846)
+Completed 200 OK in 24ms (Views: 19.2ms | ActiveRecord: 2.8ms | Allocations: 8671)
+
+
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 6.7ms | Allocations: 1466)
+Completed 200 OK in 13ms (Views: 7.3ms | ActiveRecord: 0.7ms | Allocations: 4306)
+
+
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+Processing by Api::ReviewsController#index as JSON
+  [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  Parameters: {"vendor_id"=>"2"}
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.8ms | Allocations: 1792)
+Completed 200 OK in 7ms (Views: 3.4ms | ActiveRecord: 0.9ms | Allocations: 2919)
+
+
+  [1m[36mVendor Load (0.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.6ms | Allocations: 951)
+Completed 200 OK in 5ms (Views: 1.8ms | ActiveRecord: 0.9ms | Allocations: 2916)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2024-01-02 15:26:24 -0500
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 281)
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.8ms | Allocations: 1237)
+
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:26:24 -0500
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mCartItem Load (0.2ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 1.4ms | Allocations: 706)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.4ms | Allocations: 1622)
+
+
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:26:24 -0500
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mAddress Load (0.6ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:26:24 -0500
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mMenuItem Load (0.5ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  Rendering api/cart_items/index.json.jbuilder
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/cart_items/index.json.jbuilder (Duration: 1.2ms | Allocations: 1408)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 1.1ms | Allocations: 3635)
+
+
+  [1m[36mAddress Load (0.6ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 19.6ms | Allocations: 12457)
+Completed 200 OK in 21ms (Views: 16.1ms | ActiveRecord: 3.7ms | Allocations: 12896)
+
+
+Started GET "/api/vendors/2/reviews" for 127.0.0.1 at 2024-01-02 15:26:24 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+Started GET "/api/vendors/3/reviews" for 127.0.0.1 at 2024-01-02 15:26:24 -0500
+Started GET "/api/vendors/5/reviews" for 127.0.0.1 at 2024-01-02 15:26:24 -0500
+  [1m[36mVendor Load (1.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.6ms | Allocations: 1005)
+Completed 200 OK in 8ms (Views: 2.6ms | ActiveRecord: 1.8ms | Allocations: 2585)
+
+
+Started GET "/api/vendors/4/reviews" for 127.0.0.1 at 2024-01-02 15:26:24 -0500
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:26:24 -0500
+Started GET "/api/vendors/6/reviews" for 127.0.0.1 at 2024-01-02 15:26:24 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"3"}
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"5"}
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mVendor Load (0.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"4"}
+  [1m[36mVendor Load (1.6ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/reviews/index.json.jbuilder
+Processing by Api::ReviewsController#index as JSON
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  Parameters: {"vendor_id"=>"6"}
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (2.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  [1m[36mReview Load (2.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  [1m[36mReview Load (2.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 4.8ms | Allocations: 3491)
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 5.1ms | Allocations: 4058)
+  Rendered api/reviews/index.json.jbuilder (Duration: 4.7ms | Allocations: 3739)
+Completed 200 OK in 11ms (Views: 3.8ms | ActiveRecord: 2.8ms | Allocations: 8173)
+
+
+Completed 200 OK in 14ms (Views: 6.8ms | ActiveRecord: 3.0ms | Allocations: 10012)
+
+
+Completed 200 OK in 10ms (Views: 3.1ms | ActiveRecord: 4.2ms | Allocations: 8603)
+
+
+  [1m[36mVendor Load (0.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (1.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 3.3ms | Allocations: 1130)
+  [1m[36mReview Load (1.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+Completed 200 OK in 30ms (Views: 2.4ms | ActiveRecord: 8.8ms | Allocations: 14247)
+
+
+  Rendered api/reviews/index.json.jbuilder (Duration: 3.6ms | Allocations: 1721)
+Completed 200 OK in 28ms (Views: 3.7ms | ActiveRecord: 9.4ms | Allocations: 12761)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2024-01-02 15:52:58 -0500
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.9ms | Allocations: 442)
+Completed 200 OK in 28ms (Views: 1.7ms | ActiveRecord: 10.2ms | Allocations: 9861)
+
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:52:59 -0500
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mCartItem Load (0.8ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 2.9ms | Allocations: 2365)
+Completed 200 OK in 11ms (Views: 2.8ms | ActiveRecord: 1.2ms | Allocations: 6208)
+
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:52:59 -0500
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:52:59 -0500
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+Processing by Api::VendorsController#index as JSON
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/vendors/index.json.jbuilder
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 1.2ms | Allocations: 1040)
+Completed 200 OK in 9ms (Views: 1.4ms | ActiveRecord: 3.3ms | Allocations: 7398)
+
+
+  [1m[36mVendor Load (1.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mAddress Load (1.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (1.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (1.8ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.8ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (2.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 92.8ms | Allocations: 25327)
+Completed 200 OK in 98ms (Views: 76.0ms | ActiveRecord: 17.9ms | Allocations: 29019)
+
+
+Started GET "/api/vendors/5/reviews" for 127.0.0.1 at 2024-01-02 15:52:59 -0500
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:52:59 -0500
+Started GET "/api/vendors/4/reviews" for 127.0.0.1 at 2024-01-02 15:52:59 -0500
+Started GET "/api/vendors/3/reviews" for 127.0.0.1 at 2024-01-02 15:52:59 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"5"}
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  [1m[36mVendor Load (1.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+Started GET "/api/vendors/2/reviews" for 127.0.0.1 at 2024-01-02 15:52:59 -0500
+  Rendering api/reviews/index.json.jbuilder
+  Rendering api/reviews/index.json.jbuilder
+Processing by Api::ReviewsController#index as JSON
+  [1m[36mReview Load (1.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  [1m[36mReview Load (1.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  Parameters: {"vendor_id"=>"4"}
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 8.8ms | Allocations: 8330)
+Completed 200 OK in 20ms (Views: 9.9ms | ActiveRecord: 2.0ms | Allocations: 14374)
+
+
+  Rendered api/reviews/index.json.jbuilder (Duration: 5.8ms | Allocations: 6001)
+Completed 200 OK in 20ms (Views: 9.9ms | ActiveRecord: 2.4ms | Allocations: 13980)
+
+
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"3"}
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+  [1m[36mVendor Load (0.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  [1m[36mVendor Load (0.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering api/reviews/index.json.jbuilder
+Started GET "/api/vendors/6/reviews" for 127.0.0.1 at 2024-01-02 15:52:59 -0500
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.5ms | Allocations: 1650)
+  [1m[36mReview Load (1.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 2]]
+Completed 200 OK in 7ms (Views: 3.0ms | ActiveRecord: 1.8ms | Allocations: 4149)
+
+
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 3.9ms | Allocations: 2591)
+Completed 200 OK in 7ms (Views: 3.2ms | ActiveRecord: 1.6ms | Allocations: 4703)
+
+
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"6"}
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.5ms | Allocations: 1406)
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.9ms | Allocations: 3017)
+
+
+  [1m[36mVendor Load (0.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.5ms | Allocations: 929)
+Completed 200 OK in 27ms (Views: 1.1ms | ActiveRecord: 13.3ms | Allocations: 18639)
+
+
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:53:00 -0500
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:53:00 -0500
+Started GET "/api/vendors/1/images" for 127.0.0.1 at 2024-01-02 15:53:00 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mVendor Load (0.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.2ms | Allocations: 1167)
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.9ms | Allocations: 2087)
+
+
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+  [1m[36mVendor Load (0.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mAddress Load (1.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+Processing by Api::ImagesController#index as JSON
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  Parameters: {"vendor_id"=>"1"}
+Started GET "/api/users/2" for 127.0.0.1 at 2024-01-02 15:53:00 -0500
+  [1m[36mMenuItem Load (1.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mVendor Load (1.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/images_controller.rb:3:in `index'
+  [1m[36mAddress Load (0.6ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  Rendering api/images/index.json.jbuilder
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mImage Load (0.9ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/images/index.json.jbuilder:2
+  Rendered api/images/index.json.jbuilder (Duration: 5.3ms | Allocations: 6862)
+  [1m[36mMenuItem Load (2.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+Completed 200 OK in 12ms (Views: 6.0ms | ActiveRecord: 1.9ms | Allocations: 12457)
+
+
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Started GET "/api/users/3" for 127.0.0.1 at 2024-01-02 15:53:00 -0500
+  [1m[36mAddress Load (1.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Started GET "/api/users/5" for 127.0.0.1 at 2024-01-02 15:53:00 -0500
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.7ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Processing by Api::UsersController#show as JSON
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 15:53:00 -0500
+  Parameters: {"id"=>"2"}
+  [1m[36mMenuItem Load (9.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 43.1ms | Allocations: 24956)
+Completed 200 OK in 44ms (Views: 26.2ms | ActiveRecord: 17.8ms | Allocations: 25425)
+
+
+Started GET "/api/users/6" for 127.0.0.1 at 2024-01-02 15:53:00 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"3"}
+Processing by Api::UsersController#show as JSON
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Parameters: {"id"=>"5"}
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+  Rendering api/users/show.json.jbuilder
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered api/users/show.json.jbuilder (Duration: 0.6ms | Allocations: 347)
+Completed 200 OK in 19ms (Views: 4.9ms | ActiveRecord: 2.7ms | Allocations: 8047)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | Allocations: 276)
+Completed 200 OK in 12ms (Views: 2.0ms | ActiveRecord: 1.4ms | Allocations: 5820)
+
+
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 277)
+Completed 200 OK in 12ms (Views: 0.9ms | ActiveRecord: 0.5ms | Allocations: 5568)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"6"}
+Started GET "/api/users/1" for 127.0.0.1 at 2024-01-02 15:53:00 -0500
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 1778)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1466)
+
+
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 276)
+Completed 200 OK in 24ms (Views: 0.6ms | ActiveRecord: 8.3ms | Allocations: 13020)
+
+
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:56:32 -0500
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:56:32 -0500
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+Started GET "/api/vendors/1/images" for 127.0.0.1 at 2024-01-02 15:56:32 -0500
+  [1m[36mVendor Load (1.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mAddress Load (1.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Processing by Api::ImagesController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mVendor Load (1.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mMenuItem Load (2.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mVendor Load (2.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/images_controller.rb:3:in `index'
+  Rendering api/images/index.json.jbuilder
+  [1m[36mReview Load (2.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  [1m[36mAddress Load (1.8ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  Rendered api/reviews/index.json.jbuilder (Duration: 4.3ms | Allocations: 2599)
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Completed 200 OK in 11ms (Views: 3.2ms | ActiveRecord: 3.0ms | Allocations: 5561)
+
+
+  [1m[36mMenuItem Load (0.8ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  [1m[36mImage Load (1.8ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/images/index.json.jbuilder:2
+  Rendered api/images/index.json.jbuilder (Duration: 5.2ms | Allocations: 3811)
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Completed 200 OK in 12ms (Views: 4.9ms | ActiveRecord: 4.7ms | Allocations: 6690)
+
+
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (2.0ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.9ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Started GET "/api/users/3" for 127.0.0.1 at 2024-01-02 15:56:32 -0500
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.5ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 38.3ms | Allocations: 17553)
+Completed 200 OK in 39ms (Views: 26.0ms | ActiveRecord: 12.8ms | Allocations: 18190)
+
+
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 15:56:32 -0500
+Started GET "/api/users/5" for 127.0.0.1 at 2024-01-02 15:56:32 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"3"}
+Started GET "/api/users/2" for 127.0.0.1 at 2024-01-02 15:56:32 -0500
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 276)
+Completed 200 OK in 5ms (Views: 0.8ms | ActiveRecord: 1.4ms | Allocations: 1920)
+
+
+Started GET "/api/users/6" for 127.0.0.1 at 2024-01-02 15:56:32 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+Processing by Api::UsersController#show as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Parameters: {"id"=>"5"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | Allocations: 276)
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.8ms | Allocations: 1960)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | Allocations: 276)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 1.1ms | Allocations: 2714)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2024-01-02 15:56:32 -0500
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 276)
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 1.2ms | Allocations: 2816)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"6"}
+Processing by Api::UsersController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Parameters: {"id"=>"1"}
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 277)
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.5ms | Allocations: 1966)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.6ms | Allocations: 1675)
+
+
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:57:03 -0500
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+Started GET "/api/vendors/1/images" for 127.0.0.1 at 2024-01-02 15:57:03 -0500
+  [1m[36mVendor Load (6.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:57:03 -0500
+  [1m[36mAddress Load (1.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (1.0ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mAddress Load (0.6ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Processing by Api::ImagesController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mVendor Load (3.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMenuItem Load (2.5ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mVendor Load (3.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/images_controller.rb:3:in `index'
+  Rendering api/images/index.json.jbuilder
+  [1m[36mAddress Load (1.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.5ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mImage Load (0.8ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/images/index.json.jbuilder:2
+  Rendered api/images/index.json.jbuilder (Duration: 3.3ms | Allocations: 2891)
+Completed 200 OK in 9ms (Views: 2.7ms | ActiveRecord: 4.5ms | Allocations: 5195)
+
+
+  [1m[36mReview Load (3.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 8.7ms | Allocations: 5307)
+Completed 200 OK in 18ms (Views: 6.0ms | ActiveRecord: 6.5ms | Allocations: 7660)
+
+
+  [1m[36mAddress Load (0.7ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.7ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.7ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (2.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 50.3ms | Allocations: 17064)
+Completed 200 OK in 51ms (Views: 31.8ms | ActiveRecord: 18.7ms | Allocations: 17494)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2024-01-02 15:57:03 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+Started GET "/api/users/3" for 127.0.0.1 at 2024-01-02 15:57:03 -0500
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 15:57:03 -0500
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.7ms | Allocations: 282)
+Completed 200 OK in 7ms (Views: 1.0ms | ActiveRecord: 1.1ms | Allocations: 2813)
+
+
+Started GET "/api/users/5" for 127.0.0.1 at 2024-01-02 15:57:03 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"3"}
+Started GET "/api/users/6" for 127.0.0.1 at 2024-01-02 15:57:03 -0500
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 1.1ms | Allocations: 2158)
+
+
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 1.8ms | Allocations: 2722)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2024-01-02 15:57:03 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"5"}
+Processing by Api::UsersController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Parameters: {"id"=>"6"}
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.5ms | Allocations: 1938)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 1.3ms | Allocations: 2278)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.6ms | Allocations: 276)
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.8ms | Allocations: 2482)
+
+
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:57:11 -0500
+Started GET "/api/vendors/5/reviews" for 127.0.0.1 at 2024-01-02 15:57:11 -0500
+Started GET "/api/vendors/3/reviews" for 127.0.0.1 at 2024-01-02 15:57:11 -0500
+Started GET "/api/vendors/2/reviews" for 127.0.0.1 at 2024-01-02 15:57:11 -0500
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:57:11 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"5"}
+  [1m[36mVendor Load (0.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  [1m[36mVendor Load (0.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.2ms | Allocations: 1313)
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 1.3ms | Allocations: 3352)
+
+
+  Rendering api/reviews/index.json.jbuilder
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"3"}
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 3.0ms | Allocations: 1541)
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 9ms (Views: 3.5ms | ActiveRecord: 1.4ms | Allocations: 5183)
+
+
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (1.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+Started GET "/api/vendors/4/reviews" for 127.0.0.1 at 2024-01-02 15:57:11 -0500
+  Rendered api/reviews/index.json.jbuilder (Duration: 4.0ms | Allocations: 1463)
+Completed 200 OK in 11ms (Views: 3.9ms | ActiveRecord: 1.8ms | Allocations: 4276)
+
+
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:57:11 -0500
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  [1m[36mVendor Load (0.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  Rendering api/reviews/index.json.jbuilder
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.3ms | Allocations: 1343)
+Completed 200 OK in 7ms (Views: 2.2ms | ActiveRecord: 1.2ms | Allocations: 3522)
+
+
+  [1m[36mAddress Load (0.9ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+Started GET "/api/vendors/6/reviews" for 127.0.0.1 at 2024-01-02 15:57:11 -0500
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (1.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"4"}
+  [1m[36mMenuItem Load (1.0ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mVendor Load (0.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Processing by Api::CartItemsController#index as JSON
+  Rendering api/reviews/index.json.jbuilder
+  Parameters: {"user_id"=>"1"}
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.9ms | Allocations: 1585)
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"6"}
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 1.4ms | Allocations: 4318)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mVendor Load (1.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/cart_items/index.json.jbuilder
+  Rendered api/vendors/index.json.jbuilder (Duration: 27.4ms | Allocations: 17265)
+Completed 200 OK in 30ms (Views: 22.3ms | ActiveRecord: 6.6ms | Allocations: 18526)
+
+
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 1.9ms | Allocations: 1336)
+  [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 6]]
+Completed 200 OK in 7ms (Views: 2.9ms | ActiveRecord: 1.1ms | Allocations: 5775)
+
+
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.0ms | Allocations: 1787)
+Completed 200 OK in 6ms (Views: 2.2ms | ActiveRecord: 2.6ms | Allocations: 5432)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2024-01-02 15:57:13 -0500
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `current_user'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:67:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:60:in `reset_session_token!'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@dashdoor.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:60:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:60:in `reset_session_token!'
+  [1m[36mUser Update (3.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2024-01-02 20:57:13.108541"], ["id", 1]]
+  ↳ app/models/user.rb:60:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:60:in `reset_session_token!'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 7.4ms | Allocations: 5436)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2024-01-02 15:57:15 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"demo@dashdoor.com", "password"=>"[FILTERED]", "session"=>{"email"=>"demo@dashdoor.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@dashdoor.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `find_by_credentials'
+  [1m[36mUser Exists? (2.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:67:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:60:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@dashdoor.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:60:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:60:in `reset_session_token!'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2024-01-02 20:57:15.663165"], ["id", 1]]
+  ↳ app/models/user.rb:60:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:60:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 270)
+Completed 200 OK in 302ms (Views: 0.4ms | ActiveRecord: 5.2ms | Allocations: 5324)
+
+
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:57:15 -0500
+Started GET "/api/vendors/2/reviews" for 127.0.0.1 at 2024-01-02 15:57:15 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mVendor Load (0.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+Started GET "/api/vendors/3/reviews" for 127.0.0.1 at 2024-01-02 15:57:15 -0500
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.5ms | Allocations: 1217)
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 1.2ms | Allocations: 2526)
+
+
+Started GET "/api/vendors/5/reviews" for 127.0.0.1 at 2024-01-02 15:57:15 -0500
+Started GET "/api/vendors/4/reviews" for 127.0.0.1 at 2024-01-02 15:57:15 -0500
+Started GET "/api/vendors/6/reviews" for 127.0.0.1 at 2024-01-02 15:57:15 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"3"}
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.4ms | Allocations: 1952)
+Completed 200 OK in 6ms (Views: 2.2ms | ActiveRecord: 1.1ms | Allocations: 3116)
+
+
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"5"}
+  [1m[36mVendor Load (1.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (1.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.2ms | Allocations: 1704)
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 2.1ms | Allocations: 4275)
+
+
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"4"}
+  [1m[36mVendor Load (3.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mVendor Load (0.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.9ms | Allocations: 1777)
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.5ms | Allocations: 1655)
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:57:15 -0500
+Completed 200 OK in 9ms (Views: 2.0ms | ActiveRecord: 4.1ms | Allocations: 6829)
+
+
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"6"}
+Completed 200 OK in 5ms (Views: 1.8ms | ActiveRecord: 1.0ms | Allocations: 3891)
+
+
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:57:15 -0500
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.7ms | Allocations: 1569)
+Completed 200 OK in 9ms (Views: 2.3ms | ActiveRecord: 0.5ms | Allocations: 4152)
+
+
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  Rendering api/cart_items/index.json.jbuilder
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mCartItem Load (0.8ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/cart_items/index.json.jbuilder (Duration: 2.3ms | Allocations: 2061)
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 1.1ms | Allocations: 4963)
+
+
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 15.3ms | Allocations: 13696)
+Completed 200 OK in 16ms (Views: 11.5ms | ActiveRecord: 3.9ms | Allocations: 14135)
+
+
+Started GET "/api/vendors/2/reviews" for 127.0.0.1 at 2024-01-02 15:57:16 -0500
+Started GET "/api/users/3" for 127.0.0.1 at 2024-01-02 15:57:16 -0500
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:57:16 -0500
+Started GET "/api/users/5" for 127.0.0.1 at 2024-01-02 15:57:16 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 15:57:16 -0500
+  [1m[36mVendor Load (0.8ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.2ms | Allocations: 1007)
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 1.2ms | Allocations: 2415)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"3"}
+Started GET "/api/users/2" for 127.0.0.1 at 2024-01-02 15:57:16 -0500
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 288)
+Completed 200 OK in 10ms (Views: 1.3ms | ActiveRecord: 0.3ms | Allocations: 2616)
+
+
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+Processing by Api::UsersController#show as JSON
+  [1m[36mAddress Load (0.9ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  Parameters: {"id"=>"5"}
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.7ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+Started GET "/api/users/1" for 127.0.0.1 at 2024-01-02 15:57:16 -0500
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering api/users/show.json.jbuilder
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  [1m[36mAddress Load (0.9ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 277)
+  Rendered api/users/show.json.jbuilder (Duration: 0.1ms | Allocations: 276)
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 1.1ms | Allocations: 4650)
+
+
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.5ms | Allocations: 2931)
+
+
+Processing by Api::UsersController#show as JSON
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  Parameters: {"id"=>"2"}
+  [1m[36mMenuItem Load (0.7ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Started GET "/api/users/6" for 127.0.0.1 at 2024-01-02 15:57:16 -0500
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 7ms (Views: 0.8ms | ActiveRecord: 2.7ms | Allocations: 2449)
+
+
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Started GET "/api/users/5" for 127.0.0.1 at 2024-01-02 15:57:16 -0500
+  [1m[36mAddress Load (1.0ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+Started GET "/api/vendors/2/images" for 127.0.0.1 at 2024-01-02 15:57:16 -0500
+  [1m[36mAddress Load (1.3ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 1999)
+
+
+  [1m[36mMenuItem Load (1.7ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.7ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 36.2ms | Allocations: 21107)
+Completed 200 OK in 37ms (Views: 27.2ms | ActiveRecord: 9.5ms | Allocations: 21589)
+
+
+Processing by Api::UsersController#show as JSON
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 15:57:16 -0500
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 281)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 1318)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2024-01-02 15:57:16 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+Processing by Api::ImagesController#index as JSON
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 288)
+  Parameters: {"vendor_id"=>"2"}
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 1590)
+
+
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/images_controller.rb:3:in `index'
+  Rendering api/images/index.json.jbuilder
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/images/index.json.jbuilder:2
+  Rendered api/images/index.json.jbuilder (Duration: 1.4ms | Allocations: 1212)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.5ms | Allocations: 2630)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+Processing by Api::UsersController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Parameters: {"id"=>"2"}
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.4ms | Allocations: 1845)
+
+
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.5ms | Allocations: 2097)
+
+
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:57:20 -0500
+Started GET "/api/vendors/5/reviews" for 127.0.0.1 at 2024-01-02 15:57:20 -0500
+Started GET "/api/vendors/4/reviews" for 127.0.0.1 at 2024-01-02 15:57:20 -0500
+Started GET "/api/vendors/3/reviews" for 127.0.0.1 at 2024-01-02 15:57:20 -0500
+Started GET "/api/vendors/2/reviews" for 127.0.0.1 at 2024-01-02 15:57:20 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"4"}
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.1ms | Allocations: 1896)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 1.0ms | Allocations: 3337)
+
+
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"5"}
+  [1m[36mVendor Load (0.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mVendor Load (0.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"3"}
+  [1m[36mReview Load (1.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.6ms | Allocations: 2074)
+Completed 200 OK in 8ms (Views: 2.3ms | ActiveRecord: 1.5ms | Allocations: 5598)
+
+
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+Started GET "/api/vendors/6/reviews" for 127.0.0.1 at 2024-01-02 15:57:20 -0500
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.0ms | Allocations: 1774)
+Completed 200 OK in 5ms (Views: 1.6ms | ActiveRecord: 1.3ms | Allocations: 3907)
+
+
+  [1m[36mReview Load (1.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.9ms | Allocations: 2390)
+Completed 200 OK in 11ms (Views: 5.5ms | ActiveRecord: 2.2ms | Allocations: 7701)
+
+
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:57:20 -0500
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.4ms | Allocations: 1022)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.7ms | Allocations: 2268)
+
+
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:57:20 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"6"}
+  [1m[36mVendor Load (0.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 0.8ms | Allocations: 875)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 1978)
+
+
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+Processing by Api::CartItemsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  Rendering api/cart_items/index.json.jbuilder
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  Rendered api/cart_items/index.json.jbuilder (Duration: 1.5ms | Allocations: 1766)
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 1.0ms | Allocations: 3934)
+
+
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 10.5ms | Allocations: 11944)
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 1.7ms | Allocations: 12378)
+
+
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:57:21 -0500
+Started GET "/api/vendors/6/images" for 127.0.0.1 at 2024-01-02 15:57:21 -0500
+Started GET "/api/users/2" for 127.0.0.1 at 2024-01-02 15:57:21 -0500
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+Started GET "/api/users/5" for 127.0.0.1 at 2024-01-02 15:57:21 -0500
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.5ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.6ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Processing by Api::ImagesController#index as JSON
+  Parameters: {"vendor_id"=>"6"}
+  [1m[36mMenuItem Load (0.5ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 15:57:21 -0500
+  [1m[36mVendor Load (1.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.7ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/images_controller.rb:3:in `index'
+  Rendering api/images/index.json.jbuilder
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mImage Load (2.3ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/images/index.json.jbuilder:2
+  Rendered api/images/index.json.jbuilder (Duration: 4.8ms | Allocations: 2348)
+Completed 200 OK in 9ms (Views: 2.8ms | ActiveRecord: 3.5ms | Allocations: 4744)
+
+
+  [1m[36mMenuItem Load (1.6ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 276)
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 1.9ms | Allocations: 3545)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mAddress Load (0.6ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Started GET "/api/vendors/6/reviews" for 127.0.0.1 at 2024-01-02 15:57:21 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mMenuItem Load (1.8ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  [1m[36mAddress Load (0.7ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  Rendering api/users/show.json.jbuilder
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | Allocations: 281)
+  [1m[36mMenuItem Load (0.9ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+Completed 200 OK in 8ms (Views: 2.1ms | ActiveRecord: 3.2ms | Allocations: 4732)
+
+
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Completed 200 OK in 7ms (Views: 2.3ms | ActiveRecord: 0.7ms | Allocations: 4995)
+
+
+  [1m[36mMenuItem Load (0.6ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 37.9ms | Allocations: 20303)
+Completed 200 OK in 40ms (Views: 28.7ms | ActiveRecord: 9.7ms | Allocations: 20752)
+
+
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"6"}
+  [1m[36mVendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.1ms | Allocations: 823)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms | Allocations: 1749)
+
+
+Started GET "/api/users/3" for 127.0.0.1 at 2024-01-02 15:57:21 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 276)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 1177)
+
+
+Started GET "/api/vendors/3/reviews" for 127.0.0.1 at 2024-01-02 15:57:24 -0500
+Started GET "/api/vendors/2/reviews" for 127.0.0.1 at 2024-01-02 15:57:24 -0500
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:57:24 -0500
+Started GET "/api/vendors/6/reviews" for 127.0.0.1 at 2024-01-02 15:57:24 -0500
+Started GET "/api/vendors/5/reviews" for 127.0.0.1 at 2024-01-02 15:57:24 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"2"}
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+Processing by Api::ReviewsController#index as JSON
+  [1m[36mVendor Load (1.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  [1m[36mVendor Load (0.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Parameters: {"vendor_id"=>"3"}
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"6"}
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  Rendering api/reviews/index.json.jbuilder
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mVendor Load (0.6ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  [1m[36mReview Load (1.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 3.5ms | Allocations: 2615)
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 5.2ms | Allocations: 3579)
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"5"}
+  [1m[36mReview Load (1.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 2]]
+Completed 200 OK in 8ms (Views: 3.3ms | ActiveRecord: 2.0ms | Allocations: 4792)
+
+
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 7.9ms | Allocations: 6476)
+  Rendered api/reviews/index.json.jbuilder (Duration: 3.9ms | Allocations: 3291)
+Completed 200 OK in 11ms (Views: 7.0ms | ActiveRecord: 0.9ms | Allocations: 7994)
+
+
+Completed 200 OK in 17ms (Views: 10.8ms | ActiveRecord: 2.8ms | Allocations: 11393)
+
+
+Completed 200 OK in 10ms (Views: 5.0ms | ActiveRecord: 1.5ms | Allocations: 6483)
+
+
+Started GET "/api/vendors/4/reviews" for 127.0.0.1 at 2024-01-02 15:57:24 -0500
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:57:24 -0500
+Started GET "/api/user/1/cart_items" for 127.0.0.1 at 2024-01-02 15:57:24 -0500
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"4"}
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  Rendering api/reviews/index.json.jbuilder
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 1.7ms | Allocations: 1587)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.9ms | Allocations: 3110)
+
+
+  [1m[36mVendor Load (0.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+Processing by Api::CartItemsController#index as JSON
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  Parameters: {"user_id"=>"1"}
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/cart_items_controller.rb:31:in `index'
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  Rendering api/cart_items/index.json.jbuilder
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mCartItem Load (0.5ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/cart_items/index.json.jbuilder:3
+  [1m[36mVendor Load (0.8ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/cart_items/index.json.jbuilder (Duration: 1.6ms | Allocations: 1455)
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.9ms | Allocations: 4657)
+
+
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mReview Load (0.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.1ms | Allocations: 2732)
+Completed 200 OK in 26ms (Views: 2.6ms | ActiveRecord: 11.1ms | Allocations: 21606)
+
+
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 15.1ms | Allocations: 16785)
+Completed 200 OK in 16ms (Views: 12.5ms | ActiveRecord: 2.7ms | Allocations: 17208)
+
+
+Started GET "/api/users/3" for 127.0.0.1 at 2024-01-02 15:57:25 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.7ms | Allocations: 284)
+Completed 200 OK in 8ms (Views: 1.2ms | ActiveRecord: 1.7ms | Allocations: 1781)
+
+
+Started GET "/api/vendors" for 127.0.0.1 at 2024-01-02 15:57:25 -0500
+Started GET "/api/vendors/1/reviews" for 127.0.0.1 at 2024-01-02 15:57:25 -0500
+Started GET "/api/vendors/1/images" for 127.0.0.1 at 2024-01-02 15:57:25 -0500
+Processing by Api::VendorsController#index as JSON
+  Rendering api/vendors/index.json.jbuilder
+Processing by Api::ReviewsController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+Processing by Api::ImagesController#index as JSON
+  Parameters: {"vendor_id"=>"1"}
+  [1m[36mVendor Load (0.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mVendor Load (0.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/views/api/vendors/index.json.jbuilder:2
+  ↳ app/controllers/api/reviews_controller.rb:3:in `index'
+  [1m[36mVendor Load (0.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/reviews/index.json.jbuilder
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/images_controller.rb:3:in `index'
+  Rendering api/images/index.json.jbuilder
+  [1m[36mReview Load (1.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/reviews/index.json.jbuilder:2
+  [1m[36mImage Load (1.0ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/images/index.json.jbuilder:2
+  Rendered api/reviews/index.json.jbuilder (Duration: 2.1ms | Allocations: 1954)
+  Rendered api/images/index.json.jbuilder (Duration: 2.2ms | Allocations: 2508)
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 1.7ms | Allocations: 5388)
+
+
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 1.3ms | Allocations: 6096)
+
+
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 3]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 4]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 5]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/vendors/index.json.jbuilder:3
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."vendor_id" = $1[0m  [["vendor_id", 6]]
+  ↳ app/views/api/vendors/index.json.jbuilder:7:in `map'
+  Rendered api/vendors/index.json.jbuilder (Duration: 17.1ms | Allocations: 15301)
+Completed 200 OK in 18ms (Views: 15.5ms | ActiveRecord: 2.4ms | Allocations: 16091)
+
+
+Started GET "/api/users/3" for 127.0.0.1 at 2024-01-02 15:57:26 -0500
+Started GET "/api/users/2" for 127.0.0.1 at 2024-01-02 15:57:26 -0500
+Started GET "/api/users/6" for 127.0.0.1 at 2024-01-02 15:57:26 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+Started GET "/api/users/4" for 127.0.0.1 at 2024-01-02 15:57:26 -0500
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 281)
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 1618)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"3"}
+Started GET "/api/users/1" for 127.0.0.1 at 2024-01-02 15:57:26 -0500
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 1531)
+
+
+Started GET "/api/users/5" for 127.0.0.1 at 2024-01-02 15:57:26 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"6"}
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 298)
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.5ms | Allocations: 1809)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 276)
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+Completed 200 OK in 6ms (Views: 0.9ms | ActiveRecord: 0.9ms | Allocations: 3573)
+
+
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.1ms | Allocations: 276)
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 2608)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 276)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1156)
+
+

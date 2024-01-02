@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { createReview } from '../../store/reviews';
 import { ReactComponent as CloseIcon } from '../../../assets/svg/Close.svg'
 
-const ReviewForm = ({ restaurantName, restaurantId, onClose }) => {
+const ReviewForm = ({ vendorName, vendorId, onClose }) => {
     const user = useSelector(state => state.session?.user)
     const dispatch = useDispatch();
     const [reviewBody, setReviewBody] = useState('');
@@ -28,7 +28,7 @@ const ReviewForm = ({ restaurantName, restaurantId, onClose }) => {
             }
         }
         if(reviewBody.length > 10 && score !== undefined){
-            dispatch(createReview(restaurantId, review)).then(()=>{onClose();})
+            dispatch(createReview(vendorId, review)).then(()=>{onClose();})
         }
     }
 
@@ -36,7 +36,7 @@ const ReviewForm = ({ restaurantName, restaurantId, onClose }) => {
         <div className="review-form">
             <CloseIcon className="close-icon" onClick={onClose}/>
             <h2>Add a Public Review</h2>
-            <h3>{ restaurantName }</h3>
+            <h3>{ vendorName }</h3>
             <form>
                 <div className="review-form-header">
                     <p className="form-user">{ user?.firstName } { user?.lastName[0]?.toUpperCase()}.</p>

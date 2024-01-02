@@ -30,9 +30,9 @@ export const toggleCart = () => ({
     type: TOGGLE_CART
 })
 
-export const assignCart = (restaurant) => ({
+export const assignCart = (vendor) => ({
     type: ASSIGN_CART,
-    restaurant
+    vendor
 })
 
 export const deleteCartItems = userId => async dispatch => {
@@ -74,7 +74,7 @@ export const getCart = user_id => async dispatch => {
     }
 }
 
-const cartReducer = (state = { isCartOpen: false, cartItems: {}, restaurant: null}, action) => {
+const cartReducer = (state = { isCartOpen: false, cartItems: {}, vendor: null}, action) => {
     let newState = { ...state }
     switch(action.type){
         case(RECEIVE_CART_ITEM):
@@ -93,7 +93,7 @@ const cartReducer = (state = { isCartOpen: false, cartItems: {}, restaurant: nul
             newState.isCartOpen = !state.isCartOpen;
             return newState
         case(ASSIGN_CART):
-            newState.restaurant = action.restaurant
+            newState.vendor = action.vendor
             return newState
         default:
             return newState

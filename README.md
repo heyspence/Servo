@@ -26,7 +26,7 @@ With  `Servo` users can:
 * Recieve email notifications 
 * Write/read/edit reviews
     * Write public reviews
-    * View real-time restaurant review average
+    * View real-time vendor review average
     * View individual reviews w/ authors + score
 * Hold a cart
     * Add/remove services

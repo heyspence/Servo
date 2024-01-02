@@ -5,8 +5,8 @@ const receiveImages = ({images}) => ({
     images
 })
 
-export const fetchImages = (restaurant_id) => async dispatch =>{
-    const res = await fetch(`/api/restaurants/${restaurant_id}/images`)
+export const fetchImages = (vendor_id) => async dispatch =>{
+    const res = await fetch(`/api/vendors/${vendor_id}/images`)
     if(res.ok){
         const data = await res.json();
         dispatch(receiveImages(data))

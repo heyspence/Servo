@@ -48,13 +48,13 @@
     padding: 0 !important;
 }
 
-.vendor-logo{
+.provider-logo{
     width: 100px;
     height: auto;
     object-fit: contain;
 }
 
-.vendor-logo-background{
+.provider-logo-background{
     background-color: white;
     display: flex;
     justify-content: center;

@@ -10,7 +10,7 @@ const MenuItemIndex = () => {
     const { id } = useParams();
     const menuItems = useSelector((state)=>{
         return state.menuItems
-            ? Object.values(state.menuItems).filter(item => item.restaurantId == id)
+            ? Object.values(state.menuItems).filter(item => item.vendorId == id)
             : [];
     });
 

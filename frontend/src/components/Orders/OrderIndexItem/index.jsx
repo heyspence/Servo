@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './OrderIndexItem.css'
-import { fetchRestaurant } from '../../store/restaurant';
+import { fetchVendor } from '../../store/vendor';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { ReactComponent as ArrowSvg } from '../../../assets/svg/Arrow.svg'
 
 const OrderIndexItem = ({ order }) =>{
-    const restaurantId = order.restaurantId;
+    const vendorId = order.vendorId;
     const dispatch = useDispatch();
     const history = useHistory();
-    const restaurant = useSelector(state => state?.restaurants ? state.restaurants[restaurantId] : null);
+    const vendor = useSelector(state => state?.vendors ? state.vendors[vendorId] : null);
     const formattedPrice = (order.total).toFixed(2)
 
     const formatDate = data => {
@@ -20,19 +20,19 @@ const OrderIndexItem = ({ order }) =>{
 
     const formattedDate = formatDate(order.createdAt);
     useEffect(()=>{
-        if(!restaurant){
-            dispatch(fetchRestaurant(restaurantId))
+        if(!vendor){
+            dispatch(fetchVendor(vendorId))
         }
-    },[dispatch, restaurantId, restaurant])
+    },[dispatch, vendorId, vendor])
 
-    const handleRestaurantClick = () => {
-        history.push(`/restaurants/${restaurant.id}`)
+    const handleVendorClick = () => {
+        history.push(`/vendors/${vendor.id}`)
     }
 
     return (
         <div className="order-index-item">
             <div className="order-index-item-header">
-                <h3 onClick={handleRestaurantClick}>{restaurant?.name}</h3>
+                <h3 onClick={handleVendorClick}>{vendor?.name}</h3>
                 <ArrowSvg id="arrow-svg"/>
             </div>
             <div className="order-index-item-body">

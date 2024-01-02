@@ -15,8 +15,8 @@ const receiveReview = review => ({
     review
 })
 
-export const fetchReviews = restaurant_id => async dispatch =>{
-    const res = await fetch(`/api/restaurants/${restaurant_id}/reviews`)
+export const fetchReviews = vendor_id => async dispatch =>{
+    const res = await fetch(`/api/vendors/${vendor_id}/reviews`)
 
     if(res.ok){
         const data = await res.json();
@@ -24,8 +24,8 @@ export const fetchReviews = restaurant_id => async dispatch =>{
     }
 }
 
-export const createReview = (restaurantId, review) => async dispatch => {
-    const res = await csrfFetch(`/api/restaurants/${restaurantId}/reviews`, 
+export const createReview = (vendorId, review) => async dispatch => {
+    const res = await csrfFetch(`/api/vendors/${vendorId}/reviews`, 
         {method: "POST", body: JSON.stringify(review)}
     )
     if(res.ok){

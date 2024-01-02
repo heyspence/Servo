@@ -14,8 +14,8 @@ const receiveMenuItem = menuItem => ({
 })
 
 
-export const fetchMenuItems = restaurantId => async dispatch => {
-    const res = await csrfFetch(`/api/restaurants/${restaurantId}/menu_items`)
+export const fetchMenuItems = vendorId => async dispatch => {
+    const res = await csrfFetch(`/api/vendors/${vendorId}/menu_items`)
     if(res.ok){
         const data = await res.json()
         dispatch(receiveMenuItems(data))

@@ -1,9 +1,9 @@
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min'
-import './RestaurantShow.css'
+import './VendorShow.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { isLoggedIn } from '../../store/session'
 import MenuItemIndex from '../../MenuItem/MenuItemIndex'
-import { fetchRestaurants } from '../../store/restaurant';
+import { fetchVendors } from '../../store/vendor';
 import { useEffect, useState } from 'react'
 import { fetchReviews } from '../../store/reviews'
 import { ReactComponent as StarSvg } from '../../../assets/svg/reviewStar.svg'
@@ -12,18 +12,18 @@ import ReviewForm from '../../Reviews/ReviewForm'
 import ReviewIndex from '../../Reviews/ReviewIndex'
 import SeeMoreModal from '../SeeMoreModal'
 
-const RestaurantShow = () => {
+const VendorShow = () => {
     const { id }= useParams()
     const userLoggedIn = useSelector(isLoggedIn)
     const history = useHistory();
     const dispatch = useDispatch();
-    const restaurant = useSelector((state)=> state.restaurants[id])
+    const vendor = useSelector((state)=> state.vendors[id])
     const reviews = useSelector(state => state?.reviews ? Object.values(state.reviews) : [])
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
 
     useEffect(() => {
-        dispatch(fetchRestaurants());
+        dispatch(fetchVendors());
         dispatch(fetchReviews(id));
     },[dispatch, id])
 
@@ -46,22 +46,22 @@ const RestaurantShow = () => {
     if(!userLoggedIn) history.push('/')
 
     return (
-        <div className="restaurant-show">
+        <div className="vendor-show">
             <div className="image-placeholder" >
-                <img src={restaurant?.imageUrl} className="image-placeholder" alt="restaurant banner"/>
-                <img src={restaurant?.iconImageUrl} className="restaurant-logo white-background" alt="restaurant icon" />
+                <img src={vendor?.imageUrl} className="image-placeholder" alt="vendor banner"/>
+                <img src={vendor?.iconImageUrl} className="provider-logo white-background" alt="vendor icon" />
             </div>
-            <h1>{restaurant?.name}</h1>
+            <h1>{vendor?.name}</h1>
             <div className="store-info-container">
-                <p className="restaurant-show-reviews">{(total/reviewCount).toFixed(1)}<StarSvg className="review-star-svg"/>{ reviewCount} ratings • $</p>
+                <p className="vendor-show-reviews">{(total/reviewCount).toFixed(1)}<StarSvg className="review-star-svg"/>{ reviewCount} ratings • $</p>
                 <button className="see-more-button" onClick={toggleSeeMoreModal}>See More</button>
             </div>
 
             <Modal isOpen={reviewModalOpen} onClose={toggleReviewModal}>
-                <ReviewForm restaurantName={restaurant?.name} restaurantId={id} onClose={toggleReviewModal} />
+                <ReviewForm vendorName={vendor?.name} vendorId={id} onClose={toggleReviewModal} />
             </Modal>
             <Modal isOpen={seeMoreModalOpen} onClose={toggleSeeMoreModal}>
-                <SeeMoreModal restaurant={restaurant} onClose={toggleSeeMoreModal} />
+                <SeeMoreModal vendor={vendor} onClose={toggleSeeMoreModal} />
             </Modal>
 
             <div className="menu-item-index-container">
@@ -75,4 +75,4 @@ const RestaurantShow = () => {
     )
 }
 
-export default RestaurantShow
+export default VendorShow;

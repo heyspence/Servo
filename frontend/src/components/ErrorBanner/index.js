@@ -20,7 +20,7 @@ const ErrorBanner = () => {
     }, [errors]);
 
     useEffect(() => {
-        if(!location.pathname.includes('/restaurants')){
+        if(!location.pathname.includes('/vendors')){
             dispatch(removeErrors());
         }
     }, [location])
@@ -29,7 +29,7 @@ const ErrorBanner = () => {
         dispatch(removeErrors());
     };
 
-    return errors && errors.length && location.pathname.includes('/restaurants') > 0 ? (
+    return errors && errors.length && location.pathname.includes('/vendors') > 0 ? (
         <div className={`error-banner ${animate ? 'slide-out-animation' : ''} ${!isCartOpen ? 'full-width' : ''}`} onAnimationEnd={onAnimationEnd}>
             {errors.map((error, index) => (
                 <p key={index}>{error}</p>

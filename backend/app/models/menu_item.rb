@@ -11,6 +11,6 @@
 #  image_url  :string
 #
 class MenuItem < ApplicationRecord
-    belongs_to :restaurant
+    belongs_to :vendor
     has_one_attached :photo
 end

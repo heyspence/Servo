@@ -1,14 +1,14 @@
-import './RestaurantIndexItem.css'
+import './VendorIndexItem.css'
 import { useHistory } from 'react-router-dom'
 import { ReactComponent as StarSvg } from '../../../assets/svg/reviewStar.svg'
 import { useEffect, useState } from 'react';
 import csrfFetch from '../../store/csrf';
 
-const RestaurantIndexItem = ({ id, name, imageUrl = '' }) => {
+const VendorIndexItem = ({ id, name, imageUrl = '' }) => {
     const history = useHistory();
     const [reviews, setReviews] = useState([]);
 
-    const restaurantRedirect = (e) => {
+    const vendorRedirect = (e) => {
         e.stopPropagation();
         window.scrollTo({
             top: 0
@@ -16,8 +16,8 @@ const RestaurantIndexItem = ({ id, name, imageUrl = '' }) => {
         history.push(`/vendors/${id}`)
     }
 
-    const fetchRestaurantReviews = async id => {
-        const res = await csrfFetch(`/api/restaurants/${id}/reviews`);
+    const fetchVendorReviews = async id => {
+        const res = await csrfFetch(`/api/vendors/${id}/reviews`);
         if(res.ok){
             const data = await res.json();
             setReviews(Object.values(data.reviews))
@@ -27,7 +27,7 @@ const RestaurantIndexItem = ({ id, name, imageUrl = '' }) => {
     }
 
     useEffect(()=>{
-        fetchRestaurantReviews(id)
+        fetchVendorReviews(id)
     }, [id])
 
     let reviewCount = reviews.length
@@ -35,8 +35,8 @@ const RestaurantIndexItem = ({ id, name, imageUrl = '' }) => {
     let average = reviewCount > 0 ? (total / reviewCount).toFixed(1) : '--.--'
 
     return(
-        <li className="restaurant-index-item" onClick={restaurantRedirect}>
-            <div className="restaurant-index-image-container">
+        <li className="vendor-index-item" onClick={vendorRedirect}>
+            <div className="vendor-index-image-container">
                 <img src={imageUrl} alt=""/>
             </div>
             <h3>{name}</h3>
@@ -49,4 +49,4 @@ const RestaurantIndexItem = ({ id, name, imageUrl = '' }) => {
     )
 }
 
-export default RestaurantIndexItem
+export default VendorIndexItem

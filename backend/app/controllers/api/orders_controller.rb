@@ -14,7 +14,7 @@ class Api::OrdersController < ApplicationController
 
     private 
     def order_params
-        params.require(:order).permit(:user_id, :total, :restaurant_id)
+        params.require(:order).permit(:user_id, :total, :vendor_id)
     end
 
     def order_detail_params

@@ -4,7 +4,7 @@ import NavigationBar from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import { Provider } from 'react-redux';
 import Home from "./components/Home";
-import RestaurantShow from "./components/Restaurant/RestaurantShow";
+import VendorShow from "./components/Vendor/VendorShow";
 import Checkout from "./components/Checkout";
 import Orders from "./components/Orders";
 import ErrorBanner from "./components/ErrorBanner";

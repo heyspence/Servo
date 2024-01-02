@@ -9,5 +9,5 @@
 #  vendor_id :bigint
 #
 class Address < ApplicationRecord
-    belongs_to :restaurant
+    belongs_to :vendor
 end

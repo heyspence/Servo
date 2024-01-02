@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { useEffect, useState } from 'react'
 import { isLoggedIn } from '../store/session'
-import { fetchRestaurants } from '../store/restaurant'
+import { fetchVendors } from '../store/vendor'
 import { fetchReviews } from '../store/reviews'
 import ReviewIndexItem from '../Reviews/ReviewIndexItem'
 import PricingCalculator from '../PricingCalculator'
@@ -18,7 +18,7 @@ const ProviderShow = () => {
     const userLoggedIn = useSelector(isLoggedIn);
     const history = useHistory();
     const dispatch = useDispatch();
-    const vendor = useSelector((state)=> state.restaurants[id]);
+    const vendor = useSelector((state)=> state.vendors[id]);
     const reviews = useSelector(state => state?.reviews ? Object.values(state.reviews) : []);
     const images = useSelector(state => state?.images ? Object.values(state.images) : []);
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
@@ -38,7 +38,7 @@ const ProviderShow = () => {
     if(!userLoggedIn) history.push('/')
 
     useEffect(() => {
-        dispatch(fetchRestaurants());
+        dispatch(fetchVendors());
         dispatch(fetchReviews(id));
         dispatch(fetchImages(id));
     },[dispatch, id])
@@ -85,8 +85,8 @@ const ProviderShow = () => {
             <div className="provider-show">
                 <div className="provider-show-left">
                     <div className="meta-info-block">
-                        <div className="vendor-logo-background">
-                            <img className="vendor-logo" src={vendor?.iconImageUrl} />
+                        <div className="provider-logo-background">
+                            <img className="provider-logo" src={vendor?.iconImageUrl} />
                         </div>
                         <div className="meta-info-container">
                             <h2 className="provider-name">{vendor?.name}</h2>
@@ -154,7 +154,7 @@ const ProviderShow = () => {
                 </div>
             </div>
             <Modal isOpen={reviewModalOpen} onClose={toggleReviewModal}>
-                <ReviewForm restaurantName={vendor?.name} restaurantId={id} onClose={toggleReviewModal} />
+                <ReviewForm vendorName={vendor?.name} vendorId={id} onClose={toggleReviewModal} />
             </Modal>
         </>
     )

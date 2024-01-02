@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { isLoggedIn } from '../store/session';
 import { useEffect } from 'react';
 import { deleteCartItems, getCart } from '../store/cart';
-import { findRestaurantByMenuItem } from '../store/restaurant';
+import { findVendorByMenuItem } from '../store/vendor';
 import CartItem from '../Cart/CartItem';
 import { ReactComponent as MasterCardIcon } from '../../assets/svg/MasterCard.svg';
 import { createOrder } from '../store/orders';
@@ -12,7 +12,7 @@ import { createOrder } from '../store/orders';
 const Checkout = () => {
     const cartItems = useSelector(state => state.cart?.cartItems ? Object.values(state.cart.cartItems) : [])
     const currentUserId = useSelector(state => state.session.user?.id)
-    const cartRestaurant = useSelector(state => findRestaurantByMenuItem(state, cartItems[0]?.menuItemId))
+    const cartVendor = useSelector(state => findVendorByMenuItem(state, cartItems[0]?.menuItemId))
     const isCartOpen = useSelector(state => state.cart?.isCartOpen)
     const user = useSelector(state => state?.session ? state.session.user : null)
     const userLoggedIn = useSelector(isLoggedIn);
@@ -29,14 +29,14 @@ const Checkout = () => {
 
     if(!userLoggedIn){history.push('/home');}
 
-    const handleRestaurantClick = () => {
-        history.push(`/restaurants/${cartRestaurant.id}`)
+    const handleVendorClick = () => {
+        history.push(`/vendors/${cartVendor.id}`)
     }
 
     const handlePlaceOrder = () => {
         const order = { order:{
             userId: user.id,
-            restaurantId: cartRestaurant.id,
+            vendorId: cartVendor.id,
             total: totalPrice
         }}
         dispatch(createOrder(order)).then(()=>{
@@ -75,8 +75,8 @@ const Checkout = () => {
                     <div className="checkout-cart">
                         <div className="cart-header">
                         <p>Your cart from</p>
-                        <h3 onClick={handleRestaurantClick}>
-                            {cartRestaurant?.name}
+                        <h3 onClick={handleVendorClick}>
+                            {cartVendor?.name}
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fillRule="evenodd" clipRule="evenodd" d="M5.79289 12.7071C5.40237 12.3166 5.40237 11.6834 5.79289 11.2929L9.08579 8L5.79289 4.70711C5.40237 4.31658 5.40237 3.68342 5.79289 3.29289C6.18342 2.90237 6.81658 2.90237 7.20711 3.29289L11.2071 7.29289C11.3946 7.48043 11.5 7.73478 11.5 8C11.5 8.26521 11.3946 8.51957 11.2071 8.70711L7.20711 12.7071C6.81658 13.0976 6.18342 13.0976 5.79289 12.7071Z" fill="#191919"></path></svg>
                         </h3>
                         </div>
