@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_02_232902) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_03_003716) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,25 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_02_232902) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["vendor_id"], name: "index_images_on_vendor_id"
+  end
+
+  create_table "inputs", force: :cascade do |t|
+    t.string "input_type", null: false
+    t.string "name", null: false
+    t.bigint "vendor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vendor_id"], name: "index_inputs_on_vendor_id"
+  end
+
+  create_table "options", force: :cascade do |t|
+    t.string "option_type", null: false
+    t.string "name"
+    t.float "value", null: false
+    t.bigint "input_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["input_id"], name: "index_options_on_input_id"
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -82,6 +101,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_02_232902) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_url"
+    t.string "formula"
     t.index ["vendor_id"], name: "index_services_on_vendor_id"
   end
 
@@ -113,6 +133,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_02_232902) do
   add_foreign_key "cart_items", "services"
   add_foreign_key "cart_items", "users"
   add_foreign_key "images", "vendors"
+  add_foreign_key "inputs", "vendors"
+  add_foreign_key "options", "inputs"
   add_foreign_key "order_details", "orders"
   add_foreign_key "order_details", "services"
   add_foreign_key "orders", "users"

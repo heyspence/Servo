@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { useEffect, useState } from 'react'
 import { isLoggedIn } from '../store/session'
-import { fetchVendors } from '../store/vendor'
+import { fetchVendor, fetchVendors } from '../store/vendor'
 import { fetchReviews } from '../store/reviews'
 import ReviewIndexItem from '../Reviews/ReviewIndexItem'
 import PricingCalculator from '../PricingCalculator'
@@ -26,6 +26,7 @@ const ProviderShow = () => {
     const [pricingOpen, setPricingOpen] = useState(false);
     const [schedulingOpen, setSchedulingOpen] = useState(false);
     const [summaryOpen, setSummaryOpen] = useState(false);
+
     const window_cleaning = "Window Cleaning";
     const house_cleaning = "House Cleaning";
     const pest_control = "Pest Control";
@@ -38,7 +39,7 @@ const ProviderShow = () => {
     if(!userLoggedIn) history.push('/')
 
     useEffect(() => {
-        dispatch(fetchVendors());
+        dispatch(fetchVendor(id));
         dispatch(fetchReviews(id));
         dispatch(fetchImages(id));
     },[dispatch, id])

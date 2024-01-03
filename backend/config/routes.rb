@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       resources :reviews, only: [:index, :create]
       resources :images, only: [:index]
     end
+
     resources :services, only: [:show]
     resources :reviews, only: [:destroy, :show, :update]
   end

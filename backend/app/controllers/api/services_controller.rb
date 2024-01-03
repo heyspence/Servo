@@ -8,6 +8,7 @@ class Api::ServicesController < ApplicationController
 
     def show
         @service = Service.find(params[:id])
+        @inputs = @service.inputs
         render :show
     end
 end

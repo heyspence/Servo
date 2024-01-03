@@ -30,95 +30,25 @@ user = User.create([
     { first_name: 'Donald', last_name: 'Trump', email: 'donald@dashdoor.com', password: 'password',phone_number: '1002003005'}
 ])
 
-# puts "Creating services"
+puts "Creating services"
 
-# services = Service.create([
-#     {name: 'Caffe Latte', price: '4.75', vendor_id: 1, image_url: "http://spencerheywood.com/images/dash_door/starbucks-caffe-latte.avif"},
-#     {name: 'Impossible Breakfast Sandwich', price: '6.95', vendor_id: 1, image_url: "http://spencerheywood.com/images/dash_door/starbucks-impossible-breakfast-sandwich.avif"},
-#     {name: 'Sausage, Cheddar & Egg Sandwich', price: '5.45', vendor_id: 1, image_url: "http://spencerheywood.com/images/dash_door/starbucks-sausage-cheddar-egg-sandwich.avif"},
-#     {name: 'Spinach, Feta & Egg-white Wrap', price: '5.95', vendor_id: 1, image_url: "http://spencerheywood.com/images/dash_door/starbucks-spinach-feta-egg-white-wrap.avif"},
-#     {name: 'Walnut & Pecan Loaf', price: '4.75', vendor_id: 1, image_url: "http://spencerheywood.com/images/dash_door/starbucks-walnut-becan-loaf.avif"},
-#     {name: 'Cappuccino', price: '4.75', vendor_id: 1, image_url: "http://spencerheywood.com/images/dash_door/starbucks-cappuccino.avif"},
+service = Service.create([
+    {name: 'Window Cleaning', price: '50', vendor_id: 1}
+])
 
-#     {name: 'Chicken Quesadilla', price: '6.58', vendor_id: 2, image_url: "http://spencerheywood.com/images/dash_door/taco-bell-chicken-quesadilla.avif"},
-#     {name: 'Crunchwrap Supreme', price: '6.58', vendor_id: 2, image_url: "http://spencerheywood.com/images/dash_door/taco-bell-crunchwrap-supreme.avif"},
-#     {name: '2 Chicken Chalupas Supreme Combo', price: '14.63', vendor_id: 2, image_url: "http://spencerheywood.com/images/dash_door/taco-bell-2-chicken-chalupas-supreme-combo.avif"},
-#     {name: 'Nachos BellGrande', price: '7.19', vendor_id: 2, image_url: "http://spencerheywood.com/images/dash_door/taco-bell-nachos-bellgrande.avif"},
-#     {name: '3 Doritos Locos Tacos Supreme', price: '13.41', vendor_id: 2, image_url: "http://spencerheywood.com/images/dash_door/taco-bell-3-doritos-locos-tacos-supreme.avif"},
-#     {name: 'Nacho Cheese Doritos Locos Tacos', price: '3.53', vendor_id: 2, image_url: "http://spencerheywood.com/images/dash_door/taco-bell-nach-cheese-doritos-locos-tacos.avif"},
-    
-#     {name: 'Oven-Roasted Turkey', price: '8.83', vendor_id: 3, image_url: "http://spencerheywood.com/images/dash_door/subway-oven-roasted-turkey.avif"},
-#     {name: 'Tuna', price: '8.83', vendor_id: 3, image_url: "http://spencerheywood.com/images/dash_door/subway-tuna.avif"},
-#     {name: 'Sweet Onion Chicken Teriyaki', price: '9.90', vendor_id: 3, image_url: "http://spencerheywood.com/images/dash_door/subway-sweet-onion-chicken-teriyaki.avif"},
-#     {name: 'Coca-Cola Classic', price: '3.64', vendor_id: 3, image_url: "http://spencerheywood.com/images/dash_door/subway-coca-cola-classic.avif"},
-#     {name: 'Meatball Marinara', price: '8.48', vendor_id: 3, image_url: "http://spencerheywood.com/images/dash_door/subway-meatball-marinara.avif"},
-#     {name: 'spicy-italian', price: '9.42', vendor_id: 3, image_url: "http://spencerheywood.com/images/dash_door/subway-spicy-italian.avif"},
-    
-#     {name: '10 PC. Crispy Chicken Nuggets', price: '5.49', vendor_id: 4, image_url: "http://spencerheywood.com/images/dash_door/wendys-10pc-crispy-chicken-nuggets.avif"},
-#     {name: '6 PC. Crispy Chicken Nuggets', price: '3.36', vendor_id: 4, image_url: "http://spencerheywood.com/images/dash_door/wendys-6pc-crispy-chicken-nuggets.avif"},
-#     {name: '10 PC. Spicy Chicken Nuggets', price: '5.49', vendor_id: 4, image_url: "http://spencerheywood.com/images/dash_door/wendys-10pc-spicy-chicken-nuggets.avif"},
-#     {name: 'Baconator Combo', price: '12.11', vendor_id: 4, image_url: "http://spencerheywood.com/images/dash_door/wendys-baconator-combo.avif"},
-#     {name: '10 PC. Nuggets Combo', price: '12.11', vendor_id: 4, image_url: "http://spencerheywood.com/images/dash_door/wendys-10pc-nuggets-combo.avif"},
-#     {name: 'Jr. Bacon Cheeseburger', price: '3.74', vendor_id: 4, image_url: "http://spencerheywood.com/images/dash_door/wendy-jr-bacon-cheeseburger.avif"},
-#     {name: 'Spicy Chicken Sandwich Combo', price: '13.11', vendor_id: 4, image_url: "http://spencerheywood.com/images/dash_door/wendys-spicy-chicken-sandwich-combo.avif"},
-    
-#     {name: 'Cajun Fries', price: '4.95', vendor_id: 5, image_url: "http://spencerheywood.com/images/dash_door/popeyes-cajun-fries.avif"},
-#     {name: '5Pc Handcrafted Tenders Combo', price: '18.94', vendor_id: 5, image_url: "http://spencerheywood.com/images/dash_door/popeyes-5pc-handcrafted-tenders-combo.avif"},
-#     {name: '4Pc Signature Chicken Combo', price: '18.79', vendor_id: 5, image_url: "http://spencerheywood.com/images/dash_door/popeyes-4pc-signature-chicken-combo.avif"},
-#     {name: 'Homestyle Mac & Cheese', price: '5.09', vendor_id: 5, image_url: "http://spencerheywood.com/images/dash_door/popeyes-homestyle-mac-and-cheese.avif"},
-#     {name: 'Spicy Chicken Sandwich', price: '5.99', vendor_id: 5, image_url: "http://spencerheywood.com/images/dash_door/popeyes-spicy-chicken-sandwich.avif"},
-#     {name: '12pc Wings', price: '14.79', vendor_id: 5, image_url: "http://spencerheywood.com/images/dash_door/popeyes-12pc-wings.avif"},
-    
-#     {name: 'Bacon Egg And Cheese', price: '4.73', vendor_id: 6, image_url: "http://spencerheywood.com/images/dash_door/dunkin-bacon-egg-and-cheese.avif"},
-#     {name: 'Bagel With Cream Cheese Spread', price: '6.86', vendor_id: 6, image_url: "http://spencerheywood.com/images/dash_door/dunkin-bagel-with-cream-cheese-spread.avif"},
-#     {name: 'Half Dozen Donuts', price: '12.48', vendor_id: 6, image_url: "http://spencerheywood.com/images/dash_door/dunkin-half-dozen-donuts.avif"},
-#     {name: 'Original Blend Iced Coffee', price: '4.36', vendor_id: 6, image_url: "http://spencerheywood.com/images/dash_door/dunkin-original-blend-iced-coffee.avif"},
-#     {name: 'Original Blend', price: '2.98', vendor_id: 6, image_url: "http://spencerheywood.com/images/dash_door/dunkin-original-blend.avif"},
-#     {name: 'Sausage Egg And Cheese', price: '6.86', vendor_id: 6, image_url: "http://spencerheywood.com/images/dash_door/dunkin-sausage-egg-and-cheese.avif"},
-    
-#     {name: 'Buffalo Wings', price: '8.49', vendor_id: 7, image_url: "http://spencerheywood.com/images/dash_door/papa-johns-buffalo-wings.avif"},
-#     {name: 'Cheese Pizza', price: '11.00', vendor_id: 7, image_url: "http://spencerheywood.com/images/dash_door/papa-johns-cheese-pizza.avif"},
-#     {name: 'Garden Fresh Pizza', price: '13.99', vendor_id: 7, image_url: "http://spencerheywood.com/images/dash_door/papa-johns-garden-fresh-pizza.avif"},
-#     {name: 'Pepperoni Pizza', price: '11.00', vendor_id: 7, image_url: "http://spencerheywood.com/images/dash_door/papa-johns-pepperoni-pizza.avif"},
-#     {name: 'Pepsi', price: '2.49', vendor_id: 7, image_url: "http://spencerheywood.com/images/dash_door/papa-johns-pepsi.avif"},
-#     {name: 'Super Hawaiian Pizza', price: '13.99', vendor_id: 7, image_url: "http://spencerheywood.com/images/dash_door/papa-johns-super-hawaiian-pizza.avif"},
-#     {name: 'The Meats Pizza', price: '13.99', vendor_id: 7, image_url: "http://spencerheywood.com/images/dash_door/papa-johns-the-meats-pizza.avif"},
-    
-#     {name: '6" Personal Pan Pizza', price: '5.64', vendor_id: 8, image_url: "http://spencerheywood.com/images/dash_door/pizza-hut-6\"-personal-pan-pizza.avif"},
-#     {name: '8 Boneless Wings', price: '10.97', vendor_id: 8, image_url: "http://spencerheywood.com/images/dash_door/pizza-hut-8-boneless-wings.avif"},
-#     {name: '12" Medium Pizza', price: '15.24', vendor_id: 8, image_url: "http://spencerheywood.com/images/dash_door/pizza-hut-12\"-medium-pizza.avif"},
-#     {name: '14" Large Pizza', price: '17.92', vendor_id: 8, image_url: "http://spencerheywood.com/images/dash_door/pizza-hut-14\"-large-pizza.avif"},
-#     {name: 'Breadsticks', price: '8.16', vendor_id: 8, image_url: "http://spencerheywood.com/images/dash_door/pizza-hut-breadsticks.avif"},
-#     {name: 'Cinnabon Mini Rolls', price: '8.16', vendor_id: 8, image_url: "http://spencerheywood.com/images/dash_door/pizza-hut-cinnabon-mini-rolls.avif"},
-    
-#     {name: 'Cheeseburger Spring Rolls', price: '12.95', vendor_id: 9, image_url: "http://spencerheywood.com/images/dash_door/the-cheesecake-factory-cheeseburger-spring-rolls.avif"},
-#     {name: 'Chocolate Tower Truffle Cake', price: '11.50', vendor_id: 9, image_url: "http://spencerheywood.com/images/dash_door/the-cheesecake-factory-chocolate-tower-truffle-cake.avif"},
-#     {name: 'Fresh Strawberry Cheesecake', price: '12.50', vendor_id: 9, image_url: "http://spencerheywood.com/images/dash_door/the-cheesecake-factory-fresh-strawberry-cheesecake.avif"},
-#     {name: 'Godiva Chocolate Cheesecake', price: '11.50', vendor_id: 9, image_url: "http://spencerheywood.com/images/dash_door/the-cheesecake-factory-godiva-chocolate-cheesecake.avif"},
-#     {name: 'Oreo Dream Extreme Cheesecake', price: '11.50', vendor_id: 9, image_url: "http://spencerheywood.com/images/dash_door/the-cheesecake-factory-oreo-dream-extreme-cheesecake.avif"},
-#     {name: 'louisiana-chicken-pasta', price: '23.95', vendor_id: 9, image_url: "http://spencerheywood.com/images/dash_door/the-cheesecake-factory-louisiana-chicken-pasta.avif"},
-    
-#     {name: 'Plate', price: '11.85', vendor_id: 10, image_url: "http://spencerheywood.com/images/dash_door/panda-plate.avif"},
-#     {name: 'Bowl', price: '9.95', vendor_id: 10, image_url: "http://spencerheywood.com/images/dash_door/panda-bowl.avif"},
-#     {name: 'Bigger Plate', price: '12.95', vendor_id: 10, image_url: "http://spencerheywood.com/images/dash_door/panda-bigger-plate.avif"},
-#     {name: 'Cream Cheese Rangoon', price: '4.65', vendor_id: 10, image_url: "http://spencerheywood.com/images/dash_door/panda-cream-cheese-rangoon.avif"},
-#     {name: 'The Original Orange Chicken', price: '4.95', vendor_id: 10, image_url: "http://spencerheywood.com/images/dash_door/panda-the-original-orange-chicken.avif"},
-#     {name: 'Family Meal', price: '43.75', vendor_id: 10, image_url: "http://spencerheywood.com/images/dash_door/panda-family-meal.avif"},
-    
-#     {name: 'quarter-pound-double-cheeseburger', price: '9.95', vendor_id: 11, image_url: "http://spencerheywood.com/images/dash_door/sonic-quarter-pound-double-cheeseburger.avif"},
-#     {name: 'hand-mixed-classic-shakes', price: '5.95', vendor_id: 11, image_url: "http://spencerheywood.com/images/dash_door/sonic-hand-mixed-classic-shakes.avif"},
-#     {name: 'fries', price: '12.95', vendor_id: 11, image_url: "http://spencerheywood.com/images/dash_door/sonic-fries.avif"},
-#     {name: 'mozzarella-sticks', price: '4.95', vendor_id: 11, image_url: "http://spencerheywood.com/images/dash_door/sonic-mozzarella-sticks.avif"},
-#     {name: 'famous-slushes', price: '3.75', vendor_id: 11, image_url: "http://spencerheywood.com/images/dash_door/sonic-famous-slushes.avif"},
-#     {name: 'tots', price: '4.95', vendor_id: 11, image_url: "http://spencerheywood.com/images/dash_door/sonic-tots.avif"},
-    
-#     {name: 'French Fries', price: '3.39', vendor_id: 12, image_url: "http://spencerheywood.com/images/dash_door/mcdonalds-fries.avif"},
-#     {name: 'McChicken', price: '4.99', vendor_id: 12, image_url: "http://spencerheywood.com/images/dash_door/mcdonalds-mcchicken.avif"},
-#     {name: '10 Piece McNuggets', price: '7.59', vendor_id: 12, image_url: "http://spencerheywood.com/images/dash_door/mcdonalds-10pc-nuggets.avif"},
-#     {name: '2 Cheeseburger Meal', price: '10.99', vendor_id: 12, image_url: "http://spencerheywood.com/images/dash_door/mcdonalds-2-cheeseburger-meal.avif"},
-#     {name: '10 Piece McNuggets Meal', price: '12.79', vendor_id: 12, image_url: "http://spencerheywood.com/images/dash_door/mcdonalds-10-piece-mcnuggets-meal.avif"},
-#     {name: 'Big Mac Meal', price: '12.29', vendor_id: 12, image_url: "http://spencerheywood.com/images/dash_door/mcdonalds-big-mac-meal.avif"},
-# ])
+puts "Creating Inputs"
+
+input = Input.create([
+    {name:"Floors", input_type:"select", vendor_id: 1}
+])
+
+puts "Creating Options"
+
+option = Option.create([
+    {option_type:"select", name:"1", value:100, input_id:1},
+    {option_type:"select", name:"2", value:200, input_id:1},
+    {option_type:"select", name:"3", value:300, input_id:1}
+])
 
 puts "Creating reviews"
 
