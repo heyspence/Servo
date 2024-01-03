@@ -6,8 +6,8 @@ const Selector = ({name, title, options}) => {
             <label htmlFor={name}>{title}</label>
             <select id={name}>
                 <option>Select One</option>
-                {options && options.map((option, index) => {
-                    return <option key={index}>{option}</option>
+                {options && Object.values(options).map((option, index) => {
+                    return <option key={index} value={option?.value}>{option?.name}</option>
                 })}
             </select>
         </div>

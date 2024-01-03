@@ -2,6 +2,7 @@ import csrfFetch from "./csrf";
 
 const RECEIVE_VENDORS = 'vendors/RECEIVE_VENDORS'
 const RECEIVE_VENDOR = 'vendor/RECEIVE_VENDOR'
+const RECEIVE_SERVICES = 'vendor/RECEIVE_SERVICES'
 
 const recieveVendors = vendors => ({
     type: RECEIVE_VENDORS,
@@ -11,6 +12,11 @@ const recieveVendors = vendors => ({
 const recieveVendor = vendor => ({
     type: RECEIVE_VENDOR,
     vendor
+})
+
+const recieveServices = services => ({
+    type: RECEIVE_SERVICES,
+    services
 })
 
 export const fetchVendors = () => async dispatch => {
@@ -26,6 +32,17 @@ export const fetchVendor = vendorId => async dispatch => {
     if(res.ok){
         const data = await res.json()
         dispatch(recieveVendor(data))
+    }
+}
+
+export const fetchServices = vendorId => async dispatch => {
+    const res = await csrfFetch(`/api/vendors/${vendorId}/services`)
+    if(res.ok){
+        const data = await res.json();
+        const keys = Object.keys(data)
+        if(keys.length > 0){
+            dispatch(recieveServices(data))
+        }
     }
 }
 
@@ -49,6 +66,10 @@ const vendorsReducer = (state = {}, action) => {
             return { ...newState, ...vendors};
         case RECEIVE_VENDOR:
             return { ...newState, ...action.vendor}
+        case RECEIVE_SERVICES:
+            const vendorId = Object.values(action.services)[0]?.vendorId
+            newState[vendorId].services = action.services;
+            return newState
         default: 
             return state;
     }

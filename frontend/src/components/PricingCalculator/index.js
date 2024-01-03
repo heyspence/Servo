@@ -4,12 +4,26 @@ import './PricingCalculator.css'
 import Selector from '../formComponents/Selector';
 import RadioButton from '../formComponents/RadioButton';
 
-const PricingCalculator = ({pricingOpen}) => {
+const PricingCalculator = ({pricingOpen, inputs, formula}) => {
     const options = [1,2,3]
     const [recurringOn, setRecurringOn] = useState(false);
+    const inputTypeKey = {
+        radio: RadioButton,
+        select: Selector,
+    }
 
     const toggleRecurring = () =>{
         setRecurringOn(!recurringOn)
+    }
+
+    const renderInput = (input) => {
+        const InputComponent = inputTypeKey[input.inputType]
+
+        if(!InputComponent){
+            return <p>Unknown InputType</p>
+        }else{
+            return <InputComponent name={input?.name} title={input?.name} options={input?.options} key={input?.id}/>
+        }
     }
 
     return (
@@ -19,10 +33,9 @@ const PricingCalculator = ({pricingOpen}) => {
                 <div className="subtotal">$50</div>
                 <div className="calculator-main">
                     <form>
-                        <Selector name="floors" title="Floors" options={options}/>
-                        <Selector name="people" title="People" options={options}/>
-                        <Selector name="sprinklers" title="Sprinklers" options={options}/>
-                        <Selector name="other" title="Other" options={options}/>
+                        {inputs && Object.values(inputs).map(input => {
+                            return renderInput(input)
+                        })}
                     </form>
                 </div>
             </div>
@@ -36,7 +49,7 @@ const PricingCalculator = ({pricingOpen}) => {
                 </div>
                 <div className="recurring-options">
                     <RadioButton options={[{name: "Once a Year", value: 1},{name: "Twice a Year", value: 2}, {name:"4 Times a Year", value: 3}]}/>
-                    <Selector name="test" title="Clean Type" options={["Outside Only", "Inside and Out", "Alternating Outside Only / Inside and Out (Most Popular)"]}/>
+                    <Selector name="test" title="Clean Type" options={{1:{name:"Outside Only"},2:{name:"Inside and Out"}, 3:{name:"Alternating Outside Only / Inside and Out (Most Popular)"}}}/>
                 </div>
                 <CalculatorResults price={50} duration={1.5}/>
                 <button className="accept-button">Continue - $42.50</button>

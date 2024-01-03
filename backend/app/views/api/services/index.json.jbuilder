@@ -9,7 +9,7 @@
                     json.options do
                         input.options.each do |option|
                             json.set! option.id do
-                                json.extract! option, :option_type, :name, :value
+                                json.extract! option, :option_type, :name, :value, :id
                             end
                         end
                     end

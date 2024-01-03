@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { useEffect, useState } from 'react'
 import { isLoggedIn } from '../store/session'
-import { fetchVendor, fetchVendors } from '../store/vendor'
+import { fetchServices, fetchVendor } from '../store/vendor'
 import { fetchReviews } from '../store/reviews'
 import ReviewIndexItem from '../Reviews/ReviewIndexItem'
 import PricingCalculator from '../PricingCalculator'
@@ -21,18 +21,22 @@ const ProviderShow = () => {
     const vendor = useSelector((state)=> state.vendors[id]);
     const reviews = useSelector(state => state?.reviews ? Object.values(state.reviews) : []);
     const images = useSelector(state => state?.images ? Object.values(state.images) : []);
+    const defaultService = vendor?.services ? Object.values(vendor.services)[0] : {}
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
-    const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
+    // const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
     const [pricingOpen, setPricingOpen] = useState(false);
     const [schedulingOpen, setSchedulingOpen] = useState(false);
     const [summaryOpen, setSummaryOpen] = useState(false);
 
-    const window_cleaning = "Window Cleaning";
-    const house_cleaning = "House Cleaning";
-    const pest_control = "Pest Control";
-    const carpet_cleaning = "Carpet Cleaning";
-    const garbage_can_cleaning = "Garbage Can Cleaning";
-    const car_detailing = "Auto Detailing";
+    const categoryMap = {
+        window_cleaning: "Window Cleaning",
+        house_cleaning: "House Cleaning",
+        pest_control: "Pest Control",
+        carpet_cleaning: "CarpetCleaning",
+        garbage_can_cleaning: "Garbage Can Cleaning",
+        car_detailing: "Auto Detailing"
+    }
+
     const phoneNumber = vendor?.phoneNumber
     const formattedPhoneNumber = "(" + phoneNumber?.slice(0, 3) + ") " + phoneNumber?.slice(3, 6) + "-" + phoneNumber?.slice(6, 10)
 
@@ -42,6 +46,7 @@ const ProviderShow = () => {
         dispatch(fetchVendor(id));
         dispatch(fetchReviews(id));
         dispatch(fetchImages(id));
+        dispatch(fetchServices(id));
     },[dispatch, id])
 
     let reviewCount = 0
@@ -82,7 +87,7 @@ const ProviderShow = () => {
 
     return (
         <>
-            <h1 className="provider-category">{eval(vendor?.category)}</h1>
+            <h1 className="provider-category">{categoryMap[vendor?.category]}</h1>
             <div className="provider-show">
                 <div className="provider-show-left">
                     <div className="meta-info-block">
@@ -120,7 +125,7 @@ const ProviderShow = () => {
                     <div onClick={handleGalleryOpen} className={`gallery-placeholder ${pricingOpen || schedulingOpen ? '' : 'minimize'}`}>
                         <button className="view-gallery-button">View Gallery</button>
                     </div>
-                    <PricingCalculator pricingOpen={pricingOpen}/>
+                    <PricingCalculator formula="" inputs={defaultService?.inputs} pricingOpen={pricingOpen}/>
                     <AppointmentScheduling schedulingOpen={schedulingOpen}/>
                     <div className={`gallery-container ${pricingOpen || schedulingOpen ? 'minimize' : ''}`}>
                         <h3 className="gallery-header">Gallery</h3>
