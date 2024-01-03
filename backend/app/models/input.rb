@@ -11,6 +11,6 @@
 #
 class Input < ApplicationRecord
     validates :input_type, inclusion: { in: ["radio", "select", "range", "checkbox"], message: "Invalid input type"}
-    belongs_to :vendor
+    belongs_to :service
     has_many :options
 end

@@ -39,7 +39,7 @@ service = Service.create([
 puts "Creating Inputs"
 
 input = Input.create([
-    {name:"Floors", input_type:"select", vendor_id: 1}
+    {name:"Floors", input_type:"select", service_id: 1}
 ])
 
 puts "Creating Options"

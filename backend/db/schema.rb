@@ -44,10 +44,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_03_003716) do
   create_table "inputs", force: :cascade do |t|
     t.string "input_type", null: false
     t.string "name", null: false
-    t.bigint "vendor_id", null: false
+    t.bigint "service_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["vendor_id"], name: "index_inputs_on_vendor_id"
+    t.index ["service_id"], name: "index_inputs_on_service_id"
   end
 
   create_table "options", force: :cascade do |t|
@@ -133,7 +133,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_03_003716) do
   add_foreign_key "cart_items", "services"
   add_foreign_key "cart_items", "users"
   add_foreign_key "images", "vendors"
-  add_foreign_key "inputs", "vendors"
+  add_foreign_key "inputs", "services"
   add_foreign_key "options", "inputs"
   add_foreign_key "order_details", "orders"
   add_foreign_key "order_details", "services"
