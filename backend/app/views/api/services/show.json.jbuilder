@@ -1,5 +1,5 @@
 json.set! @service.id do
-    json.extract! @service, :id, :image_url, :name, :price
+    json.extract! @service, :id, :image_url, :name, :price, :vendor_id, :formula
     json.vendor_id @service.vendor_id
     json.inputs do 
         service.inputs.each do |input|

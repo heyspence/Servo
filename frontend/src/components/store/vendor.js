@@ -39,7 +39,7 @@ export const fetchServices = vendorId => async dispatch => {
     const res = await csrfFetch(`/api/vendors/${vendorId}/services`)
     if(res.ok){
         const data = await res.json();
-        const keys = Object.keys(data)
+        const keys = Object.values(data)
         if(keys.length > 0){
             dispatch(recieveServices(data))
         }
@@ -67,7 +67,10 @@ const vendorsReducer = (state = {}, action) => {
         case RECEIVE_VENDOR:
             return { ...newState, ...action.vendor}
         case RECEIVE_SERVICES:
-            const vendorId = Object.values(action.services)[0]?.vendorId
+            const vendorId = Object.values(action.services)[0].vendorId
+            if (!newState[vendorId]) {
+                newState[vendorId] = {}; // Ensure the vendor object exists
+            }
             newState[vendorId].services = action.services;
             return newState
         default: 

@@ -1,7 +1,7 @@
 # json.services do
 @services.each do |service|
     json.set! service.id do
-        json.extract! service, :id, :name, :price, :image_url, :vendor_id
+        json.extract! service, :id, :name, :price, :image_url, :vendor_id, :formula
         json.inputs do 
             service.inputs.each do |input|
                 json.set! input.id do

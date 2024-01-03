@@ -33,21 +33,39 @@ user = User.create([
 puts "Creating services"
 
 service = Service.create([
-    {name: 'Window Cleaning', price: '50', vendor_id: 1}
+    {name: 'Window Cleaning', price: '50', vendor_id: 1, formula:"x*#1"},
+    {name: 'Carpet Cleaning', price: '115', vendor_id: 2},
+    {name: 'Garbage Can Cleaning', price: '35', vendor_id: 3},
+    {name: 'Pest Control', price: '40', vendor_id: 4},
+    {name: 'House Cleaning', price: '35', vendor_id: 5, formula: "#3"},
+    {name: 'Auto Detailing', price: '75', vendor_id: 6}
 ])
 
 puts "Creating Inputs"
 
 input = Input.create([
-    {name:"Floors", input_type:"select", service_id: 1}
+    {name:"Floors", input_type:"select", service_id: 1},
+    {name:"Floors", input_type:"select", service_id: 4},
+    {name:"Number of Cleaning Hours", input_type:"select", service_id: 5},
 ])
 
 puts "Creating Options"
 
 option = Option.create([
-    {option_type:"select", name:"1", value:100, input_id:1},
-    {option_type:"select", name:"2", value:200, input_id:1},
-    {option_type:"select", name:"3", value:300, input_id:1}
+    {option_type:"select", name:"1", value:1.0, input_id:1},
+    {option_type:"select", name:"2", value:1.2, input_id:1},
+    {option_type:"select", name:"3", value:1.5, input_id:1},
+    {option_type:"select", name:"1", value:0, input_id:2},
+    {option_type:"select", name:"2", value:15, input_id:2},
+    {option_type:"select", name:"3", value:30, input_id:2},
+    {option_type:"select", name:"1", value:35, input_id:3},
+    {option_type:"select", name:"2", value:70, input_id:3},
+    {option_type:"select", name:"3", value:105, input_id:3},
+    {option_type:"select", name:"4", value:140, input_id:3},
+    {option_type:"select", name:"5", value:175, input_id:3},
+    {option_type:"select", name:"6", value:210, input_id:3},
+    {option_type:"select", name:"7", value:245, input_id:3},
+    {option_type:"select", name:"8", value:280, input_id:3},
 ])
 
 puts "Creating reviews"
