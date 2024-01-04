@@ -33,7 +33,7 @@ user = User.create([
 puts "Creating services"
 
 service = Service.create([
-    {name: 'Window Cleaning', price: '50', vendor_id: 1, formula:"x*#1*#2"},
+    {name: 'Window Cleaning', price: '50', vendor_id: 1, formula:"((1705600*#3)/(43658860+#3)+25.5)*#1*#2"},
     {name: 'Carpet Cleaning', price: '115', vendor_id: 2},
     {name: 'Garbage Can Cleaning', price: '35', vendor_id: 3},
     {name: 'Pest Control', price: '40', vendor_id: 4},
@@ -46,6 +46,7 @@ puts "Creating Inputs"
 input = Input.create([
     {name:"Floors", input_type:"select", service_id: 1},
     {name:"What windows would you like cleaned?", input_type:"radio", service_id: 1},
+    {name:"Total Square Footage", input_type:"range", service_id: 1},
     # {name:"Floors", input_type:"select", service_id: 4},
     # {name:"Number of Cleaning Hours", input_type:"select", service_id: 5},
 ])
@@ -58,6 +59,9 @@ option = Option.create([
     {option_type:"select", name:"3", value:1.5, input_id:1},
     {option_type:"radio", name:"Inside/Out", value:1.5, input_id:2},
     {option_type:"radio", name:"Outside Only", value:1.1, input_id:2},
+    {option_type:"min", value:1500, input_id:3},
+    {option_type:"max", value:8000, input_id:3},
+    {option_type:"step", value:250, input_id:3},
     # {option_type:"select", name:"1", value:0, input_id:2},
     # {option_type:"select", name:"2", value:15, input_id:2},
     # {option_type:"select", name:"3", value:30, input_id:2},

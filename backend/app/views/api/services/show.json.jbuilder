@@ -4,7 +4,7 @@ json.set! @service.id do
     json.inputs do 
         service.inputs.each do |input|
             json.set! input.id do
-                json.extract! input, :id, :name, :input_type
+                json.extract! input, :id, :name, :input_type, :required, :recurring
                 json.options do
                     input.options.each do |option|
                         json.set! option.id do

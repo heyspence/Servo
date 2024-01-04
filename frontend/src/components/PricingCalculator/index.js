@@ -3,11 +3,11 @@ import CalculatorResults from './CalculatorResults';
 import './PricingCalculator.css'
 import Selector from '../formComponents/Selector';
 import RadioButton from '../formComponents/RadioButton';
+import RangeSlider from '../formComponents/RangeSlider';
 
 const PricingCalculator = ({basePrice, pricingOpen, inputs, formula}) => {
     const [recurringOn, setRecurringOn] = useState(false);
     const [inputValues, setInputValues] = useState({});
-    console.log(inputValues)
     const inputFloats = Object.values(inputValues).map(val => parseFloat(val))
     let calculatedPrice = basePrice
     if(inputs !== undefined && inputFloats.every(val => val !== NaN)){
@@ -34,6 +34,8 @@ const PricingCalculator = ({basePrice, pricingOpen, inputs, formula}) => {
                         input = "0"
                     }else if(["*", "/"].includes(prevChar)){
                         input = "1"
+                    }else{
+                        input = "1"
                     }
                 }else{
                     input = inputValues[char]
@@ -56,6 +58,7 @@ const PricingCalculator = ({basePrice, pricingOpen, inputs, formula}) => {
     const inputTypeKey = {
         radio: RadioButton,
         select: Selector,
+        range: RangeSlider
     }
 
     const toggleRecurring = () =>{
