@@ -7,16 +7,38 @@ import RadioButton from '../formComponents/RadioButton';
 const PricingCalculator = ({basePrice, pricingOpen, inputs, formula}) => {
     const [recurringOn, setRecurringOn] = useState(false);
     const [inputValues, setInputValues] = useState({});
+    console.log(inputValues)
     const inputFloats = Object.values(inputValues).map(val => parseFloat(val))
-    console.log(inputs)
     let calculatedPrice = basePrice
-    if(inputs !== undefined && inputFloats.length === Object.keys(inputs).length && inputFloats.every(val => val !== NaN)){
+    if(inputs !== undefined && inputFloats.every(val => val !== NaN)){
         let chars = formula.split('')
         let marker = false
-        let parsedFormula = chars.map((char) => {
+
+        // Formula comes in as "x+(#3*#4)" format and gets parsed in the following lines of code. 
+        // Note: Formula may or may not contain spaces! Hence the ternary logic on line 27.
+
+        // An "x" in the formula represents the basePrice.
+        // A "#" in the formula means it is refrerencing one of the user-inputed values, "#3" is referencing the input with an id of 3.
+
+        // Values from user inputs are stored in inputValues useState variable as key-value pairs.
+        // Note: Logic has been added to allow the price to be rendered before all the inputs have been recieved 
+        // by converting pending inputs to either a 0 or 1.
+
+        let parsedFormula = chars.map((char, index) => {
             if(marker){
                 marker = false
-                return parseFloat(inputValues[char])
+                let input;
+                if(!inputValues[char]){
+                    let prevChar = ["+","-","/","*"].includes(chars[index - 3]) ? chars[index - 3] : chars[index - 2]
+                    if(["+", "-"].includes(prevChar)){
+                        input = "0"
+                    }else if(["*", "/"].includes(prevChar)){
+                        input = "1"
+                    }
+                }else{
+                    input = inputValues[char]
+                }
+                return parseFloat(input)
             }else if(char === '#'){
                 marker = true
                 return ''
@@ -53,8 +75,7 @@ const PricingCalculator = ({basePrice, pricingOpen, inputs, formula}) => {
                 }))
             }
             return <InputComponent 
-                name={input?.name} 
-                title={input?.name} 
+                name={input?.name}
                 options={input?.options} 
                 key={input?.id} 
                 onChange={(value) => handleInputChange(input.id, value)}
@@ -66,7 +87,7 @@ const PricingCalculator = ({basePrice, pricingOpen, inputs, formula}) => {
         <div className={`pricing-calculator ${pricingOpen ? '' :  'minimize'}`}>
             <div className="calculator-left">
                 <h3>Instant Pricing</h3>
-                <div className="subtotal">${Math.round(calculatedPrice)}</div>
+                <div className="subtotal">${calculatedPrice?.toFixed(2)}</div>
                 <div className="calculator-main">
                     <form>
                         {inputs && Object.values(inputs).map(input => {

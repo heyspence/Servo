@@ -72,9 +72,7 @@
 .calculator-main{
     width: 100%;
     min-height: 100%;
-    /* background-color: var(--primary-red); */
     border-radius: 8px;
-    min-width: 300px;
     display: flex;
     justify-content: space-around;
     position: relative;

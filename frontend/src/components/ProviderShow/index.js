@@ -14,6 +14,7 @@ import Modal from '../Modal'
 import ReviewForm from '../Reviews/ReviewForm'
 
 const ProviderShow = () => {
+    // const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
     const { id }= useParams();
     const userLoggedIn = useSelector(isLoggedIn);
     const history = useHistory();
@@ -24,10 +25,10 @@ const ProviderShow = () => {
     const defaultService = vendor?.services ? Object.values(vendor.services)[0] : {};
     const formula = defaultService?.formula ? defaultService.formula : "x";
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
-    // const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
     const [pricingOpen, setPricingOpen] = useState(false);
     const [schedulingOpen, setSchedulingOpen] = useState(false);
     const [summaryOpen, setSummaryOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false)
 
     const categoryMap = {
         window_cleaning: "Window Cleaning",
@@ -44,19 +45,25 @@ const ProviderShow = () => {
     if(!userLoggedIn) history.push('/')
 
     useEffect(() => {
-        dispatch(fetchVendor(id));
-        dispatch(fetchImages(id));
-        dispatch(fetchReviews(id));
-        dispatch(fetchServices(id));
-    },[dispatch, id])
+        setIsLoading(true);
+        dispatch(fetchVendor(id))
+            .then(() => dispatch(fetchImages(id)))
+            .then(() => dispatch(fetchReviews(id)))
+            .then(() => dispatch(fetchServices(id)))
+            .then(() => setIsLoading(false))
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+                setIsLoading(false);
+            });
+    }, [dispatch, id]);
 
     let reviewCount = 0
     let total = 0
-
     reviews.forEach(review => {
         reviewCount++
         total += review.score
     })
+    let reviewAverage = (total / reviewCount).toFixed(1)
 
     const handleScheduleClick = () => {
         setSchedulingOpen(true);
@@ -97,7 +104,7 @@ const ProviderShow = () => {
                         </div>
                         <div className="meta-info-container">
                             <h2 className="provider-name">{vendor?.name}</h2>
-                            <p className="review-tag">{(total/reviewCount).toFixed(1)}<StarSvg className="review-star-svg"/>{ reviewCount} ratings</p>
+                            <p className="review-tag">{eval(reviewAverage) ? reviewAverage : "-.-"}<StarSvg className="review-star-svg"/>{ reviewCount} ratings</p>
                         </div>
                     </div>
                     <div className="location-details-container">
