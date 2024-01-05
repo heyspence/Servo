@@ -11,6 +11,6 @@
 #  updated_at  :datetime         not null
 #
 class Option < ApplicationRecord
-    validates :option_type, inclusion: {in: ["min", "max", "step", "select", "radio"]}
+    validates :option_type, inclusion: {in: ["min", "max", "step", "select", "radio", "checkbox", "default"]}
     belongs_to :input
 end

@@ -1,69 +1,61 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CalculatorResults from './CalculatorResults';
 import './PricingCalculator.css'
 import Selector from '../formComponents/Selector';
 import RadioButton from '../formComponents/RadioButton';
 import RangeSlider from '../formComponents/RangeSlider';
+import Checkbox from '../formComponents/Checkbox';
 
 const PricingCalculator = ({basePrice, pricingOpen, inputs, formula}) => {
     const [recurringOn, setRecurringOn] = useState(false);
     const [inputValues, setInputValues] = useState({});
-    const inputFloats = Object.values(inputValues).map(val => parseFloat(val))
-    let calculatedPrice = basePrice
-    if(inputs !== undefined && inputFloats.every(val => val !== NaN)){
-        let chars = formula.split('')
-        let marker = false
+    const [checkboxValues, setCheckboxValues] = useState({});
+    const inputFloats = Object.values(inputValues).map(val => parseFloat(val));
+    const [calculatedPrice, setCalculatedPrice] = useState(basePrice)
 
-        // Formula comes in as "x+(#3*#4)" format and gets parsed in the following lines of code. 
-        // Note: Formula may or may not contain spaces! Hence the ternary logic on line 27.
-
-        // An "x" in the formula represents the basePrice.
-        // A "#" in the formula means it is refrerencing one of the user-inputed values, "#3" is referencing the input with an id of 3.
-
-        // Values from user inputs are stored in inputValues useState variable as key-value pairs.
-        // Note: Logic has been added to allow the price to be rendered before all the inputs have been recieved 
-        // by converting pending inputs to either a 0 or 1.
-
-        let parsedFormula = chars.map((char, index) => {
-            if(marker){
-                marker = false
-                let input;
-                if(!inputValues[char]){
-                    let prevChar = ["+","-","/","*"].includes(chars[index - 3]) ? chars[index - 3] : chars[index - 2]
-                    if(["+", "-"].includes(prevChar)){
-                        input = "0"
-                    }else if(["*", "/"].includes(prevChar)){
-                        input = "1"
-                    }else{
-                        input = "1"
-                    }
+    useEffect(()=>{
+        if(inputs && inputFloats.every(val => val !== NaN)){
+            let chars = formula.split('')
+            let marker = false
+            let parsedFormula = chars.map((char, index) => {
+                if(marker){
+                    marker = false
+                    return parseFloat(inputValues[char] || 1)
+                }else if(char === '#'){
+                    marker = true
+                    return ''
+                }else if(char === 'x'){
+                    return basePrice
                 }else{
-                    input = inputValues[char]
+                    return char
                 }
-                return parseFloat(input)
-            }else if(char === '#'){
-                marker = true
-                return ''
-            }else if(char === 'x'){
-                return basePrice
-            }else{
-                return char
-            }
-        })
-        calculatedPrice = eval(parsedFormula.join(""))
-    }else{
-        calculatedPrice = basePrice;
-    }
+            })
+            setCalculatedPrice(eval(parsedFormula.join("")))
+        }
+    },[inputs, inputValues])
 
     const inputTypeKey = {
         radio: RadioButton,
         select: Selector,
-        range: RangeSlider
+        range: RangeSlider,
+        checkbox: Checkbox
     }
 
     const toggleRecurring = () =>{
         setRecurringOn(!recurringOn)
     }
+
+    useEffect(()=> {
+        if(inputs){
+            const newCheckboxValues = {}
+            Object.values(inputs).forEach(input => {
+                if(input.inputType === 'checkbox'){
+                        newCheckboxValues[input.id] = Object.values(input.options)[0].value
+                }
+            })
+            setCheckboxValues(newCheckboxValues)
+        }
+    },[inputs])
 
     const renderInput = (input) => {
         const InputComponent = inputTypeKey[input.inputType]
@@ -94,7 +86,9 @@ const PricingCalculator = ({basePrice, pricingOpen, inputs, formula}) => {
                 <div className="calculator-main">
                     <form>
                         {inputs && Object.values(inputs).map(input => {
-                            return renderInput(input)
+                            if(!input?.recurring){
+                                return renderInput(input)
+                            }
                         })}
                     </form>
                 </div>
@@ -108,8 +102,13 @@ const PricingCalculator = ({basePrice, pricingOpen, inputs, formula}) => {
                     </div>
                 </div>
                 <div className="recurring-options">
-                    <RadioButton options={[{name: "Once a Year", value: 1},{name: "Twice a Year", value: 2}, {name:"4 Times a Year", value: 3}]}/>
-                    <Selector name="test" title="Clean Type" options={{1:{name:"Outside Only"},2:{name:"Inside and Out"}, 3:{name:"Alternating Outside Only / Inside and Out (Most Popular)"}}}/>
+                    <form>
+                        {inputs && Object.values(inputs).map(input => {
+                            if(input?.recurring){
+                                return renderInput(input)
+                            }
+                        })}
+                    </form>
                 </div>
                 <CalculatorResults price={calculatedPrice?.toFixed(2)} duration={(calculatedPrice/35).toFixed(1)}/>
                 <button className="accept-button">Continue - ${calculatedPrice?.toFixed(2)}</button>
