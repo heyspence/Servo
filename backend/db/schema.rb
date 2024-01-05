@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_04_052633) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_05_210954) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,8 +18,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_04_052633) do
     t.float "latitude"
     t.float "longitude"
     t.string "address"
-    t.bigint "vendor_id"
-    t.index ["vendor_id"], name: "index_addresses_on_vendor_id"
+    t.string "addressable_type", null: false
+    t.bigint "addressable_id", null: false
+    t.boolean "default", default: false
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -27,6 +29,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_04_052633) do
     t.bigint "service_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "options", default: "{}"
+    t.float "price", null: false
+    t.bigint "address_id", null: false
+    t.index ["address_id"], name: "index_cart_items_on_address_id"
     t.index ["service_id"], name: "index_cart_items_on_service_id"
     t.index ["user_id"], name: "index_cart_items_on_user_id"
   end
@@ -134,6 +140,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_04_052633) do
     t.string "phone_number", null: false
   end
 
+  add_foreign_key "cart_items", "addresses"
   add_foreign_key "cart_items", "services"
   add_foreign_key "cart_items", "users"
   add_foreign_key "images", "vendors"

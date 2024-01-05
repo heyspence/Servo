@@ -1,9 +1,7 @@
 class Api::CartItemsController < ApplicationController
 
     def create
-        @cart_item = CartItem.new(
-            service_id: params[:service_id], 
-            user_id: params[:user_id])
+        @cart_item = CartItem.new(cart_item_params)
         if @cart_item.save
             render :show
         else
@@ -40,5 +38,9 @@ class Api::CartItemsController < ApplicationController
         else
             render json: { errors: ["Unable to find item"]}
         end
+    end
+
+    def cart_item_params
+        params.require(:cart_item).permit(:user_id, :address_id, :price, :options, :service_id)
     end
 end

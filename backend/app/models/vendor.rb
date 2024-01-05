@@ -16,6 +16,6 @@ class Vendor < ApplicationRecord
     has_many :services
     has_many_attached :photo
     has_many :reviews
-    has_one :address
+    has_one :address, as: :addressable
     has_many :images
 end

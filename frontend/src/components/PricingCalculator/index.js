@@ -5,34 +5,38 @@ import Selector from '../formComponents/Selector';
 import RadioButton from '../formComponents/RadioButton';
 import RangeSlider from '../formComponents/RangeSlider';
 import Checkbox from '../formComponents/Checkbox';
+import { addToCart } from '../store/cart';
+import { useDispatch, useSelector } from 'react-redux';
 
-const PricingCalculator = ({basePrice, pricingOpen, inputs, formula}) => {
+const PricingCalculator = ({pricingOpen, service}) => {
+    const dispatch = useDispatch();
+    const basePrice = service?.price
+    const formula = service?.formula ? service.formula : "x";
+    const inputs = service?.inputs
     const [recurringOn, setRecurringOn] = useState(false);
     const [inputValues, setInputValues] = useState({});
     const [checkboxValues, setCheckboxValues] = useState({});
+    const [calculatedPrice, setCalculatedPrice] = useState(basePrice);
     const inputFloats = Object.values(inputValues).map(val => parseFloat(val));
-    const [calculatedPrice, setCalculatedPrice] = useState(basePrice)
+    const currentUserId = useSelector(state => state.session.user?.id)
 
     useEffect(()=>{
         if(inputs && inputFloats.every(val => val !== NaN)){
-            let chars = formula.split('')
-            let marker = false
-            let parsedFormula = chars.map((char, index) => {
-                if(marker){
-                    marker = false
-                    return parseFloat(inputValues[char] || 1)
-                }else if(char === '#'){
-                    marker = true
-                    return ''
-                }else if(char === 'x'){
-                    return basePrice
-                }else{
-                    return char
-                }
-            })
-            setCalculatedPrice(eval(parsedFormula.join("")))
+            let parsedFormula = formula.replace(/#(\d+)/g, (match, number) => {
+                return inputValues[number] || '1';
+            });
+        
+            // Replace 'x' with basePrice
+            parsedFormula = parsedFormula.replace(/x/g, basePrice.toString());
+        
+            try {
+                let finalPrice = eval(parsedFormula);
+                setCalculatedPrice(finalPrice < basePrice ? basePrice : finalPrice);
+            } catch (e) {
+                console.error("Error evaluating formula:", e);
+            }   
         }
-    },[inputs, inputValues])
+    },[inputValues, formula, service])
 
     const inputTypeKey = {
         radio: RadioButton,
@@ -41,10 +45,7 @@ const PricingCalculator = ({basePrice, pricingOpen, inputs, formula}) => {
         checkbox: Checkbox
     }
 
-    const toggleRecurring = () =>{
-        setRecurringOn(!recurringOn)
-    }
-
+    // this will be used to calculate the price difference for additional items like window cleaning
     useEffect(()=> {
         if(inputs){
             const newCheckboxValues = {}
@@ -56,6 +57,10 @@ const PricingCalculator = ({basePrice, pricingOpen, inputs, formula}) => {
             setCheckboxValues(newCheckboxValues)
         }
     },[inputs])
+
+    const toggleRecurring = () =>{
+        setRecurringOn(!recurringOn)
+    }
 
     const renderInput = (input) => {
         const InputComponent = inputTypeKey[input.inputType]
@@ -76,6 +81,20 @@ const PricingCalculator = ({basePrice, pricingOpen, inputs, formula}) => {
                 onChange={(value) => handleInputChange(input.id, value)}
             />
         }
+    }
+
+    const handleContinueClick = () => {
+        let cartItemData = {
+            userId: currentUserId,
+            addressId: 1,
+            serviceId: service.id,
+            options: {},
+            price: calculatedPrice
+        }
+        let cartItem = {
+            cartItem: cartItemData
+        }
+        dispatch(addToCart(cartItem))
     }
 
     return (
@@ -102,7 +121,7 @@ const PricingCalculator = ({basePrice, pricingOpen, inputs, formula}) => {
                     </div>
                 </div>
                 <div className="recurring-options">
-                    <form>
+                    <form className={`${recurringOn ? '' : 'minimize'}`}>
                         {inputs && Object.values(inputs).map(input => {
                             if(input?.recurring){
                                 return renderInput(input)
@@ -110,8 +129,8 @@ const PricingCalculator = ({basePrice, pricingOpen, inputs, formula}) => {
                         })}
                     </form>
                 </div>
-                <CalculatorResults price={calculatedPrice?.toFixed(2)} duration={(calculatedPrice/35).toFixed(1)}/>
-                <button className="accept-button">Continue - ${calculatedPrice?.toFixed(2)}</button>
+                {/* <CalculatorResults price={calculatedPrice?.toFixed(2)} duration={(calculatedPrice/35).toFixed(1)}/> */}
+                <button className="accept-button" onClick={handleContinueClick}>Continue - ${calculatedPrice?.toFixed(2)}</button>
             </div>
         </div>
     )

@@ -9,6 +9,13 @@ const storeCurrentUser = user => {
     else sessionStorage.removeItem('currentUser');
 }
 
+export const getActiveAddress = (state) =>{
+    const addresses = state.session?.user ? state.session.user?.addresses : null
+    if(addresses){
+        return Object.values(addresses).find(address => address.default === true)
+    }
+}
+
 const removeCurrentUser = () => {
     sessionStorage.setItem('currentUser', null)
 }

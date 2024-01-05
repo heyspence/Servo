@@ -17,10 +17,3 @@ select{
     display: flex;
     flex-direction: column;
 }
-
-
-
-label{
-    font-size: 14px;
-    color: var(--primary-red);
-}

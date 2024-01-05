@@ -20,12 +20,15 @@ const MenuItemIndexItem = ({id, name, imageUrl, price}) => {
 
     const handleAddToCart = () => {
         if(cartVendorId === undefined || cartVendorId === Vendor?.id){
-            let cart_item = {
+            let cartItemData = {
                 user_id: currentUserId,
                 menu_item_id: id
             }
+            let cartItem = {
+                cartItem: cartItemData
+            }
             toggleIsShowOpen()
-            dispatch(addToCart(cart_item)).then(()=>{
+            dispatch(addToCart(cartItem)).then(()=>{
                 dispatch(toggleCart())
             })
         }else{

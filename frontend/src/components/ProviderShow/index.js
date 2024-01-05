@@ -23,7 +23,6 @@ const ProviderShow = () => {
     const reviews = useSelector(state => state?.reviews ? Object.values(state.reviews) : []);
     const images = useSelector(state => state?.images ? Object.values(state.images) : []);
     const defaultService = vendor?.services ? Object.values(vendor.services)[0] : {};
-    const formula = defaultService?.formula ? defaultService.formula : "x";
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [pricingOpen, setPricingOpen] = useState(false);
     const [schedulingOpen, setSchedulingOpen] = useState(false);
@@ -130,10 +129,10 @@ const ProviderShow = () => {
                 </div>
 
                 <div className="provider-show-right">
-                    <div onClick={handleGalleryOpen} className={`gallery-placeholder ${pricingOpen || schedulingOpen ? '' : 'minimize'}`}>
-                        <button className="view-gallery-button">View Gallery</button>
+                    <div className={`gallery-placeholder ${pricingOpen || schedulingOpen ? '' : 'minimize'}`}>
+                        <button className="view-gallery-button" onClick={handleGalleryOpen}>View Gallery</button>
                     </div>
-                    <PricingCalculator formula={formula} basePrice={defaultService?.price} inputs={defaultService?.inputs} pricingOpen={pricingOpen}/>
+                    <PricingCalculator basePrice={defaultService?.price} inputs={defaultService?.inputs} service={defaultService} pricingOpen={pricingOpen}/>
                     <AppointmentScheduling schedulingOpen={schedulingOpen}/>
                     <div className={`gallery-container ${pricingOpen || schedulingOpen ? 'minimize' : ''}`}>
                         <h3 className="gallery-header">Gallery</h3>

@@ -126,6 +126,7 @@ h3{
 label {
     color: var(--primary-red);
     font-family: 'Roboto', sans-serif;
+    font-size: 14px;
 }
 
 input[type=text], input[type=password]{
@@ -134,6 +135,11 @@ input[type=text], input[type=password]{
     background-color: var(--secondary-white);
     height: 25px;
 }
+
+input *, label{
+    user-select: none;
+}
+
 
 a{
     text-decoration: underline;

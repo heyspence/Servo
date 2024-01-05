@@ -1,5 +1,5 @@
 .pricing-calculator{
-    min-height: 410px;
+    /* min-height: 410px; */
     background-color: white;
     border-radius: 8px;
     display: flex;
@@ -77,6 +77,7 @@
     justify-content: space-around;
     position: relative;
     box-sizing: border-box;
+    margin-top: 15px;
 }
 
 form{
@@ -84,7 +85,7 @@ form{
 }
 
 .accept-button{
-    margin: 15px 0 0 0;
+    margin: 25px 0 0 0;
     border-radius: 6px;
     background-color: var(--primary-red);
     width: auto;

@@ -189,6 +189,7 @@
     box-sizing: border-box;
     align-items: center;
     padding: 30px 10px;
+    position: relative;
 } 
 
 .provider-gallery{

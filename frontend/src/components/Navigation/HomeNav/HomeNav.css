@@ -23,6 +23,12 @@
     width: auto;
 }
 
+.user-address{
+    font-size: 15px;
+    padding: 0 20px;
+    color: var(--primary-gray);
+}
+
 .delivery-btn:hover{
     background-color: var(--primary-yellow);
     cursor: auto;

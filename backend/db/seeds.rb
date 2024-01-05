@@ -35,23 +35,27 @@ puts "Creating services"
 service = Service.create([
     {name: 'Window Cleaning', price: '50', vendor_id: 1, formula:"((((1705600*#3)/(43658860+#3)+25.5)*#1)*#2)*#4"},
     {name: 'Carpet Cleaning', price: '115', vendor_id: 2},
-    {name: 'Garbage Can Cleaning', price: '35', vendor_id: 3},
+    {name: 'Garbage Can Cleaning', price: '35', vendor_id: 3, formula:"(#9*35)+(#10*25)"},
     {name: 'Pest Control', price: '40', vendor_id: 4},
-    {name: 'House Cleaning', price: '35', vendor_id: 5, formula: "#3"},
+    {name: 'House Cleaning', price: '35', vendor_id: 5, formula: "#7*35"},
     {name: 'Auto Detailing', price: '75', vendor_id: 6}
 ])
 
 puts "Creating Inputs"
 
 input = Input.create([
-    {name:"Floors", input_type:"select", service_id: 1},
-    {name:"What windows would you like cleaned?", input_type:"radio", service_id: 1},
-    {name:"Total Square Footage", input_type:"range", service_id: 1},
+    {name:"Floors", input_type:"select", service_id: 1, required: true},
+    {name:"What windows would you like cleaned?", input_type:"radio", service_id: 1, required: true},
+    {name:"Total Square Footage", input_type:"range", service_id: 1, required: true},
     {name:"Additional Options", input_type:"checkbox", service_id: 1},
     {name:"Frequency", input_type:"radio", service_id: 1, recurring: true},
     {name:"Additional Options", input_type:"select", service_id: 1, recurring: true},
-    # {name:"Floors", input_type:"select", service_id: 4},
-    # {name:"Number of Cleaning Hours", input_type:"select", service_id: 5},
+    {name:"Number of Cleaning Hours", input_type:"range", service_id: 5, required: true},
+    {name:"Frequency", input_type:"radio", service_id: 5, recurring: true},
+    {name:"Number of Garbage Cans", input_type:"range", service_id: 3, required: true},
+    {name:"Number of Recycling Bins", input_type:"range", service_id: 3, required: true},
+    {name:"Frequency", input_type:"radio", service_id: 3, recurring: true},
+    {name:"Additional Options", input_type:"select", service_id: 3},
 ])
 
 puts "Creating Options"
@@ -60,8 +64,8 @@ option = Option.create([
     {option_type:"select", name:"1", value:1.0, input_id:1},
     {option_type:"select", name:"2", value:1.2, input_id:1},
     {option_type:"select", name:"3", value:1.5, input_id:1},
-    {option_type:"radio", name:"Inside/Out", value:1.5, input_id:2},
-    {option_type:"radio", name:"Outside Only", value:1, input_id:2},
+    {option_type:"radio", name:"Inside/Out", value:1, input_id:2},
+    {option_type:"radio", name:"Outside Only", value:0.7, input_id:2},
     {option_type:"min", value:1500, input_id:3},
     {option_type:"max", value:8000, input_id:3},
     {option_type:"step", value:250, input_id:3},
@@ -73,17 +77,29 @@ option = Option.create([
     {option_type:"select", name:"Inside/Out", value:1, input_id:6},
     {option_type:"select", name:"Outside Only", value:2, input_id:6},
     {option_type:"select", name:"Alternating Inside and Out / Outside Only", value:3, input_id:6},
-    # {option_type:"select", name:"1", value:0, input_id:2},
-    # {option_type:"select", name:"2", value:15, input_id:2},
-    # {option_type:"select", name:"3", value:30, input_id:2},
-    # {option_type:"select", name:"1", value:35, input_id:3},
-    # {option_type:"select", name:"2", value:70, input_id:3},
-    # {option_type:"select", name:"3", value:105, input_id:3},
-    # {option_type:"select", name:"4", value:140, input_id:3},
-    # {option_type:"select", name:"5", value:175, input_id:3},
-    # {option_type:"select", name:"6", value:210, input_id:3},
-    # {option_type:"select", name:"7", value:245, input_id:3},
-    # {option_type:"select", name:"8", value:280, input_id:3},
+    {option_type:"min", value:1, input_id:7},
+    {option_type:"max", value:8, input_id:7},
+    {option_type:"step", value:1, input_id:7},
+    {option_type:"default", value:2, input_id:7},
+    {option_type:"radio", name:"Bi-Monthly", value:6, input_id:8},
+    {option_type:"radio", name:"Monthly", value:12, input_id:8},
+    {option_type:"radio", name:"Bi-Weekly", value:26, input_id:8},
+    {option_type:"radio", name:"Weekly", value:52, input_id:8},
+    {option_type:"min", value:"0", input_id:9},
+    {option_type:"max", value:"4", input_id:9},
+    {option_type:"step", value:"1", input_id:9},
+    {option_type:"default", value:"1", input_id:9},
+    {option_type:"min", value:"0", input_id:10},
+    {option_type:"max", value:"4", input_id:10},
+    {option_type:"step", value:"1", input_id:10},
+    {option_type:"default", value:"1", input_id:10},
+    {option_type:"radio", name:"Once a Year", value:1, input_id:11},
+    {option_type:"radio", name:"Twice a Year", value:2, input_id:11},
+    {option_type:"radio", name:"Quarterly", value:4, input_id:11},
+    {option_type:"radio", name:"Monthly", value:12, input_id:11},
+    {option_type:"select", name:"Clean All Cans Every Service", value:1, input_id:12},
+    {option_type:"select", name:"Alternate Cleaning: Garbage, Then Recycling", value:2, input_id:12},
+    {option_type:"select", name:"Hybrid Schedule: Garbage + Recycling, Then Garbage Only", value:3, input_id:12}
 ])
 
 puts "Creating reviews"
@@ -124,18 +140,24 @@ review = Review.create([
 puts "Creating Addresses"
 
 address = Address.create([
-    {address: "435 N 300 W St George, UT 84790", latitude: 38.898808067979665, longitude: -77.0403556322412, vendor_id: 1},
-    {address: "436 N 300 W St George, UT 84770", latitude: 38.90334726359773, longitude: -77.00480020327345, vendor_id: 2},
-    {address: "437 N 300 W St George, UT 84790", latitude: 38.90275499987932, longitude: -77.02368310867804, vendor_id: 3},
-    {address: "438 N 300 W St George, UT 84770", latitude: 38.943563620493634, longitude:  -77.02539987810022, vendor_id: 4},
-    {address: "4359 N 300 W St George, UT 84790", latitude: 38.913859796747104, longitude: -77.03123652015837, vendor_id: 5},
-    {address: "43 N 300 W St George, UT 84770", latitude: 38.90258127078925, longitude: -77.03020670782361, vendor_id: 6},
-    {address: "425 N 300 W St George, UT 84790", latitude: 38.907807481012746, longitude: -77.01694860450546, vendor_id: 7},
-    {address: "564 N 300 W St George, UT 84770", latitude: 38.90713986135493, longitude: -76.9792201390115, vendor_id: 8},
-    {address: "4351 N 300 W St George, UT 84790", latitude: 38.90628046175839, longitude: -77.03380860725424, vendor_id: 9},
-    {address: "4352 N 300 W St George, UT 84770", latitude: 38.88992360655783, longitude:  -77.02591234052085, vendor_id: 10},
-    {address: "4353 N 300 W St George, UT 84790", latitude: 39.26682768252805, longitude: -76.65116402435393, vendor_id: 11},
-    {address: "4354 N 300 W St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, vendor_id: 12}
+    {address: "435 N 300 W St George, UT 84790", latitude: 38.898808067979665, longitude: -77.0403556322412, addressable_type: "Vendor", addressable_id: 1},
+    {address: "436 N 300 W St George, UT 84770", latitude: 38.90334726359773, longitude: -77.00480020327345, addressable_type: "Vendor", addressable_id: 2},
+    {address: "437 N 300 W St George, UT 84790", latitude: 38.90275499987932, longitude: -77.02368310867804, addressable_type: "Vendor", addressable_id: 3},
+    {address: "438 N 300 W St George, UT 84770", latitude: 38.943563620493634, longitude:  -77.02539987810022, addressable_type: "Vendor", addressable_id: 4},
+    {address: "4359 N 300 W St George, UT 84790", latitude: 38.913859796747104, longitude: -77.03123652015837, addressable_type: "Vendor", addressable_id: 5},
+    {address: "43 N 300 W St George, UT 84770", latitude: 38.90258127078925, longitude: -77.03020670782361, addressable_type: "Vendor", addressable_id: 6},
+    {address: "425 N 300 W St George, UT 84790", latitude: 38.907807481012746, longitude: -77.01694860450546, addressable_type: "Vendor", addressable_id: 7},
+    {address: "564 N 300 W St George, UT 84770", latitude: 38.90713986135493, longitude: -76.9792201390115, addressable_type: "Vendor", addressable_id: 8},
+    {address: "4351 N 300 W St George, UT 84790", latitude: 38.90628046175839, longitude: -77.03380860725424, addressable_type: "Vendor", addressable_id: 9},
+    {address: "4352 N 300 W St George, UT 84770", latitude: 38.88992360655783, longitude:  -77.02591234052085, addressable_type: "Vendor", addressable_id: 10},
+    {address: "4353 N 300 W St George, UT 84790", latitude: 39.26682768252805, longitude: -76.65116402435393, addressable_type: "Vendor", addressable_id: 11},
+    {address: "4354 N 300 W St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "Vendor", addressable_id: 12},
+    {address: "4354 S 300 E St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 1, default: true},
+    {address: "4354 S 300 E St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 2, default: true},
+    {address: "4354 S 300 E St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 3, default: true},
+    {address: "4354 S 300 E St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 4, default: true},
+    {address: "4354 S 300 E St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 5, default: true},
+    {address: "4354 S 300 E St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 6, default: true}
 ])
 
 puts "creating images!"
