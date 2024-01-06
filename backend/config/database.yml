@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: servo_production
-  username: servo
+  username: spencerheywood
   password: <%= ENV["SERVO_DATABASE_PASSWORD"] %>
