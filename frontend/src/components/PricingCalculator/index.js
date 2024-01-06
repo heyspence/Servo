@@ -5,7 +5,7 @@ import Selector from '../formComponents/Selector';
 import RadioButton from '../formComponents/RadioButton';
 import RangeSlider from '../formComponents/RangeSlider';
 import Checkbox from '../formComponents/Checkbox';
-import { addToCart } from '../store/cart';
+import { addToCart, toggleCart } from '../store/cart';
 import { useDispatch, useSelector } from 'react-redux';
 
 const PricingCalculator = ({pricingOpen, service}) => {
@@ -88,13 +88,16 @@ const PricingCalculator = ({pricingOpen, service}) => {
             userId: currentUserId,
             addressId: 1,
             serviceId: service.id,
-            options: {},
-            price: calculatedPrice
+            options: JSON.stringify(inputValues),
+            price: calculatedPrice,
+            vendorId: service.vendorId
         }
         let cartItem = {
             cartItem: cartItemData
         }
-        dispatch(addToCart(cartItem))
+        dispatch(addToCart(cartItem)).then(()=>{
+            dispatch(toggleCart())
+        })
     }
 
     return (

@@ -129,12 +129,12 @@ const ProviderShow = () => {
                 </div>
 
                 <div className="provider-show-right">
-                    <div className={`gallery-placeholder ${pricingOpen || schedulingOpen ? '' : 'minimize'}`}>
-                        <button className="view-gallery-button" onClick={handleGalleryOpen}>View Gallery</button>
-                    </div>
-                    <PricingCalculator basePrice={defaultService?.price} inputs={defaultService?.inputs} service={defaultService} pricingOpen={pricingOpen}/>
-                    <AppointmentScheduling schedulingOpen={schedulingOpen}/>
-                    <div className={`gallery-container ${pricingOpen || schedulingOpen ? 'minimize' : ''}`}>
+                    {/* <div className={`gallery-placeholder ${pricingOpen || schedulingOpen ? '' : 'minimize'}`}> */}
+                    {/* <div className="gallery-placeholder"> */}
+                        {/* <button className="view-gallery-button" onClick={handleGalleryOpen}>View Gallery</button>
+                    </div> */}
+                    {/* <div className={`gallery-container ${pricingOpen || schedulingOpen ? 'minimize' : ''}`}> */}
+                        <div className="gallery-container">
                         <h3 className="gallery-header">Gallery</h3>
                         <div className="provider-gallery">
                             {images && images.map((image, index) => {
@@ -142,6 +142,8 @@ const ProviderShow = () => {
                             })}
                         </div>
                     </div>
+                    <PricingCalculator basePrice={defaultService?.price} inputs={defaultService?.inputs} service={defaultService} pricingOpen={pricingOpen}/>
+                    <AppointmentScheduling schedulingOpen={schedulingOpen}/>
                     <div className={`provider-pricing ${pricingOpen ? 'minimize' : ''}`}>
                         <img className="provider-price-icon" 
                         src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-04.png" 

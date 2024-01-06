@@ -32,9 +32,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_05_210954) do
     t.json "options", default: "{}"
     t.float "price", null: false
     t.bigint "address_id", null: false
+    t.bigint "vendor_id", null: false
     t.index ["address_id"], name: "index_cart_items_on_address_id"
     t.index ["service_id"], name: "index_cart_items_on_service_id"
     t.index ["user_id"], name: "index_cart_items_on_user_id"
+    t.index ["vendor_id"], name: "index_cart_items_on_vendor_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -143,6 +145,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_05_210954) do
   add_foreign_key "cart_items", "addresses"
   add_foreign_key "cart_items", "services"
   add_foreign_key "cart_items", "users"
+  add_foreign_key "cart_items", "vendors"
   add_foreign_key "images", "vendors"
   add_foreign_key "inputs", "services"
   add_foreign_key "options", "inputs"

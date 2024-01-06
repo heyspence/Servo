@@ -34,7 +34,7 @@ puts "Creating services"
 
 service = Service.create([
     {name: 'Window Cleaning', price: '50', vendor_id: 1, formula:"((((1705600*#3)/(43658860+#3)+25.5)*#1)*#2)*#4"},
-    {name: 'Carpet Cleaning', price: '115', vendor_id: 2},
+    {name: 'Carpet Cleaning', price: '115', vendor_id: 2, formula:"(#13+#14+#15)*(40+#16+#17)+(#18+#19+#20)"},
     {name: 'Garbage Can Cleaning', price: '35', vendor_id: 3, formula:"(#9*35)+(#10*25)"},
     {name: 'Pest Control', price: '40', vendor_id: 4},
     {name: 'House Cleaning', price: '35', vendor_id: 5, formula: "#7*35"},
@@ -55,7 +55,16 @@ input = Input.create([
     {name:"Number of Garbage Cans", input_type:"range", service_id: 3, required: true},
     {name:"Number of Recycling Bins", input_type:"range", service_id: 3, required: true},
     {name:"Frequency", input_type:"radio", service_id: 3, recurring: true},
-    {name:"Additional Options", input_type:"select", service_id: 3},
+    {name:"Additional Options", input_type:"select", service_id: 3, recurring: true},
+    {name:"Bedroom(s)", input_type:"range", service_id: 2},
+    {name:"Living Room(s)", input_type:"range", service_id: 2},
+    {name:"Dining Room(s)", input_type:"range", service_id: 2},
+    {name:"Carpet Type", input_type:"select", service_id: 2},
+    {name:"Carpet Condition", input_type:"select", service_id: 2},
+    {name:"Additional Options", input_type:"checkbox", service_id: 2},
+    {name:"", input_type:"checkbox", service_id: 2},
+    {name:"", input_type:"checkbox", service_id: 2},
+    {name:"Frequency", input_type:"radio", service_id: 2, recurring: true},
 ])
 
 puts "Creating Options"
@@ -99,7 +108,30 @@ option = Option.create([
     {option_type:"radio", name:"Monthly", value:12, input_id:11},
     {option_type:"select", name:"Clean All Cans Every Service", value:1, input_id:12},
     {option_type:"select", name:"Alternate Cleaning: Garbage, Then Recycling", value:2, input_id:12},
-    {option_type:"select", name:"Hybrid Schedule: Garbage + Recycling, Then Garbage Only", value:3, input_id:12}
+    {option_type:"select", name:"Hybrid Schedule: Garbage + Recycling, Then Garbage Only", value:3, input_id:12},
+    {option_type:"min", value:"0", input_id:13},
+    {option_type:"max", value:"8", input_id:13},
+    {option_type:"step", value:"1", input_id:13},
+    {option_type:"default", value:"3", input_id:13},
+    {option_type:"min", value:"0", input_id:14},
+    {option_type:"max", value:"4", input_id:14},
+    {option_type:"step", value:"1", input_id:14},
+    {option_type:"default", value:"1", input_id:14},
+    {option_type:"min", value:"0", input_id:15},
+    {option_type:"max", value:"4", input_id:15},
+    {option_type:"step", value:"1", input_id:15},
+    {option_type:"default", value:"1", input_id:15},
+    {option_type:"select", name:"Standard", value:0, input_id:16},
+    {option_type:"select", name:"Delicate", value:10, input_id:16},
+    {option_type:"select", name:"Specialty", value:20, input_id:16},
+    {option_type:"select", name:"Light", value:0, input_id:17},
+    {option_type:"select", name:"Moderate", value:15, input_id:17},
+    {option_type:"select", name:"Heavy", value:30, input_id:17},
+    {option_type:"checkbox", name:"Stain Removal", value:20, input_id:18},
+    {option_type:"checkbox", name:"Pet Odor Removal", value:20, input_id:19},
+    {option_type:"checkbox", name:"Eco Friendly Cleaning", value:20, input_id:20},
+    {option_type:"radio", name:"Once a Year", value:1, input_id:21},
+    {option_type:"radio", name:"Twice a Year", value:2, input_id:21},
 ])
 
 puts "Creating reviews"

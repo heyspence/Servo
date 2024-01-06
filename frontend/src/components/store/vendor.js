@@ -46,12 +46,12 @@ export const fetchServices = vendorId => async dispatch => {
     }
 }
 
-export const findVendorByMenuItem = (state, menuItemId) =>{
-    if(!menuItemId) return ''
+export const findVendorByService = (state, serviceId) =>{
+    return ''
     const vendors = Object.values(state.vendors);
-
-    for(const vendor of vendors){
-        if(vendor.menuItems.some(menuItem => menuItem === menuItemId)){
+    console.log(vendors)
+    for(let vendor of vendors){
+        if(vendor.some(service => service.id === serviceId)){
             return vendor
         }
     }

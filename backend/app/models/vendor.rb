@@ -18,4 +18,5 @@ class Vendor < ApplicationRecord
     has_many :reviews
     has_one :address, as: :addressable
     has_many :images
+    has_many :cart_items
 end

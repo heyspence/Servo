@@ -76,9 +76,9 @@ table {
     color: var(--primary-white);
     background-color: var(--primary-red);
     text-decoration: none;
-    border-radius: 20px;
+    border-radius: 8px;
     font-size: 15px;
-    padding: 0px 7px;
+    padding: 0px 8px;
     white-space: nowrap;
     margin: 5px;
     font-weight: bold;

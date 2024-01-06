@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { isLoggedIn } from '../store/session';
 import { useEffect } from 'react';
 import { deleteCartItems, getCart } from '../store/cart';
-import { findVendorByMenuItem } from '../store/vendor';
+import { findVendorByService } from '../store/vendor';
 import CartItem from '../Cart/CartItem';
 import { ReactComponent as MasterCardIcon } from '../../assets/svg/MasterCard.svg';
 import { createOrder } from '../store/orders';
@@ -12,7 +12,7 @@ import { createOrder } from '../store/orders';
 const Checkout = () => {
     const cartItems = useSelector(state => state.cart?.cartItems ? Object.values(state.cart.cartItems) : [])
     const currentUserId = useSelector(state => state.session.user?.id)
-    const cartVendor = useSelector(state => findVendorByMenuItem(state, cartItems[0]?.menuItemId))
+    const cartVendor = useSelector(state => findVendorByService(state, cartItems[0]?.menuItemId))
     const isCartOpen = useSelector(state => state.cart?.isCartOpen)
     const user = useSelector(state => state?.session ? state.session.user : null)
     const userLoggedIn = useSelector(isLoggedIn);

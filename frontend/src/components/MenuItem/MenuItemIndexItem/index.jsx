@@ -4,7 +4,7 @@ import Modal from '../../Modal';
 import MenuItemShow from '../MenuItemShow';
 import './MenuItemIndexItem.css'
 import { addToCart, toggleCart } from '../../store/cart';
-import { findVendorByMenuItem } from '../../store/vendor';
+import { findVendorByService } from '../../store/vendor';
 import { receiveErrors } from '../../store/errors';
 
 const MenuItemIndexItem = ({id, name, imageUrl, price}) => {
@@ -12,7 +12,7 @@ const MenuItemIndexItem = ({id, name, imageUrl, price}) => {
     const dispatch = useDispatch();
     const currentUserId = useSelector(state => state.session.user?.id)
     const cartVendorId = useSelector(state => state.cart.vendor.id)
-    const Vendor = useSelector(state => findVendorByMenuItem(state, id))
+    const Vendor = useSelector(state => findVendorByService(state, id))
 
     const toggleIsShowOpen = () =>{
         setIsShowOpen(!isShowOpen)
