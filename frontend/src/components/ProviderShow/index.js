@@ -33,7 +33,7 @@ const ProviderShow = () => {
         window_cleaning: "Window Cleaning",
         house_cleaning: "House Cleaning",
         pest_control: "Pest Control",
-        carpet_cleaning: "CarpetCleaning",
+        carpet_cleaning: "Carpet Cleaning",
         garbage_can_cleaning: "Garbage Can Cleaning",
         car_detailing: "Auto Detailing"
     }
