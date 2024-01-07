@@ -4,14 +4,8 @@ import ReviewShow from '../ReviewShow';
 import { ReactComponent as GrayReviewStar } from '../../../assets/svg/grayReviewStar.svg'
 import Modal from '../../Modal'
 
-const ReviewIndexItem = ({review}) => {
-
+const ReviewIndexItem = ({review, onClick}) => {
     const [author, setAuthor] = useState();
-    const [reviewModalisOpen, setReviewModalisOpen] = useState();
-
-    const toggleReviewModal = () => {
-        setReviewModalisOpen(!reviewModalisOpen)
-    }
 
     useEffect(()=>{
         if(review?.userId){
@@ -43,7 +37,7 @@ const ReviewIndexItem = ({review}) => {
 
     return (
         <>
-            <li className="review-index-item" onClick={toggleReviewModal}>
+            <li className="review-index-item" onClick={onClick}>
                 <div className="review-title-container">
                     <div className="name-circle" style={{ backgroundColor: randomColor }}>{ author ? author[0] : ''}</div>
                     <h3>{author}</h3>
@@ -53,9 +47,9 @@ const ReviewIndexItem = ({review}) => {
                 </div>
                 <p className="review-index-item-body">{review?.body}</p>
             </li>
-            <Modal isOpen={reviewModalisOpen} onClose={toggleReviewModal}>
+            {/* <Modal isOpen={reviewModalisOpen} onClose={toggleReviewModal}>
                 <ReviewShow review={review} author={author} onClose={toggleReviewModal}/>
-            </Modal>
+            </Modal> */}
         </>
     )
 }

@@ -13,7 +13,6 @@
 }
 
 .provider-show-right{
-    position: relative;
     height: 100%;
     width: calc(60% - 15px);
     display: flex;
@@ -235,11 +234,10 @@
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
-    position: relative;
+    /* position: relative; */
     font-weight: bold;
     border-radius: 8px;
     background-color: white;
-
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
 }
 
@@ -352,6 +350,6 @@
     .provider-show-left, .provider-show-right{
         width: 100%;
         display: relative;
-        top: unset
+        top: unset;
     }
 }

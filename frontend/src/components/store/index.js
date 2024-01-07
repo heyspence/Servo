@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
 
 let enhancer;
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV !== 'development') {
   enhancer = applyMiddleware(thunk);
 } else {
   const logger = require('redux-logger').default;

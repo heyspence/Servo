@@ -12,9 +12,10 @@ import AppointmentScheduling from '../AppointmentScheduling'
 import { fetchImages } from '../store/images'
 import Modal from '../Modal'
 import ReviewForm from '../Reviews/ReviewForm'
+import ReviewShow from '../Reviews/ReviewShow'
 
 const ProviderShow = () => {
-    // const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
+    const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
     const { id }= useParams();
     const userLoggedIn = useSelector(isLoggedIn);
     const history = useHistory();
@@ -24,6 +25,7 @@ const ProviderShow = () => {
     const images = useSelector(state => state?.images ? Object.values(state.images) : []);
     const defaultService = vendor?.services ? Object.values(vendor.services)[0] : {};
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
+    const [reviewShowOpen, setReviewShowOpen] = useState(false);
     const [pricingOpen, setPricingOpen] = useState(false);
     const [schedulingOpen, setSchedulingOpen] = useState(false);
     const [summaryOpen, setSummaryOpen] = useState(false);
@@ -90,6 +92,10 @@ const ProviderShow = () => {
 
     const toggleReviewModal = () => {
         setReviewModalOpen(!reviewModalOpen)
+    }
+
+    const toggleReviewShow = () => {
+        setReviewShowOpen(!reviewShowOpen)
     }
 
     return (
@@ -177,6 +183,9 @@ const ProviderShow = () => {
             <Modal isOpen={reviewModalOpen} onClose={toggleReviewModal}>
                 <ReviewForm vendorName={vendor?.name} vendorId={id} onClose={toggleReviewModal} />
             </Modal>
+            {/* <Modal isOpen={reviewShowOpen} onClose={toggleReviewShow}>
+                <ReviewShow review={review} author={author} onClose={toggleReviewShow}/>
+            </Modal> */}
         </>
     )
 }
