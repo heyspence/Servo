@@ -1,4 +1,3 @@
-// import splashPageImage from '../../assets/images/servo_landing_banner.png'
 import './SplashPage.css'
 import { useSelector } from 'react-redux';
 import { isLoggedIn } from '../store/session';
@@ -36,10 +35,10 @@ const SplashPage = props => {
                     <p>Discover the ease of booking top-rated home services right in your neighborhood. From thorough cleaning to regular upkeep, connect with the finest local professionals. Simplify your life with our intuitive platform — where quality meets convenience.</p>
                     <button onClick={handleCreateAccount}>Create Account</button>
                 </div>
-                <img className="splash-page-second-img" src="https://spencerheywood.com/images/servo/highlights/Lily%20Maid%20Cleaning%20Shoot-6.jpg" alt="woman eating a tortilla on a picknick" />
+                <img className="splash-page-second-img" src="https://spencerheywood.com/images/servo/highlights/professional-home-cleaning-service.jpg" alt="Professional home cleaning service in action with smiling cleaner vacuuming living room, offering easy online booking and scheduling." />
             </div>
             <div className="splash-page-third main-section">
-                <img className="splash-page-third-img" src="https://spencerheywood.com/images/servo/highlights/E22A3073.jpg" alt="woman eating a tortilla on a picknick" />
+                <img className="splash-page-third-img" src="https://spencerheywood.com/images/servo/highlights/professional-window-cleaning-technician-action.jpg" alt="Skilled window cleaning technician with professional tools and equipment wiping residential window, available for online booking and scheduling." />
                 <div className="main-section-text third-section-text">
                     <h2>Book Recurring Services</h2>
                     <h3>Set It and Forget It</h3>
