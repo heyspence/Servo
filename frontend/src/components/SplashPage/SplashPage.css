@@ -67,19 +67,20 @@
 }
 
 .splash-page-second-img, .splash-page-third-img{
-    width: 30%;
+    width: 25%;
     height: auto;
     max-height: 450px;
     object-fit: cover;
     object-position:top;
     border-radius: 8px;
+    min-width: 350px;
 }
 
 .splash-page-third{
     /* background-color: var(--secondary-white); */
     /* overflow: hidden; */
     height: 450px;
-    transform: translate(3%, 0);
+    transform: translate(3%, -10%);
 }
 
 .main-section-text{
@@ -126,11 +127,12 @@
     }
 
     .splash-page-third-img{
-        object-position: top;
-        width: 100%;
+        object-position: center;
+        width: 105%;
         object-fit: cover;
         height: 170px;
-        transform: translate(0, -20%);
+        transform: translate(-2%, -0%);
+        border-radius: 0;
     }
 
     .splash-page-second-img{
@@ -138,7 +140,8 @@
         object-fit: cover;
         object-position: center 75%;
         height: 150px;
-        transform: translate(0, -11%);
+        transform: translate(0%, -11%);
+        border-radius: 0;
     }
 
     .main-section-text, .third-section-text{

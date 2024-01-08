@@ -37,7 +37,7 @@ const LoginNav = ({ display }) => {
         <div className='main-nav-bar'>
             {/* <img src="https://spencerheywood.com/images/servo/logos/logo_blue_yellow_copy2.png" alt="main logo for dashdoor" className='main-nav-icon' /> */}
             <div></div>
-            <img className="main-nav-logo" src="https://spencerheywood.com/images/servo/logos/logo_-06.png" />
+            <img className="main-nav-logo" src="https://spencerheywood.com/images/servo/logos/logo_-06.png" alt="Dark blue 'SERVO' text logo with a checkmark, representing a St. George, Utah-based company offering online booking for home services like cleaning and pest control."/>
             {/* <h1 className="main-nav-logo"><span className="header-subtext">Home Services</span><br />St George, UT</h1> */}
             <div className='main-nav-links'>
                 <button className='main-sign-up-button button'onClick={handleSignUpOpen}>Create Account</button>

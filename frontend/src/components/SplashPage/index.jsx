@@ -15,10 +15,6 @@ const SplashPage = props => {
     }
 
     const backgroundStyle = {
-        // backgroundImage: `url(${splashPageImage})`,
-        // backgroundSize: 'cover',
-        // backgroundPosition: 'center',
-        // backgroundRepeat: 'no-repeat'
         backgroundColor: 'var(--secondary-white)'
     };
 
@@ -35,15 +31,15 @@ const SplashPage = props => {
                     <p>Discover the ease of booking top-rated home services right in your neighborhood. From thorough cleaning to regular upkeep, connect with the finest local professionals. Simplify your life with our intuitive platform — where quality meets convenience.</p>
                     <button onClick={handleCreateAccount}>Create Account</button>
                 </div>
-                <img className="splash-page-second-img" src="https://spencerheywood.com/images/servo/highlights/professional-home-cleaning-service.jpg" alt="Professional home cleaning service in action with smiling cleaner vacuuming living room, offering easy online booking and scheduling." />
+                <img className="splash-page-second-img" src="https://spencerheywood.com/images/servo/Pictures/web_optimized/professional-home-cleaning-service.avif" alt="Professional home cleaning service in action with smiling cleaner vacuuming living room, offering easy online booking and scheduling." />
             </div>
             <div className="splash-page-third main-section">
-                <img className="splash-page-third-img" src="https://spencerheywood.com/images/servo/highlights/professional-window-cleaning-technician-action.jpg" alt="Skilled window cleaning technician with professional tools and equipment wiping residential window, available for online booking and scheduling." />
+                <img className="splash-page-third-img" src="https://spencerheywood.com/images/servo/Pictures/web_optimized/professional-window-cleaning-technician-action.avif" alt="Skilled window cleaning technician with professional tools and equipment wiping residential window, available for online booking and scheduling." />
                 <div className="main-section-text third-section-text">
                     <h2>Book Recurring Services</h2>
                     <h3>Set It and Forget It</h3>
                     <p>Discover Servo's hassle-free recurring services. Enjoy automated bookings, local expertise, and consistent care.</p>
-                    <button onClick={handleCreateAccount}>Create Account</button>
+                    <button onClick={handleCreateAccount}>Join Servo</button>
                 </div>
             </div>
         </main>

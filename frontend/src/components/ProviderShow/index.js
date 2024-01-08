@@ -29,7 +29,6 @@ const ProviderShow = () => {
     const [pricingOpen, setPricingOpen] = useState(false);
     const [schedulingOpen, setSchedulingOpen] = useState(false);
     const [summaryOpen, setSummaryOpen] = useState(false);
-    const [isLoading, setIsLoading] = useState(false)
 
     const categoryMap = {
         window_cleaning: "Window Cleaning",
@@ -46,16 +45,15 @@ const ProviderShow = () => {
     if(!userLoggedIn) history.push('/')
 
     useEffect(() => {
-        setIsLoading(true);
         dispatch(fetchVendor(id))
-            .then(() => dispatch(fetchImages(id)))
-            .then(() => dispatch(fetchReviews(id)))
-            .then(() => dispatch(fetchServices(id)))
-            .then(() => setIsLoading(false))
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-                setIsLoading(false);
-            });
+        .then(() => {
+            dispatch(fetchImages(id));
+            dispatch(fetchReviews(id));
+            dispatch(fetchServices(id));
+        })
+        .catch((error) => {
+            console.log(error)
+        });
     }, [dispatch, id]);
 
     let reviewCount = 0
