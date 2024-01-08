@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cac80b0a.css",
+    "main.js": "/static/js/main.da70e35e.js",
+    "static/media/CartIcon.svg": "/static/media/CartIcon.1adc22c4973356ffaf170680d9c90400.svg",
+    "static/media/MasterCard.svg": "/static/media/MasterCard.b5a80e1db4cc785f23881cc3d07fa109.svg",
+    "index.html": "/index.html",
+    "static/media/reviewStar.svg": "/static/media/reviewStar.16f5e0dab767139d3750a13cf5ed42f8.svg",
+    "static/media/grayReviewStar.svg": "/static/media/grayReviewStar.40735386c037df81d752c40ca654ad77.svg",
+    "static/media/Close.svg": "/static/media/Close.e61e43a874989017d870fcce4fae54c0.svg",
+    "static/media/Arrow.svg": "/static/media/Arrow.e2d0875e0d61faf2a00f7d9e008430ac.svg",
+    "static/media/HamburgerMenu.svg": "/static/media/HamburgerMenu.da83b788cba9629d8edfc620b1152e2a.svg",
+    "static/media/add_circle_FILL0_wght400_GRAD0_opsz24.svg": "/static/media/add_circle_FILL0_wght400_GRAD0_opsz24.1c59174103fba0f44c904eab57a71b17.svg",
+    "static/media/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.svg": "/static/media/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.493f25045dad47cf7eeb07411a46f1b2.svg",
+    "static/media/chevron_right_FILL0_wght400_GRAD0_opsz24.svg": "/static/media/chevron_right_FILL0_wght400_GRAD0_opsz24.61e1b47165e9447c58adb27abb28dfd5.svg",
+    "main.cac80b0a.css.map": "/static/css/main.cac80b0a.css.map",
+    "main.da70e35e.js.map": "/static/js/main.da70e35e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cac80b0a.css",
+    "static/js/main.da70e35e.js"
+  ]
+}
