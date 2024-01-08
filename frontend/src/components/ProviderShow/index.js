@@ -46,16 +46,19 @@ const ProviderShow = () => {
     if(!userLoggedIn) history.push('/')
 
     useEffect(() => {
-        setIsLoading(true);
         dispatch(fetchVendor(id))
-            .then(() => dispatch(fetchImages(id)))
-            .then(() => dispatch(fetchReviews(id)))
-            .then(() => dispatch(fetchServices(id)))
-            .then(() => setIsLoading(false))
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-                setIsLoading(false);
-            });
+        .then(() => {
+            return Promise.all([
+                dispatch(fetchImages(id)),
+                dispatch(fetchReviews(id)),
+                dispatch(fetchServices(id))
+            ]);
+        })
+        .then(() => setIsLoading(false))
+        .catch((error) => {
+            console.error("Error fetching data:", error);
+            setIsLoading(false);
+        });
     }, [dispatch, id]);
 
     let reviewCount = 0

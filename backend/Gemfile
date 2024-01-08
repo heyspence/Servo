@@ -30,7 +30,6 @@ end
 gem "jbuilder"
 gem "bcrypt"
 gem 'rack-cors', :require => 'rack/cors'
-gem "aws-sdk-s3"
 gem 'dotenv-rails', groups: [:development, :test, :production]
 
 group :development do

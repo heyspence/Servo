@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavigationBar from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
