@@ -4,19 +4,14 @@
     height: 100%;
 }
 
-@media screen and (max-width: 649px) {
-    .vendor-index-container{
-        width: 100%;
-        margin: 20px auto;
-        padding: 0 10px;
-        overflow-x: auto;
-    }
+.vendor-index-container>h3{
+    font-size: 25px;
+    margin-bottom: 15px;
 }
 
 .vendor-index ul{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    overflow-x: auto
 }
 
 .vendor-index h1{
@@ -33,4 +28,13 @@
     border-radius: 50%;
     display: inline-block;
     margin: 0 0 4px 10px;
+}
+
+@media screen and (max-width: 649px) {
+    .vendor-index-container{
+        width: 100%;
+        margin: 20px auto;
+        padding: 0 10px;
+        overflow-x: auto;
+    }
 }

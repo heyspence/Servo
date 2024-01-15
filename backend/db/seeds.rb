@@ -16,7 +16,7 @@ vendor = Vendor.create([
     { name: "Eco Refresh Garbage Can Cleaning", phone_number: "4356453890", email:"refreshgarbagecleaning@gmail.com", category:"garbage_can_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-30.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/refresh-ecowash-logo.png"},
     { name: 'Dead Aim Pest Control', phone_number: "4356453890", email:"deadaimpest@gmail.com", category:"pest_control", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-1.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Screen%20Shot%202021-06-21%20at%2010.19.09%20PM.png"},
     { name: 'Lily Maid House Cleaning', phone_number: "4356453890", email:"lilymaidhousecleaning@gmail.com", category:"house_cleaning", image_url: "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning/Lily%20Maid%20Cleaning%20Shoot-50.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png"},
-    { name: 'Onsite Detail', phone_number: "4356453890", email:"help@onsite.com", category:"car_detailing", image_url: "https://spencerheywood.com/images/servo/highlights/52-09282019_OnsiteDetail052.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/logo-dark%20copy%204.png"},
+    # { name: 'Onsite Detail', phone_number: "4356453890", email:"help@onsite.com", category:"car_detailing", image_url: "https://spencerheywood.com/images/servo/highlights/52-09282019_OnsiteDetail052.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/logo-dark%20copy%204.png"},
 ])
 
 puts "Creating demo user"
@@ -33,10 +33,10 @@ user = User.create([
 puts "Creating services"
 
 service = Service.create([
-    {name: 'Window Cleaning', price: '50', vendor_id: 1, formula:"((((1705600*#3)/(43658860+#3)+25.5)*#1)*#2)*#4"},
+    {name: 'Window Cleaning', price: '58', vendor_id: 1, formula:"((((1705600*#3)/(43658860+#3)+25.5)*#1)*#2)*#4"},
     {name: 'Carpet Cleaning', price: '115', vendor_id: 2, formula:"(#13+#14+#15)*(40+#16+#17)+(#18+#19+#20)"},
     {name: 'Garbage Can Cleaning', price: '35', vendor_id: 3, formula:"(#9*35)+(#10*25)"},
-    {name: 'Pest Control', price: '40', vendor_id: 4},
+    {name: 'Pest Control', price: '65', vendor_id: 4, formula:"(#22<1700?65:(#22<=3500?75:95))*#23"},
     {name: 'House Cleaning', price: '35', vendor_id: 5, formula: "#7*35"},
     {name: 'Auto Detailing', price: '75', vendor_id: 6}
 ])
@@ -47,7 +47,7 @@ input = Input.create([
     {name:"Floors", input_type:"select", service_id: 1, required: true},
     {name:"What windows would you like cleaned?", input_type:"radio", service_id: 1, required: true},
     {name:"Total Square Footage", input_type:"range", service_id: 1, required: true},
-    {name:"Additional Options", input_type:"checkbox", service_id: 1},
+    {name:"Additional Options", input_type:"checkbox", service_id: 1, required: true},
     {name:"Frequency", input_type:"radio", service_id: 1, recurring: true},
     {name:"Additional Options", input_type:"select", service_id: 1, recurring: true},
     {name:"Number of Cleaning Hours", input_type:"range", service_id: 5, required: true},
@@ -65,6 +65,9 @@ input = Input.create([
     {name:"", input_type:"checkbox", service_id: 2},
     {name:"", input_type:"checkbox", service_id: 2},
     {name:"Frequency", input_type:"radio", service_id: 2, recurring: true},
+    {name:"Total Square Footage", input_type:"range", service_id: 4, required: true},
+    {name:"Additional Options", input_type:"radio", service_id: 4, required: true},
+    {name:"Frequency", input_type:"radio", service_id: 4, recurring: true}
 ])
 
 puts "Creating Options"
@@ -132,6 +135,16 @@ option = Option.create([
     {option_type:"checkbox", name:"Eco Friendly Cleaning", value:20, input_id:20},
     {option_type:"radio", name:"Once a Year", value:1, input_id:21},
     {option_type:"radio", name:"Twice a Year", value:2, input_id:21},
+    {option_type:"min", value:1500, input_id:22},
+    {option_type:"max", value:8000, input_id:22},
+    {option_type:"step", value:250, input_id:22},
+    {option_type:"default", value:2500, input_id:22},
+    {option_type:"radio", name:"Inside/Out", value:1, input_id:23},
+    {option_type:"radio", name:"Outside Only", value:0.7, input_id:23},
+    {option_type:"radio", name:"Once a Year", value:1, input_id:24},
+    {option_type:"radio", name:"Twice a Year", value:2, input_id:24},
+    {option_type:"radio", name:"Quarterly", value:4, input_id:24},
+    {option_type:"radio", name:"Every 2 Months", value:6, input_id:24},
 ])
 
 puts "Creating reviews"

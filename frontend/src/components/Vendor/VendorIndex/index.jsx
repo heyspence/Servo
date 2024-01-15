@@ -4,9 +4,28 @@ import { fetchVendors } from '../../store/vendor';
 import { useEffect } from 'react';
 import VendorIndexItem from '../VendorIndexItem';
 
-const VendorIndex = () => {
-    const vendors = useSelector(state => state?.vendors)
+const VendorIndex = ({category}) => {
+    const allVendors = useSelector(state => state?.vendors)
+    const vendors = allVendors ? Object.values(allVendors).filter(vendor => vendor.category === category) : []
     const dispatch = useDispatch();
+    const parsedCategory = category => {
+        switch(category){
+            case 'house_cleaning':
+                return "House Cleaning"
+            case 'pest_control':
+                return "Pest Control"
+            case 'auto_detailing':
+                return "Car Detailing"
+            case 'carpet_cleaning':
+                return "Carpet Cleaning"
+            case 'window_cleaning':
+                return "Window Cleaning"
+            case 'garbage_can_cleaning':
+                return 'Garbage Can Cleaning'
+            default:
+                return `Unrecognized category: ${category}`
+        }
+    }
 
     useEffect(() => {
         dispatch(fetchVendors());
@@ -15,16 +34,51 @@ const VendorIndex = () => {
     return(
         <>
             <div className="vendor-index-container">
+                <h3>{parsedCategory(category)}</h3>
                 <div className="vendor-index">
-                <h1>St George, UT<div className="status-green"> </div></h1>
                     <ul>
-                        {Object.values(vendors).map((vendor => {
+                        {vendors.map((vendor => {
                             return <VendorIndexItem 
                                 name={vendor.name} 
                                 imageUrl={vendor.imageUrl} 
                                 id={vendor.id} 
                                 key={vendor.id} />
                         }))}
+
+
+
+                        {/* PLACEHOLDERS */}
+                        {vendors.map((vendor => {
+                            return <VendorIndexItem 
+                                name={vendor.name} 
+                                imageUrl={vendor.imageUrl} 
+                                id={vendor.id} 
+                                key={vendor.id} />
+                        }))}
+                        {vendors.map((vendor => {
+                            return <VendorIndexItem 
+                                name={vendor.name} 
+                                imageUrl={vendor.imageUrl} 
+                                id={vendor.id} 
+                                key={vendor.id} />
+                        }))}
+                        {vendors.map((vendor => {
+                            return <VendorIndexItem 
+                                name={vendor.name} 
+                                imageUrl={vendor.imageUrl} 
+                                id={vendor.id} 
+                                key={vendor.id} />
+                        }))}
+                        {vendors.map((vendor => {
+                            return <VendorIndexItem 
+                                name={vendor.name} 
+                                imageUrl={vendor.imageUrl} 
+                                id={vendor.id} 
+                                key={vendor.id} />
+                        }))}
+
+
+                        
                     </ul>
                 </div>
             </div>

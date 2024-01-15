@@ -22,7 +22,11 @@ const Home = () => {
 
    return(
         <div className="home-main">
-            <VendorIndex />
+            <VendorIndex category={"house_cleaning"}/>
+            <VendorIndex category={"pest_control"}/>
+            <VendorIndex category={"carpet_cleaning"}/>
+            <VendorIndex category={"garbage_can_cleaning"}/>
+            <VendorIndex category={"window_cleaning"}/>
         </div>
    )
 }
