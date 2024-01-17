@@ -36,5 +36,6 @@
         margin: 20px auto;
         padding: 0 10px;
         overflow-x: auto;
+        box-sizing: border-box;
     }
 }
