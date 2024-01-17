@@ -4,7 +4,8 @@ footer{
     min-height: 150px;
     display: flex;
     justify-content: space-around;
-    padding: 20px
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .footer{

@@ -80,7 +80,7 @@
     /* background-color: var(--secondary-white); */
     /* overflow: hidden; */
     height: 450px;
-    transform: translate(3%, -10%);
+    transform: translate(0%, -10%);
 }
 
 .main-section-text{
@@ -90,6 +90,7 @@
     justify-content: space-around;
     flex-direction: column;
     margin-right: 80px;
+    /* margin: 80px; */
     transform: translate(-5%, 0);
 }
 

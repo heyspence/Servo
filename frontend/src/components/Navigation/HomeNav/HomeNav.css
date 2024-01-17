@@ -13,7 +13,7 @@
     z-index: 20;
 }
 
-.delivery-btn{
+.location-btn{
     background-color: var(--primary-yellow);
     font-size: 12px;
     max-height: 30px;
@@ -29,7 +29,7 @@
     color: var(--primary-gray);
 }
 
-.delivery-btn:hover{
+.location-btn:hover{
     background-color: var(--primary-yellow);
     cursor: auto;
 }
@@ -44,18 +44,6 @@
     width: 110px;
     margin: 0 10px;
 }
-
-@media screen and (max-width: 599px) {
-    .home-nav h1{
-      display: none;
-    }
-
-    .main-logo{
-        content: url("https://spencerheywood.com/images/servo/icons/icons-07.png");
-        width: 50px;
-        transform: translate(10%, -10%);
-    }
-  }
 
 .hamburger-menu{
     fill: var(--primary-gray);
@@ -103,4 +91,20 @@
 .home-nav-right svg{
     color: var(--primary-gray);
     flex-shrink: 0
+}
+
+@media screen and (max-width: 599px) {
+    .home-nav h1{
+      display: none;
+    }
+
+    .main-logo{
+        content: url("https://spencerheywood.com/images/servo/icons/icons-07.png");
+        width: 50px;
+        transform: translate(10%, -10%);
+    }
+
+    .location-btn{
+        display: none;
+    }
 }
