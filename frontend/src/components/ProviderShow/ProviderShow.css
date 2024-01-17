@@ -285,12 +285,12 @@
 .disclaimer{
     color: var(--secondary-gray);
     font-size: 12px;
-    width: 95%;
+    width: 100%;
     position: relative;
-    top: 15px;
+    top: 0px;
     left: 0px;
     /* margin-bottom: 20px; */
-    padding-bottom: 25px;
+    padding-bottom: 10px;
 }
 
 .minimize{

@@ -9,7 +9,7 @@ const Checkbox = ({name, options, onChange}) => {
         <div className="checkbox">
             <label>{name}</label><br/>
             {options && optionsArray.map(option => (
-                <div className="checkbox-small-container">
+                <div className="checkbox-small-container" key={option?.id}>
                     <input type="checkbox" 
                     value={option?.value} 
                     key={option?.id}

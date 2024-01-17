@@ -130,6 +130,14 @@ const ProviderShow = () => {
                             })}
                         </div>
                     </div>
+                    <div className="disclaimer">
+                    At Servo, your home service needs are our priority. 
+                    While we ensure a seamless connection with skilled professionals, 
+                    it's important to remember that Servo is a facilitator of these 
+                    important interactions. For clarity on our role and responsibilities, 
+                    we encourage you to review our Terms of Service. Your privacy matters to us; 
+                    our Privacy Policy is designed with your security and trust in mind.
+                    </div>
                 </div>
 
                 <div className="provider-show-right">
@@ -147,7 +155,6 @@ const ProviderShow = () => {
                         </div>
                     </div>
                     <PricingCalculator basePrice={defaultService?.price} inputs={defaultService?.inputs} service={defaultService} pricingOpen={pricingOpen}/>
-                    <AppointmentScheduling schedulingOpen={schedulingOpen}/>
                     <div className={`provider-pricing ${pricingOpen ? 'minimize' : ''}`}>
                         <img className="provider-price-icon" 
                         src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-04.png" 
@@ -155,6 +162,7 @@ const ProviderShow = () => {
                         <div className="pricing-preview">Starting at: <br/>${defaultService?.price ? defaultService.price : "--"}</div>
                         <button onClick={handleGetPriceClick} className="get-price-button">Get Price</button>
                     </div>
+                    <AppointmentScheduling schedulingOpen={schedulingOpen}/>
                     <div className={`provider-scheduling ${schedulingOpen ? 'minimize' : ''}`}>
                         <img className="provider-calendar-icon" 
                         src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-08.png" 
@@ -169,12 +177,6 @@ const ProviderShow = () => {
                         <div className="scheduling-preview">Summary</div>
                         <button className="summary-button gray-out">Checkout</button> or
                         <button className="add-to-cart-button gray-out">Add to Cart</button>
-                    </div>
-                    <div className="disclaimer">
-                        Please note that while we strive to connect you with top-quality service providers, 
-                        SERVO is a third-party platform. For detailed terms and conditions, 
-                        please refer to our Terms of Service. Your privacy is important to us; learn more about how 
-                        we handle your information in our Privacy Policy.
                     </div>
                 </div>
             </div>

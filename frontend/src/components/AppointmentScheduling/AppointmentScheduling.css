@@ -1,3 +1,9 @@
 .appointment-scheduling{
-    min-height: 450px;
+    min-height: 350px;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    /* flex-direction: column; */
+    height: auto;
+    padding: 15px;
 }

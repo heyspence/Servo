@@ -102,4 +102,19 @@ form{
     font-size: 22px;
     color: var(--primary-red);
     font-weight: bold;
+    background-color: var(--secondary-white);
+    padding: 8px 10px;
+    border-radius: 8px;
+    margin-top: -10px
+}
+
+@media screen and (max-width: 699px){
+    .pricing-calculator{
+        display: block;
+    }
+
+    .calculator-left, .calculator-right{
+        width: 95%;
+        border: none;
+    }
 }
