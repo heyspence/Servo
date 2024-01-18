@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import './AppointmentScheduling.css'
 import DatePicker from 'react-datepicker';
-import { addDays, format, subDays } from 'date-fns';
+import 'react-datepicker/dist/react-datepicker.css'
+import { addDays, format } from 'date-fns';
 
 const AppointmentScheduling = ({schedulingOpen}) => {
     const [startDate, setStartDate] = useState(addDays(new Date(), 2));

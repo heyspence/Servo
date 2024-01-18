@@ -28,12 +28,10 @@
     font-family: 'Roboto', sans-serif;
     max-width: 567px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
-    /* display: inline-block; */
     position: relative;
 }
 
 .react-datepicker__day{
-    /* background-color: var(--secondary-white); */
     border-radius: 4px;
 }
 
@@ -42,13 +40,8 @@
 }
 
 .appointment-scheduling .react-datepicker__header{
-    /* border-radius: none; */
-    /* margin: 5px; */
     background-color: var(--secondary-white);
     border: none;
-    /* width: calc(100% + 10px);
-    transform: translate(-10px, 0); */
-    /* margin-bottom: 10px; */
 }
 
 .appointment-scheduling .react-datepicker__current-month{
@@ -77,6 +70,5 @@
 
 .scheduling-continue-button{
     width: 100%;
-    padding: 0 20px;
     margin: 0;
 }
