@@ -16,7 +16,7 @@
 
 .review-stars-container{
     display: flex;
-    margin-left: 15px;
+    margin-left: 35px;
 }
 
 .review-stars-container *{
@@ -27,7 +27,7 @@
 .review-title-container{
     margin: 5px 0;
     display: flex;
-    width: 80%;
+    width: 100%;
     align-items: center;
     font-size: 12px;
 }
