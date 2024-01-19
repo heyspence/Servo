@@ -44,41 +44,6 @@ const VendorIndex = ({category}) => {
                                 id={vendor.id} 
                                 key={vendor.id} />
                         }))}
-
-
-
-                        {/* PLACEHOLDERS */}
-                        {vendors.map((vendor => {
-                            return <VendorIndexItem 
-                                name={vendor.name} 
-                                imageUrl={vendor.imageUrl} 
-                                id={vendor.id} 
-                                key={vendor.id} />
-                        }))}
-                        {vendors.map((vendor => {
-                            return <VendorIndexItem 
-                                name={vendor.name} 
-                                imageUrl={vendor.imageUrl} 
-                                id={vendor.id} 
-                                key={vendor.id} />
-                        }))}
-                        {vendors.map((vendor => {
-                            return <VendorIndexItem 
-                                name={vendor.name} 
-                                imageUrl={vendor.imageUrl} 
-                                id={vendor.id} 
-                                key={vendor.id} />
-                        }))}
-                        {vendors.map((vendor => {
-                            return <VendorIndexItem 
-                                name={vendor.name} 
-                                imageUrl={vendor.imageUrl} 
-                                id={vendor.id} 
-                                key={vendor.id} />
-                        }))}
-
-
-                        
                     </ul>
                 </div>
             </div>

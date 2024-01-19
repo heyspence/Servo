@@ -6,6 +6,10 @@
     font-size: 18px;
 }
 
+.checkout-info-container{
+    position: relative;
+}
+
 .checkout-account-details{
     width: 50%;
     min-height: 25px;
@@ -51,9 +55,9 @@
 .checkout-cart-details{
     position: absolute;
     right: 0;
-    top: 70px;
+    top: -50px;
     width: 35%;
-    height: 100%;
+    height: calc(100% + 70px);
     border-left: 1px solid var(--secondary-gray)
 }
 

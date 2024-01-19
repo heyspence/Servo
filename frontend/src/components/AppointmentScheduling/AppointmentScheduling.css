@@ -60,6 +60,10 @@
     background-color: var(--secondary-red);
 }
 
+.appointment-scheduling .react-datepicker__time-list-item--disabled{
+    display: none;
+}
+
 .react-datepicker__time-list-item--selected{
     background-color: var(--primary-red) !important;
 }
@@ -69,6 +73,7 @@
 }
 
 .scheduling-continue-button{
-    width: 100%;
-    margin: 0;
+    width: 50%;
+    min-width: 260px;
+    margin: 0 auto;
 }
