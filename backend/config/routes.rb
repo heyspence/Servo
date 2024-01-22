@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
     resources :users, only: [:create, :show]
     resources :cart_items, only: [:create, :destroy, :show]
+    resources :events, only: [:index, :create]
+    post 'auth/google/callback', to: 'authentication#google_callback'
 
     resources :user, only: [:index] do
       resources :cart_items, only: [:index] do

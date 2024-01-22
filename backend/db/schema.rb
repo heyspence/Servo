@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_05_210954) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_22_013831) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,6 +60,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_05_210954) do
     t.integer "order"
     t.string "alias"
     t.index ["service_id"], name: "index_inputs_on_service_id"
+  end
+
+  create_table "oauth_tokens", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.text "access_token"
+    t.text "refresh_token"
+    t.datetime "expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_oauth_tokens_on_user_id"
   end
 
   create_table "options", force: :cascade do |t|
@@ -148,6 +158,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_05_210954) do
   add_foreign_key "cart_items", "vendors"
   add_foreign_key "images", "vendors"
   add_foreign_key "inputs", "services"
+  add_foreign_key "oauth_tokens", "users"
   add_foreign_key "options", "inputs"
   add_foreign_key "order_details", "orders"
   add_foreign_key "order_details", "services"

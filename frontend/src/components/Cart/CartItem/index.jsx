@@ -12,8 +12,6 @@ const CartItem = ({ cartItem }) => {
     const vendor = useSelector(state => state.vendors[vendorId])
     const vendorImg = vendor?.iconImageUrl
 
-    console.log(vendor)
-
     // useEffect(()=>{
     //     if(menuItemId) dispatch(fetchMenuItem(menuItemId))
     // },[dispatch])

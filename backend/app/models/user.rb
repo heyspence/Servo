@@ -15,6 +15,7 @@
 #
 class User < ApplicationRecord
     before_validation :ensure_session_token
+    has_one :oauth_token, dependent: :destroy
     # before_save :self.email = email.downcase
 
     validates :first_name,

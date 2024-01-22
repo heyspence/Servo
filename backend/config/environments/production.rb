@@ -3,7 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.hosts << "bookservo.com"
-  config.hosts << "wwww.bookservo.com"
+  config.hosts << "www.bookservo.com"
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -54,6 +54,9 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.active_record.encryption.key_derivation_salt = ENV["RAILS_ENCRYPTION_SALT"]
+  config.active_record.encryption.primary_key = ENV["RAILS_PRIMARY_KEY"]
 
   # Use a different logger for distributed setups.
   # require "syslog/logger"

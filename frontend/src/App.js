@@ -12,25 +12,30 @@ import ProviderShow from "./components/ProviderShow"
 import Footer from "./components/Footer";
 import UserAccount from "./components/UserAccount";
 import RecurringOrders from "./components/RecurringOrders";
+import VendorAuthorization from "./components/googleCalendar/VendorAuthorization";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function App({ store }) {
   return (
     <>
       <Provider store={store}>
-        <BrowserRouter>
-          <NavigationBar />
-          <ErrorBanner />
-          <Switch>
-            <Route exact path="/home" component={Home}/>
-            <Route exact path="/vendors/:id" component={ProviderShow} />
-            <Route exact path="/checkout" component={Checkout} />
-            <Route exact path="/orders" component={Orders} />
-            <Route exact path="/account" component={UserAccount} />
-            <Route exact path="/recurring-orders" component={RecurringOrders} />
-            <Route path="/" component={SplashPage} />
-          </Switch>
-          <Footer />
-        </BrowserRouter>
+        <GoogleOAuthProvider clientId="206898763167-10uqs4cqvsmf3sosakbmr9pncd2l83gt.apps.googleusercontent.com">
+          <BrowserRouter>
+            <NavigationBar />
+            <ErrorBanner />
+            <Switch>
+              <Route exact path="/home" component={Home}/>
+              <Route exact path="/vendors/:id" component={ProviderShow} />
+              <Route exact path="/checkout" component={Checkout} />
+              <Route exact path="/orders" component={Orders} />
+              <Route exact path="/account" component={UserAccount} />
+              <Route exact path="/recurring-orders" component={RecurringOrders} />
+              <Route exact path="/vendor-auth" component={VendorAuthorization} />
+              <Route path="/" component={SplashPage} />
+            </Switch>
+            <Footer />
+          </BrowserRouter>
+        </GoogleOAuthProvider>
       </Provider>
     </>
   );

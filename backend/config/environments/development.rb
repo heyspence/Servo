@@ -47,7 +47,8 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
-  config.hosts << "dashdoor.spencerheywood.com"
+  config.active_record.encryption.key_derivation_salt = ENV["RAILS_ENCRYPTION_SALT"]
+  config.active_record.encryption.primary_key = ENV["RAILS_PRIMARY_KEY"]
   
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

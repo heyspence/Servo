@@ -10,6 +10,7 @@
 #  options    :json
 #  price      :float            not null
 #  address_id :bigint           not null
+#  vendor_id  :bigint           not null
 #
 class CartItem < ApplicationRecord
     belongs_to :user
