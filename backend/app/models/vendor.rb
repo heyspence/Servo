@@ -19,4 +19,5 @@ class Vendor < ApplicationRecord
     has_one :address, as: :addressable
     has_many :images
     has_many :cart_items
+    has_one :vendor_calendar, dependent: :destroy
 end

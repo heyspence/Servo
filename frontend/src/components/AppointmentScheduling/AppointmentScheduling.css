@@ -60,6 +60,11 @@
     background-color: var(--secondary-red);
 }
 
+.appointment-scheduling .react-datepicker__day--keyboard-selected{
+    background-color: transparent;
+    color: unset;
+}
+
 .appointment-scheduling .react-datepicker__time-list-item--disabled{
     display: none;
 }

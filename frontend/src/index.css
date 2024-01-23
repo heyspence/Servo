@@ -70,7 +70,7 @@ table {
 
 .button, button{
     position: relative;
-    min-width: 78px;
+    width: 78px;
     height: 34px;
     color: var(--primary-white);
     background-color: var(--primary-red);

@@ -162,7 +162,7 @@ const ProviderShow = () => {
                         <div className="pricing-preview">Starting at: <br/>${defaultService?.price ? defaultService.price : "--"}</div>
                         <button onClick={handleGetPriceClick} className="get-price-button">Get Price</button>
                     </div>
-                    <AppointmentScheduling schedulingOpen={schedulingOpen}/>
+                    <AppointmentScheduling schedulingOpen={schedulingOpen} calendarIntegration={vendor?.calendar ? id : false}/>
                     <div className={`provider-scheduling ${schedulingOpen ? 'minimize' : ''}`}>
                         <img className="provider-calendar-icon" 
                         src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-08.png" 

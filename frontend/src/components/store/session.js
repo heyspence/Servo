@@ -20,7 +20,7 @@ const removeCurrentUser = () => {
     sessionStorage.setItem('currentUser', null)
 }
 
-const selectCurrentUser = state => state?.session ? state.session.user : null;
+export const selectCurrentUser = state => state?.session ? state.session.user : null;
 export const isLoggedIn = (state) => !!selectCurrentUser(state);
 
 export const signUp = user => async dispatch =>{

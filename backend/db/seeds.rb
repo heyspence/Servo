@@ -27,7 +27,12 @@ user = User.create([
     { first_name: 'Demi', last_name: 'Levato', email: 'demi@dashdoor.com', password: 'password',phone_number: '1002003002'},
     { first_name: 'Bob', last_name: 'Saget', email: 'bob@dashdoor.com', password: 'password',phone_number: '1002003003'},
     { first_name: 'Mary', last_name: 'Jane', email: 'mary@dashdoor.com', password: 'password',phone_number: '1002003004'},
-    { first_name: 'Donald', last_name: 'Trump', email: 'donald@dashdoor.com', password: 'password',phone_number: '1002003005'}
+    { first_name: 'Donald', last_name: 'Trump', email: 'donald@dashdoor.com', password: 'password',phone_number: '1002003005'},
+    { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor1@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 1},
+    { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor2@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 2},
+    { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor3@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 3},
+    { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor4@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 4},
+    { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor5@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 5}
 ])
 
 puts "Creating services"

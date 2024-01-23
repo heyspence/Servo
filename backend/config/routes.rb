@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       resources :services, only: [:index]
       resources :reviews, only: [:index, :create]
       resources :images, only: [:index]
+      resources :vendor_calendars, only: [:index]
     end
 
     resources :services, only: [:show]

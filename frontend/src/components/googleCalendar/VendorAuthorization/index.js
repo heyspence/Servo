@@ -2,11 +2,12 @@ import { useSelector } from 'react-redux';
 import csrfFetch from '../../store/csrf';
 import './VendorAuthorization.css'
 import { useGoogleLogin } from '@react-oauth/google';
-import { isLoggedIn } from '../../store/session';
+import { isLoggedIn, selectCurrentUser } from '../../store/session';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const VendorAuthorization = () =>{  
     const userLoggedIn = useSelector(isLoggedIn);
+    const currentUser = useSelector(selectCurrentUser)
     const history = useHistory();
 
     if(!userLoggedIn){
@@ -22,7 +23,7 @@ const VendorAuthorization = () =>{
 
             // Example of sending the authorization code to your backend
             try {
-                const response = await csrfFetch('http://localhost:5002/api/auth/google/callback', {
+                const response = await csrfFetch('/api/auth/google/callback', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

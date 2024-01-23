@@ -12,10 +12,12 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  user_type       :string           default("user")
+#  vendor_id       :bigint
 #
 class User < ApplicationRecord
     before_validation :ensure_session_token
-    has_one :oauth_token, dependent: :destroy
+    has_one :vendor, dependent: :destroy
     # before_save :self.email = email.downcase
 
     validates :first_name,
