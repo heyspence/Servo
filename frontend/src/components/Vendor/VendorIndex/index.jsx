@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import VendorIndexItem from '../VendorIndexItem';
 
 const VendorIndex = ({category}) => {
-    const allVendors = useSelector(state => state?.vendors)
+    const allVendors = useSelector(state => state?.vendors);
     const vendors = allVendors ? Object.values(allVendors).filter(vendor => vendor.category === category) : []
     const dispatch = useDispatch();
     const parsedCategory = category => {

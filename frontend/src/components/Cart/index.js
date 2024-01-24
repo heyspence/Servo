@@ -16,7 +16,10 @@ const Cart = () => {
     const isCartOpen = useSelector(state => state.cart?.isCartOpen)
 
     const totalPrice = cartItems.reduce((total, item) => {
-        return total + item.price
+        if(item.status === 'pending'){
+            return total + item.price
+        }
+        return total
     }, 0).toFixed(2)
 
     useEffect(()=>{
@@ -61,7 +64,9 @@ const Cart = () => {
             </div> */}
             <ul className="cart-list">
                 {cartItems && cartItems.map((cartItem)=>{
-                        return <CartItem key={cartItem.id} cartItem={cartItem} />
+                        if(cartItem.status === 'pending'){
+                            return <CartItem key={cartItem.id} cartItem={cartItem} />
+                        }
                 })}
             </ul>
             <button className="checkout-button" onClick={handleCheckout}>

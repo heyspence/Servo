@@ -186,7 +186,7 @@
     margin: 15px 0 -8px 20px;
 }
 
-.gallery-placeholder{
+/* .gallery-placeholder{
     width: 100%;
     height: 50px;
     background-color: var(--secondary-white);
@@ -196,7 +196,7 @@
     align-items: center;
     padding: 30px 10px;
     position: relative;
-} 
+}  */
 
 .provider-gallery{
     display: flex;
@@ -206,12 +206,12 @@
     box-sizing: border-box;
 }
 
-.view-gallery-button{
+/* .view-gallery-button{
     background-color: white !important;
     color: var(--primary-red) !important;
     margin: 0 -10px 0 0;
     font-size: 20px
-}
+} */
 
 .provider-photo{
     height: 160px;

@@ -61,8 +61,11 @@
 }
 
 .appointment-scheduling .react-datepicker__day--keyboard-selected{
-    background-color: transparent;
-    color: unset;
+    background-color: unset;
+}
+
+.appointment-scheduling .react-datepicker__day--keyboard-selected:hover{
+    background-color: unset;
 }
 
 .appointment-scheduling .react-datepicker__time-list-item--disabled{

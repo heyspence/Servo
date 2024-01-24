@@ -1,11 +1,11 @@
 class Api::CartItemsController < ApplicationController
-
+    require 'byebug'
     def create
         @cart_item = CartItem.new(cart_item_params)
         if @cart_item.save
             render :show
         else
-            render json: { errors: ["Unable to add to cart"] }
+            render json: { errors: @cart_item.errors.full_messages }
         end
     end
 
@@ -41,6 +41,6 @@ class Api::CartItemsController < ApplicationController
     end
 
     def cart_item_params
-        params.require(:cart_item).permit(:user_id, :address_id, :price, :options, :service_id, :vendor_id)
+        params.require(:cart_item).permit(:user_id, :address_id, :price, :options, :service_id, :vendor_id, :status)
     end
 end

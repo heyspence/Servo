@@ -13,6 +13,7 @@
 #  vendor_id  :bigint           not null
 #
 class CartItem < ApplicationRecord
+    validates :status, inclusion: {in: ["priced", "scheduled", "pending"]}
     belongs_to :user
     belongs_to :service
     belongs_to :address

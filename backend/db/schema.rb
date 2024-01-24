@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_22_214045) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_23_222109) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_214045) do
     t.float "price", null: false
     t.bigint "address_id", null: false
     t.bigint "vendor_id", null: false
+    t.string "status", default: "priced", null: false
     t.index ["address_id"], name: "index_cart_items_on_address_id"
     t.index ["service_id"], name: "index_cart_items_on_service_id"
     t.index ["user_id"], name: "index_cart_items_on_user_id"

@@ -13,6 +13,7 @@ import { fetchImages } from '../store/images'
 import Modal from '../Modal'
 import ReviewForm from '../Reviews/ReviewForm'
 import ReviewShow from '../Reviews/ReviewShow'
+import { getCart } from '../store/cart'
 
 const ProviderShow = () => {
     const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
@@ -23,12 +24,13 @@ const ProviderShow = () => {
     const vendor = useSelector((state)=> state.vendors[id]);
     const reviews = useSelector(state => state?.reviews ? Object.values(state.reviews) : []);
     const images = useSelector(state => state?.images ? Object.values(state.images) : []);
+    const currentUserId = useSelector(state => state.session.user?.id);
     const defaultService = vendor?.services ? Object.values(vendor.services)[0] : {};
+    const vendorCartItem = useSelector(state => Object.values(state.cart.cartItems).find(cartItem => cartItem.vendorId === parseInt(id, 10)));
+    const cartItemStatus = vendorCartItem?.status
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [reviewShowOpen, setReviewShowOpen] = useState(false);
-    const [pricingOpen, setPricingOpen] = useState(false);
-    const [schedulingOpen, setSchedulingOpen] = useState(false);
-    const [summaryOpen, setSummaryOpen] = useState(false);
+    const [openComponent, setOpenComponent] = useState({pricing: false, scheduling: false, summary: false})
 
     const categoryMap = {
         window_cleaning: "Window Cleaning",
@@ -50,6 +52,7 @@ const ProviderShow = () => {
             dispatch(fetchImages(id));
             dispatch(fetchReviews(id));
             dispatch(fetchServices(id));
+            dispatch(getCart(currentUserId))
         })
         .catch((error) => {
             console.log(error)
@@ -64,28 +67,30 @@ const ProviderShow = () => {
     })
     let reviewAverage = (total / reviewCount).toFixed(1)
 
-    const handleScheduleClick = () => {
-        setSchedulingOpen(true);
-        setPricingOpen(false);
-        setSummaryOpen(false);
+    const handleScheduleClick = ({bypass}) => {
+        if(cartItemStatus === 'priced' && !openComponent.pricing || bypass){
+            setOpenComponent({
+                pricing: false,
+                scheduling: true,
+                summary: false
+            })
+        }
     }
 
     const handleGetPriceClick = () => {
-        setPricingOpen(true);
-        setSchedulingOpen(false);
-        setSummaryOpen(false);
-    }
-
-    const handleGalleryOpen = () => {
-        setPricingOpen(false);
-        setSchedulingOpen(false);
-        setSummaryOpen(false);
+        setOpenComponent({
+            pricing: true,
+            scheduling: false,
+            summary: false
+        })
     }
 
     const handleSummaryOpen = () =>{
-        setSummaryOpen(true);
-        setPricingOpen(false);
-        setSchedulingOpen(false);
+        setOpenComponent({
+            pricing: false,
+            scheduling: false,
+            summary: true
+        })
     }
 
     const toggleReviewModal = () => {
@@ -131,9 +136,8 @@ const ProviderShow = () => {
                         </div>
                     </div>
                     <div className="disclaimer">
-                    At Servo, your home service needs are our priority. 
-                    While we ensure a seamless connection with skilled professionals, 
-                    it's important to remember that Servo is a facilitator of these 
+                    At Servo, we ensure a seamless connection with skilled professionals. 
+                    It's important to remember that Servo is a facilitator of these 
                     important interactions. For clarity on our role and responsibilities, 
                     we encourage you to review our Terms of Service. Your privacy matters to us; 
                     our Privacy Policy is designed with your security and trust in mind.
@@ -141,36 +145,43 @@ const ProviderShow = () => {
                 </div>
 
                 <div className="provider-show-right">
-                    {/* <div className={`gallery-placeholder ${pricingOpen || schedulingOpen ? '' : 'minimize'}`}> */}
-                    {/* <div className="gallery-placeholder"> */}
-                        {/* <button className="view-gallery-button" onClick={handleGalleryOpen}>View Gallery</button>
-                    </div> */}
-                    {/* <div className={`gallery-container ${pricingOpen || schedulingOpen ? 'minimize' : ''}`}> */}
                         <div className="gallery-container">
                         <h3 className="gallery-header">Gallery</h3>
                         <div className="provider-gallery">
                             {images && images.map((image, index) => {
-                                return <img className="provider-photo" src={image.url} alt={image.alt} loading={index > 4 ? 'lazy' : undefined} key={image.id} />
+                                return <img className="provider-photo" 
+                                            src={image.url} alt={image.alt} 
+                                            loading={index > 4 ? 'lazy' : undefined} 
+                                            key={image.id} 
+                                        />
                             })}
                         </div>
                     </div>
-                    <PricingCalculator basePrice={defaultService?.price} inputs={defaultService?.inputs} service={defaultService} pricingOpen={pricingOpen}/>
-                    <div className={`provider-pricing ${pricingOpen ? 'minimize' : ''}`}>
+                    <PricingCalculator basePrice={defaultService?.price} 
+                                        inputs={defaultService?.inputs} 
+                                        service={defaultService} 
+                                        pricingOpen={openComponent.pricing}
+                                        onContinue={handleScheduleClick}
+                    />
+                    <div className={`provider-pricing ${openComponent.pricing ? 'minimize' : ''}`}>
                         <img className="provider-price-icon" 
                         src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-04.png" 
                         alt="get price icon servo instance price" />
                         <div className="pricing-preview">Starting at: <br/>${defaultService?.price ? defaultService.price : "--"}</div>
                         <button onClick={handleGetPriceClick} className="get-price-button">Get Price</button>
                     </div>
-                    <AppointmentScheduling schedulingOpen={schedulingOpen} calendarIntegration={vendor?.calendar ? id : false}/>
-                    <div className={`provider-scheduling ${schedulingOpen ? 'minimize' : ''}`}>
+                    <AppointmentScheduling schedulingOpen={openComponent.scheduling} 
+                                            calendarIntegration={vendor?.calendar ? id : false} 
+                                            cartItem={vendorCartItem}
+                    />
+                    <div className={`provider-scheduling ${openComponent.scheduling ? 'minimize' : ''}`}>
                         <img className="provider-calendar-icon" 
                         src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-08.png" 
                         alt="schedule now servo icon" />
                         <div className="scheduling-preview">Next Available Appointment: <br/>Wed, Dec 24th </div>
-                        <button onClick={handleScheduleClick} className="schedule-button">Schedule</button>
+                        <button onClick={handleScheduleClick} className={`schedule-button ${(vendorCartItem && !openComponent.pricing) ? '' : 'gray-out'}`}>Schedule</button>
                     </div>
-                    <div className={`provider-summary ${summaryOpen ? 'minimize' : ''}`}>
+                    <div className={`provider-summary ${openComponent.summary ? 'minimize' : ''}`}>
                         <img className="provider-summary-icon" 
                         src={"https://spencerheywood.com/images/servo/icons/icons-07.png"} 
                         alt="mobile checkout icon" />

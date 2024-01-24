@@ -46,13 +46,17 @@ export const deleteCartItems = userId => async dispatch => {
 }
 
 export const addToCart = cartItem => async dispatch =>{
-    const res = await csrfFetch(`/api/cart_items`,
-        {method: "POST",
-        body: JSON.stringify(cartItem)})
-        if(res.ok){
-            const data = await res.json();
-            dispatch(receiveCartItem(data.cartItem))
-        }
+    try{
+        const res = await csrfFetch(`/api/cart_items`,
+            {method: "POST",
+            body: JSON.stringify(cartItem)})
+            if(res.ok){
+                const data = await res.json();
+                dispatch(receiveCartItem(data.cartItem))
+            }
+    }catch(error){
+        console.log(error)
+    }
 }
 
 export const removeFromCart = cartItemId => async dispatch => {
@@ -78,7 +82,7 @@ const cartReducer = (state = { isCartOpen: false, cartItems: {}, vendor: null}, 
     let newState = { ...state }
     switch(action.type){
         case(RECEIVE_CART_ITEM):
-            newState[action.cartItem.id] = action.cartItem
+            newState.cartItems[action.cartItem.id] = action.cartItem
             return newState;
         case(RECEIVE_CART_ITEMS):
             newState = { ...state, ...action.cartItems };

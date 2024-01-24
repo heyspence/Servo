@@ -8,7 +8,7 @@ import Checkbox from '../formComponents/Checkbox';
 import { addToCart, toggleCart } from '../store/cart';
 import { useDispatch, useSelector } from 'react-redux';
 
-const PricingCalculator = ({pricingOpen, service}) => {
+const PricingCalculator = ({pricingOpen, service, onContinue}) => {
     const dispatch = useDispatch();
     const basePrice = service?.price
     const formula = service?.formula ? service.formula : "x";
@@ -90,14 +90,15 @@ const PricingCalculator = ({pricingOpen, service}) => {
             serviceId: service.id,
             options: JSON.stringify(inputValues),
             price: calculatedPrice,
-            vendorId: service.vendorId
+            vendorId: service.vendorId,
+            status: "priced"
         }
         let cartItem = {
             cartItem: cartItemData
         }
-        dispatch(addToCart(cartItem)).then(()=>{
-            dispatch(toggleCart())
-        })
+        
+        dispatch(addToCart(cartItem))
+        onContinue({bypass: true})
     }
 
     return (
