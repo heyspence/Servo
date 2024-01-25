@@ -49,7 +49,6 @@ export const fetchServices = vendorId => async dispatch => {
 export const findVendorByService = (state, serviceId) =>{
     return ''
     const vendors = Object.values(state.vendors);
-    console.log(vendors)
     for(let vendor of vendors){
         if(vendor.some(service => service.id === serviceId)){
             return vendor

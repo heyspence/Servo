@@ -19,9 +19,6 @@ const VendorAuthorization = () =>{
         scope: 'https://www.googleapis.com/auth/calendar.events.freebusy',
         prompt: 'consent',
         onSuccess: async (codeResponse) => {
-            // console.log(codeResponse); // Contains the authorization code
-
-            // Example of sending the authorization code to your backend
             try {
                 const response = await csrfFetch('/api/auth/google/callback', {
                     method: 'POST',

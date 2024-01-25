@@ -11,8 +11,6 @@ const AppointmentScheduling = ({schedulingOpen, calendarIntegration, cartItem}) 
     let startTimesList = calendarData.map(entry => parseISO(entry.start_time))
     let formattedDate = format(startDate, "M/d/yy");
 
-    console.log(cartItem)
-
     const handleDateChange = (date) => {
         setStartDate(updateAvailableTimes(date)[0]);
     };
