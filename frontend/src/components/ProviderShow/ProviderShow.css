@@ -247,7 +247,7 @@
     cursor: not-allowed !important;
 }
 
-.pricing-preview, .scheduling-preview{
+.pricing-preview, .scheduling-preview, .pricing-preview--confirmed, .summary-preview{
     color: var(--primary-red);
     font-size: 16px;
     height: 100%;
@@ -257,6 +257,14 @@
     align-items: center;
     line-height: 20px;
     position: relative
+}
+
+.pricing-preview--confirmed, .summary-preview{
+    font-size: 18px;
+}
+
+.green-text{
+    color: rgba(99, 196, 102, 0.9);
 }
 
 .get-price-button, .schedule-button, .view-gallery-button, .summary-button, .add-to-cart-button{

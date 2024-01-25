@@ -101,6 +101,13 @@ const ProviderShow = () => {
         setReviewShowOpen(!reviewShowOpen)
     }
 
+    const basePricing = <div className="pricing-preview">
+                            Starting at: <br/>${defaultService?.price ? defaultService.price : "--"}
+                        </div>
+    const confirmedPricing = <div className="pricing-preview--confirmed">
+                                Custom Quote:&nbsp;<div className="green-text"> ${vendorCartItem?.price.toFixed(2)}</div>
+                            </div>
+
     return (
         <>
             <h1 className="provider-category">{categoryMap[vendor?.category]}</h1>
@@ -167,8 +174,8 @@ const ProviderShow = () => {
                         <img className="provider-price-icon" 
                         src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-04.png" 
                         alt="get price icon servo instance price" />
-                        <div className="pricing-preview">Starting at: <br/>${defaultService?.price ? defaultService.price : "--"}</div>
-                        <button onClick={handleGetPriceClick} className="get-price-button">Get Price</button>
+                        {vendorCartItem ? confirmedPricing : basePricing}
+                        <button onClick={handleGetPriceClick} className="get-price-button">{vendorCartItem ? 'Edit Service' : 'Get Price'}</button>
                     </div>
                     <AppointmentScheduling schedulingOpen={openComponent.scheduling} 
                                             calendarIntegration={vendor?.calendar ? id : false} 
@@ -178,14 +185,14 @@ const ProviderShow = () => {
                         <img className="provider-calendar-icon" 
                         src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-08.png" 
                         alt="schedule now servo icon" />
-                        <div className="scheduling-preview">Next Available Appointment: <br/>Wed, Dec 24th </div>
+                        <div className="scheduling-preview">Next Available Appointment: <br/>Wed, Dec 24th</div>
                         <button onClick={handleScheduleClick} className={`schedule-button ${(vendorCartItem && !openComponent.pricing) ? '' : 'gray-out'}`}>Schedule</button>
                     </div>
                     <div className={`provider-summary ${openComponent.summary ? 'minimize' : ''}`}>
                         <img className="provider-summary-icon" 
                         src={"https://spencerheywood.com/images/servo/icons/icons-07.png"} 
                         alt="mobile checkout icon" />
-                        <div className="scheduling-preview">Summary</div>
+                        <div className="summary-preview">Summary</div>
                         <button className="summary-button gray-out">Checkout</button> or
                         <button className="add-to-cart-button gray-out">Add to Cart</button>
                     </div>
