@@ -13,7 +13,6 @@ const receiveMenuItem = menuItem => ({
     menuItem
 })
 
-
 export const fetchMenuItems = vendorId => async dispatch => {
     const res = await csrfFetch(`/api/vendors/${vendorId}/menu_items`)
     if(res.ok){

@@ -78,6 +78,17 @@ export const getCart = user_id => async dispatch => {
     }
 }
 
+export const updateCartItem = cartItem => async dispatch => {
+    const res = await csrfFetch(`/api/cart_items/${cartItem.cartItem.id}`,{
+        method: 'PUT',
+        body: JSON.stringify(cartItem)
+    })
+    if(res.ok){
+        const data = await res.json()
+        dispatch(receiveCartItem(data.cartItem))
+    }
+}
+
 const cartReducer = (state = { isCartOpen: false, cartItems: {}, vendor: null}, action) => {
     let newState = { ...state }
     switch(action.type){

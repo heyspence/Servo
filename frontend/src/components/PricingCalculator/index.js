@@ -5,10 +5,10 @@ import Selector from '../formComponents/Selector';
 import RadioButton from '../formComponents/RadioButton';
 import RangeSlider from '../formComponents/RangeSlider';
 import Checkbox from '../formComponents/Checkbox';
-import { addToCart, toggleCart } from '../store/cart';
+import { addToCart, toggleCart, updateCartItem } from '../store/cart';
 import { useDispatch, useSelector } from 'react-redux';
 
-const PricingCalculator = ({pricingOpen, service, onContinue}) => {
+const PricingCalculator = ({pricingOpen, service, onContinue, cartItem}) => {
     const dispatch = useDispatch();
     const basePrice = service?.price
     const formula = service?.formula ? service.formula : "x";
@@ -93,11 +93,15 @@ const PricingCalculator = ({pricingOpen, service, onContinue}) => {
             vendorId: service.vendorId,
             status: "priced"
         }
-        let cartItem = {
+        let cartItemObject = {
             cartItem: cartItemData
         }
-        
-        dispatch(addToCart(cartItem))
+        if(cartItem){
+            cartItemObject.cartItem.id = cartItem.id
+            dispatch(updateCartItem(cartItemObject))
+        }else{
+            dispatch(addToCart(cartItemObject))
+        }
         onContinue({bypass: true})
     }
 

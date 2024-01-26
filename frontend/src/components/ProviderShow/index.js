@@ -12,11 +12,11 @@ import AppointmentScheduling from '../AppointmentScheduling'
 import { fetchImages } from '../store/images'
 import Modal from '../Modal'
 import ReviewForm from '../Reviews/ReviewForm'
-import ReviewShow from '../Reviews/ReviewShow'
+// import ReviewShow from '../Reviews/ReviewShow'
 import { getCart } from '../store/cart'
 
 const ProviderShow = () => {
-    const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
+    // const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
     const { id }= useParams();
     const userLoggedIn = useSelector(isLoggedIn);
     const history = useHistory();
@@ -68,7 +68,7 @@ const ProviderShow = () => {
     let reviewAverage = (total / reviewCount).toFixed(1)
 
     const handleScheduleClick = ({bypass}) => {
-        if(cartItemStatus === 'priced' && !openComponent.pricing || bypass){
+        if(cartItemStatus && !openComponent.pricing || bypass){
             setOpenComponent({
                 pricing: false,
                 scheduling: true,
@@ -85,12 +85,14 @@ const ProviderShow = () => {
         })
     }
 
-    const handleSummaryOpen = () =>{
-        setOpenComponent({
-            pricing: false,
-            scheduling: false,
-            summary: true
-        })
+    const handleSummaryClick = ({bypass}) =>{
+        if(cartItemStatus === 'scheduled' && !openComponent.scheduling || bypass){
+            setOpenComponent({
+                pricing: false,
+                scheduling: false,
+                summary: true
+            })
+        }
     }
 
     const toggleReviewModal = () => {
@@ -101,12 +103,18 @@ const ProviderShow = () => {
         setReviewShowOpen(!reviewShowOpen)
     }
 
-    const basePricing = <div className="pricing-preview">
-                            Starting at: <br/>${defaultService?.price ? defaultService.price : "--"}
-                        </div>
-    const confirmedPricing = <div className="pricing-preview--confirmed">
-                                Custom Quote:&nbsp;<div className="green-text"> ${vendorCartItem?.price.toFixed(2)}</div>
+    const basePricingDiv = <div className="pricing-preview">
+                                Starting at: <br/>${defaultService?.price ? defaultService.price : "--"}
                             </div>
+    const confirmedPricingDiv = <div className="pricing-preview--confirmed">
+                                    Custom Quote<div className="green-text"> ${vendorCartItem?.price.toFixed(2)}</div>
+                                </div>
+
+    const defaultSchedulingDiv = <div className="scheduling-preview">Next Available Appointment: <br/>Wed, Dec 24th</div>
+    const confirmedSchedulingDiv = <div className="scheduling-preview--confirmed">
+                                            <div>Service Date</div>
+                                            <p className="green-text">Wed, Dec 4th @12:25pm</p>
+                                    </div>
 
     return (
         <>
@@ -119,7 +127,9 @@ const ProviderShow = () => {
                         </div>
                         <div className="meta-info-container">
                             <h2 className="provider-name">{vendor?.name}</h2>
-                            <p className="review-tag">{eval(reviewAverage) ? reviewAverage : "-.-"}<StarSvg className="review-star-svg"/>{ reviewCount} ratings</p>
+                            <p className="review-tag">{eval(reviewAverage) ? reviewAverage : "-.-"}
+                                <StarSvg className="review-star-svg"/>{ reviewCount} ratings
+                            </p>
                         </div>
                     </div>
                     <div className="location-details-container">
@@ -169,24 +179,30 @@ const ProviderShow = () => {
                                         service={defaultService} 
                                         pricingOpen={openComponent.pricing}
                                         onContinue={handleScheduleClick}
+                                        cartItem={vendorCartItem}
                     />
                     <div className={`provider-pricing ${openComponent.pricing ? 'minimize' : ''}`}>
                         <img className="provider-price-icon" 
                         src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-04.png" 
                         alt="get price icon servo instance price" />
-                        {vendorCartItem ? confirmedPricing : basePricing}
-                        <button onClick={handleGetPriceClick} className="get-price-button">{vendorCartItem ? 'Edit Service' : 'Get Price'}</button>
+                        {vendorCartItem ? confirmedPricingDiv : basePricingDiv}
+                        <button onClick={handleGetPriceClick} className="get-price-button">
+                            {vendorCartItem ? 'Edit Service' : 'Get Price'}
+                        </button>
                     </div>
                     <AppointmentScheduling schedulingOpen={openComponent.scheduling} 
                                             calendarIntegration={vendor?.calendar ? id : false} 
                                             cartItem={vendorCartItem}
+                                            onContinue={handleSummaryClick}
                     />
                     <div className={`provider-scheduling ${openComponent.scheduling ? 'minimize' : ''}`}>
                         <img className="provider-calendar-icon" 
                         src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-08.png" 
                         alt="schedule now servo icon" />
-                        <div className="scheduling-preview">Next Available Appointment: <br/>Wed, Dec 24th</div>
-                        <button onClick={handleScheduleClick} className={`schedule-button ${(vendorCartItem && !openComponent.pricing) ? '' : 'gray-out'}`}>Schedule</button>
+                        {vendorCartItem ? confirmedSchedulingDiv : defaultSchedulingDiv}
+                        <button onClick={handleScheduleClick} className={`schedule-button ${(vendorCartItem && !openComponent.pricing) ? '' : 'gray-out'}`}>
+                            {vendorCartItem?.status === 'scheduled' || vendorCartItem?.status === 'pending' ? 'Reschedule' : 'Schedule'}
+                        </button>
                     </div>
                     <div className={`provider-summary ${openComponent.summary ? 'minimize' : ''}`}>
                         <img className="provider-summary-icon" 

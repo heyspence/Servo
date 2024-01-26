@@ -247,7 +247,7 @@
     cursor: not-allowed !important;
 }
 
-.pricing-preview, .scheduling-preview, .pricing-preview--confirmed, .summary-preview{
+.pricing-preview, .scheduling-preview, .scheduling-preview--confirmed, .pricing-preview--confirmed, .summary-preview{
     color: var(--primary-red);
     font-size: 16px;
     height: 100%;
@@ -259,8 +259,9 @@
     position: relative
 }
 
-.pricing-preview--confirmed, .summary-preview{
-    font-size: 18px;
+.scheduling-preview--confirmed, .pricing-preview--confirmed, .summary-preview{
+    font-size: 16px;
+    display: block;
 }
 
 .green-text{

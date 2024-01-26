@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resource :session, only: [:create, :destroy, :show]
     resources :users, only: [:create, :show]
-    resources :cart_items, only: [:create, :destroy, :show]
+    resources :cart_items, only: [:create, :destroy, :show, :update]
     resources :events, only: [:index, :create]
     post 'auth/google/callback', to: 'authentication#google_callback'
 

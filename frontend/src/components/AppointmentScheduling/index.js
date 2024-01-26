@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux'
 import './AppointmentScheduling.css'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
 import { format, getDay, isSameDay, parseISO } from 'date-fns';
+import { updateCartItem } from '../store/cart';
 
-const AppointmentScheduling = ({schedulingOpen, calendarIntegration, cartItem}) => {
+const AppointmentScheduling = ({schedulingOpen, calendarIntegration, cartItem, onContinue}) => {
+    const dispatch = useDispatch();
     const [calendarData, setCalendarData] = useState([]);
     const [startDate, setStartDate] = useState(new Date());
     const [availableTimes, setAvailableTimes] = useState([]);
@@ -50,6 +53,22 @@ const AppointmentScheduling = ({schedulingOpen, calendarIntegration, cartItem}) 
         return day !== 0 && day !== 6;
     };
 
+    const handleContinueClick = async () => {
+        let cartItemData = {
+            ...cartItem,
+            appointmentAt: startDate,
+            status: 'scheduled'
+        }
+        let cartItemObject = {
+            cartItem: cartItemData
+        }
+
+        cartItemObject.cartItem.id = cartItem.id
+        
+        dispatch(updateCartItem(cartItemObject))
+        onContinue({bypass: true})
+    }
+
     const availableDates = calendarData.map(entry => parseISO(entry.start_time));
 
     return (
@@ -75,7 +94,7 @@ const AppointmentScheduling = ({schedulingOpen, calendarIntegration, cartItem}) 
                 includeDates={availableDates}
                 includeTimes={availableTimes}
             />
-            <button className="scheduling-continue-button">Continue - {formattedDate}</button>
+            <button className="scheduling-continue-button" onClick={handleContinueClick}>Continue - {formattedDate}</button>
         </div>
     )
 }

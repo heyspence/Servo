@@ -9,6 +9,15 @@ class Api::CartItemsController < ApplicationController
         end
     end
 
+    def update
+        @cart_item = CartItem.find(params[:id])
+        if @cart_item.update(cart_item_params)
+            render :show
+        else
+            render json: { errors: @cart_item.errors.full_messages }
+        end
+    end
+
     def destroy
         @cart_item = CartItem.find(params[:id])
         if @cart_item && @cart_item.destroy
@@ -41,6 +50,6 @@ class Api::CartItemsController < ApplicationController
     end
 
     def cart_item_params
-        params.require(:cart_item).permit(:user_id, :address_id, :price, :options, :service_id, :vendor_id, :status)
+        params.require(:cart_item).permit(:user_id, :address_id, :price, :options, :service_id, :vendor_id, :status, :appointment_at)
     end
 end

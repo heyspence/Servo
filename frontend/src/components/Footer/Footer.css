@@ -35,3 +35,9 @@ footer{
 .footer-column *{
     padding: 7px;
 }
+
+@media screen and (max-width: 599px){
+    .footer{
+        width: 100%;
+    }
+}
