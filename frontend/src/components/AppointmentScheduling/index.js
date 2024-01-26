@@ -11,6 +11,8 @@ const AppointmentScheduling = ({schedulingOpen, calendarIntegration, cartItem, o
     const [calendarData, setCalendarData] = useState([]);
     const [startDate, setStartDate] = useState(new Date());
     const [availableTimes, setAvailableTimes] = useState([]);
+    const [windowSize, setWindowSize] = useState({width: undefined, height: undefined})
+    let isMobile = windowSize.width < 1325
     let startTimesList = calendarData.map(entry => parseISO(entry.start_time))
     let formattedDate = format(startDate, "M/d/yy");
 
@@ -30,6 +32,18 @@ const AppointmentScheduling = ({schedulingOpen, calendarIntegration, cartItem, o
             updateAvailableTimes(parseISO(calendarData[0].start_time))
         }
     }, [calendarData]);
+
+    useEffect(()=>{
+        const handleResize = () => {
+            setWindowSize({
+                height: window.innerHeight,
+                width: window.innerWidth
+            })
+        }
+        window.addEventListener('resize', handleResize)
+
+        return () => window.removeEventListener('resize', handleResize);
+    },[])
 
     const handleEventsRequest = async (vendorId) => {
         const res = await fetch(`/api/vendors/${vendorId}/vendor_calendars`)
@@ -64,7 +78,7 @@ const AppointmentScheduling = ({schedulingOpen, calendarIntegration, cartItem, o
         }
 
         cartItemObject.cartItem.id = cartItem.id
-        
+
         dispatch(updateCartItem(cartItemObject))
         onContinue({bypass: true})
     }
@@ -73,28 +87,30 @@ const AppointmentScheduling = ({schedulingOpen, calendarIntegration, cartItem, o
 
     return (
         <div className={`appointment-scheduling ${schedulingOpen ? '' : 'minimize' }`}>
-            <div className="scheduling-output">
-                {format(startDate, "EEEE, MMMM do @h:mmaaa")}
+            <div className="scheduling-container">
+                <div className="scheduling-output">
+                    {format(startDate, "EEEE, MMMM do @h:mmaaa")}
+                </div>
+                <DatePicker
+                    inline
+                    selected={startDate}
+                    onChange={handleDateChange}
+                    showTimeSelect
+                    dateFormat="Pp"
+                    placeholderText="Select a Date"
+                    // minTime={new Date().setHours(8, 0, 0)}
+                    // maxTime={new Date().setHours(17, 0, 0)}
+                    // timeIntervals={120}
+                    // highlightDates={[addDays(new Date(), 8)]}
+                    // minDate={ addDays(new Date(), 2)}
+                    // maxDate={ addDays(new Date(), 20)}
+                    filterDate={isWeekday}
+                    monthsShown={isMobile ? 1 : 2}
+                    includeDates={availableDates}
+                    includeTimes={availableTimes}
+                />
+                <button className="scheduling-continue-button" onClick={handleContinueClick}>Continue - {formattedDate}</button>
             </div>
-            <DatePicker
-                inline
-                selected={startDate}
-                onChange={handleDateChange}
-                showTimeSelect
-                dateFormat="Pp"
-                placeholderText="Select a Date"
-                // minTime={new Date().setHours(8, 0, 0)}
-                // maxTime={new Date().setHours(17, 0, 0)}
-                // timeIntervals={120}
-                // highlightDates={[addDays(new Date(), 8)]}
-                // minDate={ addDays(new Date(), 2)}
-                // maxDate={ addDays(new Date(), 20)}
-                filterDate={isWeekday}
-                monthsShown={2}
-                includeDates={availableDates}
-                includeTimes={availableTimes}
-            />
-            <button className="scheduling-continue-button" onClick={handleContinueClick}>Continue - {formattedDate}</button>
         </div>
     )
 }

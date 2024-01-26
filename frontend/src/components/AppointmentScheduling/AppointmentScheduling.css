@@ -31,6 +31,13 @@
     position: relative;
 }
 
+.scheduling-container{
+    max-width: 567px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
 .react-datepicker__day{
     border-radius: 4px;
 }
@@ -83,4 +90,10 @@
 .scheduling-continue-button{
     width: 300px;
     margin: 0 auto;
+}
+
+@media screen and (max-width: 699px){
+    .scheduling-container{
+        max-width: 327px;
+    }
 }

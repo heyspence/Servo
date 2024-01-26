@@ -14,6 +14,7 @@ import Modal from '../Modal'
 import ReviewForm from '../Reviews/ReviewForm'
 // import ReviewShow from '../Reviews/ReviewShow'
 import { getCart } from '../store/cart'
+import { format, parseISO } from 'date-fns'
 
 const ProviderShow = () => {
     // const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
@@ -31,6 +32,7 @@ const ProviderShow = () => {
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [reviewShowOpen, setReviewShowOpen] = useState(false);
     const [openComponent, setOpenComponent] = useState({pricing: false, scheduling: false, summary: false})
+    let isMobile = window.innerWidth < 700;
 
     const categoryMap = {
         window_cleaning: "Window Cleaning",
@@ -111,9 +113,20 @@ const ProviderShow = () => {
                                 </div>
 
     const defaultSchedulingDiv = <div className="scheduling-preview">Next Available Appointment: <br/>Wed, Dec 24th</div>
+
+    let formattedDate = () =>{
+        if(vendorCartItem?.appointmentAt){
+            return isMobile
+            ? format(parseISO(vendorCartItem?.appointmentAt), "MMM, do @h:mm")
+            : format(parseISO(vendorCartItem?.appointmentAt), "EEEE, MMMM do @h:mmaaa");
+        }else{
+            return "--"
+        }
+    }
+
     const confirmedSchedulingDiv = <div className="scheduling-preview--confirmed">
                                             <div>Service Date</div>
-                                            <p className="green-text">Wed, Dec 4th @12:25pm</p>
+                                            <p className="green-text">{formattedDate()}</p>
                                     </div>
 
     return (
