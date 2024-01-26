@@ -117,8 +117,8 @@ const ProviderShow = () => {
     let formattedDate = () =>{
         if(vendorCartItem?.appointmentAt){
             return isMobile
-            ? format(parseISO(vendorCartItem?.appointmentAt), "MMM, do @h:mm")
-            : format(parseISO(vendorCartItem?.appointmentAt), "EEEE, MMMM do @h:mmaaa");
+            ? format(parseISO(vendorCartItem?.appointmentAt), "MMM do @ h:mm")
+            : format(parseISO(vendorCartItem?.appointmentAt), "EEEE, MMMM do @ h:mmaaa");
         }else{
             return "--"
         }
@@ -214,7 +214,7 @@ const ProviderShow = () => {
                         alt="schedule now servo icon" />
                         {vendorCartItem ? confirmedSchedulingDiv : defaultSchedulingDiv}
                         <button onClick={handleScheduleClick} className={`schedule-button ${(vendorCartItem && !openComponent.pricing) ? '' : 'gray-out'}`}>
-                            {vendorCartItem?.status === 'scheduled' || vendorCartItem?.status === 'pending' ? 'Reschedule' : 'Schedule'}
+                            {vendorCartItem?.status === 'scheduled' || vendorCartItem?.status === 'pending' ? 'Edit Booking' : 'Schedule'}
                         </button>
                     </div>
                     <div className={`provider-summary ${openComponent.summary ? 'minimize' : ''}`}>

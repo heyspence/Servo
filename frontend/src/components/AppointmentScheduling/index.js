@@ -12,9 +12,12 @@ const AppointmentScheduling = ({schedulingOpen, calendarIntegration, cartItem, o
     const [startDate, setStartDate] = useState(new Date());
     const [availableTimes, setAvailableTimes] = useState([]);
     const [windowSize, setWindowSize] = useState({width: undefined, height: undefined})
-    let isMobile = windowSize.width < 1325
+    let isMobile = windowSize.width < 1325;
     let startTimesList = calendarData.map(entry => parseISO(entry.start_time))
     let formattedDate = format(startDate, "M/d/yy");
+    let formattedHeader = isMobile
+            ? format(startDate, "EEE, MMM do @ h:mmaaa")
+            : format(startDate, "EEEE, MMMM do @ h:mmaaa");
 
     const handleDateChange = (date) => {
         setStartDate(updateAvailableTimes(date)[0]);
@@ -89,7 +92,8 @@ const AppointmentScheduling = ({schedulingOpen, calendarIntegration, cartItem, o
         <div className={`appointment-scheduling ${schedulingOpen ? '' : 'minimize' }`}>
             <div className="scheduling-container">
                 <div className="scheduling-output">
-                    {format(startDate, "EEEE, MMMM do @h:mmaaa")}
+                    {/* {format(startDate, "EEEE, MMMM do @ h:mmaaa")} */}
+                    {formattedHeader}
                 </div>
                 <DatePicker
                     inline
