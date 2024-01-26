@@ -15,6 +15,7 @@ import ReviewForm from '../Reviews/ReviewForm'
 // import ReviewShow from '../Reviews/ReviewShow'
 import { getCart } from '../store/cart'
 import { format, parseISO } from 'date-fns'
+import Summary from './Summary'
 
 const ProviderShow = () => {
     // const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
@@ -95,6 +96,14 @@ const ProviderShow = () => {
                 summary: true
             })
         }
+    }
+
+    const handleAddToCart = () =>{
+        setOpenComponent({
+            pricing: false,
+            scheduling: false,
+            summary: false
+        })
     }
 
     const toggleReviewModal = () => {
@@ -217,13 +226,18 @@ const ProviderShow = () => {
                             {vendorCartItem?.status === 'scheduled' || vendorCartItem?.status === 'pending' ? 'Edit Booking' : 'Schedule'}
                         </button>
                     </div>
+                    <Summary summaryOpen={openComponent.summary} 
+                            cartItem={vendorCartItem} 
+                            vendor={vendor} 
+                            onContinue={handleAddToCart}
+                    />
                     <div className={`provider-summary ${openComponent.summary ? 'minimize' : ''}`}>
                         <img className="provider-summary-icon" 
                         src={"https://spencerheywood.com/images/servo/icons/icons-07.png"} 
                         alt="mobile checkout icon" />
                         <div className="summary-preview">Summary</div>
                         <button className="summary-button gray-out">Checkout</button> or
-                        <button className="add-to-cart-button gray-out">Add to Cart</button>
+                        <button className="summary-button gray-out">Add to Cart</button>
                     </div>
                 </div>
             </div>

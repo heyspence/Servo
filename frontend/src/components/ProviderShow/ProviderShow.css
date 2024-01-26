@@ -8,7 +8,6 @@
     min-width: 300px;
     border-radius: 10px;
     padding: 20px 20px 5px 20px;
-    /* margin: 50px auto; */
     margin: 75px auto;
 }
 
@@ -17,9 +16,6 @@
     width: calc(60% - 15px);
     display: flex;
     flex-direction: column;
-    /* max-height: 650px;
-    overflow-y: auto;
-    box-sizing: border-box; */
 }
 
 .provider-show-left{
@@ -67,7 +63,6 @@
     min-height: 100px;
     min-width: 100px;
     padding: 10px;
-    /* box-sizing: border-box; */
     border-radius: 8px;
     margin-right: 15px;
 
@@ -129,12 +124,11 @@
     background-color: var(--secondary-white);
     background-color: white;
     width: 100%;
-
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
 }
 
 .promotion{
-    background-color: rgba(99, 196, 102, 0.9);
+    background-color: var(--primary-green);
     color: white;
     height: 32px;
     border-radius: 6px;
@@ -146,7 +140,7 @@
 }
 
 .promotion:hover{
-    background-color: rgba(99, 196, 102, 1);
+    background-color: var(--secondary-green);
     cursor: pointer;
 }
 
@@ -167,7 +161,6 @@
 }
 
 .provider-gallery, .pricing-calculator{
-    /* height: 332px; */
     height: 200px;;
     padding: 10px;
     flex-shrink: 0;
@@ -177,7 +170,6 @@
 .gallery-container{
     background-color: white;
     border-radius: 8px;
-    /* margin-top: 100px; */
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
     height: auto;
 }
@@ -186,18 +178,6 @@
     margin: 15px 0 -8px 20px;
 }
 
-/* .gallery-placeholder{
-    width: 100%;
-    height: 50px;
-    background-color: var(--secondary-white);
-    display: flex;
-    justify-content: flex-end;
-    box-sizing: border-box;
-    align-items: center;
-    padding: 30px 10px;
-    position: relative;
-}  */
-
 .provider-gallery{
     display: flex;
     flex-direction: column;
@@ -205,13 +185,6 @@
     overflow-x: auto;
     box-sizing: border-box;
 }
-
-/* .view-gallery-button{
-    background-color: white !important;
-    color: var(--primary-red) !important;
-    margin: 0 -10px 0 0;
-    font-size: 20px
-} */
 
 .provider-photo{
     height: 160px;
@@ -227,14 +200,11 @@
 
 .provider-pricing, .provider-scheduling, .provider-summary{
     width: 100%;
-    /* height: calc(100% - 200px); */
     display: flex;
     padding: 10px;
-    /* margin-top: 10px; */
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
-    /* position: relative; */
     font-weight: bold;
     border-radius: 8px;
     background-color: white;

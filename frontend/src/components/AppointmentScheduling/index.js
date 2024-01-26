@@ -12,7 +12,7 @@ const AppointmentScheduling = ({schedulingOpen, calendarIntegration, cartItem, o
     const [startDate, setStartDate] = useState(new Date());
     const [availableTimes, setAvailableTimes] = useState([]);
     const [windowSize, setWindowSize] = useState({width: undefined, height: undefined})
-    let isMobile = windowSize.width < 1325;
+    let isMobile = window.innerWidth < 1325;
     let startTimesList = calendarData.map(entry => parseISO(entry.start_time))
     let formattedDate = format(startDate, "M/d/yy");
     let formattedHeader = isMobile
