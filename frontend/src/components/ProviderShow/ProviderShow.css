@@ -215,6 +215,7 @@
     background-color: var(--secondary-white) !important;
     color: var(--secondary-gray) !important;
     cursor: not-allowed !important;
+    border-color: var(--secondary-white) !important;
 }
 
 .pricing-preview, .scheduling-preview, .scheduling-preview--confirmed, .pricing-preview--confirmed, .summary-preview{
@@ -313,7 +314,18 @@
 }
 
 .provider-summary{
-    color: var(--primary-red)
+    color: var(--primary-red);
+}
+
+.provider-summary button{
+    width: 120px;
+    height: 40px;
+    flex-shrink: 0;
+    margin: 0 5px;
+}
+
+.pointer:hover{
+    cursor: pointer;
 }
 
 @media screen and (max-width: 999px){

@@ -74,7 +74,7 @@
     margin-top: 20px;
 }
 
-@media screen and (max-width: 649px){
+@media screen and (max-width: 799px){
     .checkout{
         display: flex;
         flex-direction: column;
@@ -94,6 +94,6 @@
     }
 
     .checkout-cart-details{
-        margin-top: -50px;
+        margin-top: 55px;
     }
 }

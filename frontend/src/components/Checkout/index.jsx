@@ -55,7 +55,7 @@ const Checkout = () => {
                 </div>
 
                 <div className="checkout-shipping-details">
-                    <h3>2. Shipping Details</h3>
+                    <h3>2. Home Details</h3>
                     <div className="checkout-user-info">
                         <h3>Home</h3>
                         <p>1600 Pennsylvania Avenue NW, Washington, DC 20500</p>

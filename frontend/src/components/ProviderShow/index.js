@@ -13,7 +13,7 @@ import { fetchImages } from '../store/images'
 import Modal from '../Modal'
 import ReviewForm from '../Reviews/ReviewForm'
 // import ReviewShow from '../Reviews/ReviewShow'
-import { getCart } from '../store/cart'
+import { getCart, toggleCart, updateCartItem } from '../store/cart'
 import { format, parseISO } from 'date-fns'
 import Summary from './Summary'
 
@@ -33,6 +33,7 @@ const ProviderShow = () => {
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [reviewShowOpen, setReviewShowOpen] = useState(false);
     const [openComponent, setOpenComponent] = useState({pricing: false, scheduling: false, summary: false})
+    const allComponentsClosed = Object.values(openComponent).every(val => val === false)
     let isMobile = window.innerWidth < 700;
 
     const categoryMap = {
@@ -88,8 +89,11 @@ const ProviderShow = () => {
         })
     }
 
-    const handleSummaryClick = ({bypass}) =>{
-        if(cartItemStatus === 'scheduled' && !openComponent.scheduling || bypass){
+    const handleSummaryClick = ({ bypass = false } = {}) =>{
+        if(((cartItemStatus === 'scheduled' || cartItemStatus === 'pending') && 
+            !openComponent.scheduling) || 
+            bypass
+        ){
             setOpenComponent({
                 pricing: false,
                 scheduling: false,
@@ -98,7 +102,33 @@ const ProviderShow = () => {
         }
     }
 
-    const handleAddToCart = () =>{
+    const handleAddToCart = ({ bypass = false, checkout = false } = {}) =>{
+        if((allComponentsClosed && 
+            (cartItemStatus === 'scheduled' || cartItemStatus === 'pending')) || 
+            bypass || 
+            checkout
+        ){
+            let cartItemData = {
+                ...vendorCartItem,
+                status: 'pending'
+            }
+            let cartItemObject = {
+                cartItem: cartItemData
+            }
+            dispatch(updateCartItem(cartItemObject))
+            if(!checkout){
+                dispatch(toggleCart());
+            }
+            closeAllComponents();
+        }
+    }
+
+    const handleCheckout = () => {
+        handleAddToCart({checkout: true})
+        history.push(`/checkout`)
+    }
+
+    const closeAllComponents = () =>{
         setOpenComponent({
             pricing: false,
             scheduling: false,
@@ -175,11 +205,11 @@ const ProviderShow = () => {
                         </div>
                     </div>
                     <div className="disclaimer">
-                    At Servo, we ensure a seamless connection with skilled professionals. 
-                    It's important to remember that Servo is a facilitator of these 
-                    important interactions. For clarity on our role and responsibilities, 
-                    we encourage you to review our Terms of Service. Your privacy matters to us; 
-                    our Privacy Policy is designed with your security and trust in mind.
+                        At Servo, we ensure a seamless connection with skilled professionals. 
+                        It's important to remember that Servo is a facilitator of these 
+                        important interactions. For clarity on our role and responsibilities, 
+                        we encourage you to review our Terms of Service. Your privacy matters to us; 
+                        our Privacy Policy is designed with your security and trust in mind.
                     </div>
                 </div>
 
@@ -223,21 +253,46 @@ const ProviderShow = () => {
                         alt="schedule now servo icon" />
                         {vendorCartItem ? confirmedSchedulingDiv : defaultSchedulingDiv}
                         <button onClick={handleScheduleClick} className={`schedule-button ${(vendorCartItem && !openComponent.pricing) ? '' : 'gray-out'}`}>
-                            {vendorCartItem?.status === 'scheduled' || vendorCartItem?.status === 'pending' ? 'Edit Booking' : 'Schedule'}
+                            {cartItemStatus !== 'priced' || vendorCartItem?.status === 'pending' ? 'Edit Booking' : 'Schedule'}
                         </button>
                     </div>
                     <Summary summaryOpen={openComponent.summary} 
                             cartItem={vendorCartItem} 
                             vendor={vendor} 
                             onContinue={handleAddToCart}
+                            onCheckout={handleCheckout}
                     />
-                    <div className={`provider-summary ${openComponent.summary ? 'minimize' : ''}`}>
+                    <div className={`provider-summary 
+                                    ${(cartItemStatus === 'scheduled' || cartItemStatus === 'pending') ? 'pointer' : ''}
+                                    ${openComponent.summary ? 'minimize' : ''}`} 
+                                    onClick={handleSummaryClick}
+                    >
                         <img className="provider-summary-icon" 
                         src={"https://spencerheywood.com/images/servo/icons/icons-07.png"} 
                         alt="mobile checkout icon" />
                         <div className="summary-preview">Summary</div>
-                        <button className="summary-button gray-out">Checkout</button> or
-                        <button className="summary-button gray-out">Add to Cart</button>
+                        {isMobile ? ''
+                            :<button 
+                                onClick={handleAddToCart}
+                                className={`secondary-summary-action-button 
+                                            ${vendorCartItem && 
+                                            (cartItemStatus !== 'priced' && allComponentsClosed) 
+                                            ? '' 
+                                            : 'gray-out'}`}
+                            >
+                                Add to Cart
+                            </button>
+                        }
+                        <button 
+                            onClick={handleCheckout}
+                            className={`secondary-summary-action-button 
+                                        ${vendorCartItem && 
+                                        (cartItemStatus !== 'priced' && allComponentsClosed) 
+                                        ? '' 
+                                        : 'gray-out'}`}
+                        >
+                            Checkout
+                        </button>
                     </div>
                 </div>
             </div>
