@@ -64,8 +64,8 @@ const ProviderSummary = ({summaryOpen, cartItem, vendor, onContinue, onCheckout}
                     </div>
                 </div>
                 <div className="summary-action-buttons">
-                    <button className="secondary-summary-action-button" onClick={() => onContinue({bypass: true})}>Add to Cart</button>
-                    <button className="summary-action-button" onClick={onCheckout}>Checkout</button>
+                    {/* <button className="secondary-summary-action-button" onClick={() => onContinue({bypass: true})}>Add to Cart</button> */}
+                    <button className="secondary-summary-action-button" onClick={onCheckout}>Checkout</button>
                 </div>
             </div>
         </div>
