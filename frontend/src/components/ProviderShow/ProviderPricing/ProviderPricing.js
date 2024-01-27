@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import CalculatorResults from './CalculatorResults';
-import './PricingCalculator.css'
-import Selector from '../formComponents/Selector';
-import RadioButton from '../formComponents/RadioButton';
-import RangeSlider from '../formComponents/RangeSlider';
-import Checkbox from '../formComponents/Checkbox';
-import { addToCart, toggleCart, updateCartItem } from '../store/cart';
+import './ProviderPricing.css'
+import Selector from '../../formComponents/Selector';
+import RadioButton from '../../formComponents/RadioButton';
+import RangeSlider from '../../formComponents/RangeSlider';
+import Checkbox from '../../formComponents/Checkbox';
+import { addToCart, toggleCart, updateCartItem } from '../../store/cart';
 import { useDispatch, useSelector } from 'react-redux';
 
-const PricingCalculator = ({pricingOpen, service, onContinue, cartItem}) => {
+const ProviderPricing = ({pricingOpen, service, onContinue, cartItem}) => {
     const dispatch = useDispatch();
     const basePrice = service?.price
     const formula = service?.formula ? service.formula : "x";
@@ -144,4 +144,4 @@ const PricingCalculator = ({pricingOpen, service, onContinue, cartItem}) => {
     )
 }
 
-export default PricingCalculator;
+export default ProviderPricing;

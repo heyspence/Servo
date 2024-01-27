@@ -1,9 +1,9 @@
 import { format, parseISO } from 'date-fns';
-import './Summary.css'
+import './ProviderSummary.css'
 import { useDispatch } from 'react-redux';
 import { toggleCart, updateCartItem } from '../../store/cart';
 
-const Summary = ({summaryOpen, cartItem, vendor, onContinue, onCheckout}) => {
+const ProviderSummary = ({summaryOpen, cartItem, vendor, onContinue, onCheckout}) => {
     const dispatch = useDispatch();
     let isMobile = window.innerWidth < 700;
 
@@ -72,4 +72,4 @@ const Summary = ({summaryOpen, cartItem, vendor, onContinue, onCheckout}) => {
     )
 }
 
-export default Summary;
+export default ProviderSummary;

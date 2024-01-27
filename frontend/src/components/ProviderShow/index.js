@@ -7,15 +7,15 @@ import { isLoggedIn } from '../store/session'
 import { fetchServices, fetchVendor } from '../store/vendor'
 import { fetchReviews } from '../store/reviews'
 import ReviewIndexItem from '../Reviews/ReviewIndexItem'
-import PricingCalculator from '../PricingCalculator'
-import AppointmentScheduling from '../AppointmentScheduling'
+import ProviderPricing from './ProviderPricing/ProviderPricing'
+import ProviderScheduling from './ProviderScheduling/ProviderScheduling'
 import { fetchImages } from '../store/images'
 import Modal from '../Modal'
 import ReviewForm from '../Reviews/ReviewForm'
 // import ReviewShow from '../Reviews/ReviewShow'
 import { getCart, toggleCart, updateCartItem } from '../store/cart'
 import { format, parseISO } from 'date-fns'
-import Summary from './Summary'
+import ProviderSummary from './ProviderSummary/ProviderSummary'
 
 const ProviderShow = () => {
     // const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
@@ -226,7 +226,7 @@ const ProviderShow = () => {
                             })}
                         </div>
                     </div>
-                    <PricingCalculator basePrice={defaultService?.price} 
+                    <ProviderPricing basePrice={defaultService?.price} 
                                         inputs={defaultService?.inputs} 
                                         service={defaultService} 
                                         pricingOpen={openComponent.pricing}
@@ -242,7 +242,7 @@ const ProviderShow = () => {
                             {vendorCartItem ? 'Edit Service' : 'Get Price'}
                         </button>
                     </div>
-                    <AppointmentScheduling schedulingOpen={openComponent.scheduling} 
+                    <ProviderScheduling schedulingOpen={openComponent.scheduling} 
                                             calendarIntegration={vendor?.calendar ? id : false} 
                                             cartItem={vendorCartItem}
                                             onContinue={handleSummaryClick}
@@ -253,45 +253,27 @@ const ProviderShow = () => {
                         alt="schedule now servo icon" />
                         {vendorCartItem ? confirmedSchedulingDiv : defaultSchedulingDiv}
                         <button onClick={handleScheduleClick} className={`schedule-button ${(vendorCartItem && !openComponent.pricing) ? '' : 'gray-out'}`}>
-                            {cartItemStatus !== 'priced' || vendorCartItem?.status === 'pending' ? 'Edit Booking' : 'Schedule'}
+                            {cartItemStatus !== 'priced' && vendorCartItem?.status === 'pending' ? 'Edit Booking' : 'Schedule'}
                         </button>
                     </div>
-                    <Summary summaryOpen={openComponent.summary} 
+                    <ProviderSummary summaryOpen={openComponent.summary} 
                             cartItem={vendorCartItem} 
                             vendor={vendor} 
                             onContinue={handleAddToCart}
                             onCheckout={handleCheckout}
                     />
-                    <div className={`provider-summary 
-                                    ${(cartItemStatus === 'scheduled' || cartItemStatus === 'pending') ? 'pointer' : ''}
-                                    ${openComponent.summary ? 'minimize' : ''}`} 
-                                    onClick={handleSummaryClick}
-                    >
+                    <div className={`provider-summary ${openComponent.summary ? 'minimize' : ''}`} >
                         <img className="provider-summary-icon" 
                         src={"https://spencerheywood.com/images/servo/icons/icons-07.png"} 
                         alt="mobile checkout icon" />
                         <div className="summary-preview">Summary</div>
-                        {isMobile ? ''
-                            :<button 
-                                onClick={handleAddToCart}
-                                className={`secondary-summary-action-button 
+                        <button className={`secondary-summary-action-button 
                                             ${vendorCartItem && 
                                             (cartItemStatus !== 'priced' && allComponentsClosed) 
                                             ? '' 
-                                            : 'gray-out'}`}
-                            >
-                                Add to Cart
-                            </button>
-                        }
-                        <button 
-                            onClick={handleCheckout}
-                            className={`secondary-summary-action-button 
-                                        ${vendorCartItem && 
-                                        (cartItemStatus !== 'priced' && allComponentsClosed) 
-                                        ? '' 
-                                        : 'gray-out'}`}
-                        >
-                            Checkout
+                                            : 'gray-out'}`} 
+                                            onClick={handleSummaryClick}>
+                            {cartItemStatus === 'scheduled' || cartItemStatus === 'pending' ? 'Continue' : 'Checkout'}
                         </button>
                     </div>
                 </div>

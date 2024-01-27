@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'
-import './AppointmentScheduling.css'
+import './ProviderScheduling.css'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
 import { format, getDay, isSameDay, parseISO } from 'date-fns';
-import { updateCartItem } from '../store/cart';
+import { updateCartItem } from '../../store/cart';
 
-const AppointmentScheduling = ({schedulingOpen, calendarIntegration, cartItem, onContinue}) => {
+const ProviderScheduling = ({schedulingOpen, calendarIntegration, cartItem, onContinue}) => {
     const dispatch = useDispatch();
     const [calendarData, setCalendarData] = useState([]);
     const [startDate, setStartDate] = useState(new Date());
@@ -119,4 +119,4 @@ const AppointmentScheduling = ({schedulingOpen, calendarIntegration, cartItem, o
     )
 }
 
-export default AppointmentScheduling;
+export default ProviderScheduling;
