@@ -20,7 +20,11 @@ const ProviderScheduling = ({schedulingOpen, calendarIntegration, cartItem, onCo
             : format(startDate, "EEEE, MMMM do @ h:mmaaa");
 
     const handleDateChange = (date) => {
-        setStartDate(updateAvailableTimes(date)[0]);
+        if(isSameDay(startDate, date)){
+            setStartDate(date)
+        }else{
+            setStartDate(updateAvailableTimes(date)[0]);
+        }
     };
 
     useEffect(()=>{

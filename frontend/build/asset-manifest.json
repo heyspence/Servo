@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.5a231c2d.css",
-    "main.js": "/static/js/main.ecc6b83f.js",
+    "main.css": "/static/css/main.c5f0aa9a.css",
+    "main.js": "/static/js/main.c2b8aa72.js",
+    "static/media/logo_master.svg": "/static/media/logo_master.5aefba55ea693623be37b45581bea8a8.svg",
     "static/media/CartIcon.svg": "/static/media/CartIcon.1adc22c4973356ffaf170680d9c90400.svg",
     "static/media/MasterCard.svg": "/static/media/MasterCard.b5a80e1db4cc785f23881cc3d07fa109.svg",
     "index.html": "/index.html",
@@ -13,11 +14,11 @@
     "static/media/add_circle_FILL0_wght400_GRAD0_opsz24.svg": "/static/media/add_circle_FILL0_wght400_GRAD0_opsz24.1c59174103fba0f44c904eab57a71b17.svg",
     "static/media/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.svg": "/static/media/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.493f25045dad47cf7eeb07411a46f1b2.svg",
     "static/media/chevron_right_FILL0_wght400_GRAD0_opsz24.svg": "/static/media/chevron_right_FILL0_wght400_GRAD0_opsz24.61e1b47165e9447c58adb27abb28dfd5.svg",
-    "main.5a231c2d.css.map": "/static/css/main.5a231c2d.css.map",
-    "main.ecc6b83f.js.map": "/static/js/main.ecc6b83f.js.map"
+    "main.c5f0aa9a.css.map": "/static/css/main.c5f0aa9a.css.map",
+    "main.c2b8aa72.js.map": "/static/js/main.c2b8aa72.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a231c2d.css",
-    "static/js/main.ecc6b83f.js"
+    "static/css/main.c5f0aa9a.css",
+    "static/js/main.c2b8aa72.js"
   ]
 }

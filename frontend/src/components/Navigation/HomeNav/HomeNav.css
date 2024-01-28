@@ -34,14 +34,8 @@
     cursor: auto;
 }
 
-/* .home-nav h1{
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 1px;
-} */
-
 .main-logo{
-    width: 110px;
+    width: 140px;
     margin: 0 10px;
 }
 
@@ -83,7 +77,7 @@
 } */
 
 .home-nav-right{
-    margin-right: 7%;
+    /* margin-right: 7%; */
     display: flex;
     align-items: center;
 }
@@ -98,10 +92,9 @@
       display: none;
     }
 
-    .main-logo{
-        content: url("https://spencerheywood.com/images/servo/icons/icons-07.png");
-        width: 50px;
-        transform: translate(10%, -10%);
+    .user-address{
+        padding: 10px;
+        width: 150px;
     }
 
     .location-btn{

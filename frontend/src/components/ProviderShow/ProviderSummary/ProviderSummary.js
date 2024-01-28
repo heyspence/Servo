@@ -1,10 +1,7 @@
 import { format, parseISO } from 'date-fns';
 import './ProviderSummary.css'
-import { useDispatch } from 'react-redux';
-import { toggleCart, updateCartItem } from '../../store/cart';
 
-const ProviderSummary = ({summaryOpen, cartItem, vendor, onContinue, onCheckout}) => {
-    const dispatch = useDispatch();
+const ProviderSummary = ({summaryOpen, cartItem, vendor, onCheckout}) => {
     let isMobile = window.innerWidth < 700;
 
     const categoryMap = {
@@ -64,7 +61,6 @@ const ProviderSummary = ({summaryOpen, cartItem, vendor, onContinue, onCheckout}
                     </div>
                 </div>
                 <div className="summary-action-buttons">
-                    {/* <button className="secondary-summary-action-button" onClick={() => onContinue({bypass: true})}>Add to Cart</button> */}
                     <button className="secondary-summary-action-button" onClick={onCheckout}>Checkout</button>
                 </div>
             </div>
