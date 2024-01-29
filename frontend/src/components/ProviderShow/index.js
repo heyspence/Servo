@@ -5,40 +5,50 @@ import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min
 import { useEffect, useState } from 'react'
 import { isLoggedIn } from '../store/session'
 import { fetchCalendarData, fetchServices, fetchVendor } from '../store/vendor'
-import { fetchReviews } from '../store/reviews'
-import ReviewIndexItem from '../Reviews/ReviewIndexItem'
 import ProviderPricing from './ProviderPricing/ProviderPricing'
 import ProviderScheduling from './ProviderScheduling/ProviderScheduling'
 import { fetchImages } from '../store/images'
 import Modal from '../Modal'
 import ReviewForm from '../Reviews/ReviewForm'
-// import ReviewShow from '../Reviews/ReviewShow'
 import { getCart, toggleCart, updateCartItem } from '../store/cart'
 import { addDays, format, parseISO } from 'date-fns'
 import ProviderSummary from './ProviderSummary/ProviderSummary'
+import ProviderGallery from './ProviderGallery/ProviderGallery'
+import ProviderReviews from './ProviderReviews/ProviderReviews'
 
 const ProviderShow = () => {
     // const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
+    // Hook calls
     const { id }= useParams();
     const userLoggedIn = useSelector(isLoggedIn);
     const history = useHistory();
     const dispatch = useDispatch();
     const vendor = useSelector((state)=> state.vendors[id]);
-    const reviews = useSelector(state => state?.reviews ? Object.values(state.reviews) : []);
-    const images = useSelector(state => state?.images ? Object.values(state.images) : []);
     const currentUserId = useSelector(state => state.session.user?.id);
-    const defaultService = vendor?.services ? Object.values(vendor.services)[0] : {};
+    const reviews = useSelector(state => state?.reviews ? Object.values(state.reviews) : []);
     const vendorCartItem = useSelector(state => Object.values(state.cart.cartItems).find(cartItem => cartItem.vendorId === parseInt(id, 10)));
     const calendarData = useSelector(state => state?.vendors && state.vendors[id]?.calendarData ? state.vendors[id].calendarData : []);
+
+    // States
+    const [reviewModalOpen, setReviewModalOpen] = useState(false);
+    const [reviewShowOpen, setReviewShowOpen] = useState(false);
+    const [openComponent, setOpenComponent] = useState({
+        pricing: false, 
+        scheduling: false, 
+        summary: false
+    });
+
+    // Variables
+    const defaultService = vendor?.services ? Object.values(vendor.services)[0] : {};
     const nextAvailableAppointment = calendarData.length > 0 ? parseISO(calendarData[0].start_time) : addDays(new Date(), 2);
     const formattedNextAvailableAppointment = format(nextAvailableAppointment, "EEE, MMM do");
     const cartItemStatus = vendorCartItem?.status;
-    const [reviewModalOpen, setReviewModalOpen] = useState(false);
-    const [reviewShowOpen, setReviewShowOpen] = useState(false);
-    const [openComponent, setOpenComponent] = useState({pricing: false, scheduling: false, summary: false});
     const allComponentsClosed = Object.values(openComponent).every(val => val === false);
     let isMobile = window.innerWidth < 700;
+    const phoneNumber = vendor?.phoneNumber ? vendor.phoneNumber : '*********'
+    const formattedPhoneNumber = "(" + phoneNumber?.slice(0, 3) + ") " + phoneNumber?.slice(3, 6) + "-" + phoneNumber?.slice(6, 10);
 
+    // Dictionary for category parsing
     const categoryMap = {
         window_cleaning: "Window Cleaning",
         house_cleaning: "House Cleaning",
@@ -47,19 +57,15 @@ const ProviderShow = () => {
         garbage_can_cleaning: "Garbage Can Cleaning",
         car_detailing: "Auto Detailing"
     }
-
-    const phoneNumber = vendor?.phoneNumber
-    const formattedPhoneNumber = "(" + phoneNumber?.slice(0, 3) + ") " + phoneNumber?.slice(3, 6) + "-" + phoneNumber?.slice(6, 10)
-
-    if(!userLoggedIn) history.push('/')
-
+    
+    // useEffects
     useEffect(() => {
-        dispatch(fetchVendor(id))
+        if(!userLoggedIn) history.push('/')
+        dispatch(fetchVendor(id));
         dispatch(fetchImages(id));
-        dispatch(fetchReviews(id));
         dispatch(fetchServices(id));
         dispatch(getCart(currentUserId))
-    }, [dispatch, id]);
+    }, [dispatch, id, userLoggedIn, history]);
 
     useEffect(()=>{
         if(vendor?.calendar){
@@ -67,6 +73,7 @@ const ProviderShow = () => {
         }
     }, [vendor])
 
+    // Reviews util function
     let reviewCount = 0
     let total = 0
     reviews.forEach(review => {
@@ -75,6 +82,8 @@ const ProviderShow = () => {
     })
     let reviewAverage = (total / reviewCount).toFixed(1)
 
+
+    // Click handlers
     const handleScheduleClick = ({bypass}) => {
         if(cartItemStatus && !openComponent.pricing || bypass){
             setOpenComponent({
@@ -132,6 +141,17 @@ const ProviderShow = () => {
         history.push(`/checkout`)
     }
 
+    // Helper functions
+    let formattedDate = () =>{
+        if(vendorCartItem?.appointmentAt){
+            return isMobile
+            ? format(parseISO(vendorCartItem?.appointmentAt), "MMM do @ h:mm")
+            : format(parseISO(vendorCartItem?.appointmentAt), "EEEE, MMMM do @ h:mmaaa");
+        }else{
+            return "--"
+        }
+    }
+
     const closeAllComponents = () =>{
         setOpenComponent({
             pricing: false,
@@ -148,6 +168,8 @@ const ProviderShow = () => {
         setReviewShowOpen(!reviewShowOpen)
     }
 
+
+    // Conditional element rendering
     const basePricingDiv = <div className="pricing-preview">
                                 Starting at: <br/>${defaultService?.price ? defaultService.price : "--"}
                             </div>
@@ -157,23 +179,14 @@ const ProviderShow = () => {
 
     const defaultSchedulingDiv = <div className="scheduling-preview">Next Available Appointment: <br/>{formattedNextAvailableAppointment}</div>
 
-    let formattedDate = () =>{
-        if(vendorCartItem?.appointmentAt){
-            return isMobile
-            ? format(parseISO(vendorCartItem?.appointmentAt), "MMM do @ h:mm")
-            : format(parseISO(vendorCartItem?.appointmentAt), "EEEE, MMMM do @ h:mmaaa");
-        }else{
-            return "--"
-        }
-    }
-
     const confirmedSchedulingDiv = <div className="scheduling-preview--confirmed">
                                             <div>Service Date</div>
                                             <p className="green-text">{formattedDate()}</p>
                                     </div>
-
+    
     return (
         <>
+            {/* Category header */}
             <h1 className="provider-category">{categoryMap[vendor?.category]}</h1>
             <div className="provider-show">
                 <div className="provider-show-left">
@@ -182,16 +195,16 @@ const ProviderShow = () => {
                             <img className="provider-logo" src={vendor?.iconImageUrl} />
                         </div>
                         <div className="meta-info-container">
-                            <h2 className="provider-name">{vendor?.name}</h2>
+                            <h2 className="provider-name">{vendor?.name ? vendor.name : "--"}</h2>
                             <p className="review-tag">{eval(reviewAverage) ? reviewAverage : "-.-"}
-                                <StarSvg className="review-star-svg"/>{ reviewCount} ratings
+                                <StarSvg className="review-star-svg"/>{reviewCount} ratings
                             </p>
                         </div>
                     </div>
                     <div className="location-details-container">
                         <p>{formattedPhoneNumber}</p>
-                        <p style={{margin: "10px 0"}}>{vendor?.email}</p>
-                        <p>{vendor?.address}</p>
+                        <p style={{margin: "10px 0"}}>{vendor?.email ? vendor.email : '--'}</p>
+                        <p>{vendor?.address ? vendor.address : '--'}</p>
                     </div>
                     <div className="promotions">
                         <h3 className="promotions-header">Promotions</h3>
@@ -199,15 +212,12 @@ const ProviderShow = () => {
                         <div className="promotion">10% Off 2/Year Service</div>
                         <div className="promotion">15% Off 4/year service</div>
                     </div>
-                    <div className="reviews">
+                    {/* <div className="reviews">
                         <h3 className="reviews-header">Reviews</h3>
                         <button className="vendor-review-button" onClick={toggleReviewModal}>Add a Review</button>
-                        <div className="provider-review-index">
-                            {reviews && reviews.map((review, index) => {
-                                return <ReviewIndexItem review={review} key={index}/>
-                            })}
-                        </div>
-                    </div>
+                        <ProviderReviews />
+                    </div> */}
+                    <ProviderReviews toggleReviewModal={toggleReviewModal} id={id} />
                     <div className="disclaimer">
                         At Servo, we ensure a seamless connection with skilled professionals. 
                         It's important to remember that Servo is a facilitator of these 
@@ -218,18 +228,7 @@ const ProviderShow = () => {
                 </div>
 
                 <div className="provider-show-right">
-                        <div className="gallery-container">
-                        <h3 className="gallery-header">Gallery</h3>
-                        <div className="provider-gallery">
-                            {images && images.map((image, index) => {
-                                return <img className="provider-photo" 
-                                            src={image.url} alt={image.alt} 
-                                            loading={index > 4 ? 'lazy' : undefined} 
-                                            key={image.id} 
-                                        />
-                            })}
-                        </div>
-                    </div>
+                    <ProviderGallery id={id} />
                     <ProviderPricing basePrice={defaultService?.price} 
                                         inputs={defaultService?.inputs} 
                                         service={defaultService} 
