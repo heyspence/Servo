@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { useEffect, useState } from 'react'
 import { isLoggedIn } from '../store/session'
-import { fetchServices, fetchVendor } from '../store/vendor'
+import { fetchCalendarData, fetchServices, fetchVendor } from '../store/vendor'
 import { fetchReviews } from '../store/reviews'
 import ReviewIndexItem from '../Reviews/ReviewIndexItem'
 import ProviderPricing from './ProviderPricing/ProviderPricing'
@@ -14,7 +14,7 @@ import Modal from '../Modal'
 import ReviewForm from '../Reviews/ReviewForm'
 // import ReviewShow from '../Reviews/ReviewShow'
 import { getCart, toggleCart, updateCartItem } from '../store/cart'
-import { format, parseISO } from 'date-fns'
+import { addDays, format, parseISO } from 'date-fns'
 import ProviderSummary from './ProviderSummary/ProviderSummary'
 
 const ProviderShow = () => {
@@ -29,11 +29,14 @@ const ProviderShow = () => {
     const currentUserId = useSelector(state => state.session.user?.id);
     const defaultService = vendor?.services ? Object.values(vendor.services)[0] : {};
     const vendorCartItem = useSelector(state => Object.values(state.cart.cartItems).find(cartItem => cartItem.vendorId === parseInt(id, 10)));
-    const cartItemStatus = vendorCartItem?.status
+    const calendarData = useSelector(state => state?.vendors && state.vendors[id]?.calendarData ? state.vendors[id].calendarData : []);
+    const nextAvailableAppointment = calendarData.length > 0 ? parseISO(calendarData[0].start_time) : addDays(new Date(), 2);
+    const formattedNextAvailableAppointment = format(nextAvailableAppointment, "EEE, MMM do");
+    const cartItemStatus = vendorCartItem?.status;
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [reviewShowOpen, setReviewShowOpen] = useState(false);
-    const [openComponent, setOpenComponent] = useState({pricing: false, scheduling: false, summary: false})
-    const allComponentsClosed = Object.values(openComponent).every(val => val === false)
+    const [openComponent, setOpenComponent] = useState({pricing: false, scheduling: false, summary: false});
+    const allComponentsClosed = Object.values(openComponent).every(val => val === false);
     let isMobile = window.innerWidth < 700;
 
     const categoryMap = {
@@ -52,16 +55,17 @@ const ProviderShow = () => {
 
     useEffect(() => {
         dispatch(fetchVendor(id))
-        .then(() => {
-            dispatch(fetchImages(id));
-            dispatch(fetchReviews(id));
-            dispatch(fetchServices(id));
-            dispatch(getCart(currentUserId))
-        })
-        .catch((error) => {
-            console.log(error)
-        });
+        dispatch(fetchImages(id));
+        dispatch(fetchReviews(id));
+        dispatch(fetchServices(id));
+        dispatch(getCart(currentUserId))
     }, [dispatch, id]);
+
+    useEffect(()=>{
+        if(vendor?.calendar){
+            dispatch(fetchCalendarData(id));
+        }
+    }, [vendor])
 
     let reviewCount = 0
     let total = 0
@@ -151,7 +155,7 @@ const ProviderShow = () => {
                                     Custom Quote<div className="green-text"> ${vendorCartItem?.price.toFixed(2)}</div>
                                 </div>
 
-    const defaultSchedulingDiv = <div className="scheduling-preview">Next Available Appointment: <br/>Wed, Dec 24th</div>
+    const defaultSchedulingDiv = <div className="scheduling-preview">Next Available Appointment: <br/>{formattedNextAvailableAppointment}</div>
 
     let formattedDate = () =>{
         if(vendorCartItem?.appointmentAt){
@@ -243,7 +247,8 @@ const ProviderShow = () => {
                         </button>
                     </div>
                     <ProviderScheduling schedulingOpen={openComponent.scheduling} 
-                                            calendarIntegration={vendor?.calendar ? id : false} 
+                                            calendarIntegration={vendor?.calendar ? id : false}
+                                            calendarData={calendarData} 
                                             cartItem={vendorCartItem}
                                             onContinue={handleSummaryClick}
                     />
@@ -251,7 +256,7 @@ const ProviderShow = () => {
                         <img className="provider-calendar-icon" 
                         src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-08.png" 
                         alt="schedule now servo icon" />
-                        {vendorCartItem ? confirmedSchedulingDiv : defaultSchedulingDiv}
+                        {cartItemStatus === 'scheduled' ? confirmedSchedulingDiv : defaultSchedulingDiv}
                         <button onClick={handleScheduleClick} className={`schedule-button ${(vendorCartItem && !openComponent.pricing) ? '' : 'gray-out'}`}>
                             {cartItemStatus !== 'priced' && vendorCartItem?.status === 'pending' ? 'Edit Booking' : 'Schedule'}
                         </button>

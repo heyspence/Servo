@@ -6,9 +6,8 @@ import { addDays, format, getDay, isSameDay, parseISO } from 'date-fns';
 import { updateCartItem } from '../../store/cart';
 import 'react-datepicker/dist/react-datepicker.css'
 
-const ProviderScheduling = ({schedulingOpen, calendarIntegration, cartItem, onContinue}) => {
+const ProviderScheduling = ({schedulingOpen, calendarData = [], cartItem, onContinue}) => {
     const dispatch = useDispatch();
-    const [calendarData, setCalendarData] = useState([]);
     const [startDate, setStartDate] = useState(new Date());
     const [availableTimes, setAvailableTimes] = useState([]);
     const [windowSize, setWindowSize] = useState({width: undefined, height: undefined})
@@ -21,7 +20,7 @@ const ProviderScheduling = ({schedulingOpen, calendarIntegration, cartItem, onCo
             : format(startDate, "EEEE, MMMM do @ h:mmaaa");
 
     const handleDateChange = (date) => {
-        if(calendarIntegration){
+        if(calendarData.length > 0){
             if(isSameDay(startDate, date)){
                 setStartDate(date)
             }else{
@@ -32,14 +31,8 @@ const ProviderScheduling = ({schedulingOpen, calendarIntegration, cartItem, onCo
         }
     };
 
-    useEffect(()=>{
-        if(calendarIntegration){
-            handleEventsRequest(calendarIntegration)
-        }
-    },[calendarIntegration])
-
     useEffect(() => {
-        if (calendarData && calendarData.length > 0) {
+        if (calendarData.length > 0) {
             setStartDate(parseISO(calendarData[0].start_time));
             updateAvailableTimes(parseISO(calendarData[0].start_time))
         }
@@ -56,16 +49,6 @@ const ProviderScheduling = ({schedulingOpen, calendarIntegration, cartItem, onCo
 
         return () => window.removeEventListener('resize', handleResize);
     },[])
-
-    const handleEventsRequest = async (vendorId) => {
-        const res = await fetch(`/api/vendors/${vendorId}/vendor_calendars`)
-        if(res.ok){
-            let data = await res.json();
-            setCalendarData(data)
-        }else{
-            console.log(res)
-        }
-    };
 
     const updateAvailableTimes = (dateTime) => {
         const filteredData = startTimesList
@@ -98,7 +81,7 @@ const ProviderScheduling = ({schedulingOpen, calendarIntegration, cartItem, onCo
     let conditionalProps = {};
     const currentTime = new Date();
 
-    if(calendarIntegration){
+    if(calendarData && calendarData.length > 0){
         conditionalProps = {
             includeDates: availableDates,
             includeTimes: availableTimes
@@ -129,6 +112,7 @@ const ProviderScheduling = ({schedulingOpen, calendarIntegration, cartItem, onCo
                     dateFormat="Pp"
                     placeholderText="Select a Date"
                     monthsShown={isMobile ? 1 : 2}
+                    disabledKeyboardNavigation
                     {...conditionalProps}
                 />
                 <button className="scheduling-continue-button" onClick={handleContinueClick}>Continue - {formattedDate}</button>

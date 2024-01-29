@@ -57,7 +57,7 @@ const ProviderSummary = ({summaryOpen, cartItem, vendor, onCheckout}) => {
                     <hr/>
                     <div className="pricing-summary-item-container">
                         <p>Total</p>
-                        <p>${cartItem?.price.toFixed(2)}</p>
+                        <p>${(cartItem?.price + 1.85).toFixed(2)}</p>
                     </div>
                 </div>
                 <div className="summary-action-buttons">
