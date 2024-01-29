@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'
 import './ProviderScheduling.css'
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css'
-import { format, getDay, isSameDay, parseISO } from 'date-fns';
+import { addDays, format, getDay, isSameDay, parseISO } from 'date-fns';
 import { updateCartItem } from '../../store/cart';
+import 'react-datepicker/dist/react-datepicker.css'
 
 const ProviderScheduling = ({schedulingOpen, calendarIntegration, cartItem, onContinue}) => {
     const dispatch = useDispatch();
@@ -12,18 +12,23 @@ const ProviderScheduling = ({schedulingOpen, calendarIntegration, cartItem, onCo
     const [startDate, setStartDate] = useState(new Date());
     const [availableTimes, setAvailableTimes] = useState([]);
     const [windowSize, setWindowSize] = useState({width: undefined, height: undefined})
+    const availableDates = calendarData.map(entry => parseISO(entry.start_time));
     let isMobile = window.innerWidth < 1325;
-    let startTimesList = calendarData.map(entry => parseISO(entry.start_time))
+    let startTimesList = calendarData.map(entry => parseISO(entry.start_time));
     let formattedDate = format(startDate, "M/d/yy");
     let formattedHeader = isMobile
             ? format(startDate, "EEE, MMM do @ h:mmaaa")
             : format(startDate, "EEEE, MMMM do @ h:mmaaa");
 
     const handleDateChange = (date) => {
-        if(isSameDay(startDate, date)){
-            setStartDate(date)
+        if(calendarIntegration){
+            if(isSameDay(startDate, date)){
+                setStartDate(date)
+            }else{
+                setStartDate(updateAvailableTimes(date)[0]);
+            }
         }else{
-            setStartDate(updateAvailableTimes(date)[0]);
+            setStartDate(date)
         }
     };
 
@@ -90,13 +95,30 @@ const ProviderScheduling = ({schedulingOpen, calendarIntegration, cartItem, onCo
         onContinue({bypass: true})
     }
 
-    const availableDates = calendarData.map(entry => parseISO(entry.start_time));
+    let conditionalProps = {};
+    const currentTime = new Date();
+
+    if(calendarIntegration){
+        conditionalProps = {
+            includeDates: availableDates,
+            includeTimes: availableTimes
+        }
+    }else{
+        conditionalProps = {
+            minTime: new Date(currentTime).setHours(8, 0, 0),
+            maxTime: new Date(currentTime).setHours(17, 0, 0),
+            timeIntervals: 120,
+            // highlightDates: [addDays(currentTime, 8)],
+            minDate: addDays(currentTime, 2),
+            maxDate: addDays(currentTime, 365),
+            filterDate: isWeekday
+        }
+    }
 
     return (
         <div className={`appointment-scheduling ${schedulingOpen ? '' : 'minimize' }`}>
             <div className="scheduling-container">
                 <div className="scheduling-output">
-                    {/* {format(startDate, "EEEE, MMMM do @ h:mmaaa")} */}
                     {formattedHeader}
                 </div>
                 <DatePicker
@@ -106,16 +128,8 @@ const ProviderScheduling = ({schedulingOpen, calendarIntegration, cartItem, onCo
                     showTimeSelect
                     dateFormat="Pp"
                     placeholderText="Select a Date"
-                    // minTime={new Date().setHours(8, 0, 0)}
-                    // maxTime={new Date().setHours(17, 0, 0)}
-                    // timeIntervals={120}
-                    // highlightDates={[addDays(new Date(), 8)]}
-                    // minDate={ addDays(new Date(), 2)}
-                    // maxDate={ addDays(new Date(), 20)}
-                    filterDate={isWeekday}
                     monthsShown={isMobile ? 1 : 2}
-                    includeDates={availableDates}
-                    includeTimes={availableTimes}
+                    {...conditionalProps}
                 />
                 <button className="scheduling-continue-button" onClick={handleContinueClick}>Continue - {formattedDate}</button>
             </div>

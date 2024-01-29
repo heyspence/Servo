@@ -69,6 +69,16 @@
 
 .appointment-scheduling .react-datepicker__day--keyboard-selected{
     background-color: unset;
+    color: var(--primary-red);
+}
+
+.appointment-scheduling .react-datepicker__navigation--previous, .appointment-scheduling .react-datepicker__navigation--next{
+    height: 25px;
+    border: transparent;
+}
+
+.appointment-scheduling .react-datepicker__navigation--next:hover, .appointment-scheduling .react-datepicker__navigation--previous:hover{
+    background-color: unset;
 }
 
 .appointment-scheduling .react-datepicker__day--keyboard-selected:hover{
