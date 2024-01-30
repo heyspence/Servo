@@ -14,7 +14,8 @@ class Api::VendorsController < ApplicationController
         @images = @vendor.images
         @reviews = @vendor.reviews
         @services = @vendor.services
-        @cart_item = @vendor.cart_items[0]
+        cart_items = current_user.cart_items
+        @cart_item = cart_items.find_by_vendor_id(params[:id])
         render :show
     end
 end

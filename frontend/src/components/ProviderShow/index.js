@@ -28,7 +28,11 @@ const ProviderShow = () => {
         }
     })
     const reviews = vendor?.reviews ? Object.values(vendor.reviews) : [];
-    const vendorCartItem = vendor?.cartItem ? vendor.cartItem : undefined;
+    const vendorCartItem = useSelector(state =>
+        Object.values(state.cart?.cartItems).find(item => item.vendorId === parseInt(id))
+    );
+
+    console.log(vendorCartItem)
 
     // States
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
@@ -61,7 +65,6 @@ const ProviderShow = () => {
     
     // useEffects
     useEffect(() => {
-        // if(!userLoggedIn) history.push('/')
         dispatch(fetchVendor(id));
     }, [dispatch, id, history]);
 
