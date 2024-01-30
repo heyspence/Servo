@@ -2,15 +2,14 @@ import './ProviderShow.css'
 import { ReactComponent as StarSvg } from '../../assets/svg/reviewStar.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { isLoggedIn } from '../store/session'
-import { fetchCalendarData, fetchServices, fetchVendor } from '../store/vendor'
+import { fetchCalendarData, fetchVendor } from '../store/vendor'
 import ProviderPricing from './ProviderPricing/ProviderPricing'
 import ProviderScheduling from './ProviderScheduling/ProviderScheduling'
-import { fetchImages } from '../store/images'
 import Modal from '../Modal'
 import ReviewForm from '../Reviews/ReviewForm'
-import { getCart, toggleCart, updateCartItem } from '../store/cart'
+import { toggleCart, updateCartItem } from '../store/cart'
 import { addDays, format, parseISO } from 'date-fns'
 import ProviderSummary from './ProviderSummary/ProviderSummary'
 import ProviderGallery from './ProviderGallery/ProviderGallery'
@@ -20,14 +19,16 @@ const ProviderShow = () => {
     // const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
     // Hook calls
     const { id }= useParams();
-    const userLoggedIn = useSelector(isLoggedIn);
     const history = useHistory();
     const dispatch = useDispatch();
-    const vendor = useSelector((state)=> state.vendors[id]);
-    const currentUserId = useSelector(state => state.session.user?.id);
-    const reviews = useSelector(state => state?.reviews ? Object.values(state.reviews) : []);
-    const vendorCartItem = useSelector(state => Object.values(state.cart.cartItems).find(cartItem => cartItem.vendorId === parseInt(id, 10)));
-    const calendarData = useSelector(state => state?.vendors && state.vendors[id]?.calendarData ? state.vendors[id].calendarData : []);
+    const { vendor, calendarData } = useSelector(state => {
+        return {
+            vendor: state.vendors[id],
+            calendarData: state?.vendors && state.vendors[id]?.calendarData ? state.vendors[id].calendarData : []
+        }
+    })
+    const reviews = vendor?.reviews ? Object.values(vendor.reviews) : [];
+    const vendorCartItem = vendor?.cartItem ? vendor.cartItem : undefined;
 
     // States
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
@@ -44,9 +45,9 @@ const ProviderShow = () => {
     const formattedNextAvailableAppointment = format(nextAvailableAppointment, "EEE, MMM do");
     const cartItemStatus = vendorCartItem?.status;
     const allComponentsClosed = Object.values(openComponent).every(val => val === false);
-    let isMobile = window.innerWidth < 700;
     const phoneNumber = vendor?.phoneNumber ? vendor.phoneNumber : '*********'
     const formattedPhoneNumber = "(" + phoneNumber?.slice(0, 3) + ") " + phoneNumber?.slice(3, 6) + "-" + phoneNumber?.slice(6, 10);
+    let isMobile = window.innerWidth < 700;
 
     // Dictionary for category parsing
     const categoryMap = {
@@ -60,12 +61,9 @@ const ProviderShow = () => {
     
     // useEffects
     useEffect(() => {
-        if(!userLoggedIn) history.push('/')
+        // if(!userLoggedIn) history.push('/')
         dispatch(fetchVendor(id));
-        dispatch(fetchImages(id));
-        dispatch(fetchServices(id));
-        dispatch(getCart(currentUserId))
-    }, [dispatch, id, userLoggedIn, history]);
+    }, [dispatch, id, history]);
 
     useEffect(()=>{
         if(vendor?.calendar){
@@ -74,13 +72,20 @@ const ProviderShow = () => {
     }, [vendor])
 
     // Reviews util function
-    let reviewCount = 0
-    let total = 0
-    reviews.forEach(review => {
-        reviewCount++
-        total += review.score
-    })
-    let reviewAverage = (total / reviewCount).toFixed(1)
+    let { reviewCount, reviewAverage } = useMemo(()=>{
+        let reviewCount = 0
+        let total = 0
+        reviews.forEach(review => {
+            reviewCount++
+            total += review.score
+        })
+        let reviewAverage = (total / reviewCount).toFixed(1)
+        return ({
+            reviewAverage,
+            reviewCount
+        })
+    }, [reviews])
+
 
 
     // Click handlers
@@ -186,8 +191,7 @@ const ProviderShow = () => {
     
     return (
         <>
-            {/* Category header */}
-            <h1 className="provider-category">{categoryMap[vendor?.category]}</h1>
+            <h2 className="provider-category">{categoryMap[vendor?.category]}</h2>
             <div className="provider-show">
                 <div className="provider-show-left">
                     <div className="meta-info-block">
@@ -195,7 +199,7 @@ const ProviderShow = () => {
                             <img className="provider-logo" src={vendor?.iconImageUrl} />
                         </div>
                         <div className="meta-info-container">
-                            <h2 className="provider-name">{vendor?.name ? vendor.name : "--"}</h2>
+                            <h1 className="provider-name">{vendor?.name ? vendor.name : "--"}</h1>
                             <p className="review-tag">{eval(reviewAverage) ? reviewAverage : "-.-"}
                                 <StarSvg className="review-star-svg"/>{reviewCount} ratings
                             </p>
@@ -212,11 +216,6 @@ const ProviderShow = () => {
                         <div className="promotion">10% Off 2/Year Service</div>
                         <div className="promotion">15% Off 4/year service</div>
                     </div>
-                    {/* <div className="reviews">
-                        <h3 className="reviews-header">Reviews</h3>
-                        <button className="vendor-review-button" onClick={toggleReviewModal}>Add a Review</button>
-                        <ProviderReviews />
-                    </div> */}
                     <ProviderReviews toggleReviewModal={toggleReviewModal} id={id} />
                     <div className="disclaimer">
                         At Servo, we ensure a seamless connection with skilled professionals. 

@@ -16,7 +16,7 @@ vendor = Vendor.create([
     { name: "Eco Refresh Garbage Can Cleaning", phone_number: "4356453890", email:"refreshgarbagecleaning@gmail.com", category:"garbage_can_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-30.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/refresh-ecowash-logo.png"},
     { name: 'Dead Aim Pest Control', phone_number: "4356453890", email:"deadaimpest@gmail.com", category:"pest_control", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-1.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Screen%20Shot%202021-06-21%20at%2010.19.09%20PM.png"},
     { name: 'Lily Maid House Cleaning', phone_number: "4356453890", email:"lilymaidhousecleaning@gmail.com", category:"house_cleaning", image_url: "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning/Lily%20Maid%20Cleaning%20Shoot-50.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png"},
-    # { name: 'Onsite Detail', phone_number: "4356453890", email:"help@onsite.com", category:"car_detailing", image_url: "https://spencerheywood.com/images/servo/highlights/52-09282019_OnsiteDetail052.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/logo-dark%20copy%204.png"},
+    { name: 'Onsite Detail', phone_number: "4356453890", email:"help@onsite.com", category:"window_cleaning", image_url: "https://spencerheywood.com/images/servo/Pictures/web_optimized/ease/E22A3062.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/logo-dark%20copy%204.png"},
 ])
 
 puts "Creating demo user"
@@ -32,7 +32,8 @@ user = User.create([
     { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor2@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 2},
     { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor3@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 3},
     { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor4@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 4},
-    { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor5@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 5}
+    { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor5@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 5},
+    { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor6@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 6}
 ])
 
 puts "Creating services"
@@ -43,7 +44,8 @@ service = Service.create([
     {name: 'Garbage Can Cleaning', price: '35', vendor_id: 3, formula:"(#9*35)+(#10*25)"},
     {name: 'Pest Control', price: '65', vendor_id: 4, formula:"(#22<1700?65:(#22<=3500?75:95))*#23"},
     {name: 'House Cleaning', price: '35', vendor_id: 5, formula: "#7*35"},
-    {name: 'Auto Detailing', price: '75', vendor_id: 6}
+    {name: 'Auto Detailing', price: '75', vendor_id: 6},
+    {name: 'Window Cleaning', price: '50', vendor_id: 1, formula:"(((1705600*#3)/(43658860+#3)*#1)*#2)*#4"}
 ])
 
 puts "Creating Inputs"
@@ -72,7 +74,13 @@ input = Input.create([
     {name:"Frequency", input_type:"radio", service_id: 2, recurring: true},
     {name:"Total Square Footage", input_type:"range", service_id: 4, required: true},
     {name:"Additional Options", input_type:"radio", service_id: 4, required: true},
-    {name:"Frequency", input_type:"radio", service_id: 4, recurring: true}
+    {name:"Frequency", input_type:"radio", service_id: 4, recurring: true},
+    {name:"Floors", input_type:"select", service_id: 7, required: true},
+    {name:"What windows would you like cleaned?", input_type:"radio", service_id: 7, required: true},
+    {name:"Total Square Footage", input_type:"range", service_id: 7, required: true},
+    {name:"Additional Options", input_type:"checkbox", service_id: 7, required: true},
+    {name:"Frequency", input_type:"radio", service_id: 7, recurring: true},
+    {name:"Additional Options", input_type:"select", service_id: 7, recurring: true}
 ])
 
 puts "Creating Options"

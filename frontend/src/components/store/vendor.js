@@ -40,7 +40,7 @@ export const fetchVendor = vendorId => async dispatch => {
             const data = await res.json()
             dispatch(recieveVendor(data))
         }else{
-            throw new Error('Failed to fetch calendar vendor data')
+            throw new Error('Failed to fetch vendor data')
         }
     }catch (error) {
         console.error(error);
@@ -99,7 +99,6 @@ const vendorsReducer = (state = {}, action) => {
         case RECEIVE_CALENDAR_DATA:
             const calendarData = action.calendarData
             const id = calendarData.id
-            console.log(newState[id])
             newState[id].calendarData = calendarData
             return newState
         default: 
