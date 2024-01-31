@@ -21,18 +21,17 @@ const ProviderShow = () => {
     const { id }= useParams();
     const history = useHistory();
     const dispatch = useDispatch();
-    const { vendor, calendarData } = useSelector(state => {
+    const { vendor, calendarData, userLoggedIn } = useSelector(state => {
         return {
             vendor: state.vendors[id],
-            calendarData: state?.vendors && state.vendors[id]?.calendarData ? state.vendors[id].calendarData : []
+            calendarData: state?.vendors && state.vendors[id]?.calendarData ? state.vendors[id].calendarData : [],
+            userLoggedIn: isLoggedIn(state)
         }
     })
     const reviews = vendor?.reviews ? Object.values(vendor.reviews) : [];
     const vendorCartItem = useSelector(state =>
         Object.values(state.cart?.cartItems).find(item => item.vendorId === parseInt(id))
     );
-
-    console.log(vendorCartItem)
 
     // States
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
@@ -65,8 +64,12 @@ const ProviderShow = () => {
     
     // useEffects
     useEffect(() => {
-        dispatch(fetchVendor(id));
-    }, [dispatch, id, history]);
+        if(!userLoggedIn){
+            history.push('/')
+        }else{
+            dispatch(fetchVendor(id));
+        }
+    }, [dispatch, id, history, userLoggedIn]);
 
     useEffect(()=>{
         if(vendor?.calendar){

@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import VendorIndex from '../Vendor/VendorIndex';
 import { getCart } from '../store/cart.js'
 import { useEffect } from 'react';
+import { fetchVendors } from '../store/vendor.js';
 
 const Home = () => {
     const userLoggedIn = useSelector(isLoggedIn);
@@ -18,7 +19,8 @@ const Home = () => {
 
     useEffect(()=>{
         dispatch(getCart(userId))
-    }, [dispatch])
+        dispatch(fetchVendors())
+    }, [dispatch, userId])
 
    return(
         <div className="home-main">

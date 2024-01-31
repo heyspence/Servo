@@ -1,13 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import './VendorIndex.css'
-import { fetchVendors } from '../../store/vendor';
-import { useEffect } from 'react';
 import VendorIndexItem from '../VendorIndexItem';
 
 const VendorIndex = ({category}) => {
     const allVendors = useSelector(state => state?.vendors);
-    const vendors = allVendors ? Object.values(allVendors).filter(vendor => vendor.category === category) : []
-    const dispatch = useDispatch();
+    const vendors = allVendors ? Object.values(allVendors).filter(vendor => vendor.category === category) : [];
     const parsedCategory = category => {
         switch(category){
             case 'house_cleaning':
@@ -26,10 +23,6 @@ const VendorIndex = ({category}) => {
                 return `Unrecognized category: ${category}`
         }
     }
-
-    useEffect(() => {
-        dispatch(fetchVendors());
-    },[dispatch])
 
     return(
         <>
