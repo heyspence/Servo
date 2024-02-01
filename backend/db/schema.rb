@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_25_221032) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_31_162521) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,14 +54,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_25_221032) do
   create_table "inputs", force: :cascade do |t|
     t.string "input_type", null: false
     t.string "name", null: false
-    t.bigint "service_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "required", default: false
     t.boolean "recurring", default: false
     t.integer "order"
     t.string "alias"
-    t.index ["service_id"], name: "index_inputs_on_service_id"
   end
 
   create_table "options", force: :cascade do |t|
@@ -106,6 +104,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_25_221032) do
     t.index ["user_id", "vendor_id"], name: "index_reviews_on_user_id_and_vendor_id", unique: true
     t.index ["user_id"], name: "index_reviews_on_user_id"
     t.index ["vendor_id"], name: "index_reviews_on_vendor_id"
+  end
+
+  create_table "service_inputs", force: :cascade do |t|
+    t.bigint "input_id"
+    t.bigint "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["input_id"], name: "index_service_inputs_on_input_id"
+    t.index ["service_id"], name: "index_service_inputs_on_service_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -162,13 +169,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_25_221032) do
   add_foreign_key "cart_items", "users"
   add_foreign_key "cart_items", "vendors"
   add_foreign_key "images", "vendors"
-  add_foreign_key "inputs", "services"
   add_foreign_key "options", "inputs"
   add_foreign_key "order_details", "orders"
   add_foreign_key "order_details", "services"
   add_foreign_key "orders", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "reviews", "vendors"
+  add_foreign_key "service_inputs", "inputs"
+  add_foreign_key "service_inputs", "services"
   add_foreign_key "services", "vendors"
   add_foreign_key "users", "vendors"
   add_foreign_key "vendor_calendars", "vendors"

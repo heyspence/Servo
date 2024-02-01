@@ -13,6 +13,7 @@
 #
 class Service < ApplicationRecord
     belongs_to :vendor
-    has_many :inputs
+    has_many :service_inputs
+    has_many :inputs, through: :service_inputs
     has_one_attached :photo
 end

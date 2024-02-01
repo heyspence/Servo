@@ -1,16 +1,26 @@
 .vendor-index-container{
     margin: 20px auto;
     width: 80%;
-    height: 100%;
+    max-width: 1200px;
 }
 
 .vendor-index-container>h3{
     font-size: 25px;
+    justify-content: center;
+    margin-left: 10px;
 }
 
 .vendor-index ul{
     display: flex;
-    overflow-x: auto
+    flex-wrap: wrap;
+}
+
+.vendor-index ul:first-child{
+    margin-left: 0;
+}
+
+.vendor-index ul:last-child{
+    margin-right: 0;
 }
 
 .vendor-index h1{
@@ -32,9 +42,5 @@
 @media screen and (max-width: 649px) {
     .vendor-index-container{
         width: 100%;
-        margin: 20px auto;
-        padding: 0 10px;
-        overflow-x: auto;
-        box-sizing: border-box;
     }
 }
