@@ -37,7 +37,7 @@ const VendorIndexItem = ({ id, name, imageUrl = '' }) => {
     return(
         <li className="vendor-index-item" onClick={vendorRedirect}>
             <div className="vendor-index-image-container">
-                <img src={imageUrl} alt=""/>
+                <img src={imageUrl} alt={`${name} vendor cover image`}/>
             </div>
             <h3>{name}</h3>
             <span className="macro-review-container">

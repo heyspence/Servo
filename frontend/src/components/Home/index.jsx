@@ -8,10 +8,10 @@ import { useEffect } from 'react';
 import { fetchVendors } from '../store/vendor.js';
 
 const Home = () => {
-    const userLoggedIn = useSelector(isLoggedIn);
     const dispatch = useDispatch();
-    const userId = useSelector(state => state.session.user ? state.session.user.id : null)
     const history = useHistory();
+    const userLoggedIn = useSelector(isLoggedIn);
+    const userId = useSelector(state => state.session.user ? state.session.user.id : null)
 
     if(!userLoggedIn){
         history.push('/')
