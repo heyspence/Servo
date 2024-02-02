@@ -1,0 +1,12 @@
+.connect-google-calendar{
+    width: auto;
+}
+
+.connect-google-calendar--disconnect{
+    background-color: var(--primary-yellow);
+    width: auto;
+}
+
+.connect-google-calendar--disconnect:hover{
+    background-color: var(--primary-yellow);
+}

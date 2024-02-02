@@ -1,0 +1,46 @@
+.main-nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    color: var(--primary-white);
+    z-index: 50;
+    background-color: var(--secondary-white);
+  }
+  
+  .main-nav-logo{
+    left: 5%;
+    position: absolute;
+    width: 200px;
+    /* background-color: var(--primary-red); */
+    border-radius: 10px;
+  }
+
+  @media screen and (max-width: 599px){
+    .main-nav-logo{
+      width: 150px;
+      font-size: 18px;
+    }
+  }
+
+  .main-nav-icon{
+    position: relative;
+    max-width: 42px;
+    height: auto;
+    margin: 0 auto;
+    transform: translate(-38%, 0);
+  }
+
+  .main-nav-links{
+    margin-right: 5%
+  }
+
+  .main-sign-up-button {
+    color: var(--primary-red);
+    background-color: var(--primary-white);
+    min-width: 130px;
+  }
+
+  .main-sign-up-button:hover {
+    background-color: var(--primary-white);
+  }

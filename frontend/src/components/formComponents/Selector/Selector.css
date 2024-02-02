@@ -1,0 +1,19 @@
+select{
+    width: 100%;
+    border-radius: 2px;
+    height: 40px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--secondary-white);
+    border: none;
+    padding: 0 1em;
+    margin-top: 4px;
+    color: var(--primary-red)
+}
+
+.custom-select{
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+}

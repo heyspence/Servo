@@ -1,0 +1,19 @@
+.reviews{
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    background-color: white;
+    position: relative;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
+}
+
+.review-tag{
+    color: var(--secondary-gray);
+    margin-top: 10px;
+}
+
+.provider-review-index{
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
