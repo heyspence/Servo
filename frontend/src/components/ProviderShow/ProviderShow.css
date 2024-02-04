@@ -85,7 +85,7 @@
     display: flex;
     justify-content: space-around;
     left: 50%;
-    top: 95px;
+    top: -50px;
     min-width: 300px;
     transform: translate(-50%, 10%);
     background-color: var(--secondary-white);
@@ -276,8 +276,6 @@
 @media screen and (max-width: 999px){
     .provider-show{
         flex-direction: column;
-        overflow-y: auto;
-        overflow-x: hidden;
         margin: 75px 0;
         width: calc(100vw - 40px);
         height: 100%;

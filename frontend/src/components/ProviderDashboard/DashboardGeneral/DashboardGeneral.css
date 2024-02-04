@@ -79,6 +79,11 @@
     display: none;
 }
 
+.dashboard-general .provider-gallery{
+    flex-direction: unset;
+    height: unset;
+}
+
 .dashboard-general .vendor-index-item{
     width: 340px;
     margin: 0;

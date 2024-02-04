@@ -9,12 +9,13 @@ import { useEffect, useState } from 'react';
 import { fetchVendor } from '../store/vendor';
 import DashboardPromotions from './DashboardPromotions/DashboardPromotions';
 import { isLoggedIn } from '../store/session';
+import { useQueryParams } from '../../util/urlQueryParams';
 
 const ProviderDashboard = () => {
     const {id} = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
-    const [currentTab, setCurrentTab] = useState('Scheduling')
+    const currentTab = useQueryParams().tab || 'scheduling'
     const {vendor, currentUser, userLoggedIn} = useSelector(state => ({
             vendor: state.vendors[id],
             currentUser: state.session.user,
@@ -31,20 +32,20 @@ const ProviderDashboard = () => {
     },[dispatch, history, userLoggedIn])
 
     const handleTabClick = name => {
-        setCurrentTab(name)
+        history.push(`/vendors/${id}/dashboard?tab=${name.toLowerCase()}`)
     }
 
     const renderActiveComponent = () => {
         switch(currentTab){
-            case('Scheduling'):
+            case('scheduling'):
                 return <DashboardScheduling vendor={vendor} />
-            case('Pricing'):
+            case('pricing'):
                 return <DashboardPricing />
-            case ('Promotions'):
+            case ('romotions'):
                 return <DashboardPromotions />
-            case('Support'):
+            case('support'):
                 return <DashboardSupport />
-            case('General'):
+            case('general'):
                 return <DashboardGeneral vendor={vendor}/>
         }
     }
@@ -53,11 +54,11 @@ const ProviderDashboard = () => {
         <div className="provider-dashboard">
             <div className="provider-dashboard-container">
                 <ul className="dashboard-tabs">
-                    <li className={currentTab === 'Scheduling' ? 'active' : ''} onClick={()=>setCurrentTab('Scheduling')}>Scheduling</li>
-                    <li className={currentTab === 'Promotions' ? 'active' : ''} onClick={()=>setCurrentTab('Promotions')}>Promotions</li>
-                    <li className={currentTab === 'Pricing' ? 'active' : ''} onClick={()=>setCurrentTab('Pricing')}>Pricing</li>
-                    <li className={currentTab === 'General' ? 'active' : ''} onClick={()=>setCurrentTab('General')}>General</li>
-                    <li className={`support-tab ${currentTab === 'Support' ? 'active' : ''}`} onClick={()=>setCurrentTab('Support')}>Support</li>
+                    <li className={currentTab === 'scheduling' ? 'active' : ''} onClick={()=>handleTabClick('scheduling')}>Scheduling</li>
+                    <li className={currentTab === 'promotions' ? 'active' : ''} onClick={()=>handleTabClick('promotions')}>Promotions</li>
+                    <li className={currentTab === 'pricing' ? 'active' : ''} onClick={()=>handleTabClick('pricing')}>Pricing</li>
+                    <li className={currentTab === 'general' ? 'active' : ''} onClick={()=>handleTabClick('general')}>General</li>
+                    <li className={`support-tab ${currentTab === 'support' ? 'active' : ''}`} onClick={()=>handleTabClick('support')}>Support</li>
                 </ul>
                 {renderActiveComponent()}
                 <div className="servo-documentation">

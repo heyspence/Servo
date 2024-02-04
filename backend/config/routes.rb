@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       resources :order_details, only: [:index]
     end
 
-    resources :vendors, only: [:index, :show] do
+    resources :vendors, only: [:index, :show, :update] do
       resources :services, only: [:index]
       resources :reviews, only: [:index, :create]
       resources :images, only: [:index]

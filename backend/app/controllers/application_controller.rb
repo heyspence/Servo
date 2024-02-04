@@ -40,6 +40,12 @@ class ApplicationController < ActionController::API
         end
     end
 
+    def require_vendor_logged_in
+        unless current_user.vendor_id == params[:id].to_i()
+            render json: { message: 'Unauthorized user'}, status: :unauthorized
+        end
+    end
+
     private
     def snake_case_params
         params.deep_transform_keys!(&:underscore)

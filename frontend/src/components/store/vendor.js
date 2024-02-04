@@ -70,6 +70,20 @@ export const fetchCalendarData = vendorId => async dispatch => {
     }
 };
 
+export const updateVendor = vendor => async dispatch => {
+    const res = await csrfFetch(`/api/vendors/${vendor.id}`,{
+        headers: {'Content-Type': 'application/json'},
+        method: 'PATCH',
+        body: JSON.stringify({vendor})
+    })
+    if(res.ok){
+        let data = await res.json();
+        dispatch(recieveVendor(data))
+    }else{
+        console.log(res)
+    }
+}
+
 export const findVendorByService = (state, serviceId) =>{
     return ''
     const vendors = Object.values(state.vendors);

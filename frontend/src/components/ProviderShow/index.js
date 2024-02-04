@@ -14,6 +14,7 @@ import { addDays, format, parseISO } from 'date-fns'
 import ProviderSummary from './ProviderSummary/ProviderSummary'
 import ProviderGallery from './ProviderGallery/ProviderGallery'
 import ProviderReviews from './ProviderReviews/ProviderReviews'
+import { formatPhoneNumber } from '../../util/formatting'
 
 const ProviderShow = () => {
     // const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
@@ -49,7 +50,7 @@ const ProviderShow = () => {
     const cartItemStatus = vendorCartItem?.status;
     const allComponentsClosed = Object.values(openComponent).every(val => val === false);
     const phoneNumber = vendor?.phoneNumber ? vendor.phoneNumber : '*********'
-    const formattedPhoneNumber = "(" + phoneNumber?.slice(0, 3) + ") " + phoneNumber?.slice(3, 6) + "-" + phoneNumber?.slice(6, 10);
+    const formattedPhoneNumber = formatPhoneNumber(phoneNumber);
     let isMobile = window.innerWidth < 700;
 
     // Dictionary for category parsing
@@ -197,8 +198,8 @@ const ProviderShow = () => {
     
     return (
         <>
-            <h2 className="provider-category">{categoryMap[vendor?.category]}</h2>
             <div className="provider-show">
+                <h2 className="provider-category">{categoryMap[vendor?.category]}</h2>
                 <div className="provider-show-left">
                     <div className="meta-info-block">
                         <div className="provider-logo-background">
