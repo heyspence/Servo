@@ -40,9 +40,9 @@ const ProviderDashboard = () => {
             case('scheduling'):
                 return <DashboardScheduling vendor={vendor} />
             case('pricing'):
-                return <DashboardPricing />
-            case ('romotions'):
-                return <DashboardPromotions />
+                return <DashboardPricing vendor={vendor}/>
+            case ('promotions'):
+                return <DashboardPromotions vendor={vendor}/>
             case('support'):
                 return <DashboardSupport />
             case('general'):
@@ -62,9 +62,9 @@ const ProviderDashboard = () => {
                 </ul>
                 {renderActiveComponent()}
                 <div className="servo-documentation">
-                    <a>Terms of Service</a>
+                    <a href="/terms-of-service">Terms of Service</a>
                     <span> | </span>
-                    <a>Privacy Policy</a>
+                    <a href="/privacy-policy">Privacy Policy</a>
                 </div>
             </div>
         </div>

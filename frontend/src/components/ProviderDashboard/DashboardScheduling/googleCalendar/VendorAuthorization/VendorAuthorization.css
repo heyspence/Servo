@@ -3,10 +3,11 @@
 }
 
 .connect-google-calendar--disconnect{
-    background-color: var(--primary-yellow);
+    background-color: var(--primary-green);
     width: auto;
 }
 
 .connect-google-calendar--disconnect:hover{
-    background-color: var(--primary-yellow);
+    background-color: var(--primary-green);
+    cursor: unset;
 }

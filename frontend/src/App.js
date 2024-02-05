@@ -13,6 +13,8 @@ import UserAccount from "./components/UserAccount";
 import RecurringOrders from "./components/RecurringOrders";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import ProviderDashboard from "./components/ProviderDashboard";
+import PrivacyPolicy from "./components/staticPages/PrivacyPolicy";
+import TermsOfService from "./components/staticPages/TermsOfService";
 
 function App({ store }) {
   return (
@@ -30,6 +32,8 @@ function App({ store }) {
               <Route exact path="/account" component={UserAccount} />
               <Route exact path="/recurring-orders" component={RecurringOrders} />
               <Route exact path="/vendors/:id/dashboard" component={ProviderDashboard} />
+              <Route exact path="/privacy-policy" component={PrivacyPolicy} />
+              <Route exact path="/terms-of-service" component={TermsOfService} />
               <Route path="/" component={SplashPage} />
             </Switch>
             <Footer />

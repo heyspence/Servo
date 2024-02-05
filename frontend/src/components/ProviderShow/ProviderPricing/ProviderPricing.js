@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import CalculatorResults from './CalculatorResults';
 import './ProviderPricing.css'
 import Selector from '../../formComponents/Selector';
 import RadioButton from '../../formComponents/RadioButton';
 import RangeSlider from '../../formComponents/RangeSlider';
 import Checkbox from '../../formComponents/Checkbox';
-import { addToCart, toggleCart, updateCartItem } from '../../store/cart';
+import { addToCart, updateCartItem } from '../../store/cart';
 import { useDispatch, useSelector } from 'react-redux';
 
 const ProviderPricing = ({pricingOpen, service, onContinue, cartItem}) => {
@@ -45,7 +44,7 @@ const ProviderPricing = ({pricingOpen, service, onContinue, cartItem}) => {
         checkbox: Checkbox
     }
 
-    // this will be used to calculate the price difference for additional items like window cleaning
+    // this will be used to calculate the price difference for additional items like screen cleaning
     useEffect(()=> {
         if(inputs){
             const newCheckboxValues = {}

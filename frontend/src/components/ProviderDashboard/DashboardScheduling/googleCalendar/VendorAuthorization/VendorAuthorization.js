@@ -35,7 +35,7 @@ const VendorAuthorization = ({vendor}) =>{
 
     const calendarButton = () => {
         if(isConnected){
-            return <button className="connect-google-calendar--disconnect">Disconnect Google Calendar</button>
+            return <button className="connect-google-calendar--disconnect">Google Calendar Connected</button>
         }else{
             return <button className="connect-google-calendar" onClick={() => googleLogin()}>Connect Google Calendar</button>
         }

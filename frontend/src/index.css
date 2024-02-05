@@ -33,7 +33,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
+ol, ul, li {
 	list-style: none;
 }
 blockquote, q {
@@ -139,6 +139,13 @@ input *, label{
     user-select: none;
 }
 
+section{
+    margin-bottom: 15px;
+}
+
+strong{
+    font-weight: bold;
+}
 
 a{
     text-decoration: underline;
