@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import csrfFetch from '../../../../store/csrf';
 import './VendorAuthorization.css'
 import { useGoogleLogin } from '@react-oauth/google';
+import { ReactComponent as Close } from '../../../../../assets/svg/Close.svg'
+
 const VendorAuthorization = ({vendor}) =>{ 
     const [isConnected, setIsConnected] = useState(!!vendor?.calendar)
 
@@ -35,9 +37,13 @@ const VendorAuthorization = ({vendor}) =>{
 
     const calendarButton = () => {
         if(isConnected){
-            return <button className="connect-google-calendar--disconnect">Google Calendar Connected</button>
+            return <div className="calendar-button-container">
+                        <div className="status-circle"></div>
+                        <div className="connect-google-calendar--disconnect">Connected </div>
+                        <Close style={{transform: "scale(0.75)"}}/>
+                    </div>
         }else{
-            return <button className="connect-google-calendar" onClick={() => googleLogin()}>Connect Google Calendar</button>
+            return <button className="connect-google-calendar" onClick={() => googleLogin()}>Connect</button>
         }
     }
 

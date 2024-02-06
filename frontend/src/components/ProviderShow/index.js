@@ -53,7 +53,7 @@ const ProviderShow = () => {
     const formattedPhoneNumber = formatPhoneNumber(phoneNumber);
     let isMobile = window.innerWidth < 700;
 
-    // Dictionary for category parsing
+    // Map for category parsing
     const categoryMap = {
         window_cleaning: "Window Cleaning",
         house_cleaning: "House Cleaning",

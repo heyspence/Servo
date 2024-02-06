@@ -1,0 +1,9 @@
+/* .dashboard-scheduling h3{
+    margin-bottom: 10px;
+} */
+
+.calendar-header-container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px
+}

@@ -71,7 +71,7 @@ const SignUpForm = ({ onClose }) => {
                 <a onClick={signInDemoUser}>Sign up as demo user</a>
                 <Errors />
                 <p>By tapping “Sign Up” or “Continue with Google, Facebook, or Apple,” you agree
-                    to DoorDash’s Terms and Conditions and Privacy Policy.</p>
+                    to Servos’s Terms and Conditions and Privacy Policy.</p>
                 <input type="submit" value="Sign Up" className='button' />
             </form>
         </div>

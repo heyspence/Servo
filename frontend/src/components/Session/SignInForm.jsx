@@ -30,6 +30,15 @@ const SignInForm = ({ onClose }) => {
         onClose();
     };
 
+    const signInDemoVendor = async () => {
+        let user = {
+            email: 'demovendor1@dashdoor.com',
+            password: 'password'
+        }
+        dispatch(signIn(user));
+        onClose();
+    }
+
     return (
         <div className='sign-in-form'>
             <CloseIcon onClick={onClose} className="close-icon"/>
@@ -41,7 +50,8 @@ const SignInForm = ({ onClose }) => {
                 <label htmlFor="new-password">Password </label>
                 <input id="new-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
 
-                <a onClick={signInDemoUser}>Sign in as demo user</a>
+                <span><p><a onClick={signInDemoUser}>Sign in as demo user</a>|
+                <a onClick={signInDemoVendor}>Sign in as demo vendor</a></p></span>
                 <Errors />
                 <input type="submit" value="Sign In" className='button' />
                 <p>By continuing with the sign in process, we may send you 
