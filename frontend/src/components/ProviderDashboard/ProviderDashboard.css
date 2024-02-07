@@ -29,7 +29,7 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     background-color: var(--secondary-white);
-    color: var(--secondary-gray);
+    color: var(--primary-red);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,6 +46,7 @@
     color: var(--primary-red);
     font-weight: bold;
     box-shadow: none;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .servo-documentation{
