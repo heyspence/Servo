@@ -85,6 +85,9 @@ GEM
       aws-sdk-core (~> 3, >= 3.181.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.6)
+    aws-sdk-ses (1.56.0)
+      aws-sdk-core (~> 3, >= 3.184.0)
+      aws-sigv4 (~> 1.1)
     aws-sigv4 (1.6.1)
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.19)
@@ -143,6 +146,10 @@ GEM
       activesupport (>= 5.0.0)
     jmespath (1.6.2)
     jwt (2.7.1)
+    launchy (2.5.2)
+      addressable (~> 2.8)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
     loofah (2.21.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -246,6 +253,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   aws-sdk-s3
+  aws-sdk-ses (~> 1)
   bcrypt
   better_errors
   binding_of_caller
@@ -254,6 +262,7 @@ DEPENDENCIES
   google-apis-calendar_v3 (~> 0.5.0)
   httparty
   jbuilder
+  letter_opener
   pg (~> 1.1)
   pry-rails
   puma (~> 5.0)

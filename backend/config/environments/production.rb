@@ -5,6 +5,15 @@ Rails.application.configure do
   config.hosts << "bookservo.com"
   config.hosts << "www.bookservo.com"
 
+  # Email delivery method
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { 
+    address: 'email-smtp.us-east-2.amazonaws.com', 
+    user_name: ENV['AWS_USERNAME'], 
+    password: ENV['AWS_PASSWORD'],
+    port: 587,
+  }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
