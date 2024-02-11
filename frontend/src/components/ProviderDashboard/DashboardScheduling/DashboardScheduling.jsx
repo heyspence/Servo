@@ -7,7 +7,7 @@ const DashboardScheduling = ({vendor}) => {
         <div className="dashboard-scheduling">
             <div className="calendar-header-container">
                 <h3>Google Calendar Integration</h3>
-                <ToolTip style={{transform: 'scale(0.75)'}}/>
+                <ToolTip id="google-integration-tooltip" style={{transform: 'scale(0.75)'}}/>
             </div>
             <VendorAuthorization vendor={vendor}/>
         </div>

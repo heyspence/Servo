@@ -1,9 +1,45 @@
-/* .dashboard-scheduling h3{
-    margin-bottom: 10px;
-} */
-
 .calendar-header-container{
     display: flex;
     align-items: center;
     margin-bottom: 10px
+}
+
+.google-integration-tooltip::before{
+    content: 'Dynamically limit availability by connecting your existing calendar';
+    background-color: gray;
+    color: var(--primary-red);
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* visibility: hidden; */
+}
+
+.google-integration-tooltip{
+    position: relative;
+}
+
+.google-integration-tooltip:hover::before{
+    visibility: visible;
+}
+
+
+
+
+#calendar-header-container::before{
+    content: 'Dynamically limit availability by connecting your existing calendar';
+    background-color: gray;
+    color: var(--primary-red);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; /* Make it fully transparent */
+    transition: opacity 0.5s ease;
+}
+
+#calendar-header-container{
+    position: relative;
+}
+
+#calendar-header-container:hover::before{
+    opacity: 1
 }
