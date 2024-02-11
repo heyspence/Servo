@@ -25,6 +25,7 @@ class ApplicationController < ActionController::API
 
     def login!(user)
         session[:session_token] = user.reset_session_token!
+        AdminMailer.new_user_login(user).deliver_later
     end
     
 
