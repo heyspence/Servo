@@ -7,6 +7,7 @@ Rails.application.configure do
 
   # Use AWS SES for email delivery
   config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development

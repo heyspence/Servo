@@ -6,6 +6,7 @@ class Api::UsersController < ApplicationController
         if @user.save
             login!(@user)
             UserMailer.welcome_email(@user).deliver_later
+            AdminMailer.new_user(@user).deliver_later
             render :show
         else
             render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
