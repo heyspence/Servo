@@ -19,21 +19,41 @@ const SplashPage = () => {
 
     return (
         <main>
-            <div 
-                style={{
-                    height: '250px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '20px'
-                }}
-            >
-                <h1 style={{whiteSpace:'pre', textAlign: 'right', fontWeight: 'bold', fontSize: '30px'}}>
-                    Book All Your Services{'\n'}
-                    <span style={{color: 'var(--primary-green)'}}>Online.</span>
-                </h1>
+            <div style={{
+                height: '800px',
+                width: '100%',
+                backgroundImage:"url('https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/servo_home_services_cover.jpg')", 
+                backgroundSize: 'cover',
+                backgroundPosition: '100% center',
+                // position: 'absolute',
+                position: 'relative',
+                zIndex: '10',
+                // top: 0,
+                marginTop: '-100px'
+                }}>
+                <div 
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        zIndex: 10,
+                        position: 'absolute',
+                        right: '5%',
+                        top: '200px'
+                    }}
+                >
+                    <h1 style={{whiteSpace:'pre', textAlign: 'right', fontWeight: 'bold', fontSize: '35px'}}>
+                        Book All Your Services{'\n'}
+                        <span style={{
+                            // backgroundColor: 'var(--primary-green)',
+                            color: 'var(--primary-white)'
+                        }}>
+                            Online.
+                        </span>
+                    </h1>
+                </div>
             </div>
-            {/* <img src="https://spencerheywood.com/images/servo/Pictures/web_optimized/professional-home-cleaning-service.avif" alt="Professional home cleaning service in action with smiling cleaner vacuuming living room, offering easy online booking and scheduling." /> */}
+            {/* <img style={{width: '100%'}} src="https://spencerheywood.com/images/servo/Pictures/web_optimized/professional-home-cleaning-service.avif" alt="Professional home cleaning service in action with smiling cleaner vacuuming living room, offering easy online booking and scheduling." /> */}
             {/* <img src="https://spencerheywood.com/images/servo/Pictures/web_optimized/professional-window-cleaning-technician-action.avif" alt="Skilled window cleaning technician with professional tools and equipment wiping residential window, available for online booking and scheduling." /> */}
         </main>
     )

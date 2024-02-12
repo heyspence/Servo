@@ -4,15 +4,25 @@
     justify-content: space-between;
     min-height: 100px;
     color: var(--primary-white);
+    position: relative;
     z-index: 50;
-    background-color: var(--secondary-white);
 }
   
 .main-nav-logo{
   left: 5%;
+  top: 0px;
   position: absolute;
-  width: 200px;
+  width: 300px;
+  height: 150px;
   border-radius: 10px;
+}
+
+.main-nav-logo path{
+  fill: white !important;
+}
+
+.main-nav-logo #path88{
+  fill: var(--primary-yellow) !important;
 }
 
 .main-nav-links{
@@ -42,5 +52,15 @@
   .main-nav-links{
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .main-nav-bar{
+    height: 80px;
+  }
+
+  .main-nav-logo{
+    width: 225px;
+    top: -25px
   }
 }

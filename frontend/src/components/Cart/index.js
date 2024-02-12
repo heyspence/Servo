@@ -30,7 +30,7 @@ const Cart = () => {
 
     useEffect(()=>{
         dispatch(assignCart(cartVendor))
-    },[cartVendor])
+    },[cartVendor, dispatch])
 
 
     const handleCartClick = (e) => {
