@@ -20,7 +20,7 @@ const NavigationBar = () => {
             <LoginNav display={!userLoggedIn} />
             <HomeNav display={userLoggedIn} toggleMenu={toggleMenu} toggleCart={toggleCart} />
             <Menu isMenuOpen={isMenuOpen} closeMenu={()=>{setIsMenuOpen(false)}}/>
-            <Cart />
+            {/* <Cart /> */}
         </>
     )
 }

@@ -12,6 +12,7 @@ const Menu = ({isMenuOpen, closeMenu}) => {
     const handleSignOut = () => {
         closeMenu();
         dispatch(logout());
+        history.push('/')
     }
 
     const handleMenuClick = (e) => {

@@ -6,6 +6,7 @@ import SignInForm from '../../Session/SignInForm'
 import { removeErrors } from "../../store/errors";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { ReactComponent as LogoSvg} from '../../../assets/svg/logo_master.svg'
 
 const LoginNav = ({ display }) => {
     const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const LoginNav = ({ display }) => {
     return (
         <div className='main-nav-bar'>
             <div></div>
-            <img className="main-nav-logo" onClick={() => history.push('/')} src="https://spencerheywood.com/images/servo/logos/logo_-06.png" alt="Dark blue 'SERVO' text logo with a checkmark, representing a St. George, Utah-based company offering online booking for home services like cleaning and pest control."/>
+            <LogoSvg className="main-nav-logo" onClick={() => history.push('/')} alt="Dark blue 'SERVO' text logo with a yellow checkmark, representing a St. George, Utah-based company offering online booking for home services like cleaning and pest control." />
             <div className='main-nav-links'>
                 <button className='main-sign-up-button button'onClick={handleSignUpOpen}>Create Account</button>
                 <button className='main-sign-in-button button' onClick={handleSignInOpen}>Sign In</button>

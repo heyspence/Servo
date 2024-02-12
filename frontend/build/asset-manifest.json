@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.54ebc599.css",
-    "main.js": "/static/js/main.8bd8a050.js",
+    "main.css": "/static/css/main.65a5e796.css",
+    "main.js": "/static/js/main.1967af49.js",
     "static/media/logo_master.svg": "/static/media/logo_master.5aefba55ea693623be37b45581bea8a8.svg",
     "static/media/MasterCard.svg": "/static/media/MasterCard.b5a80e1db4cc785f23881cc3d07fa109.svg",
     "index.html": "/index.html",
@@ -14,11 +14,11 @@
     "static/media/add_circle_FILL0_wght400_GRAD0_opsz24.svg": "/static/media/add_circle_FILL0_wght400_GRAD0_opsz24.1c59174103fba0f44c904eab57a71b17.svg",
     "static/media/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.svg": "/static/media/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.493f25045dad47cf7eeb07411a46f1b2.svg",
     "static/media/chevron_right_FILL0_wght400_GRAD0_opsz24.svg": "/static/media/chevron_right_FILL0_wght400_GRAD0_opsz24.61e1b47165e9447c58adb27abb28dfd5.svg",
-    "main.54ebc599.css.map": "/static/css/main.54ebc599.css.map",
-    "main.8bd8a050.js.map": "/static/js/main.8bd8a050.js.map"
+    "main.65a5e796.css.map": "/static/css/main.65a5e796.css.map",
+    "main.1967af49.js.map": "/static/js/main.1967af49.js.map"
   },
   "entrypoints": [
-    "static/css/main.54ebc599.css",
-    "static/js/main.8bd8a050.js"
+    "static/css/main.65a5e796.css",
+    "static/js/main.1967af49.js"
   ]
 }

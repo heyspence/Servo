@@ -1,7 +1,7 @@
 import './HomeNav.css'
 import { ReactComponent as HamburgerMenu } from './HamburgerMenu.svg'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { getActiveAddress } from '../../store/session'
 import { ReactComponent as LogoSvg} from '../../../assets/svg/logo_master.svg'
 
@@ -13,7 +13,6 @@ const HomeNav = ({ display, toggleMenu, toggleCart }) => {
         vendorId: state.session.user?.vendorId
     }));
 
-    const dispatch = useDispatch();
     const history = useHistory();
     if(!display) return null
 
