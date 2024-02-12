@@ -39,13 +39,14 @@
 }
 
 .main-sign-up-button {
-  background-color: var(--primary-red);
-  color: var(--primary-white);
+  color: var(--primary-red);
+  background-color: var(--primary-white);
   min-width: 130px;
 }
 
 .main-sign-up-button:hover {
-  background-color: var(--secondary-red);
+  color: var(--secondary-red);
+  background-color: var(--primary-white);
 }
 
 @media screen and (max-width: 599px){
@@ -60,7 +61,7 @@
   }
 
   .main-nav-logo{
-    width: 225px;
+    width: 200px;
     top: -25px
   }
 }

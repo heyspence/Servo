@@ -22,7 +22,7 @@ const SplashPage = () => {
             <div style={{
                 height: '800px',
                 width: '100%',
-                backgroundImage:"url('https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/servo_home_services_cover.jpg')", 
+                backgroundImage:"url('https://spencerheywood.com/images/servo/Pictures/web_optimized/servo_web_banner.webp')", 
                 backgroundSize: 'cover',
                 backgroundPosition: '100% center',
                 // position: 'absolute',
