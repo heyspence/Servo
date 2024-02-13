@@ -3,15 +3,14 @@
     background-color: var(--primary-white);
     display: flex;
     justify-content: space-between;
-    height: 65px;
+    height: 70px;
     width: 100%;
-    border-bottom: 1px solid var(--secondary-white);
     user-select: none;
     position: sticky;
     top: 0;
     left: 0;
     z-index: 20;
-    box-shadow: -5px 0 10px -5px rgba(0, 0, 0, 0.2);
+    box-shadow: -5px 0 10px -5px rgba(0, 0, 0, 0.5);
 }
 
 .location-btn{

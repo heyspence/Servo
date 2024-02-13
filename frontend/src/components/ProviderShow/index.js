@@ -195,96 +195,99 @@ const ProviderShow = () => {
                                             <div>Service Date</div>
                                             <p className="green-text">{formattedDate()}</p>
                                     </div>
+
+    {/* <h2 className="provider-category">{categoryMap[vendor?.category]}</h2> */}         
     
     return (
         <>
-            <div className="provider-show">
-                <h2 className="provider-category">{categoryMap[vendor?.category]}</h2>
-                <div className="provider-show-left">
-                    <div className="meta-info-block">
-                        <div className="provider-logo-background">
-                            <img className="provider-logo" src={vendor?.iconImageUrl} />
+            <div className="provider-show-container">
+                <div className="provider-show">
+                    <div className="provider-show-left">
+                        <div className="meta-info-block">
+                            <div className="provider-logo-background">
+                                <img className="provider-logo" src={vendor?.iconImageUrl} />
+                            </div>
+                            <div className="meta-info-container">
+                                <h1 className="provider-name">{vendor?.name ? vendor.name : "--"}</h1>
+                                <p className="review-tag">{eval(reviewAverage) ? reviewAverage : "-.-"}
+                                    <StarSvg className="review-star-svg"/>{reviewCount} ratings
+                                </p>
+                            </div>
                         </div>
-                        <div className="meta-info-container">
-                            <h1 className="provider-name">{vendor?.name ? vendor.name : "--"}</h1>
-                            <p className="review-tag">{eval(reviewAverage) ? reviewAverage : "-.-"}
-                                <StarSvg className="review-star-svg"/>{reviewCount} ratings
-                            </p>
+                        <div className="location-details-container">
+                            <p>{formattedPhoneNumber}</p>
+                            <p style={{margin: "10px 0"}}>{vendor?.email ? vendor.email : '--'}</p>
+                            <p>{vendor?.address ? vendor.address : '--'}</p>
+                        </div>
+                        <div className="promotions">
+                            <h3 className="promotions-header">Promotions</h3>
+                            <div className="promotion">Save $5 on $100 or more</div>
+                            <div className="promotion">10% Off 2/Year Service</div>
+                            <div className="promotion">15% Off 4/year service</div>
+                        </div>
+                        <ProviderReviews toggleReviewModal={toggleReviewModal} id={id} />
+                        <div className="disclaimer">
+                            At Servo, we ensure a seamless connection with skilled professionals. 
+                            It's important to remember that Servo is a facilitator of these 
+                            important interactions. For clarity on our role and responsibilities, 
+                            we encourage you to review our Terms of Service. Your privacy matters to us; 
+                            our Privacy Policy is designed with your security and trust in mind.
                         </div>
                     </div>
-                    <div className="location-details-container">
-                        <p>{formattedPhoneNumber}</p>
-                        <p style={{margin: "10px 0"}}>{vendor?.email ? vendor.email : '--'}</p>
-                        <p>{vendor?.address ? vendor.address : '--'}</p>
-                    </div>
-                    <div className="promotions">
-                        <h3 className="promotions-header">Promotions</h3>
-                        <div className="promotion">Save $5 on $100 or more</div>
-                        <div className="promotion">10% Off 2/Year Service</div>
-                        <div className="promotion">15% Off 4/year service</div>
-                    </div>
-                    <ProviderReviews toggleReviewModal={toggleReviewModal} id={id} />
-                    <div className="disclaimer">
-                        At Servo, we ensure a seamless connection with skilled professionals. 
-                        It's important to remember that Servo is a facilitator of these 
-                        important interactions. For clarity on our role and responsibilities, 
-                        we encourage you to review our Terms of Service. Your privacy matters to us; 
-                        our Privacy Policy is designed with your security and trust in mind.
-                    </div>
-                </div>
 
-                <div className="provider-show-right">
-                    <ProviderGallery id={id} />
-                    <ProviderPricing basePrice={defaultService?.price} 
-                                        inputs={defaultService?.inputs} 
-                                        service={defaultService} 
-                                        pricingOpen={openComponent.pricing}
-                                        onContinue={handleScheduleClick}
-                                        cartItem={vendorCartItem}
-                    />
-                    <div className={`provider-pricing ${openComponent.pricing ? 'minimize' : ''}`}>
-                        <img className="provider-price-icon" 
-                        src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-04.png" 
-                        alt="get price icon servo instance price" />
-                        {vendorCartItem ? confirmedPricingDiv : basePricingDiv}
-                        <button onClick={handleGetPriceClick} className="get-price-button">
-                            {vendorCartItem ? 'Edit Service' : 'Get Price'}
-                        </button>
-                    </div>
-                    <ProviderScheduling schedulingOpen={openComponent.scheduling} 
-                                            calendarIntegration={vendor?.calendar ? id : false}
-                                            calendarData={calendarData} 
+                    <div className="provider-show-right">
+                        <ProviderGallery id={id} />
+                        <ProviderPricing basePrice={defaultService?.price} 
+                                            inputs={defaultService?.inputs} 
+                                            service={defaultService} 
+                                            pricingOpen={openComponent.pricing}
+                                            onContinue={handleScheduleClick}
                                             cartItem={vendorCartItem}
-                                            onContinue={handleSummaryClick}
-                    />
-                    <div className={`provider-scheduling ${openComponent.scheduling ? 'minimize' : ''}`}>
-                        <img className="provider-calendar-icon" 
-                        src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-08.png" 
-                        alt="schedule now servo icon" />
-                        {cartItemStatus === 'scheduled' || cartItemStatus === 'pending' ? confirmedSchedulingDiv : defaultSchedulingDiv}
-                        <button onClick={handleScheduleClick} className={`schedule-button ${(vendorCartItem && !openComponent.pricing) ? '' : 'gray-out'}`}>
-                            {!!cartItemStatus ? 'Edit Booking' : 'Schedule'}
-                        </button>
-                    </div>
-                    <ProviderSummary summaryOpen={openComponent.summary} 
-                            cartItem={vendorCartItem} 
-                            vendor={vendor} 
-                            onContinue={handleAddToCart}
-                            onCheckout={handleCheckout}
-                    />
-                    <div className={`provider-summary ${openComponent.summary ? 'minimize' : ''}`} >
-                        <img className="provider-summary-icon" 
-                        src={"https://spencerheywood.com/images/servo/icons/icons-07.png"} 
-                        alt="mobile checkout icon" />
-                        <div className="summary-preview">Summary</div>
-                        <button className={`secondary-summary-action-button 
-                                            ${vendorCartItem && 
-                                            (cartItemStatus !== 'priced' && allComponentsClosed) 
-                                            ? '' 
-                                            : 'gray-out'}`} 
-                                            onClick={handleSummaryClick}>
-                            {cartItemStatus === 'scheduled' || cartItemStatus === 'pending' ? 'Continue' : 'Checkout'}
-                        </button>
+                        />
+                        <div className={`provider-pricing ${openComponent.pricing ? 'minimize' : ''}`}>
+                            <img className="provider-price-icon" 
+                            src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-04.png" 
+                            alt="get price icon servo instance price" />
+                            {vendorCartItem ? confirmedPricingDiv : basePricingDiv}
+                            <button onClick={handleGetPriceClick} className="get-price-button">
+                                {vendorCartItem ? 'Edit Service' : 'Get Price'}
+                            </button>
+                        </div>
+                        <ProviderScheduling schedulingOpen={openComponent.scheduling} 
+                                                calendarIntegration={vendor?.calendar ? id : false}
+                                                calendarData={calendarData} 
+                                                cartItem={vendorCartItem}
+                                                onContinue={handleSummaryClick}
+                        />
+                        <div className={`provider-scheduling ${openComponent.scheduling ? 'minimize' : ''}`}>
+                            <img className="provider-calendar-icon" 
+                            src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-08.png" 
+                            alt="schedule now servo icon" />
+                            {cartItemStatus === 'scheduled' || cartItemStatus === 'pending' ? confirmedSchedulingDiv : defaultSchedulingDiv}
+                            <button onClick={handleScheduleClick} className={`schedule-button ${(vendorCartItem && !openComponent.pricing) ? '' : 'gray-out'}`}>
+                                {!!cartItemStatus ? 'Edit Booking' : 'Schedule'}
+                            </button>
+                        </div>
+                        <ProviderSummary summaryOpen={openComponent.summary} 
+                                cartItem={vendorCartItem} 
+                                vendor={vendor} 
+                                onContinue={handleAddToCart}
+                                onCheckout={handleCheckout}
+                        />
+                        <div className={`provider-summary ${openComponent.summary ? 'minimize' : ''}`} >
+                            <img className="provider-summary-icon" 
+                            src={"https://spencerheywood.com/images/servo/icons/icons-07.png"} 
+                            alt="mobile checkout icon" />
+                            <div className="summary-preview">Summary</div>
+                            <button className={`secondary-summary-action-button 
+                                                ${vendorCartItem && 
+                                                (cartItemStatus !== 'priced' && allComponentsClosed) 
+                                                ? '' 
+                                                : 'gray-out'}`} 
+                                                onClick={handleSummaryClick}>
+                                {cartItemStatus === 'scheduled' || cartItemStatus === 'pending' ? 'Continue' : 'Checkout'}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,11 +1,11 @@
 footer{
     width: 100%;
-    border-top: 2px solid var(--secondary-white);
     min-height: 150px;
     display: flex;
     justify-content: space-around;
-    padding: 20px;
+    padding: 40px;
     box-sizing: border-box;
+    background-color: var(--primary-white);
 }
 
 .footer{

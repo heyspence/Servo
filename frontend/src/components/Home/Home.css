@@ -2,7 +2,8 @@
     color: var(--primary-black);
     overflow-y: auto;
     overflow-x: hidden;
-    position: relative
+    position: relative;
+    box-shadow: -5px 0 10px -5px rgba(0, 0, 0, 0.5);
 }
 
 .home-main .vendor-index-container:first-child{

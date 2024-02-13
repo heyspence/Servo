@@ -89,9 +89,14 @@ table {
     cursor: pointer;
 }
 
+header{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: var(--primary-white);
     color: var(--primary-white);
     height: 100%;
     width: 100%;

@@ -42,7 +42,7 @@ const SplashPage = () => {
                     }}
                 >
                     <h1 style={{whiteSpace:'pre', textAlign: 'right', fontWeight: 'bold', fontSize: '35px'}}>
-                        Book All Your Services,{'\n'}
+                        Book All Your Services{'\n'}
                         <span style={{
                             color: 'var(--primary-white)'
                         }}>

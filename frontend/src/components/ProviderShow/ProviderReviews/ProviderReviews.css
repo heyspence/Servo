@@ -4,7 +4,7 @@
     overflow: auto;
     background-color: white;
     position: relative;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.025);
 }
 
 .review-tag{
