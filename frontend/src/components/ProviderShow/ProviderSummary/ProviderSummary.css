@@ -17,6 +17,10 @@
     width: 55%;
 }
 
+.summary-left .pricing-summary-item-container{
+    margin: 10px 0;
+}
+
 .summary-right{
     width: 40%;
     border-left: 2px solid var(--secondary-white);
@@ -73,6 +77,14 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+.pricing-summary-item-container p:first-child{
+    margin-right: 15px
+}
+
+.pricing-summary-item-container p:nth-child(2){
+    text-align: end;
 }
 
 @media screen and (max-width: 699px){

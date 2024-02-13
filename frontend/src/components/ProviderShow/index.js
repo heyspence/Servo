@@ -263,7 +263,7 @@ const ProviderShow = () => {
                         alt="schedule now servo icon" />
                         {cartItemStatus === 'scheduled' || cartItemStatus === 'pending' ? confirmedSchedulingDiv : defaultSchedulingDiv}
                         <button onClick={handleScheduleClick} className={`schedule-button ${(vendorCartItem && !openComponent.pricing) ? '' : 'gray-out'}`}>
-                            {cartItemStatus !== 'priced' && vendorCartItem?.status === 'pending' ? 'Edit Booking' : 'Schedule'}
+                            {!!cartItemStatus ? 'Edit Booking' : 'Schedule'}
                         </button>
                     </div>
                     <ProviderSummary summaryOpen={openComponent.summary} 

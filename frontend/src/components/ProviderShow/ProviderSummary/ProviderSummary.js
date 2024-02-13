@@ -1,8 +1,23 @@
 import { format, parseISO } from 'date-fns';
 import './ProviderSummary.css'
+import { useEffect, useState } from 'react';
 
 const ProviderSummary = ({summaryOpen, cartItem, vendor, onCheckout}) => {
-    let isMobile = window.innerWidth < 700;
+    const options = cartItem?.options ? JSON.parse(cartItem.options) : {}
+    const serviceInputs = vendor?.services ? Object.values(vendor.services)[0].inputs : {}
+    const [parsedOptions, setParsedOptions] = useState({})
+
+    useEffect(()=>{
+        let newParsedOptions = {}
+        if(!!options && !!serviceInputs){
+            for(let option in options){
+                let key = serviceInputs[option]?.name
+                let value = options[option]
+                newParsedOptions[key] = value
+            }
+        }
+        setParsedOptions(newParsedOptions)
+    },[vendor, cartItem])
 
     const categoryMap = {
         window_cleaning: "Window Cleaning",
@@ -15,11 +30,7 @@ const ProviderSummary = ({summaryOpen, cartItem, vendor, onCheckout}) => {
 
     let formattedDate = () =>{
         if(cartItem?.appointmentAt){
-            return isMobile
-            ? format(parseISO(cartItem?.appointmentAt), "MMM do @ h:mm")
-            : format(parseISO(cartItem?.appointmentAt), "EEEE, MMMM do @ h:mmaaa");
-        }else{
-            return "--"
+            return format(parseISO(cartItem?.appointmentAt), "MMM do @ h:mm")
         }
     }
 
@@ -28,13 +39,29 @@ const ProviderSummary = ({summaryOpen, cartItem, vendor, onCheckout}) => {
             <div className="summary-left">
                 <h3>Summary</h3>
                 <div className="summary-left-body">
-                    <p>Service: {categoryMap[vendor?.category]}</p>
-                    <p>Provider: {vendor?.name}</p>
-                    <br/>
-                    <p>{formattedDate()}</p>
-                    <p>Duration: ~1 Hour 30 Minutes</p>
-                    <br/>
-                    <p>Options: {cartItem?.options}</p>
+                    <div className="pricing-summary-item-container">
+                        <p>Provider</p>
+                        <p>{vendor?.name}</p>
+                    </div>
+                    <div className="pricing-summary-item-container">
+                        <p>Service</p>
+                        <p>{categoryMap[vendor?.category]}</p>
+                    </div>
+                    {parsedOptions && Object.entries(parsedOptions).map(entry => (
+                        <div className="pricing-summary-item-container">
+                            <p>{entry[0]}</p>
+                            <p>{entry[1]}</p>
+                        </div>
+                    ))}
+                    <hr/>
+                    <div className="pricing-summary-item-container">
+                        <p>Appointment</p>
+                        <p>{formattedDate()}</p>
+                    </div>
+                    <div className="pricing-summary-item-container">
+                        <p>Duration</p>
+                        <p>~1 Hour 30 Minutes</p>
+                    </div>
                 </div>
             </div>
             <div className="summary-right">

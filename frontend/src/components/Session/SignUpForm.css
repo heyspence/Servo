@@ -10,6 +10,10 @@
     margin-top: 20px;
 }
 
+.sign-up-form p a{
+    padding: 0;
+}
+
 .sign-up-form button{
     cursor: pointer;
     background-color: var(--primary-white);
@@ -37,6 +41,7 @@
     color: var(--primary-black);
     font-size: 14px;
     margin-top: 20px;
+    line-height: 20px;
 }
 
 .sign-up-form form * {

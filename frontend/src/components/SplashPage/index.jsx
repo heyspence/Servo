@@ -22,6 +22,7 @@ const SplashPage = () => {
             <div style={{
                 height: '800px',
                 width: '100%',
+                backgroundColor: 'rgb(163 211 229)',
                 backgroundImage:"url('https://spencerheywood.com/images/servo/Pictures/web_optimized/servo_web_banner.avif')", 
                 backgroundSize: 'cover',
                 backgroundPosition: '100% center',
@@ -41,9 +42,8 @@ const SplashPage = () => {
                     }}
                 >
                     <h1 style={{whiteSpace:'pre', textAlign: 'right', fontWeight: 'bold', fontSize: '35px'}}>
-                        Book All Your Services{'\n'}
+                        Book All Your Services,{'\n'}
                         <span style={{
-                            // backgroundColor: 'var(--primary-green)',
                             color: 'var(--primary-white)'
                         }}>
                             Online.
@@ -51,8 +51,8 @@ const SplashPage = () => {
                     </h1>
                 </div>
             </div>
-            {/* <img style={{width: '100%'}} src="https://spencerheywood.com/images/servo/Pictures/web_optimized/professional-home-cleaning-service.avif" alt="Professional home cleaning service in action with smiling cleaner vacuuming living room, offering easy online booking and scheduling." /> */}
-            {/* <img src="https://spencerheywood.com/images/servo/Pictures/web_optimized/professional-window-cleaning-technician-action.avif" alt="Skilled window cleaning technician with professional tools and equipment wiping residential window, available for online booking and scheduling." /> */}
+            {/* <img style={{width: '300px', height: '300px'}} src="https://spencerheywood.com/images/servo/Pictures/web_optimized/professional-home-cleaning-service.avif" alt="Professional home cleaning service in action with smiling cleaner vacuuming living room, offering easy online booking and scheduling." /> */}
+            {/* <img style={{width: '50%'}} src="https://spencerheywood.com/images/servo/Pictures/web_optimized/professional-window-cleaning-technician-action.avif" alt="Skilled window cleaning technician with professional tools and equipment wiping residential window, available for online booking and scheduling." /> */}
         </main>
     )
 };

@@ -23,11 +23,11 @@ const CartItem = ({ cartItem }) => {
             </div>
             <div className="cart-item-info">
                 <p className="cart-item-name">{name}</p>
-                <div className="cart-item-options">
+                {/* <div className="cart-item-options">
                     {options && Object.values(options).map((option, index) => {
                         return <p className="cart-item-option" key={index}>{option}</p>
                     })}
-                </div>
+                </div> */}
                 <p className="cart-item-price">${price.toFixed(2)}</p>
             </div>
             <button className="cart-item-remove-button" onClick={()=> dispatch(removeFromCart(id)) }>

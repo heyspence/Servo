@@ -58,6 +58,7 @@ const ProviderDashboard = () => {
                     <li className={currentTab === 'promotions' ? 'active' : ''} onClick={()=>handleTabClick('promotions')}>Promotions</li>
                     <li className={currentTab === 'pricing' ? 'active' : ''} onClick={()=>handleTabClick('pricing')}>Pricing</li>
                     <li className={currentTab === 'general' ? 'active' : ''} onClick={()=>handleTabClick('general')}>General</li>
+                    <li className={currentTab === 'orders' ? 'active' : ''} onClick={()=>handleTabClick('orders')}>Orders</li>
                     <li className={`support-tab ${currentTab === 'support' ? 'active' : ''}`} onClick={()=>handleTabClick('support')}>Support</li>
                 </ul>
                 {renderActiveComponent()}

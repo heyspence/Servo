@@ -44,7 +44,7 @@ const ProviderPricing = ({pricingOpen, service, onContinue, cartItem}) => {
         checkbox: Checkbox
     }
 
-    // this will be used to calculate the price difference for additional items like screen cleaning
+    // Used to calculate the price difference for additional items like screen cleaning
     useEffect(()=> {
         if(inputs){
             const newCheckboxValues = {}
@@ -67,17 +67,17 @@ const ProviderPricing = ({pricingOpen, service, onContinue, cartItem}) => {
         if(!InputComponent){
             return <p>Unknown InputType</p>
         }else{
-            const handleInputChange = (id, value) => {
+            const handleInputChange = (input, value) => {
                 setInputValues(prevValues => ({
                     ...prevValues,
-                    [id]: value
+                    [input.id]: value
                 }))
             }
             return <InputComponent 
                 name={input?.name}
                 options={input?.options} 
                 key={input?.id} 
-                onChange={(value) => handleInputChange(input.id, value)}
+                onChange={(value) => handleInputChange(input, value)}
             />
         }
     }
