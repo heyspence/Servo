@@ -1,0 +1,8 @@
+.checkout-from{
+    background-color: var(--primary-white);
+    border-radius: 20px;
+    min-height: 600px;
+    min-width: 400px;
+    padding: 30px;
+    margin-top: 40px;
+}

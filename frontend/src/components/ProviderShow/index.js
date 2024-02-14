@@ -15,6 +15,7 @@ import ProviderSummary from './ProviderSummary/ProviderSummary'
 import ProviderGallery from './ProviderGallery/ProviderGallery'
 import ProviderReviews from './ProviderReviews/ProviderReviews'
 import { formatPhoneNumber } from '../../util/formatting'
+import PaymentGateway from '../checkout/paymentGateway/PaymentGateway'
 
 const ProviderShow = () => {
     // const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
@@ -37,6 +38,7 @@ const ProviderShow = () => {
     // States
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [reviewShowOpen, setReviewShowOpen] = useState(false);
+    const [paymentGatewatOpen, setPaymentGatewayOpen] = useState(false);
     const [openComponent, setOpenComponent] = useState({
         pricing: false, 
         scheduling: false, 
@@ -127,30 +129,17 @@ const ProviderShow = () => {
         }
     }
 
-    const handleAddToCart = ({ bypass = false, checkout = false } = {}) =>{
-        if((allComponentsClosed && 
-            (cartItemStatus === 'scheduled' || cartItemStatus === 'pending')) || 
-            bypass || 
-            checkout
-        ){
-            let cartItemData = {
-                ...vendorCartItem,
-                status: 'pending'
-            }
-            let cartItemObject = {
-                cartItem: cartItemData
-            }
-            dispatch(updateCartItem(cartItemObject))
-            if(!checkout){
-                dispatch(toggleCart());
-            }
-            closeAllComponents();
-        }
-    }
-
     const handleCheckout = () => {
-        handleAddToCart({checkout: true})
-        history.push(`/checkout`)
+        let cartItemData = {
+            ...vendorCartItem,
+            status: 'pending'
+        }
+        let cartItemObject = {
+            cartItem: cartItemData
+        }
+        dispatch(updateCartItem(cartItemObject));
+        dispatch(toggleCart());
+        setPaymentGatewayOpen(true);
     }
 
     // Helper functions
@@ -174,6 +163,10 @@ const ProviderShow = () => {
 
     const toggleReviewModal = () => {
         setReviewModalOpen(!reviewModalOpen)
+    }
+
+    const togglePaymentGateway = () => {
+        setPaymentGatewayOpen(!paymentGatewatOpen)
     }
 
     const toggleReviewShow = () => {
@@ -270,8 +263,7 @@ const ProviderShow = () => {
                         </div>
                         <ProviderSummary summaryOpen={openComponent.summary} 
                                 cartItem={vendorCartItem} 
-                                vendor={vendor} 
-                                onContinue={handleAddToCart}
+                                vendor={vendor}
                                 onCheckout={handleCheckout}
                         />
                         <div className={`provider-summary ${openComponent.summary ? 'minimize' : ''}`} >
@@ -293,6 +285,9 @@ const ProviderShow = () => {
             </div>
             <Modal isOpen={reviewModalOpen} onClose={toggleReviewModal}>
                 <ReviewForm vendorName={vendor?.name} vendorId={id} onClose={toggleReviewModal} />
+            </Modal>
+            <Modal isOpen={paymentGatewatOpen} onClose={togglePaymentGateway}>
+                <PaymentGateway cartItem={vendorCartItem} vendorId={id} />
             </Modal>
             {/* <Modal isOpen={reviewShowOpen} onClose={toggleReviewShow}>
                 <ReviewShow review={review} author={author} onClose={toggleReviewShow}/>

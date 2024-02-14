@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchMenuItem } from '../../store/menuItems';
 
 const CartItem = ({ cartItem }) => {
-    const { serviceId, id, price, name, vendorId } = cartItem;
+    const { id, price, name, vendorId } = cartItem;
     // const menuItem = useSelector(state => state?.menuItems[1]);
     const dispatch = useDispatch();
     const options = JSON.parse(cartItem.options)

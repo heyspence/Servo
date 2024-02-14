@@ -17,35 +17,11 @@
   border-radius: 10px;
 }
 
-/* .main-nav-logo path{
+.main-nav-logo path{
   fill: white !important;
-} */
-
-#path88{
-  fill: var(--primary-yellow) !important
 }
 
-#path68{
-  fill: #e32948 !important;
-}
-
-#path72{
-  fill: #f1778c !important;
-}
-
-#path76{
-  fill: #e32948 !important;
-}
-
-#path80{
-  fill: #f1778c !important;
-}
-
-#path84{
-  fill: #e32948 !important;
-}
-
-#path88{
+.main-nav-logo #path88{
   fill: var(--primary-yellow) !important;
 }
 

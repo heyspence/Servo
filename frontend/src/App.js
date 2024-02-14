@@ -4,7 +4,7 @@ import NavigationBar from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import { Provider } from 'react-redux';
 import Home from "./components/Home";
-import Checkout from "./components/Checkout";
+// import Checkout from "./components/checkout/Checkout";
 import Orders from "./components/Orders";
 import ErrorBanner from "./components/ErrorBanner";
 import ProviderShow from "./components/ProviderShow"
@@ -27,7 +27,7 @@ function App({ store }) {
             <Switch>
               <Route exact path="/home" component={Home}/>
               <Route exact path="/vendors/:id" component={ProviderShow} />
-              <Route exact path="/checkout" component={Checkout} />
+              {/* <Route exact path="/checkout" component={Checkout} /> */}
               <Route exact path="/orders" component={Orders} />
               <Route exact path="/account" component={UserAccount} />
               <Route exact path="/recurring-orders" component={RecurringOrders} />

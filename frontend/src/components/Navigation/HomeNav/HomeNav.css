@@ -39,6 +39,32 @@
     margin: 0 10px;
 }
 
+
+/* =========================== */
+
+.main-logo #path68{
+    fill: #e32948 !important;
+}
+
+.main-logo #path72{
+    fill: #f1778c !important;
+}
+
+.main-logo #path76{
+    fill: #e32948 !important;
+}
+
+.main-logo #path80{
+    fill: #f1778c !important;
+}
+
+.main-logo #path84{
+    fill: #e32948 !important;
+}
+
+
+/* =========================== */
+
 .hamburger-menu{
     fill: var(--primary-gray);
     color: var(--primary-gray);
