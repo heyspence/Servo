@@ -28,7 +28,8 @@ const SplashPage = () => {
                 backgroundPosition: '100% center',
                 position: 'relative',
                 zIndex: '10',
-                marginTop: '-100px'
+                marginTop: '-100px',
+                boxShadow: '-5px 0 10px -5px rgba(0, 0, 0, 0.5)'
                 }}>
                 <div 
                     style={{
@@ -38,7 +39,7 @@ const SplashPage = () => {
                         zIndex: 10,
                         position: 'absolute',
                         right: '5%',
-                        top: '200px'
+                        top: '215px'
                     }}
                 >
                     <h1 style={{whiteSpace:'pre', textAlign: 'right', fontWeight: 'bold', fontSize: '35px'}}>

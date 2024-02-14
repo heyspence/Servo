@@ -12,16 +12,41 @@
   left: 5%;
   top: 0px;
   position: absolute;
-  width: 300px;
-  height: 150px;
+  width: 310px;
+  height: 170px;
   border-radius: 10px;
 }
-.main-nav-logo path{
+
+/* .main-nav-logo path{
   fill: white !important;
+} */
+
+#path88{
+  fill: var(--primary-yellow) !important
 }
 
-.main-nav-logo #path88{
-  fill: var(--primary-yellow) !important
+#path68{
+  fill: #e32948 !important;
+}
+
+#path72{
+  fill: #f1778c !important;
+}
+
+#path76{
+  fill: #e32948 !important;
+}
+
+#path80{
+  fill: #f1778c !important;
+}
+
+#path84{
+  fill: #e32948 !important;
+}
+
+#path88{
+  fill: var(--primary-yellow) !important;
 }
 
 .main-nav-links{
