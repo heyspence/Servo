@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
     resources :orders, only: [:create] do 
       resources :order_details, only: [:index]
+      post '/create-payment-intent', on: :collection, to: 'orders#create_payment_intent'
     end
 
     resources :vendors, only: [:index, :show, :update] do

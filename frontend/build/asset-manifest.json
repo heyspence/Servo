@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.fa6ff68f.css",
-    "main.js": "/static/js/main.3f5849ea.js",
+    "main.css": "/static/css/main.9ac4c631.css",
+    "main.js": "/static/js/main.fb1aa76d.js",
     "static/media/logo_master.svg": "/static/media/logo_master.5aefba55ea693623be37b45581bea8a8.svg",
     "index.html": "/index.html",
     "static/media/reviewStar.svg": "/static/media/reviewStar.f901551f4bde73518fe3a0c9224040e9.svg",
@@ -13,11 +13,11 @@
     "static/media/add_circle_FILL0_wght400_GRAD0_opsz24.svg": "/static/media/add_circle_FILL0_wght400_GRAD0_opsz24.1c59174103fba0f44c904eab57a71b17.svg",
     "static/media/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.svg": "/static/media/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.493f25045dad47cf7eeb07411a46f1b2.svg",
     "static/media/chevron_right_FILL0_wght400_GRAD0_opsz24.svg": "/static/media/chevron_right_FILL0_wght400_GRAD0_opsz24.61e1b47165e9447c58adb27abb28dfd5.svg",
-    "main.fa6ff68f.css.map": "/static/css/main.fa6ff68f.css.map",
-    "main.3f5849ea.js.map": "/static/js/main.3f5849ea.js.map"
+    "main.9ac4c631.css.map": "/static/css/main.9ac4c631.css.map",
+    "main.fb1aa76d.js.map": "/static/js/main.fb1aa76d.js.map"
   },
   "entrypoints": [
-    "static/css/main.fa6ff68f.css",
-    "static/js/main.3f5849ea.js"
+    "static/css/main.9ac4c631.css",
+    "static/js/main.fb1aa76d.js"
   ]
 }
