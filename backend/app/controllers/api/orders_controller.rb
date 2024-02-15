@@ -22,7 +22,8 @@ class Api::OrdersController < ApplicationController
         begin
             intent = Stripe::PaymentIntent.create({
                 amount: 1000,
-                currency: 'usd'
+                currency: 'usd',
+                payment_method_types: ['card'],
             })
 
             render json: { clientSecret: intent.client_secret }

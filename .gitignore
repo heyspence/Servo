@@ -11,6 +11,8 @@ coverage/
 *.local
 .eslintcache
 .env
+.env.development
+.env.production
 
 # logs
 *.log*
