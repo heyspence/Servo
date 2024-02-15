@@ -80,7 +80,7 @@ const CheckoutForm = () => {
     return (
         <div className="checkout-form">
             <h2>
-                <span><img src="https://spencerheywood.com/images/servo/icons/icons-07.png" style={{height:'43px', margin: '-5px -2px 0 0'}}/></span>
+                <span><img src="https://spencerheywood.com/images/servo/icons/icons-07.png" style={{height:'43px', margin: '-3px -2px 0 0'}}/></span>
                 Complete Your Booking
             </h2>
             <form id="payment-form" onSubmit={handleSubmit}>

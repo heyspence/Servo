@@ -40,7 +40,6 @@ class Api::AuthenticationController < ApplicationController
         end
     end
 
-
     private
 
     def save_tokens_for_vendor(vendor, tokens)

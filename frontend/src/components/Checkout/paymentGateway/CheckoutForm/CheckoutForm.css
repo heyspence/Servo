@@ -26,6 +26,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 325px;
 }
 
 /* .servo-certified-icon:hover{
