@@ -1,8 +1,17 @@
 .checkout-form{
     background-color: var(--primary-white);
     border-radius: 20px;
-    min-height: 600px;
-    min-width: 400px;
+    min-height: 500px;
+    min-width: 325px;
     padding: 30px;
     margin-top: 40px;
+    position: relative;
+}
+
+.checkout-form form{
+    position: relative;
+}
+
+.checkout-form h2{
+    margin-bottom: 30px;
 }

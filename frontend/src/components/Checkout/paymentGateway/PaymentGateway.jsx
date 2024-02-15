@@ -21,7 +21,17 @@ const PaymentGateway = ({cartItem, vendorId}) => {
     }, []);
 
     const appearance = {
-        theme: 'stripe',
+        theme: 'flat',
+
+        variables: {
+            colorPrimary: 'var(--primary-red)',
+            colorBackground: 'var(--secondary-white)',
+            colorText: 'var(--primary-red)',
+            colorDanger: '#df1b41',
+            fontFamily: 'Ideal Sans, system-ui, sans-serif',
+            spacingUnit: '2px',
+            borderRadius: '4px'
+        }
     };
     const options = {
         clientSecret,
@@ -30,11 +40,11 @@ const PaymentGateway = ({cartItem, vendorId}) => {
 
     return (
         <>
-            {clientSecret && (
+            {clientSecret ? (
                 <Elements options={options} stripe={stripePromise}>
-                <CheckoutForm />
+                    <CheckoutForm />
                 </Elements>
-            )}
+            ) : <div className='checkout-form'></div>}
         </>
     );
 };

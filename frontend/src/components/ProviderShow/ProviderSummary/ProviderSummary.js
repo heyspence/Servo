@@ -47,8 +47,8 @@ const ProviderSummary = ({summaryOpen, cartItem, vendor, onCheckout}) => {
                         <p>Service</p>
                         <p>{categoryMap[vendor?.category]}</p>
                     </div>
-                    {parsedOptions && Object.entries(parsedOptions).map(entry => (
-                        <div className="pricing-summary-item-container">
+                    {parsedOptions && Object.entries(parsedOptions).map((entry, index) => (
+                        <div className="pricing-summary-item-container" key={index}>
                             <p>{entry[0]}</p>
                             <p>{entry[1]}</p>
                         </div>
