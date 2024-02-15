@@ -79,13 +79,26 @@ const CheckoutForm = () => {
 
     return (
         <div className="checkout-form">
-            <h2>Complete Your Booking</h2>
+            <h2>
+                <span><img src="https://spencerheywood.com/images/servo/icons/icons-07.png" style={{height:'43px', marginTop: '-4px'}}/></span>
+                Complete Your Booking
+            </h2>
             <form id="payment-form" onSubmit={handleSubmit}>
 
             <PaymentElement id="payment-element" options={paymentElementOptions} />
+            <div className="servo-certified-icon">
+                <hr/>
+                <img src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-09.png"
+                    style={{height: '50px', marginRight: '-5px'}}
+                />
+                <img src="https://spencerheywood.com/images/servo/logos_and_icons/logo_blue_yellow.png" 
+                    style={{height: '44px'}}
+                />
+                <hr/>
+            </div>
             <button disabled={isLoading || !stripe || !elements} id="submit" style={{
                                                                                 minWidth: '325px', 
-                                                                                margin: '20px auto', 
+                                                                                margin: '0 auto', 
                                                                                 backgroundColor: 'var(--primary-green)', 
                                                                                 display: 'block'
                                                                             }}>
@@ -93,6 +106,14 @@ const CheckoutForm = () => {
                 {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
                 </span>
             </button>
+            {/* <div className="servo-certified-icon">
+                <img src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-09.png"
+                    style={{height: '52px', marginRight: '-5px'}}
+                />
+                <img src="https://spencerheywood.com/images/servo/logos_and_icons/logo_blue_yellow.png" 
+                    style={{height: '42px'}}
+                />
+            </div> */}
             {/* Show any error or success messages */}
             {message && <div id="payment-message">{message}</div>}
             </form>

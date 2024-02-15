@@ -44,7 +44,9 @@ const PaymentGateway = ({cartItem, vendorId}) => {
                 <Elements options={options} stripe={stripePromise}>
                     <CheckoutForm />
                 </Elements>
-            ) : <div className='checkout-form'></div>}
+            ) : <div className='checkout-form'>
+                    <h2>Loading...</h2>
+                </div>}
         </>
     );
 };

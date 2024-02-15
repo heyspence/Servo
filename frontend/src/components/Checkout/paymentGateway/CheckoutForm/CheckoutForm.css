@@ -1,7 +1,7 @@
 .checkout-form{
     background-color: var(--primary-white);
     border-radius: 20px;
-    min-height: 500px;
+    min-height: 325px;
     min-width: 325px;
     padding: 30px;
     margin-top: 40px;
@@ -14,4 +14,23 @@
 
 .checkout-form h2{
     margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.servo-certified-icon{
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .servo-certified-icon:hover{
+    cursor: pointer;
+} */
+
+.servo-certified-icon hr{
+    width: 60px;
+    border: 1px solid var(--primary-red)
 }
