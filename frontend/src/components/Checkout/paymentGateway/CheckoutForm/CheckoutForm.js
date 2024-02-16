@@ -15,7 +15,7 @@ const CheckoutForm = () => {
         }
 
         const clientSecret = new URLSearchParams(window.location.search).get(
-        "payment_intent_client_secret"
+            "payment_intent_client_secret"
         );
 
         if (!clientSecret) {
@@ -65,9 +65,9 @@ const CheckoutForm = () => {
         // be redirected to an intermediate site first to authorize the payment, then
         // redirected to the `return_url`.
         if (error.type === "card_error" || error.type === "validation_error") {
-        setMessage(error.message);
+            setMessage(error.message);
         } else {
-        setMessage("An unexpected error occurred.");
+            setMessage("An unexpected error occurred.");
         }
 
         setIsLoading(false);

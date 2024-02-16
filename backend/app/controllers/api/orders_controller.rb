@@ -15,27 +15,29 @@ class Api::OrdersController < ApplicationController
     end
 
     def create_payment_intent
-        # cart_item = params[:cart_item]
-        # total_amount = calculate_total_amount(cart_item)
-        # total_amount_in_cents = (total_amount * 100).to_i
+        total_amount = cart_item_params[:price]
+        total_amount_in_cents = (total_amount * 100).to_i
         
         begin
             intent = Stripe::PaymentIntent.create({
-                amount: 1000,
+                amount: total_amount_in_cents,
                 currency: 'usd',
-                payment_method_types: ['card'],
             })
 
-            render json: { clientSecret: intent.client_secret }
+            render json: { clientSecret: intent.client_secret, price: total_amount }
         rescue Stripe::StripeError => e 
             render json: { error: e.message }, status: 422
         end
     end
 
     private 
-    # def calculate_total_amount(cart_item)
-    #     cart_item.price
-    # end
+    def calculate_total_amount(cart_item)
+        cart_item.price + 1.85
+    end
+
+    def cart_item_params
+        params.require(:cart_item).permit(:price)
+    end
 
     def order_params
         params.require(:order).permit(:user_id, :total, :vendor_id)
