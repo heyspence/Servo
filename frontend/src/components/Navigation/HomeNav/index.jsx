@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { useSelector } from 'react-redux'
 import { getActiveAddress } from '../../store/session'
 import { ReactComponent as LogoSvg} from '../../../assets/svg/logo_master.svg'
+import { formatAddress } from '../../../util/formatting'
 
 
 const HomeNav = ({ display, toggleMenu }) => {
@@ -37,7 +38,7 @@ const HomeNav = ({ display, toggleMenu }) => {
                     </div>
                 </div>
                 <div className="home-nav-right">
-                    <a className="user-address">{userAddress?.streetAddress}</a>
+                    <a className="user-address">{formatAddress(userAddress)}</a>
                 </div>
             </div>
         </header>

@@ -14,7 +14,7 @@ import { addDays, format, parseISO } from 'date-fns'
 import ProviderSummary from './ProviderSummary/ProviderSummary'
 import ProviderGallery from './ProviderGallery/ProviderGallery'
 import ProviderReviews from './ProviderReviews/ProviderReviews'
-import { formatPhoneNumber } from '../../util/formatting'
+import { formatAddress, formatPhoneNumber } from '../../util/formatting'
 import PaymentGateway from '../checkout/paymentGateway/PaymentGateway'
 
 const ProviderShow = () => {
@@ -210,7 +210,7 @@ const ProviderShow = () => {
                         <div className="location-details-container">
                             <p>{formattedPhoneNumber}</p>
                             <p style={{margin: "10px 0"}}>{vendor?.email ? vendor.email : '--'}</p>
-                            <p>{vendor?.address ? vendor.address.streetAddress : '--'}</p>
+                            <p>{vendor?.address ? formatAddress(vendor.address) : '--'}</p>
                         </div>
                         <div className="promotions">
                             <h3 className="promotions-header">Promotions</h3>
