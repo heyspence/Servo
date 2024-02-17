@@ -1,0 +1,14 @@
+.menu-items-index{
+    position: relative;
+    margin-left: 25%;
+    display: flex;
+    overflow: auto;
+    margin-top: -35px;
+    margin-bottom: 30px
+}
+
+@media screen and (max-width: 599px){
+    .menu-items-index{
+        margin: 80px 0 0 0;
+    }
+}

@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# testing
+coverage/
+
+# misc
+.DS_Store
+*.local
+.eslintcache
+.env
+.env.development
+.env.production
+
+# logs
+*.log*
+*.pid
+
+# cache
+.cache/
+tmp/
