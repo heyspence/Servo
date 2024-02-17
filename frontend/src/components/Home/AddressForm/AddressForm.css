@@ -15,16 +15,13 @@
     width: unset;
 }
 
-.address-form h3{
-    margin-bottom: 5px;
-}
-
-.address-form button{
+/* .address-form button{
     margin: 10px 0;
-}
+} */
 
 .address-form input[type=text]{
     height: 34px;
+    box-sizing: border-box;
     width: 300px;
     border-radius: 8px;
     margin-right: 10px;
@@ -50,6 +47,10 @@
 @media screen and (max-width: 699px){
     .address-form{
         width: 300px;
+    }
+
+    .address-form input[type=text]{
+        width: 200px;
     }
 
     /* .street-address-label{
