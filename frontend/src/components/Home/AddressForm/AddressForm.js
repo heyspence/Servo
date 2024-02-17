@@ -21,7 +21,7 @@ const AddressForm = ({currentUser}) => {
     return (
         <div className="address-form-container">
             <form className="address-form" onSubmit={handleSubmit}>
-                <h3 style={{padding: '5px'}}>Enter Address to Continue</h3>
+                <h3 style={{marginBottom: '5px'}}>Enter Address to Continue</h3>
                 {/* <label className="street-address-label">Street Address</label> */}
                 <input type="text" placeholder='Your Address' value={addressValues.address} onChange={e => setAddressValues(prevValues => ({...prevValues, address: e.target.value}))}></input>
                 {/* <label>Zip Code</label>
