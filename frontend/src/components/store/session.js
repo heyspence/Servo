@@ -3,6 +3,7 @@ import { receiveErrors } from "./errors";
 
 const SET_CURRENT_USER = 'session/SET_CURRENT_USER'
 const REMOVE_CURRENT_USER = 'session/REMOVE_CURRENT_USER'
+const RECIEVE_USER_ADDRESS = 'session/RECIEVE_USER_ADDRESS'
 
 const storeCurrentUser = user => {
     if(user)sessionStorage.setItem('currentUser', JSON.stringify(user.id));
@@ -100,16 +101,65 @@ export const logout = () => async dispatch => {
     }
 }
 
+export const createUserAddress = (address) => async dispatch => {
+    const res = await csrfFetch(`/api/addresses`,{
+        method: "POST",
+        body: JSON.stringify(address)
+    })
+
+    if(res.ok){
+        const data = await res.json();
+        dispatch({type: RECIEVE_USER_ADDRESS, address: data.address})
+    }else{
+        console.log(res)
+    }
+}
+
+// This function has not yet been tested
+
+// export const updateUserAddress = ({address}) => async dispatch => {
+
+//     const res = await csrfFetch(`/api/addresses/${address.userId}`,{
+//         method: 'PATCH',
+//         body: JSON.stringify(address)
+//     })
+
+//     if(res.ok){
+//         const data = await res.json();
+//         dispatch({type: UPDATE_CURRENT_USER_ADDRESS, ...data.user})
+//     }
+// }
+
 const initialState  = {
     user: JSON.parse(sessionStorage.getItem('currentUser'))
 }
 
 const sessionReducer = (state = initialState, action) => {
+    let newState = {...state}
     switch(action.type){
         case SET_CURRENT_USER:
-            return {...state, user: action.user};
+            return {...newState, user: action.user};
         case REMOVE_CURRENT_USER:
-            return {...state, user: null};
+            return {...newState, user: null};
+        case RECIEVE_USER_ADDRESS:
+            return {...newState, user: {
+                ...newState.user,
+                addresses: {
+                    ...newState.user.addresses,
+                    [action.address.id]: action.address
+                }
+            }}
+        // this function has not yet been tested
+        // case UPDATE_CURRENT_USER_ADDRESS:
+        //     return {
+        //         ...newState, 
+        //         user: {
+        //             ...newState.user,
+        //             addresses:{
+        //                 ...newState.user.addresses,
+        //                 [action.address.id]: action.address
+        //             } 
+        //         }}
         default:
             return state;
     }

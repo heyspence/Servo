@@ -10,7 +10,7 @@
     margin-top: 30px
 }
 
-.home-main>*:not(:last-child)::after{
+.home-main>*:not(:last-child):not(.address-form-container)::after{
     content: '';
     width: 100%;
     border-bottom: 2px solid var(--secondary-white);

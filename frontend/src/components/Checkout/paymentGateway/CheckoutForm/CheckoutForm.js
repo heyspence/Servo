@@ -2,7 +2,7 @@ import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import './CheckoutForm.css'
 import { useEffect, useState } from 'react';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({price}) => {
     const stripe = useStripe();
     const elements = useElements();
 
@@ -103,18 +103,9 @@ const CheckoutForm = () => {
                                                                                 display: 'block'
                                                                             }}>
                 <span id="button-text">
-                {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
+                {isLoading ? <div className="spinner" id="spinner"></div> : `Pay $${price}`}
                 </span>
             </button>
-            {/* <div className="servo-certified-icon">
-                <img src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-09.png"
-                    style={{height: '52px', marginRight: '-5px'}}
-                />
-                <img src="https://spencerheywood.com/images/servo/logos_and_icons/logo_blue_yellow.png" 
-                    style={{height: '42px'}}
-                />
-            </div> */}
-            {/* Show any error or success messages */}
             {message && <div id="payment-message">{message}</div>}
             </form>
         </div>

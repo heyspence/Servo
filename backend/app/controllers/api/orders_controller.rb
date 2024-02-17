@@ -15,9 +15,10 @@ class Api::OrdersController < ApplicationController
     end
 
     def create_payment_intent
-        total_amount = cart_item_params[:price]
+        total_amount = calculate_total_amount
+        render json: {error: 'potential price forgery: price cannot be verified'}, status: :unprocessable_entity and return unless total_amount
         total_amount_in_cents = (total_amount * 100).to_i
-        
+
         begin
             intent = Stripe::PaymentIntent.create({
                 amount: total_amount_in_cents,
@@ -31,12 +32,23 @@ class Api::OrdersController < ApplicationController
     end
 
     private 
-    def calculate_total_amount(cart_item)
-        cart_item.price + 1.85
+    def calculate_total_amount
+        price =  cart_item_params[:price].to_f
+
+        if valid_price?(price)
+            return price + 1.85
+        else
+            return nil
+        end
+    end
+
+    def valid_price?(price)
+        @cart_item = CartItem.find(cart_item_params[:id])
+        price == @cart_item.price
     end
 
     def cart_item_params
-        params.require(:cart_item).permit(:price)
+        params.require(:cart_item).permit(:price, :id)
     end
 
     def order_params

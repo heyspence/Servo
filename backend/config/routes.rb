@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show]
     resources :cart_items, only: [:create, :destroy, :show, :update]
     resources :events, only: [:index, :create]
+    resources :addresses, only: [:create]
     post 'auth/google/callback', to: 'authentication#google_callback'
 
     resources :user, only: [:index] do

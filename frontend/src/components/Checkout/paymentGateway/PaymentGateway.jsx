@@ -8,6 +8,7 @@ import csrfFetch from '../../store/csrf';
 
 const PaymentGateway = ({cartItem, vendorId}) => {
     const [clientSecret, setClientSecret] = useState("");
+    const [price, setPrice] = useState(null);
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
@@ -17,7 +18,10 @@ const PaymentGateway = ({cartItem, vendorId}) => {
         body: JSON.stringify({ cartItem }),
         })
         .then((res) => res.json())
-        .then((data) => setClientSecret(data.clientSecret));
+        .then((data) => {
+            setClientSecret(data.clientSecret);
+            setPrice(data.price);
+        });
     }, []);
 
     const appearance = {
@@ -42,7 +46,7 @@ const PaymentGateway = ({cartItem, vendorId}) => {
         <>
             {clientSecret ? (
                 <Elements options={options} stripe={stripePromise}>
-                    <CheckoutForm />
+                    <CheckoutForm price={price}/>
                 </Elements>
             ) : <div className='checkout-form'>
                     <h2>Loading...</h2>

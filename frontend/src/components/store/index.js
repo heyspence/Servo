@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
   reviews: reviewsReducer,
   orders: ordersReducer,
   images: imagesReducer,
-  events: eventsReducer
+  events: eventsReducer,
 });
 
 let enhancer;

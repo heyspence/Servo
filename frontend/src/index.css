@@ -124,7 +124,7 @@ h2{
 h3{
     font-size: 15px;
     font-weight: bold;
-    color: var(--primary-red)
+    color: var(--primary-red);
 }
 
 label {

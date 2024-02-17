@@ -3,7 +3,7 @@ json.user do
     json.addresses do 
         @user.addresses.each do |address|
             json.set! address.id do
-                json.extract! address, :longitude, :latitude, :address, :default
+                json.extract! address, :longitude, :latitude, :address, :default, :addressable_type, :addressable_id
             end
         end
     end
