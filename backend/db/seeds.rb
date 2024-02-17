@@ -278,26 +278,26 @@ review = Review.create([
 puts "Creating addresses"
 
 address = Address.create([
-    {address: "435 N 300 W St George, UT 84790", latitude: 38.898808067979665, longitude: -77.0403556322412, addressable_type: "Vendor", addressable_id: 1},
-    {address: "436 N 300 W St George, UT 84770", latitude: 38.90334726359773, longitude: -77.00480020327345, addressable_type: "Vendor", addressable_id: 2},
-    {address: "437 N 300 W St George, UT 84790", latitude: 38.90275499987932, longitude: -77.02368310867804, addressable_type: "Vendor", addressable_id: 3},
-    {address: "438 N 300 W St George, UT 84770", latitude: 38.943563620493634, longitude:  -77.02539987810022, addressable_type: "Vendor", addressable_id: 4},
-    {address: "4359 N 300 W St George, UT 84790", latitude: 38.913859796747104, longitude: -77.03123652015837, addressable_type: "Vendor", addressable_id: 5},
-    {address: "43 N 300 W St George, UT 84770", latitude: 38.90258127078925, longitude: -77.03020670782361, addressable_type: "Vendor", addressable_id: 6},
-    {address: "425 N 300 W St George, UT 84790", latitude: 38.907807481012746, longitude: -77.01694860450546, addressable_type: "Vendor", addressable_id: 7},
-    {address: "564 N 300 W St George, UT 84770", latitude: 38.90713986135493, longitude: -76.9792201390115, addressable_type: "Vendor", addressable_id: 8},
-    {address: "4351 N 300 W St George, UT 84790", latitude: 38.90628046175839, longitude: -77.03380860725424, addressable_type: "Vendor", addressable_id: 9},
-    {address: "4352 N 300 W St George, UT 84770", latitude: 38.88992360655783, longitude:  -77.02591234052085, addressable_type: "Vendor", addressable_id: 10},
-    {address: "4353 N 300 W St George, UT 84790", latitude: 39.26682768252805, longitude: -76.65116402435393, addressable_type: "Vendor", addressable_id: 11},
-    {address: "4354 N 300 W St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "Vendor", addressable_id: 12},
-    {address: "4354 N 300 W St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "Vendor", addressable_id: 13},
-    {address: "4354 N 300 W St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "Vendor", addressable_id: 14},
-    {address: "4354 S 300 E St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 1, default: true},
-    {address: "4354 S 300 E St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 2, default: true},
-    {address: "4354 S 300 E St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 3, default: true},
-    {address: "4354 S 300 E St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 4, default: true},
-    {address: "4354 S 300 E St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 5, default: true},
-    {address: "4354 S 300 E St George, UT 84770", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 6, default: true}
+    {city: "St George", state: "UT", street_address: "435 N 300 W", latitude: 38.898808067979665, longitude: -77.0403556322412, addressable_type: "Vendor", addressable_id: 1},
+    {city: "St George", state: "UT", street_address: "436 N 300 W", latitude: 38.90334726359773, longitude: -77.00480020327345, addressable_type: "Vendor", addressable_id: 2},
+    {city: "St George", state: "UT", street_address: "437 N 300 W", latitude: 38.90275499987932, longitude: -77.02368310867804, addressable_type: "Vendor", addressable_id: 3},
+    {city: "St George", state: "UT", street_address: "438 N 300 W", latitude: 38.943563620493634, longitude:  -77.02539987810022, addressable_type: "Vendor", addressable_id: 4},
+    {city: "St George", state: "UT", street_address: "4359 N 300 W", latitude: 38.913859796747104, longitude: -77.03123652015837, addressable_type: "Vendor", addressable_id: 5},
+    {city: "St George", state: "UT", street_address: "43 N 300 W", latitude: 38.90258127078925, longitude: -77.03020670782361, addressable_type: "Vendor", addressable_id: 6},
+    {city: "St George", state: "UT", street_address: "425 N 300 W", latitude: 38.907807481012746, longitude: -77.01694860450546, addressable_type: "Vendor", addressable_id: 7},
+    {city: "St George", state: "UT", street_address: "564 N 300 W", latitude: 38.90713986135493, longitude: -76.9792201390115, addressable_type: "Vendor", addressable_id: 8},
+    {city: "St George", state: "UT", street_address: "4351 N 300 W", latitude: 38.90628046175839, longitude: -77.03380860725424, addressable_type: "Vendor", addressable_id: 9},
+    {city: "St George", state: "UT", street_address: "4352 N 300 W", latitude: 38.88992360655783, longitude:  -77.02591234052085, addressable_type: "Vendor", addressable_id: 10},
+    {city: "St George", state: "UT", street_address: "4353 N 300 W", latitude: 39.26682768252805, longitude: -76.65116402435393, addressable_type: "Vendor", addressable_id: 11},
+    {city: "St George", state: "UT", street_address: "4354 N 300 W", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "Vendor", addressable_id: 12},
+    {city: "St George", state: "UT", street_address: "4354 N 300 W", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "Vendor", addressable_id: 13},
+    {city: "St George", state: "UT", street_address: "4354 N 300 W", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "Vendor", addressable_id: 14},
+    {city: "St George", state: "UT", street_address: "4354 S 300 E", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 1, default: true},
+    {city: "St George", state: "UT", street_address: "4354 S 300 E", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 2, default: true},
+    {city: "St George", state: "UT", street_address: "4354 S 300 E", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 3, default: true},
+    {city: "St George", state: "UT", street_address: "4354 S 300 E", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 4, default: true},
+    {city: "St George", state: "UT", street_address: "4354 S 300 E", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 5, default: true},
+    {city: "St George", state: "UT", street_address: "4354 S 300 E", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 6, default: true}
 ])
 
 puts "creating images!"

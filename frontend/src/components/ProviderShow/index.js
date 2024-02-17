@@ -210,7 +210,7 @@ const ProviderShow = () => {
                         <div className="location-details-container">
                             <p>{formattedPhoneNumber}</p>
                             <p style={{margin: "10px 0"}}>{vendor?.email ? vendor.email : '--'}</p>
-                            <p>{vendor?.address ? vendor.address : '--'}</p>
+                            <p>{vendor?.address ? vendor.address.streetAddress : '--'}</p>
                         </div>
                         <div className="promotions">
                             <h3 className="promotions-header">Promotions</h3>

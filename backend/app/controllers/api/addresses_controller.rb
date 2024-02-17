@@ -2,17 +2,22 @@ class Api::AddressesController < ApplicationController
     def create
         @address = Address.new(address_params)
         id = current_user[:id]
-        if @address.addressable_id == id && @address.save 
-            render :show
+        
+        if @address.addressable_id == id
+            if @address.save
+                render :show
+            else
+                render json: { errors: @address.errors.full_messages }, status: 422
+            end
         else
-            render json: { errors: @address.errors.full_messages }, status: 422
+            render json: { errors: ["Addressable ID mismatch"] }, status: 422
         end
-    end
+    end    
+    
 
     private 
     def address_params
-        # Start with strong parameters
-        normal_params = params.require(:address).permit(:longitude, :latitude, :address, :default, :addressable_type, :addressable_id)
+        normal_params = params.require(:address).permit(:longitude, :latitude, :street_address, :street_address_2, :city, :zip_code, :state, :default, :addressable_type, :addressable_id)
       end
       
 end

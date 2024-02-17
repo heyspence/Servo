@@ -37,7 +37,7 @@ const HomeNav = ({ display, toggleMenu }) => {
                     </div>
                 </div>
                 <div className="home-nav-right">
-                    <a className="user-address">{userAddress?.address}</a>
+                    <a className="user-address">{userAddress?.streetAddress}</a>
                 </div>
             </div>
         </header>

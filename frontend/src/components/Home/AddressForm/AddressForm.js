@@ -1,21 +1,30 @@
 import { useState } from 'react';
 import './AddressForm.css'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { createUserAddress } from '../../store/session';
 
 const AddressForm = ({currentUser}) => {
     const userType = currentUser?.vendorId ? 'Vendor' : 'User'
     const userId = currentUser?.id
+
+    // NOTE: when building out this form "street_address_2" must be camel case 
+    // to avoid it coming in as street_address2 on the backend if sent as "streeAddress2"
+    
     const [addressValues, setAddressValues] = useState({ 
         default: true, 
-        addressable_type: userType, 
-        addressable_id: userId
+        addressableType: userType, 
+        addressableId: userId,
+        state: "UT",
+        city: "St George",
+        zipCode: '07304'
     });
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createUserAddress({address: addressValues}))
+        if(addressValues.streetAddress){
+            dispatch(createUserAddress({address: addressValues}))
+        }
     }
 
     return (
@@ -23,7 +32,7 @@ const AddressForm = ({currentUser}) => {
             <form className="address-form" onSubmit={handleSubmit}>
                 <h3 style={{marginBottom: '5px'}}>Enter Address to Continue</h3>
                 {/* <label className="street-address-label">Street Address</label> */}
-                <input type="text" placeholder='Your Address' value={addressValues.address} onChange={e => setAddressValues(prevValues => ({...prevValues, address: e.target.value}))}></input>
+                <input type="text" placeholder='Your Address' value={addressValues.streetAddress} onChange={e => setAddressValues(prevValues => ({...prevValues, streetAddress: e.target.value}))}></input>
                 {/* <label>Zip Code</label>
                 <select onChange={e => setAddressValues(prevValues => ({...prevValues, zipCode: e.target.value}))}>
                     <option>Select One</option>
