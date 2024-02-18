@@ -5,7 +5,9 @@ class Api::UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             login!(@user)
-            UserMailer.welcome_email(@user).deliver_later
+            unless @user.email.ends_with?('dashdoor.com')
+                UserMailer.welcome_email(@user).deliver_later
+            end
             AdminMailer.new_user(@user).deliver_later
             render :show
         else

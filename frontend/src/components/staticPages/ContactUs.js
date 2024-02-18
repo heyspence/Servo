@@ -15,12 +15,12 @@ const ContactUs = () => {
                 body: JSON.stringify({message: contactValues})
             })
             if(res.ok){
-                const waitOneSecond = new Promise((resolve, reject)=>{
+                const waitDelay = new Promise((resolve, reject)=>{
                     setTimeout(()=>{
                         resolve('One Second Has Passed')
-                    }, 1000)
+                    }, 500)
                 })
-                await waitOneSecond
+                await waitDelay
                 setMessageState('sent')
             }
         }
