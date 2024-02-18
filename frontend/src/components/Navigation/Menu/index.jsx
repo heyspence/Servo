@@ -39,6 +39,11 @@ const Menu = ({isMenuOpen, closeMenu}) => {
         history.push('/recurring-orders')
     }
 
+    const handleHelpClick = () => {
+        closeMenu();
+        history.push('/contact-us')
+    }
+
     return(
         <div className="menu-backdrop" onClick={closeMenu}>
             <div className="menu-main" onClick={handleMenuClick}>
@@ -47,15 +52,15 @@ const Menu = ({isMenuOpen, closeMenu}) => {
                 </div>
                 <ul>
                     <li onClick={handleHomeClick}>Home</li>
-                    <li>Promotions</li>
+                    {/* <li>Promotions</li> */}
                     <li onClick={handleRecurringClick}>Recurring</li>
                     <li onClick={handleOrdersClick}>Orders</li>
                     <li onClick={handleAccountClick}>Account</li>
-                    <li>--</li>
-                    <li>Payment</li>
-                    <li>Gift Card</li>
-                    <li>--</li>
-                    <li>Help</li>
+                    {/* <li>--</li> */}
+                    {/* <li>Payment</li> */}
+                    {/* <li>Gift Card</li> */}
+                    {/* <li>--</li> */}
+                    <li onClick={handleHelpClick}>Help</li>
                     <li onClick={handleSignOut}>Sign Out</li>
                 </ul>
             </div>
