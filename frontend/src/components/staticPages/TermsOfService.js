@@ -4,9 +4,7 @@ const TermsOfService = () => {
     return (
         <div className="terms-of-service-container">
             <div className="terms-of-service">
-                <header>
                     <h1>Servo Terms of Service</h1>
-                </header>
                     <section>
                         <h2>Welcome to Servo, LLC</h2>
                         <p>By accessing this Website, you are agreeing to be bound by these Website Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site.</p>

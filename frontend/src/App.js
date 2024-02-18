@@ -15,6 +15,8 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import ProviderDashboard from "./components/ProviderDashboard";
 import PrivacyPolicy from "./components/staticPages/PrivacyPolicy";
 import TermsOfService from "./components/staticPages/TermsOfService";
+import AboutUs from "./components/staticPages/AboutUs";
+import ContactUs from "./components/staticPages/ContactUs";
 
 function App({ store }) {
   return (
@@ -34,6 +36,8 @@ function App({ store }) {
               <Route exact path="/vendors/:id/dashboard" component={ProviderDashboard} />
               <Route exact path="/privacy-policy" component={PrivacyPolicy} />
               <Route exact path="/terms-of-service" component={TermsOfService} />
+              <Route exact path="/about-us" component={AboutUs} />
+              <Route exact path="/contact-us" component={ContactUs} />
               <Route path="/" component={SplashPage} />
             </Switch>
             <Footer />

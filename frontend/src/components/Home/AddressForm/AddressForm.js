@@ -6,9 +6,6 @@ import { createUserAddress } from '../../store/session';
 const AddressForm = ({currentUser}) => {
     const userType = currentUser?.vendorId ? 'Vendor' : 'User'
     const userId = currentUser?.id
-
-    // NOTE: when building out this form "street_address_2" must be camel case 
-    // to avoid it coming in as street_address2 on the backend if sent as "streeAddress2"
     
     const [addressValues, setAddressValues] = useState({ 
         default: true, 
@@ -16,7 +13,9 @@ const AddressForm = ({currentUser}) => {
         addressableId: userId,
         state: "UT",
         city: "St George",
-        zipCode: '07304'
+        zipCode: '07304',
+        streetAddress: '',
+        street_address_2: ''
     });
     const dispatch = useDispatch();
 

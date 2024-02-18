@@ -4,9 +4,7 @@ const PrivacyPolicy = () => {
     return (
         <div className="privacy-policy-container">
             <div className="privacy-policy">
-                <header>
                     <h1>Servo Privacy Policy</h1>
-                </header>
                     <section>
                         <p><strong>Effective Date: Feb 4, 2024</strong></p>
                         <p>Welcome to Servo, LLC ("Servo", "we", "us", "our"). We respect your privacy and are committed to protecting it through our compliance with this Privacy Policy. This policy describes the types of information we may collect from you or that you may provide when you visit our website ("Website") and our practices for collecting, using, maintaining, protecting, and disclosing that information.</p>

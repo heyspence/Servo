@@ -138,6 +138,8 @@ input[type=text], input[type=password]{
     border-radius: 4px;
     background-color: var(--secondary-white);
     height: 25px;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
 input *, label{

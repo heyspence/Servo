@@ -9,4 +9,11 @@ class AdminMailer < ApplicationMailer
         @user = user
         mail(subject: "New User Login: #{@user.email}")
     end
+
+    def contact_us_email(message)
+        @message = message[:message]
+        @name = message[:name]
+        @email = message[:email]
+        mail(subject: "IMPORTANT: New Message from #{@name}")
+    end
 end
