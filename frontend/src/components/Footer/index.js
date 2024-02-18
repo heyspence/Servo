@@ -18,8 +18,6 @@ const Footer = () => {
                 </div>
                 <div className="footer-column">
                     <h3>Get in Touch</h3>
-                    <a>Contact</a>
-                    <a>Suggestions</a>
                     <a href="/privacy-policy">Privacy Policy</a>
                     <a href="/terms-of-service">Terms of Service</a>
                 </div>

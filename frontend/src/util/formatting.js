@@ -3,5 +3,9 @@ export const formatPhoneNumber = phoneNumber => {
 }
 
 export const formatAddress = userAddress => {
-    return <>{userAddress?.streetAddress}&nbsp;{userAddress?.city},&nbsp;{userAddress?.state}&nbsp;{userAddress?.zipCode}</>
+    if(!!userAddress){
+        return <>{userAddress?.streetAddress}&nbsp;{userAddress?.city},&nbsp;{userAddress?.state}&nbsp;{userAddress?.zipCode}</>
+    }else{
+        return <></>
+    }
 }

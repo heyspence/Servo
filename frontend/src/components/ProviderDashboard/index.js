@@ -7,7 +7,6 @@ import './ProviderDashboard.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { fetchVendor } from '../store/vendor';
-import DashboardPromotions from './DashboardPromotions/DashboardPromotions';
 import { isLoggedIn } from '../store/session';
 import { useQueryParams } from '../../util/urlQueryParams';
 
@@ -41,8 +40,6 @@ const ProviderDashboard = () => {
                 return <DashboardScheduling vendor={vendor} />
             case('pricing'):
                 return <DashboardPricing vendor={vendor}/>
-            case ('promotions'):
-                return <DashboardPromotions vendor={vendor}/>
             case('support'):
                 return <DashboardSupport />
             case('general'):
@@ -55,7 +52,6 @@ const ProviderDashboard = () => {
             <div className="provider-dashboard-container">
                 <ul className="dashboard-tabs">
                     <li className={currentTab === 'scheduling' ? 'active' : ''} onClick={()=>handleTabClick('scheduling')}>Scheduling</li>
-                    <li className={currentTab === 'promotions' ? 'active' : ''} onClick={()=>handleTabClick('promotions')}>Promotions</li>
                     <li className={currentTab === 'pricing' ? 'active' : ''} onClick={()=>handleTabClick('pricing')}>Pricing</li>
                     <li className={currentTab === 'general' ? 'active' : ''} onClick={()=>handleTabClick('general')}>General</li>
                     <li className={currentTab === 'orders' ? 'active' : ''} onClick={()=>handleTabClick('orders')}>Orders</li>

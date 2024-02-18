@@ -212,12 +212,12 @@ const ProviderShow = () => {
                             <p style={{margin: "10px 0"}}>{vendor?.email ? vendor.email : '--'}</p>
                             <p>{vendor?.address ? formatAddress(vendor.address) : '--'}</p>
                         </div>
-                        <div className="promotions">
+                        {/* <div className="promotions">
                             <h3 className="promotions-header">Promotions</h3>
                             <div className="promotion">Save $5 on $100 or more</div>
                             <div className="promotion">10% Off 2/Year Service</div>
                             <div className="promotion">15% Off 4/year service</div>
-                        </div>
+                        </div> */}
                         <ProviderReviews toggleReviewModal={toggleReviewModal} id={id} />
                         <div className="disclaimer">
                             At Servo, we ensure a seamless connection with skilled professionals. 
@@ -243,7 +243,7 @@ const ProviderShow = () => {
                             alt="get price icon servo instance price" />
                             {vendorCartItem ? confirmedPricingDiv : basePricingDiv}
                             <button onClick={handleGetPriceClick} className="get-price-button">
-                                {vendorCartItem ? 'Edit Service' : 'Get Price'}
+                                {vendorCartItem ? 'Edit Service' : '1. Get Price'}
                             </button>
                         </div>
                         <ProviderScheduling schedulingOpen={openComponent.scheduling} 
@@ -258,7 +258,7 @@ const ProviderShow = () => {
                             alt="schedule now servo icon" />
                             {cartItemStatus === 'scheduled' || cartItemStatus === 'pending' ? confirmedSchedulingDiv : defaultSchedulingDiv}
                             <button onClick={handleScheduleClick} className={`schedule-button ${(vendorCartItem && !openComponent.pricing) ? '' : 'gray-out'}`}>
-                                {!!cartItemStatus ? 'Edit Booking' : 'Schedule'}
+                                {!!cartItemStatus ? 'Edit Booking' : '2. Schedule'}
                             </button>
                         </div>
                         <ProviderSummary summaryOpen={openComponent.summary} 
@@ -277,7 +277,7 @@ const ProviderShow = () => {
                                                 ? '' 
                                                 : 'gray-out'}`} 
                                                 onClick={handleSummaryClick}>
-                                {cartItemStatus === 'scheduled' || cartItemStatus === 'pending' ? 'Continue' : 'Checkout'}
+                                {cartItemStatus === 'scheduled' || cartItemStatus === 'pending' ? 'Continue' : '3. Checkout'}
                             </button>
                         </div>
                     </div>
