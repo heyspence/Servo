@@ -5,14 +5,14 @@
 #  id               :bigint           not null, primary key
 #  latitude         :float
 #  longitude        :float
-#  streetAddress    :string           not null
+#  street_address   :string           not null
 #  addressable_type :string           not null
 #  addressable_id   :bigint           not null
 #  default          :boolean          default(FALSE)
-#  zip_code         :bigint           default(0), not null
+#  zip_code         :string           default("000000"), not null
 #  city             :string           default("St George"), not null
 #  state            :string           default("UT"), not null
-#  streetAddress2   :string
+#  street_address_2 :string
 #
 class Address < ApplicationRecord
     belongs_to :addressable, polymorphic: true

@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_17_205420) do
     t.string "addressable_type", null: false
     t.bigint "addressable_id", null: false
     t.boolean "default", default: false
-    t.bigint "zip_code", default: 0, null: false
+    t.string "zip_code", default: "000000", null: false
     t.string "city", default: "St George", null: false
     t.string "state", default: "UT", null: false
     t.string "street_address_2"
