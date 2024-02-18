@@ -8,20 +8,26 @@ const ContactUs = () => {
     
     const handleSubmit = async(e) => {
         e.preventDefault();
-        if((Object.values(contactValues).every(val => val.trim() !== '' || undefined)) && messageState !== 'loading'){ 
+        if((Object.values(contactValues).every(val => val.trim() !== '')) && messageState !== 'loading'){ 
             setMessageState('loading')
             const res = await csrfFetch('/api/contact',{
                 method: "POST",
                 body: JSON.stringify({message: contactValues})
             })
             if(res.ok){
+                const waitOneSecond = new Promise((resolve, reject)=>{
+                    setTimeout(()=>{
+                        resolve('One Second Has Passed')
+                    }, 1000)
+                })
+                await waitOneSecond
                 setMessageState('sent')
             }
         }
     }
 
     const contactForm = () => {
-        if(messageState === 'unsent'){
+        if(messageState === 'unsent' || messageState === 'loading'){
             return (
                 <>
                     <h2>Send a Message</h2>
@@ -29,7 +35,7 @@ const ContactUs = () => {
                         <input type='text' placeholder='Name' value={contactValues.name} onChange={e => setContactValues(prevValues => ({...prevValues, name: e.target.value}))}/>
                         <input type='text' placeholder='Email'value={contactValues.email} onChange={e => setContactValues(prevValues => ({...prevValues, email: e.target.value}))}/>
                         <textarea placeholder='Your message here.' value={contactValues.message} onChange={e => setContactValues(prevValues => ({...prevValues, message: e.target.value}))}/>
-                        <button>{messageState === 'loading' ? 'Sending Message' : 'Send Message'}</button>
+                        <button>{messageState === 'loading' ? 'Sending Message...' : 'Send Message'}</button>
                     </form>
                 </>
             )
