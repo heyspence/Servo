@@ -8,12 +8,15 @@ const ContactUs = () => {
     
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const res = await csrfFetch('/api/contact',{
-            method: "POST",
-            body: JSON.stringify({message: contactValues})
-        })
-        if(res.ok){
-            setMessageState('sent')
+        if((Object.values(contactValues).every(val => val.trim() !== '' || undefined)) && messageState !== 'loading'){ 
+            setMessageState('loading')
+            const res = await csrfFetch('/api/contact',{
+                method: "POST",
+                body: JSON.stringify({message: contactValues})
+            })
+            if(res.ok){
+                setMessageState('sent')
+            }
         }
     }
 
@@ -26,14 +29,14 @@ const ContactUs = () => {
                         <input type='text' placeholder='Name' value={contactValues.name} onChange={e => setContactValues(prevValues => ({...prevValues, name: e.target.value}))}/>
                         <input type='text' placeholder='Email'value={contactValues.email} onChange={e => setContactValues(prevValues => ({...prevValues, email: e.target.value}))}/>
                         <textarea placeholder='Your message here.' value={contactValues.message} onChange={e => setContactValues(prevValues => ({...prevValues, message: e.target.value}))}/>
-                        <button>Send Message</button>
+                        <button>{messageState === 'loading' ? 'Sending Message' : 'Send Message'}</button>
                     </form>
                 </>
             )
         }else{
             return (
-                <div className="contact-us-success-message" style={{fontSize: '20px', color: 'var(--primary-green)', fontWeight: 'bold'}}>
-                    Message Sent
+                <div className="contact-us-success-message" style={{fontSize: '20px', color: 'var(--primary-green)', fontWeight: 'bold', display: 'flex', alignItems: 'center'}}>
+                    <span><img src="https://spencerheywood.com/images/servo/icons/icons-07.png" style={{height:'43px', margin: '-3px 10px 0 0'}}/></span>Message Sent
                 </div>
             )
         }
