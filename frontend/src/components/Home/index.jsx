@@ -6,7 +6,7 @@ import VendorIndex from '../Vendor/VendorIndex';
 import { getCart } from '../store/cart.js'
 import { useEffect } from 'react';
 import { fetchVendors } from '../store/vendor.js';
-import AddressForm from './AddressForm/AddressForm.js';
+// import AddressForm from './AddressForm/AddressForm.js';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -20,11 +20,11 @@ const Home = () => {
     })
     const userId = currentUser?.id
 
-    const addressForm = () => {
-        if(!currentAddress){
-            return <AddressForm currentUser={currentUser} />
-        }
-    }
+    // const addressForm = () => {
+    //     if(!currentAddress){
+    //         return <AddressForm currentUser={currentUser} />
+    //     }
+    // }
 
     if(!userLoggedIn){
         history.push('/')
@@ -38,7 +38,7 @@ const Home = () => {
 
    return(
         <div className="home-main">
-            {addressForm()}
+            {/* {addressForm()} */}
             <VendorIndex category={"house_cleaning"}/>
             <VendorIndex category={"pest_control"}/>
             <VendorIndex category={"carpet_cleaning"}/>

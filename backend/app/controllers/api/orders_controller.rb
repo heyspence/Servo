@@ -36,7 +36,7 @@ class Api::OrdersController < ApplicationController
         price =  cart_item_params[:price].to_f
 
         if valid_price?(price)
-            return price + 1.85
+            return price + 2.55
         else
             return nil
         end

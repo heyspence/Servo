@@ -133,11 +133,11 @@ label {
     font-size: 14px;
 }
 
-input[type=text], input[type=password]{
+input[type=text], input[type=password], input[type=tel]{
     border: none;
     border-radius: 4px;
     background-color: var(--secondary-white);
-    height: 25px;
+    height: 40px;
     padding: 0 10px;
     box-sizing: border-box;
 }

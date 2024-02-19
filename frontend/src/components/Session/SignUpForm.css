@@ -18,8 +18,6 @@
     cursor: pointer;
     background-color: var(--primary-white);
     color: var(--primary-black);
-    width: 12px;
-    height: 12px;
     padding: 0px;
     margin: 0px;
 }
@@ -40,16 +38,24 @@
 .sign-up-form p{
     color: var(--primary-black);
     font-size: 14px;
-    margin-top: 20px;
     line-height: 20px;
 }
 
-.sign-up-form form * {
-    padding: 7px;
+.sign-up-form form>*{
+    margin: 7px 0;
 }
 
 .sign-up-form input[type=submit]{
     margin: 10px auto;
     width: 80%;
     font-weight: bold;
+}
+
+.form-section{
+    display: flex;
+}
+
+.form-section > *{
+    margin: 0;
+    flex: 1;
 }

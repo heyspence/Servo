@@ -8,9 +8,13 @@ const Errors = () => {
     return (
         <div className="errors">
             <ul>
-                {errors && errors.map((error)=>{
+                {errors && errors.map((error, index)=>{
                     if(error === "Password digest can't be blank") return null;
-                    return <li key={error}>{error}</li>;
+                    if(error.includes('Addresses')){
+                        let correctedError = error.replace('Addresses', 'Address')
+                        return <li key={index}>{correctedError}</li>;
+                    }
+                    return <li key={index}>{error}</li>;
                 })}
             </ul>
         </div>

@@ -75,16 +75,16 @@ const ProviderSummary = ({summaryOpen, cartItem, vendor, onCheckout}) => {
                     </div>
                     <div className="pricing-summary-item-container">
                         <p>Taxes & Fees</p>
-                        <p>$1.85</p>
+                        <p>$2.55</p>
                     </div>
-                    <div className="pricing-summary-item-container">
+                    {/* <div className="pricing-summary-item-container">
                         <p>Discounts</p>
                         <p>-$0.00</p>
-                    </div>
+                    </div> */}
                     <hr/>
                     <div className="pricing-summary-item-container">
                         <p>Total</p>
-                        <p>${(cartItem?.price + 1.85).toFixed(2)}</p>
+                        <p>${(cartItem?.price + 2.55).toFixed(2)}</p>
                     </div>
                 </div>
                 <div className="summary-action-buttons">
