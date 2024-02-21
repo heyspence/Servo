@@ -2,12 +2,13 @@ import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import './CheckoutForm.css'
 import { useEffect, useState } from 'react';
 
-const CheckoutForm = ({price}) => {
+const CheckoutForm = ({price, cartItem, onStatusChange}) => {
     const stripe = useStripe();
     const elements = useElements();
 
     const [message, setMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+
 
     useEffect(() => {
         if (!stripe) {
@@ -23,9 +24,10 @@ const CheckoutForm = ({price}) => {
         }
 
         stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+        onStatusChange(paymentIntent.status)
         switch (paymentIntent.status) {
             case "succeeded":
-            setMessage("Payment succeeded!");
+            setMessage("Booking Confirmed!");
             break;
             case "processing":
             setMessage("Your payment is processing.");
@@ -42,6 +44,7 @@ const CheckoutForm = ({price}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const redirectUrl = `${process.env.REACT_APP_STRIPE_REDIRECT_URL}/vendors/${cartItem.vendorId}?open_payment_gateway=true`
 
         if (!stripe || !elements) {
         // Stripe.js hasn't yet loaded.
@@ -51,20 +54,24 @@ const CheckoutForm = ({price}) => {
 
         setIsLoading(true);
 
-        const { error } = await stripe.confirmPayment({
+        const { error, paymentIntent } = await stripe.confirmPayment({
         elements,
         confirmParams: {
             // Make sure to change this to your payment completion page
-            return_url: "http://localhost:3002/",
-        },
+            return_url: redirectUrl,
+        }, redirect: 'if_required'
         });
 
-        // This point will only be reached if there is an immediate error when
-        // confirming the payment. Otherwise, your customer will be redirected to
-        // your `return_url`. For some payment methods like iDEAL, your customer will
-        // be redirected to an intermediate site first to authorize the payment, then
-        // redirected to the `return_url`.
-        if (error.type === "card_error" || error.type === "validation_error") {
+        if (paymentIntent) {
+            // Check paymentIntent status
+            const { status } = paymentIntent;
+            onStatusChange(status);
+            if (status === 'succeeded') {
+                onStatusChange('succeeded') // Your success logic here
+            }
+        }
+
+        if (error?.type === "card_error" || error?.type === "validation_error") {
             setMessage(error.message);
         } else {
             setMessage("An unexpected error occurred.");
@@ -84,29 +91,28 @@ const CheckoutForm = ({price}) => {
                 Complete Your Booking
             </h2>
             <form id="payment-form" onSubmit={handleSubmit}>
-
-            <PaymentElement id="payment-element" options={paymentElementOptions} />
-            <div className="servo-certified-icon">
-                <hr/>
-                <img src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-09.png"
-                    style={{height: '50px', marginRight: '-5px'}}
-                />
-                <img src="https://spencerheywood.com/images/servo/logos_and_icons/logo_blue_yellow.png" 
-                    style={{height: '44px'}}
-                />
-                <hr/>
-            </div>
-            <button disabled={isLoading || !stripe || !elements} id="submit" style={{
-                                                                                minWidth: '325px', 
-                                                                                margin: '0 auto', 
-                                                                                backgroundColor: 'var(--primary-green)', 
-                                                                                display: 'block'
-                                                                            }}>
-                <span id="button-text">
-                {isLoading ? <div className="spinner" id="spinner"></div> : `Pay $${price}`}
-                </span>
-            </button>
-            {message && <div id="payment-message">{message}</div>}
+                <PaymentElement id="payment-element" options={paymentElementOptions} />
+                <div className="servo-certified-icon">
+                    <hr/>
+                    <img src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-09.png"
+                        style={{height: '50px', marginRight: '-5px'}}
+                    />
+                    <img src="https://spencerheywood.com/images/servo/logos_and_icons/logo_blue_yellow.png" 
+                        style={{height: '44px'}}
+                    />
+                    <hr/>
+                </div>
+                <button disabled={isLoading || !stripe || !elements} id="submit" style={{
+                                                                                    minWidth: '325px', 
+                                                                                    margin: '0 auto', 
+                                                                                    backgroundColor: 'var(--primary-green)', 
+                                                                                    display: 'block'
+                                                                                }}>
+                    <span id="button-text">
+                    {isLoading ? <div className="spinner" id="spinner"></div> : `Pay $${price.toFixed(2)}`}
+                    </span>
+                </button>
+                {message && <div id="payment-message">{message}</div>}
             </form>
         </div>
     );

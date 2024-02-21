@@ -11,6 +11,7 @@ class Api::OrdersController < ApplicationController
         @order = Order.new(order_params)
         if @order.save
             render :show 
+            VendorMailer.work_order(@order).deliver_now
         end
     end
 

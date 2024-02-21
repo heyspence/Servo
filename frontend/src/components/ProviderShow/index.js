@@ -16,6 +16,7 @@ import ProviderGallery from './ProviderGallery/ProviderGallery'
 import ProviderReviews from './ProviderReviews/ProviderReviews'
 import { formatAddress, formatPhoneNumber } from '../../util/formatting'
 import PaymentGateway from '../checkout/paymentGateway/PaymentGateway'
+import { useQueryParams } from '../../util/urlQueryParams'
 
 const ProviderShow = () => {
     // const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
@@ -23,6 +24,7 @@ const ProviderShow = () => {
     const { id }= useParams();
     const history = useHistory();
     const dispatch = useDispatch();
+    const queryParams = useQueryParams();
     const { vendor, calendarData, userLoggedIn } = useSelector(state => {
         return {
             vendor: state.vendors[id],
@@ -79,6 +81,10 @@ const ProviderShow = () => {
             dispatch(fetchCalendarData(id));
         }
     }, [vendor])
+
+    useEffect(()=>{
+        setPaymentGatewayOpen(queryParams.open_payment_gateway)
+    }, [])
 
     // Reviews util function
     let { reviewCount, reviewAverage } = useMemo(()=>{

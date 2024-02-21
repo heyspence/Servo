@@ -5,10 +5,12 @@ import { useEffect } from 'react';
 import { Elements } from '@stripe/react-stripe-js';
 import stripePromise from '../../../util/stripe/stripeClient';
 import csrfFetch from '../../store/csrf';
+import PaymentConfirmation from '../PaymentConfirmation'
 
 const PaymentGateway = ({cartItem, vendorId}) => {
     const [clientSecret, setClientSecret] = useState("");
     const [price, setPrice] = useState(null);
+    const [paymentStatus, setPaymentStatus] = useState();
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
@@ -23,6 +25,10 @@ const PaymentGateway = ({cartItem, vendorId}) => {
             setPrice(data.price);
         });
     }, []);
+
+    const handleStatusUpdate = status => {
+        setPaymentStatus(status)
+    }
 
     const appearance = {
         theme: 'flat',
@@ -44,13 +50,14 @@ const PaymentGateway = ({cartItem, vendorId}) => {
 
     return (
         <>
-            {clientSecret ? (
-                <Elements options={options} stripe={stripePromise}>
-                    <CheckoutForm price={price.toFixed(2)}/>
-                </Elements>
-            ) : <div className='checkout-form'>
-                    <h2>Loading...</h2>
-                </div>}
+            {!!paymentStatus ? <PaymentConfirmation message={paymentStatus} /> :
+                clientSecret ? (
+                    <Elements options={options} stripe={stripePromise}>
+                        <CheckoutForm price={price} cartItem={cartItem} onStatusChange={handleStatusUpdate} />
+                    </Elements>
+                ) : <div className='checkout-form'>
+                        <h2>Loading...</h2>
+                    </div>}
         </>
     );
 };
