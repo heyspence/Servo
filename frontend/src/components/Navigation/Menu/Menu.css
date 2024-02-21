@@ -1,0 +1,75 @@
+.menu-main{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--primary-white);
+    height: 100%;
+    min-width: 350px;
+    z-index: 10;
+    color: var(--primary-black);
+    font-weight: bold;
+    box-shadow: 5px 0 10px -5px rgba(0, 0, 0, 0.2);
+    z-index: 20;
+    overflow-y: auto;
+}
+
+.menu-backdrop{
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw; 
+    height: 100vh; 
+    background-color: transparent; 
+    z-index: 20; 
+
+}
+
+.menu-close{
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.menu-main svg{
+    margin-left: 5%;
+    color: var(--primary-black);
+    fill: var(--primary-black);
+}
+
+.menu-main svg:hover{
+    cursor: pointer;
+}
+
+.menu-main a{
+    text-decoration: none;
+    color: var(--primary-gray)
+}
+
+.menu-main li{
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding-left: 10%;
+}
+
+.menu-main li:hover{
+    cursor: pointer;
+    background-color: var(--secondary-white);
+}
+
+.menu-main li::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 95%;
+    height: 1px;
+    transform: scaleY(0.25);
+    background-color: var(--primary-gray);
+}
+
+/* .menu-main li:nth-child(n+2):nth-child(-n+10):not(:nth-child(3)):not(:nth-child(4)):not(:nth-child(5)){
+    color: var(--secondary-gray);
+} */

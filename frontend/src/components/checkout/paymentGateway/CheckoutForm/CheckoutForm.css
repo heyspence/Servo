@@ -1,0 +1,39 @@
+.checkout-form{
+    background-color: var(--primary-white);
+    border-radius: 20px;
+    min-height: 325px;
+    min-width: 325px;
+    max-width: 400px;
+    width: 50vw;
+    padding: 30px;
+    margin-top: 40px;
+    position: relative;
+}
+
+.checkout-form form{
+    position: relative;
+}
+
+.checkout-form h2{
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    font-size: 21px;
+}
+
+.servo-certified-icon{
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 325px;
+}
+
+/* .servo-certified-icon:hover{
+    cursor: pointer;
+} */
+
+.servo-certified-icon hr{
+    width: 60px;
+    border: 1px solid var(--primary-red)
+}

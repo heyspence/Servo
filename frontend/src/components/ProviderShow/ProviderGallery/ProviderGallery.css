@@ -1,0 +1,30 @@
+.gallery-header{
+    margin: 15px 0 -8px 20px;
+}
+
+.provider-gallery{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+.gallery-container{
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
+    height: auto;
+}
+
+.provider-photo{
+    height: 160px;
+    width: 160px;
+    margin: 8px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.provider-photo:hover{
+    transform: scale(1.01);
+}

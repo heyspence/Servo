@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.50cc375e.css",
+    "main.js": "/static/js/main.2137734a.js",
+    "static/media/logo_master.svg": "/static/media/logo_master.5aefba55ea693623be37b45581bea8a8.svg",
+    "index.html": "/index.html",
+    "static/media/reviewStar.svg": "/static/media/reviewStar.f901551f4bde73518fe3a0c9224040e9.svg",
+    "static/media/grayReviewStar.svg": "/static/media/grayReviewStar.40735386c037df81d752c40ca654ad77.svg",
+    "static/media/Close.svg": "/static/media/Close.e61e43a874989017d870fcce4fae54c0.svg",
+    "static/media/Arrow.svg": "/static/media/Arrow.e2d0875e0d61faf2a00f7d9e008430ac.svg",
+    "static/media/ToolTip.svg": "/static/media/ToolTip.26e0ae939c6a93f8c9606d9b0c94a198.svg",
+    "static/media/HamburgerMenu.svg": "/static/media/HamburgerMenu.da83b788cba9629d8edfc620b1152e2a.svg",
+    "static/media/add_circle_FILL0_wght400_GRAD0_opsz24.svg": "/static/media/add_circle_FILL0_wght400_GRAD0_opsz24.1c59174103fba0f44c904eab57a71b17.svg",
+    "static/media/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.svg": "/static/media/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.493f25045dad47cf7eeb07411a46f1b2.svg",
+    "static/media/chevron_right_FILL0_wght400_GRAD0_opsz24.svg": "/static/media/chevron_right_FILL0_wght400_GRAD0_opsz24.61e1b47165e9447c58adb27abb28dfd5.svg",
+    "main.50cc375e.css.map": "/static/css/main.50cc375e.css.map",
+    "main.2137734a.js.map": "/static/js/main.2137734a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.50cc375e.css",
+    "static/js/main.2137734a.js"
+  ]
+}
