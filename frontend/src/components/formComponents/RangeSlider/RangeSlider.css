@@ -1,8 +1,0 @@
-input[type=range]{
-    width: 100%;
-}
-
-.slider-value{
-    color: var(--primary-red);
-    position: relative;
-}
