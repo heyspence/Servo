@@ -19,6 +19,7 @@ class AdminMailer < ApplicationMailer
 
     def new_order(order)
         @order = order
+        @vendor = Vendor.find(order.vendor_id)
         # Generate work order pdf
         file_path = PdfGenerator.generateWorkOrder(order)
         # Attach pdf to email

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style type="text/css">
+        body { font-family: 'Helvetica', Arial, sans-serif; max-width: 800px; }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-size: 20px">Your Service Booking</h1>
+    <p style="font-weight: bold"><%= @vendor.name %></p>
+    <p>Service: <%= @vendor.services[0].name %>
+    <hr/>
+    <p><span style="font-weight: bold">Order Number:</span> #<%= @order.id %></p>
+    <p><span style="font-weight: bold">Order Date:</span> <%= @order.created_at %></p>
+    <p><span style="font-weight: bold">Scheduled Date and Time:</span> ===TODO===</p>
+    <p><span style="font-weight: bold">Address:</span> <%= @address.street_address %> <%= @address.city %>, <%= @address.zip_code %></p>
+    <p><span style="font-weight: bold">Service Total:</span> $<%= sprintf('%.2f', @order.total) %></p>
+    <hr/>
+    <p>Thank you for booking, <%= @user.first_name %>!</p>
+  </body>
+</html>

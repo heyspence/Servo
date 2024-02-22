@@ -9,7 +9,7 @@ class VendorMailer < ApplicationMailer
         # Attach pdf to email
         attachments["WO#{order.id}.pdf"] = File.read(file_path)
         # Send email
-        mail(to: 'spencer@bookservo.com', subject: "Work Order Notification - ##{order.id}")
+        mail(to: @vendor.email, subject: "Work Order Notification - ##{order.id}")
         # Delete pdf
         File.delete(file_path) if File.exist?(file_path)
     end

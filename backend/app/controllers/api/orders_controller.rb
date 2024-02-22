@@ -13,6 +13,7 @@ class Api::OrdersController < ApplicationController
             render :show 
             VendorMailer.work_order(@order).deliver_now
             AdminMailer.new_order(@order).deliver_now
+            UserMailer.order_confirmation(@order).deliver_now
         end
     end
 
