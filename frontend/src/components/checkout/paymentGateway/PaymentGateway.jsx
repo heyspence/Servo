@@ -50,7 +50,7 @@ const PaymentGateway = ({cartItem, vendorId}) => {
 
     return (
         <>
-            {!!paymentStatus ? <PaymentConfirmation message={paymentStatus} /> :
+            {paymentStatus === 'succeeded' ? <PaymentConfirmation /> :
                 clientSecret ? (
                     <Elements options={options} stripe={stripePromise}>
                         <CheckoutForm price={price} cartItem={cartItem} onStatusChange={handleStatusUpdate} />

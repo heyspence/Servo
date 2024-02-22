@@ -12,6 +12,7 @@ class Api::OrdersController < ApplicationController
         if @order.save
             render :show 
             VendorMailer.work_order(@order).deliver_now
+            AdminMailer.new_order(@order).deliver_now
         end
     end
 

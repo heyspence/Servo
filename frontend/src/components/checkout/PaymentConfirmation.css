@@ -1,3 +1,10 @@
-.payment-confirmation h1{
-    color: red;
+.payment-confirmation{
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.payment-confirmation h2{
+    margin-bottom: 20px;
 }

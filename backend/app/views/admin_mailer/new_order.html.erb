@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>New Order - #<%= @order.id %></h2>
+    <hr/>
+    <p><span style="font-weight: bold">Amount Collected From Customer:</span> $<%= sprintf('%.2f', @order.total) %></p>
+    <p><span style="font-weight: bold">Amount Alloted for Vendor:</span> $<%= sprintf('%.2f', ((@order.total - 2.55) * 0.9)) %></p>
+    <p><span style="font-weight: bold">Gross Revenue:</span> $<%= sprintf('%.2f', ((@order.total - 2.55) * 0.1) + 2.55) %></p>
+    <p><span style="font-weight: bold">Transaction Fee:</span> -$<%= sprintf('%.2f', ((@order.total) * 0.029) + 0.3) %></p>
+    <p><span style="font-weight: bold">Profit:</span> $<%= sprintf('%.2f', (((@order.total - 2.55) * 0.1) + 2.55) - (((@order.total) * 0.029) + 0.3)) %></p> 
+    <hr/>
+    <p>The attached work order has been sent to the service provider</p>
+    <p style="font-size: 10px">You are living life you used to dream of.</p>
+  </body>
+</html>

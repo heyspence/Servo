@@ -16,4 +16,16 @@ class AdminMailer < ApplicationMailer
         @email = message[:email]
         mail(subject: "IMPORTANT: New Message from #{@name}")
     end
+
+    def new_order(order)
+        @order = order
+        # Generate work order pdf
+        file_path = PdfGenerator.generateWorkOrder(order)
+        # Attach pdf to email
+        attachments["WO#{order.id}.pdf"] = File.read(file_path)
+        # Send email
+        mail(subject: "You Recieved an Order - $#{order.total}")
+        # Delete pdf
+        File.delete(file_path) if File.exist?(file_path)
+    end
 end

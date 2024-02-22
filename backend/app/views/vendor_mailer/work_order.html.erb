@@ -2,9 +2,30 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style type="text/css">
+        body { font-family: 'Helvetica', Arial, sans-serif; max-width: 800px; }
+    </style>
   </head>
   <body>
-    <h1>New Work Order from BookServo.com</h1>
-    <p>See the attached work order</p>
+    <h1 style="font-size: 20px">New Work Order from Servo, LLC</h1>
+    <p>Dear <%= @vendor.name %>,</p>
+    <p>You have received a new work order. Please review the details below and 
+      proceed according to the specified requirements.</p>
+    <hr/>
+    <p><span style="font-weight: bold">Work Order Number:</span> #<%= @order.id %></p>
+    <p><span style="font-weight: bold">Issued Date:</span> <%= @order.created_at %></p>
+    <p><span style="font-weight: bold">Scheduled Date and Time:</span> ===TODO===</p>
+    <p><span style="font-weight: bold">Location:</span> <%= @address.street_address %> <%= @address.city %>, <%= @address.zip_code %></p>
+    <p><span style="font-weight: bold">Client Name:</span> <%= @client.first_name %> <%= @client.last_name %></p>
+    <p><span style="font-weight: bold">Client Phone Number:</span> (<%= @client.phone_number.slice(0,3) %>) <%= @client.phone_number.slice(3,3) %>-<%= @client.phone_number.slice(6,4) %></p>
+    <p><span style="font-weight: bold">Service Total:</span> $<%= sprintf('%.2f', ((@order.total - 2.55) * 0.9)) %></p>
+    <hr/>
+    <p>We appreciate your swift response to this work order and value our ongoing collaboration. Should you have any inquiries or recommendations concerning this work order or the 
+      Servo operational procedures, please reach out.</p>
+    <p>Best regards,</p>
+    <p>Spencer Heywood</p>
+    <p>(971) 777-1485</p>
+
+
   </body>
 </html>

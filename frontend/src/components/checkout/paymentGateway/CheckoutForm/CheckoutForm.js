@@ -1,14 +1,16 @@
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import './CheckoutForm.css'
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { createOrder } from '../../../store/orders';
 
 const CheckoutForm = ({price, cartItem, onStatusChange}) => {
     const stripe = useStripe();
     const elements = useElements();
+    const dispatch = useDispatch();
 
     const [message, setMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-
 
     useEffect(() => {
         if (!stripe) {
@@ -27,7 +29,7 @@ const CheckoutForm = ({price, cartItem, onStatusChange}) => {
         onStatusChange(paymentIntent.status)
         switch (paymentIntent.status) {
             case "succeeded":
-            setMessage("Booking Confirmed!");
+            setMessage("Payment success!");
             break;
             case "processing":
             setMessage("Your payment is processing.");
@@ -40,7 +42,7 @@ const CheckoutForm = ({price, cartItem, onStatusChange}) => {
             break;
         }
         });
-    }, [stripe]);
+    }, [stripe, onStatusChange]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -67,6 +69,14 @@ const CheckoutForm = ({price, cartItem, onStatusChange}) => {
             const { status } = paymentIntent;
             onStatusChange(status);
             if (status === 'succeeded') {
+                const order = { order:{
+                    userId: cartItem.userId,
+                    vendorId: cartItem.vendorId,
+                    total: cartItem.price + 2.55
+                }}
+                dispatch(createOrder(order)).then(()=>{
+                    // dispatch(deleteCartItems(1))
+                })
                 onStatusChange('succeeded') // Your success logic here
             }
         }
@@ -87,7 +97,7 @@ const CheckoutForm = ({price, cartItem, onStatusChange}) => {
     return (
         <div className="checkout-form">
             <h2>
-                <span><img src="https://spencerheywood.com/images/servo/icons/icons-07.png" style={{height:'43px', margin: '-3px -2px 0 0'}}/></span>
+                <span><img src="https://spencerheywood.com/images/servo/icons/icons-07.png" style={{height:'43px', margin: '-3px -2px 0 0'}} alt="Servo Checkbox Branded Icon"/></span>
                 Complete Your Booking
             </h2>
             <form id="payment-form" onSubmit={handleSubmit}>
@@ -96,9 +106,11 @@ const CheckoutForm = ({price, cartItem, onStatusChange}) => {
                     <hr/>
                     <img src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-09.png"
                         style={{height: '50px', marginRight: '-5px'}}
+                        alt="Servo Sheild Icon"
                     />
                     <img src="https://spencerheywood.com/images/servo/logos_and_icons/logo_blue_yellow.png" 
                         style={{height: '44px'}}
+                        alt="Servo Certified Logo"
                     />
                     <hr/>
                 </div>
