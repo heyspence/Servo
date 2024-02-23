@@ -7,7 +7,7 @@ import stripePromise from '../../../util/stripe/stripeClient';
 import csrfFetch from '../../store/csrf';
 import PaymentConfirmation from '../PaymentConfirmation'
 
-const PaymentGateway = ({cartItem, vendorId}) => {
+const PaymentGateway = ({cartItem}) => {
     const [clientSecret, setClientSecret] = useState("");
     const [price, setPrice] = useState(null);
     const [paymentStatus, setPaymentStatus] = useState();
@@ -45,7 +45,7 @@ const PaymentGateway = ({cartItem, vendorId}) => {
     };
     const options = {
         clientSecret,
-        appearance,
+        appearance
     };
 
     return (

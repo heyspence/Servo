@@ -25,7 +25,7 @@ class AdminMailer < ApplicationMailer
         # Attach pdf to email
         attachments["WO#{order.id}.pdf"] = File.read(file_path)
         # Send email
-        mail(subject: "You Recieved an Order - $#{order.total}")
+        mail(subject: "You Received an Order - $#{sprintf('%.2f', order.total)}")
         # Delete pdf
         File.delete(file_path) if File.exist?(file_path)
     end

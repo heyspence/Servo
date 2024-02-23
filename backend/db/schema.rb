@@ -142,6 +142,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_17_205420) do
     t.datetime "updated_at", null: false
     t.string "user_type", default: "user"
     t.bigint "vendor_id"
+    t.string "stripe_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["vendor_id"], name: "index_users_on_vendor_id"

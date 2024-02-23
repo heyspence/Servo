@@ -305,7 +305,7 @@ const ProviderShow = () => {
                 <ReviewForm vendorName={vendor?.name} vendorId={id} onClose={toggleReviewModal} />
             </Modal>
             <Modal isOpen={paymentGatewatOpen} onClose={togglePaymentGateway}>
-                <PaymentGateway cartItem={vendorCartItem} vendorId={id} />
+                <PaymentGateway cartItem={vendorCartItem} />
             </Modal>
             {/* <Modal isOpen={reviewShowOpen} onClose={toggleReviewShow}>
                 <ReviewShow review={review} author={author} onClose={toggleReviewShow}/>
