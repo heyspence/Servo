@@ -3,8 +3,8 @@ import './ProviderSummary.css'
 import { useEffect, useState } from 'react';
 
 const ProviderSummary = ({summaryOpen, booking, vendor, onCheckout}) => {
-    const options = booking?.options ? JSON.parse(booking.options) : {}
-    const serviceInputs = vendor?.services ? Object.values(vendor.services)[0].inputs : {}
+    const options = booking?.optionsSnapshot ? JSON.parse(booking.optionsSnapshot) : {}
+    const serviceInputs = vendor?.pricingInputs
     const [parsedOptions, setParsedOptions] = useState({})
 
     useEffect(()=>{
@@ -60,7 +60,7 @@ const ProviderSummary = ({summaryOpen, booking, vendor, onCheckout}) => {
                     </div>
                     <div className="pricing-summary-item-container">
                         <p>Duration</p>
-                        <p>~{booking?.price / vendor?.priceToDurationRate} Hours</p>
+                        <p>~{(booking?.price / vendor?.priceToDurationRate).toFixed(1)} Hours</p>
                     </div>
                 </div>
             </div>

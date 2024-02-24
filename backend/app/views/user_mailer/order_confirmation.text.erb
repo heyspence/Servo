@@ -1,12 +1,11 @@
 <%= @vendor.name %>
 ==================================
-Service: <%= @vendor.services[0].name %>
 
 Order Number:</span> #<%= @order.id %>
 Order Date:</span> <%= @order.created_at %>
 Scheduled Date and Time:</span> ===TODO===
 Address:</span> <%= @address.street_address %> <%= @address.city %>, <%= @address.zip_code %>
-Service Total:</span> $<%= sprintf('%.2f', @order.total) %>
+Service Total:</span> $<%= sprintf('%.2f', @order.price) %>
 
 ==================================
 Thank you for booking, <%= @user.first_name %>!

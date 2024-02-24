@@ -49,7 +49,7 @@ class PdfGenerator
             pdf.move_down 60
             
             pdf.text "Order Placed: #{order.created_at.strftime('%B %d, %Y')}"
-            pdf.text "Service Total: $#{sprintf('%.2f', ((order.total - 2.55) * 0.9))}", style: :bold
+            pdf.text "Service Total: $#{sprintf('%.2f', ((order.price - 2.55) * 0.9))}", style: :bold
             pdf.move_down 10
 
             footer_height = 30 # Height of the footer box

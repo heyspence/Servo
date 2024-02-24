@@ -9,13 +9,12 @@
   <body>
     <h1 style="font-size: 20px">Your Service Booking</h1>
     <p style="font-weight: bold"><%= @vendor.name %></p>
-    <p>Service: <%= @vendor.services[0].name %>
     <hr/>
     <p><span style="font-weight: bold">Order Number:</span> #<%= @order.id %></p>
     <p><span style="font-weight: bold">Order Date:</span> <%= @order.created_at %></p>
     <p><span style="font-weight: bold">Scheduled Date and Time:</span> ===TODO===</p>
     <p><span style="font-weight: bold">Address:</span> <%= @address.street_address %> <%= @address.city %>, <%= @address.zip_code %></p>
-    <p><span style="font-weight: bold">Service Total:</span> $<%= sprintf('%.2f', @order.total) %></p>
+    <p><span style="font-weight: bold">Service Total:</span> $<%= sprintf('%.2f', @order.price) %></p>
     <hr/>
     <p>Thank you for booking, <%= @user.first_name %>!</p>
   </body>

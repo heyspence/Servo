@@ -171,12 +171,17 @@
     color: var(--secondary-gray) !important;
     cursor: not-allowed !important;
     border-color: var(--secondary-white) !important;
+    text-decoration: none !important;
 }
 
-.provider-show-right .anchor-style{
-    background-color: unset !important;
-    color: var(--primary-red) !important;
-    text-decoration: underline !important;
+.provider-show .provider-show-right .anchor-style{
+    background-color: unset;
+    color: var(--primary-red);
+    text-decoration: underline;
+}
+.provider-show-right .green-out{
+    background-color: var(--primary-green);
+    color: white;
 }
 
 .provider-show-right .anchor-style:hover{
@@ -185,12 +190,6 @@
     cursor: pointer !important;
 }
 
-.provider-show-right .green-out{
-    background-color: var(--primary-green);
-    /* background-color: white; */
-    color: white;
-    /* border: 3px solid var(--primary-green); */
-}
 
 .provider-show-right .green-out:hover{
     background-color: var(--secondary-green);

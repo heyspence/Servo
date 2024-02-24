@@ -138,11 +138,13 @@ const ProviderShow = () => {
             ...vendorBooking,
             status: 'pending'
         }
-        // let bookingObject = {
-        //     booking: bookingData
-        // }
         dispatch(updateBooking({booking: bookingData}));
         setPaymentGatewayOpen(true);
+        setOpenComponent({
+            pricing: false,
+            scheduling: false,
+            summary: false
+        })
     }
 
     // Helper functions

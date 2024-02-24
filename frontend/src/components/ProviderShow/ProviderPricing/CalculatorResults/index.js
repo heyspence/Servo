@@ -10,7 +10,7 @@ const CalculatorResults = ({price, duration}) => {
                 </div>
                 <div className="calculated-duration">
                     <h3>Duration</h3>
-                    <p>~{duration} Hrs</p>
+                    <p>~{duration.toFixed(2)} Hrs</p>
                 </div>
             </div>
             {/* <div className="discounts">

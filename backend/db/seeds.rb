@@ -31,7 +31,7 @@ vendor = Vendor.create([
         logo_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/refresh-ecowash-logo.png",
         min_price: 35,
         pricing_formula:"(#5*35)+(#6*25)",
-        price_to_duration_rate: 50
+        price_to_duration_rate: 70
     },
     #3 - Pest Control
     { name: 'Demo Pest Control', 
@@ -131,7 +131,7 @@ pricing_input_options = PricingInputOption.create([
     {option_type:"step", value:"1", pricing_input_id:6},
     {option_type:"default", value:"1", pricing_input_id:6},
     # GARBAGE_CAN_ALTERNATING_CLEANING_SCOPE
-    {option_type:"select", name:"Clean All Cans Every Service", value:1, pricing_input_id:7},
+    {option_type:"select", name:"Clean All Cans Every Service", value:1, pricing_input_id:7, default: true},
     {option_type:"select", name:"Alternate Cleaning: Garbage, Then Recycling", value:2, pricing_input_id:7},
     {option_type:"select", name:"Hybrid Schedule: Garbage + Recycling, Then Garbage Only", value:3, pricing_input_id:7},
     # NUM_CLEANING_HOURS
@@ -145,21 +145,21 @@ pricing_input_options = PricingInputOption.create([
     # FREQUENCY_WEEKLY
     {option_type:"radio", name:"Every 2 Months", value:6, pricing_input_id:10},
     {option_type:"radio", name:"Monthly", value:12, pricing_input_id:10},
-    {option_type:"radio", name:"Every 2 Weeks", value:26, pricing_input_id:10},
+    {option_type:"radio", name:"Every 2 Weeks", value:26, pricing_input_id:10, default: true},
     {option_type:"radio", name:"Weekly", value:52, pricing_input_id:10},
     # FREQUENCY_MONTHLY
     {option_type:"radio", name:"Once a Year", value:1, pricing_input_id:11},
     {option_type:"radio", name:"Twice a Year", value:2, pricing_input_id:11},
-    {option_type:"radio", name:"Quarterly", value:4, pricing_input_id:11},
+    {option_type:"radio", name:"Quarterly", value:4, pricing_input_id:11, default: true},
     {option_type:"radio", name:"Monthly", value:12, pricing_input_id:11},
     # FREQUENCY_EVERY_OTHER_MONTH
     {option_type:"radio", name:"Once a Year", value:1, pricing_input_id:12},
     {option_type:"radio", name:"Twice a Year", value:2, pricing_input_id:12},
-    {option_type:"radio", name:"Quarterly", value:4, pricing_input_id:12},
+    {option_type:"radio", name:"Quarterly", value:4, pricing_input_id:12, default: true},
     {option_type:"radio", name:"Every 2 Months", value:6, pricing_input_id:12},
     # FREQUENCY_QUARTERLY
     {option_type:"radio", name:"Once a Year", value:1, pricing_input_id:13},
-    {option_type:"radio", name:"Twice a Year", value:2, pricing_input_id:13},
+    {option_type:"radio", name:"Twice a Year", value:2, pricing_input_id:13, default: true},
     {option_type:"radio", name:"Quarterly", value:4, pricing_input_id:13},
 ])
 
