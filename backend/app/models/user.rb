@@ -2,18 +2,19 @@
 #
 # Table name: users
 #
-#  id              :bigint           not null, primary key
-#  first_name      :string           not null
-#  last_name       :string           not null
-#  phone_number    :string
-#  email           :string           not null
-#  country         :string
-#  password_digest :string           not null
-#  session_token   :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  user_type       :string           default("user")
-#  vendor_id       :bigint
+#  id                 :bigint           not null, primary key
+#  first_name         :string           not null
+#  last_name          :string           not null
+#  phone_number       :string
+#  email              :string           not null
+#  country            :string
+#  password_digest    :string           not null
+#  session_token      :string           not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  user_type          :string           default("user")
+#  vendor_id          :bigint
+#  stripe_customer_id :string
 #
 class User < ApplicationRecord
     before_validation :ensure_session_token
@@ -50,9 +51,9 @@ class User < ApplicationRecord
 
     has_secure_password
 
-    has_many :cart_items
-    has_many :orders
+    has_many :bookings
     has_many :addresses, as: :addressable
+    has_many :user_inputs, dependent: :destroy
     accepts_nested_attributes_for :addresses
 
     def self.find_by_credentials(email, password)

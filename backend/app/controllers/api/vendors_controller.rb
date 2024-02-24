@@ -14,9 +14,8 @@ class Api::VendorsController < ApplicationController
         @calendar = @vendor.vendor_calendar
         @images = @vendor.images
         @reviews = @vendor.reviews
-        @services = @vendor.services
-        cart_items = current_user.cart_items
-        @cart_item = cart_items.find_by_vendor_id(params[:id])
+        bookings = current_user.bookings
+        @booking = bookings.find_by_vendor_id(params[:id])
         render :show
     end
 
@@ -27,7 +26,6 @@ class Api::VendorsController < ApplicationController
             @calendar = @vendor.vendor_calendar
             @images = @vendor.images
             @reviews = @vendor.reviews
-            @services = @vendor.services
             render :show
         else
             render @vendor.errors.full_messages

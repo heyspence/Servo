@@ -7,7 +7,7 @@ import stripePromise from '../../../util/stripe/stripeClient';
 import csrfFetch from '../../store/csrf';
 import PaymentConfirmation from '../PaymentConfirmation'
 
-const PaymentGateway = ({cartItem}) => {
+const PaymentGateway = ({booking}) => {
     const [clientSecret, setClientSecret] = useState("");
     const [price, setPrice] = useState(null);
     const [paymentStatus, setPaymentStatus] = useState();
@@ -17,7 +17,7 @@ const PaymentGateway = ({cartItem}) => {
         csrfFetch("/api/orders/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ cartItem }),
+        body: JSON.stringify({ booking }),
         })
         .then((res) => res.json())
         .then((data) => {
@@ -53,7 +53,7 @@ const PaymentGateway = ({cartItem}) => {
             {paymentStatus === 'succeeded' ? <PaymentConfirmation /> :
                 clientSecret ? (
                     <Elements options={options} stripe={stripePromise}>
-                        <CheckoutForm price={price} cartItem={cartItem} onStatusChange={handleStatusUpdate} />
+                        <CheckoutForm price={price} booking={booking} onStatusChange={handleStatusUpdate} />
                     </Elements>
                 ) : <div className='checkout-form'>
                         <h2>Loading...</h2>

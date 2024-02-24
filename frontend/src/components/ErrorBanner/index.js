@@ -7,7 +7,6 @@ import { useLocation } from 'react-router-dom';
 
 const ErrorBanner = () => {
     const errors = useSelector(state => state.errors);
-    const isCartOpen = useSelector(state => state.cart?.isCartOpen)
     const [animate, setAnimate] = useState(false);
     const dispatch = useDispatch();
     const location = useLocation();
@@ -30,7 +29,7 @@ const ErrorBanner = () => {
     };
 
     return errors && errors.length && location.pathname.includes('/vendors') > 0 ? (
-        <div className={`error-banner ${animate ? 'slide-out-animation' : ''} ${!isCartOpen ? 'full-width' : ''}`} onAnimationEnd={onAnimationEnd}>
+        <div className={`error-banner ${animate ? 'slide-out-animation' : ''}`} onAnimationEnd={onAnimationEnd}>
             {errors.map((error, index) => (
                 <p key={index}>{error}</p>
             ))}

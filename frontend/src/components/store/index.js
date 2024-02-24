@@ -3,8 +3,7 @@ import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import errorsReducer from './errors';
 import vendorsReducer from './vendor';
-import menuItemsReducer from './menuItems';
-import cartReducer from './cart';
+import bookingsReducer from './bookings';
 import reviewsReducer from './reviews';
 import ordersReducer from './orders';
 import imagesReducer from './images';
@@ -14,8 +13,7 @@ const rootReducer = combineReducers({
   session: sessionReducer,
   errors: errorsReducer,
   vendors: vendorsReducer,
-  menuItems: menuItemsReducer,
-  cart: cartReducer,
+  bookings: bookingsReducer,
   reviews: reviewsReducer,
   orders: ordersReducer,
   images: imagesReducer,

@@ -7,14 +7,14 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resource :session, only: [:create, :destroy, :show]
     resources :users, only: [:create, :show]
-    resources :cart_items, only: [:create, :destroy, :show, :update]
+    resources :bookings, only: [:create, :destroy, :show, :update]
     resources :events, only: [:index, :create]
     resources :addresses, only: [:create]
     resources :contact, only: [:create]
     post 'auth/google/callback', to: 'authentication#google_callback'
 
     resources :user, only: [:index] do
-      resources :cart_items, only: [:index] do
+      resources :bookings, only: [:index] do
         delete :destroy_all, on: :collection
       end
       resources :orders, only: [:index]
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
 
     resources :vendors, only: [:index, :show, :update] do
-      resources :services, only: [:index]
+      # resources :services, only: [:index]
       resources :reviews, only: [:index, :create]
       resources :images, only: [:index]
       resources :vendor_calendars, only: [:index]

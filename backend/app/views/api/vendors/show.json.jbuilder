@@ -1,5 +1,19 @@
 json.set! @vendor.id do
-    json.extract! @vendor, :id, :name, :image_url, :icon_image_url, :category, :phone_number, :email
+    json.extract! @vendor, :id, :name, :thumbnail_image_url, :logo_image_url, :category, :phone_number, :email, :min_price, :price_to_duration_rate, :pricing_formula
+    json.pricing_inputs do 
+        @vendor.pricing_inputs.each do |input|
+            json.set! input.id do
+                json.extract! input, :id, :name, :input_type, :required, :recurring, :alias
+                json.pricing_input_options do
+                    input.pricing_input_options.each do |option|
+                        json.set! option.id do
+                            json.extract! option, :option_type, :name, :value, :id, :pricing_input_id, :default
+                        end
+                    end
+                end
+            end
+        end
+    end
     json.address do 
         json.extract! @address, :longitude, :latitude, :street_address, :city, :state, :street_address_2, :zip_code, :default, :addressable_type, :addressable_id
     end
@@ -17,30 +31,9 @@ json.set! @vendor.id do
             end
         end
     end
-    json.services do
-        @services.each do |service|
-            json.set! service.id do
-                json.extract! service, :id, :name, :price, :image_url, :vendor_id, :formula
-                json.inputs do 
-                    service.inputs.each do |input|
-                        json.set! input.id do
-                            json.extract! input, :id, :name, :input_type, :required, :recurring
-                            json.options do
-                                input.options.each do |option|
-                                    json.set! option.id do
-                                        json.extract! option, :option_type, :name, :value, :id
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end
-    end
-    if @cart_item.present?
-        json.cart_item do 
-            json.extract! @cart_item, :user_id, :service_id, :id, :price, :options, :address_id, :vendor_id, :status, :appointment_at
+    if @booking.present?
+        json.booking do 
+            json.extract! @booking, :user_id, :id, :price, :options_snapshot, :address_id, :vendor_id, :status, :appointment_at
         end   
     end 
     json.calendar @calendar.id if @calendar.present?

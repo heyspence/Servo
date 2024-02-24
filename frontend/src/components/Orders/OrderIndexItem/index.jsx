@@ -10,7 +10,7 @@ const OrderIndexItem = ({ order }) =>{
     const dispatch = useDispatch();
     const history = useHistory();
     const vendor = useSelector(state => state?.vendors ? state.vendors[vendorId] : null);
-    const formattedPrice = (order.total).toFixed(2)
+    const formattedPrice = (order.price).toFixed(2)
 
     const formatDate = data => {
         const options = {  weekday: 'short', month: 'short', day: 'numeric' };
@@ -18,7 +18,7 @@ const OrderIndexItem = ({ order }) =>{
         return date.toLocaleDateString('en-US', options);
     }
 
-    const formattedDate = formatDate(order.createdAt);
+    const formattedDate = formatDate(order.updatedAt);
     useEffect(()=>{
         if(!vendor){
             dispatch(fetchVendor(vendorId))

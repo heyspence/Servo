@@ -33,7 +33,7 @@ const VendorIndex = ({category}) => {
                         {vendors.map((vendor => {
                             return <VendorIndexItem 
                                 name={vendor.name} 
-                                imageUrl={vendor.imageUrl} 
+                                imageUrl={vendor.thumbnailImageUrl} 
                                 id={vendor.id} 
                                 key={vendor.id} />
                         }))}

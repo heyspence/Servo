@@ -3,29 +3,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { isLoggedIn } from '../store/session';
 import { useEffect } from 'react';
-import { deleteCartItems, getCart } from '../store/cart';
+import { deletebookings, getBookings } from '../store/bookings';
 import { findVendorByService } from '../store/vendor';
-import CartItem from '../Cart/CartItem';
+import bookings from '../Cart/bookings';
 import { ReactComponent as MasterCardIcon } from '../../assets/svg/MasterCard.svg';
 import { createOrder } from '../store/orders';
 
 const Checkout = () => {
-    const cartItems = useSelector(state => state.cart?.cartItems ? Object.values(state.cart.cartItems) : [])
+    const bookings = useSelector(state => state?.bookings ? Object.values(state?.bookings) : [])
     const currentUserId = useSelector(state => state.session.user?.id)
-    const cartVendor = useSelector(state => findVendorByService(state, cartItems[0]?.menuItemId))
-    const isCartOpen = useSelector(state => state.cart?.isCartOpen)
+    const cartVendor = useSelector(state => findVendorByService(state, bookings[0]?.menuItemId))
     const user = useSelector(state => state?.session ? state.session.user : null)
     const userLoggedIn = useSelector(isLoggedIn);
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const totalPrice = cartItems.reduce((total, item) => {
+    const totalPrice = bookings.reduce((total, item) => {
         return total + item.price
     }, 0).toFixed(2)
 
     useEffect(()=>{
-        dispatch(getCart(currentUserId))
-    },[isCartOpen, currentUserId, dispatch])
+        dispatch(getBookings(currentUserId))
+    },[currentUserId, dispatch])
 
     if(!userLoggedIn){history.push('/home');}
 
@@ -40,12 +39,12 @@ const Checkout = () => {
             total: totalPrice
         }}
         dispatch(createOrder(order)).then(()=>{
-            dispatch(deleteCartItems(user.id))
+            dispatch(deletebookings(user.id))
             history.push(`/orders`)
         })
     }
 
-    if(!user || cartItems.length === 0) history.push('/home')
+    if(!user || bookings.length === 0) history.push('/home')
     return (
         <div className="checkout">
             <div className="checkout-info-container">
@@ -81,7 +80,7 @@ const Checkout = () => {
                         </h3>
                         </div>
                         <ul className="cart-list">
-                            {cartItems && cartItems.map((cartItem)=>{
+                            {bookings && bookings.map((cartItem)=>{
                                     return <CartItem key={cartItem.id} cartItem={cartItem} />
                             })}
                         </ul>

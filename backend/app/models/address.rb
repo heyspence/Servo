@@ -16,7 +16,8 @@
 #
 class Address < ApplicationRecord
     belongs_to :addressable, polymorphic: true
-    has_many :cart_items
+    has_many :bookings
+    has_many :user_inputs
     validates :street_address, presence: true
     validates :zip_code, presence: true, format: { with: /\A\d{5}(-\d{4})?\z/, message: "must be a valid ZIP code" }
     validates :city, presence: true

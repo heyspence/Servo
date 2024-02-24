@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import { restoreSession } from './components/store/session';
 import configureStore from "./components/store";
-import { getCart } from './components/store/cart';
+import { getBookings } from './components/store/bookings';
 
 const store = configureStore();
 const container = document.getElementById('root');
@@ -16,7 +16,7 @@ if(true){
     .then(() => {
         const userId = selectCurrentUserId(store.getState());
         if(userId){
-            return store.dispatch(getCart(userId))
+            return store.dispatch(getBookings(userId))
         }
     })
     .then(()=>{root.render(<App store={store} />);})

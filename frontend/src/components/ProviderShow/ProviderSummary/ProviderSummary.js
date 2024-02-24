@@ -2,8 +2,8 @@ import { format, parseISO } from 'date-fns';
 import './ProviderSummary.css'
 import { useEffect, useState } from 'react';
 
-const ProviderSummary = ({summaryOpen, cartItem, vendor, onCheckout}) => {
-    const options = cartItem?.options ? JSON.parse(cartItem.options) : {}
+const ProviderSummary = ({summaryOpen, booking, vendor, onCheckout}) => {
+    const options = booking?.options ? JSON.parse(booking.options) : {}
     const serviceInputs = vendor?.services ? Object.values(vendor.services)[0].inputs : {}
     const [parsedOptions, setParsedOptions] = useState({})
 
@@ -17,7 +17,7 @@ const ProviderSummary = ({summaryOpen, cartItem, vendor, onCheckout}) => {
             }
         }
         setParsedOptions(newParsedOptions)
-    },[vendor, cartItem])
+    },[vendor, booking])
 
     const categoryMap = {
         window_cleaning: "Window Cleaning",
@@ -29,8 +29,8 @@ const ProviderSummary = ({summaryOpen, cartItem, vendor, onCheckout}) => {
     }
 
     let formattedDate = () =>{
-        if(cartItem?.appointmentAt){
-            return format(parseISO(cartItem?.appointmentAt), "MMM do @ h:mmaaa")
+        if(booking?.appointmentAt){
+            return format(parseISO(booking?.appointmentAt), "MMM do @ h:mmaaa")
         }
     }
 
@@ -60,7 +60,7 @@ const ProviderSummary = ({summaryOpen, cartItem, vendor, onCheckout}) => {
                     </div>
                     <div className="pricing-summary-item-container">
                         <p>Duration</p>
-                        <p>~1 Hour 30 Minutes</p>
+                        <p>~{booking?.price / vendor?.priceToDurationRate} Hours</p>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@ const ProviderSummary = ({summaryOpen, cartItem, vendor, onCheckout}) => {
                 <div className="summary-right-body">
                     <div className="pricing-summary-item-container">
                         <p>Subtotal</p>
-                        <p>${cartItem?.price.toFixed(2)}</p>
+                        <p>${booking?.price.toFixed(2)}</p>
                     </div>
                     <div className="pricing-summary-item-container">
                         <p>Service Charge</p>
@@ -84,7 +84,7 @@ const ProviderSummary = ({summaryOpen, cartItem, vendor, onCheckout}) => {
                     <hr/>
                     <div className="pricing-summary-item-container">
                         <p>Total</p>
-                        <p>${(cartItem?.price + 2.55).toFixed(2)}</p>
+                        <p>${(booking?.price + 2.55).toFixed(2)}</p>
                     </div>
                 </div>
                 <div className="summary-action-buttons">

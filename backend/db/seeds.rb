@@ -11,20 +11,50 @@ require "open-uri"
 puts "Creating vendors"
 
 vendor = Vendor.create([
-    { name: 'Ease Window Cleaning', phone_number: "9717771485", email:"easewindows@gmail.com", category:"window_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/E22A3074.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Ease-Logo-A1%20%282%29%20%283%29%20copy%202.png"},
-    { name: "Jdog Carpet Cleaning", phone_number: "9717771485", email:"jdog@gmail.com", category:"carpet_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-11.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/logo237190-1594648885.jpeg"},
-    { name: "Eco Refresh Garbage Can Cleaning", phone_number: "4356453890", email:"refreshgarbagecleaning@gmail.com", category:"garbage_can_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-30.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/refresh-ecowash-logo.png"},
-    { name: 'Dead Aim Pest Control', phone_number: "4356453890", email:"deadaimpest@gmail.com", category:"pest_control", image_url: "https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-9.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Screen%20Shot%202021-06-21%20at%2010.19.09%20PM.png"},
-    { name: 'Lily Maid House Cleaning', phone_number: "4356453890", email:"lilymaidhousecleaning@gmail.com", category:"house_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Lily%20Maid%20Cleaning%20Shoot-49.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png"},
-    { name: 'Onsite Detail', phone_number: "4356453890", email:"help@onsite.com", category:"auto_detailing", image_url: "https://spencerheywood.com/images/servo/Pictures/web_optimized/ease/E22A3062.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/logo-dark%20copy%204.png"},
-    { name: 'Example 1', phone_number: "9717771485", email:"firstexample@gmail.com", category:"window_cleaning", image_url: "https://spencerheywood.com/images/servo/Pictures/web_optimized/ease/E22A3062.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Ease-Logo-A1%20%282%29%20%283%29%20copy%202.png"},
-    { name: 'Example 2', phone_number: "9717771485", email:"secondvendorexample@gmail.com", category:"window_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/E22A3399.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Ease-Logo-A1%20%282%29%20%283%29%20copy%202.png"},
-    { name: 'Example 3', phone_number: "4356453890", email:"lilymaidhousecleaning@gmail.com", category:"house_cleaning", image_url: "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning/Lily%20Maid%20Cleaning%20Shoot-41.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png"},
-    { name: 'Example 4', phone_number: "4356453890", email:"example4email@gmail.com", category:"house_cleaning", image_url: "https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning/Lily%20Maid%20Cleaning%20Shoot-50.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png"},
-    { name: 'Example 5', phone_number: "4356453890", email:"example5@gmail.com", category:"house_cleaning", image_url: "https://spencerheywood.com/images/servo/highlights/Lily%20Maid%20Cleaning%20Shoot-4.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png"},
-    { name: 'Example 6', phone_number: "4356453890", email:"example6pest@gmail.com", category:"pest_control", image_url: "https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-8.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Screen%20Shot%202021-06-21%20at%2010.19.09%20PM.png"},
-    { name: 'Example 7', phone_number: "4356453890", email:"example7pest@gmail.com", category:"pest_control", image_url: "https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-2.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Screen%20Shot%202021-06-21%20at%2010.19.09%20PM.png"},
-    { name: 'Example 8', phone_number: "4356453890", email:"example8pest@gmail.com", category:"pest_control", image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-1.jpg", icon_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Screen%20Shot%202021-06-21%20at%2010.19.09%20PM.png"},
+    # 1 - Window Cleaning
+    { name: 'Demo Window Cleaner', 
+        phone_number: "9717771485", 
+        email:"spencer@bookservo.com", 
+        category:"window_cleaning",
+        thumbnail_image_url: "https://spencerheywood.com/images/servo/highlights/E22A3074.jpg", 
+        logo_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Ease-Logo-A1%20%282%29%20%283%29%20copy%202.png",
+        min_price: 58, 
+        pricing_formula:"(((1705600*#2)/(43658860+#2)+25.5)*#1)*#3",
+        price_to_duration_rate: 60
+    },
+    #2 - Garbage Can Cleaning
+    { name: "Demo Garbage Can Cleaning", 
+        phone_number: "4356453890", 
+        email:"spencer@bookservo.com", 
+        category:"garbage_can_cleaning", 
+        thumbnail_image_url: "https://spencerheywood.com/images/servo/highlights/Servo%20Pictures-30.jpg", 
+        logo_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/refresh-ecowash-logo.png",
+        min_price: 35,
+        pricing_formula:"(#5*35)+(#6*25)",
+        price_to_duration_rate: 50
+    },
+    #3 - Pest Control
+    { name: 'Demo Pest Control', 
+        phone_number: "4356453890", 
+        email:"spencer@bookservo.com", 
+        category:"pest_control", 
+        thumbnail_image_url: "https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-9.jpg", 
+        logo_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Screen%20Shot%202021-06-21%20at%2010.19.09%20PM.png",
+        min_price: 65, 
+        pricing_formula:"(#2<1700?65:(#2<=3500?75:95))*#9",
+        price_to_duration_rate: 60
+    },
+    #4 - House Cleaning
+    { name: 'Demo House Cleaner', 
+        phone_number: "4356453890", 
+        email:"spencer@bookservo.com", 
+        category:"house_cleaning", 
+        thumbnail_image_url: "https://spencerheywood.com/images/servo/highlights/Lily%20Maid%20Cleaning%20Shoot-49.jpg", 
+        logo_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png",
+        min_price: 35, 
+        pricing_formula:"#8*35",
+        price_to_duration_rate: 35
+    },
 ])
 
 puts "Creating demo users"
@@ -39,197 +69,124 @@ user = User.create([
     { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor1@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 1},
     { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor2@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 2},
     { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor3@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 3},
-    { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor4@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 4},
-    { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor5@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 5},
-    { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor6@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 6},
-    { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor7@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 7}
+    { first_name: 'Demo', last_name: 'Vendor', email: 'demovendor4@dashdoor.com', password: 'password',phone_number: '1002003005', user_type:'vendor', vendor_id: 4}
 ])
 
-puts "Creating services"
+puts "Creating pricing inputs"
 
-service = Service.create([
-    {name: 'Window Cleaning', price: '58', vendor_id: 1, formula:"((((1705600*#3)/(43658860+#3)+25.5)*#1)*#2)*#4"},
-    {name: 'Carpet Cleaning', price: '115', vendor_id: 2, formula:"(#13+#14+#15)*(40+#16+#17)+(#18+#19+#20)"},
-    {name: 'Garbage Can Cleaning', price: '35', vendor_id: 3, formula:"(#9*35)+(#10*25)"},
-    {name: 'Pest Control', price: '65', vendor_id: 4, formula:"(#22<1700?65:(#22<=3500?75:95))*#23"},
-    {name: 'House Cleaning', price: '35', vendor_id: 5, formula: "#7*35"},
-    {name: 'Auto Detailing', price: '75', vendor_id: 6},
-    {name: 'Window Cleaning', price: '50', vendor_id: 7, formula:"(((1705600*#3)/(43658860+#3)*#1)*#2)*#4"},
-    {name: 'Window Cleaning', price: '55', vendor_id: 8, formula:"(((1705600*#3)/(43658860+#3)*#1)*#2)*#4"},
-    {name: 'House Cleaning', price: '40', vendor_id: 9, formula: "#7*40"},
-    {name: 'House Cleaning', price: '35', vendor_id: 10, formula: "#7*35"},
-    {name: 'House Cleaning', price: '45', vendor_id: 11, formula: "#7*45"},
-    {name: 'Pest Control', price: '55', vendor_id: 12, formula:"(#22<1700?55:(#22<=3500?65:95))*#23"},
-    {name: 'Pest Control', price: '85', vendor_id: 13, formula:"(#22<1700?85:(#22<=3500?90:105))*#23"},
-    {name: 'Pest Control', price: '80', vendor_id: 14, formula:"(#22<1700?80:(#22<=3500?85:95))*#23"},
+pricing_input = PricingInput.create([
+    # Home Inputs
+    {name:"Floors", input_type:"select", required: true, alias: "FLOOR_COUNT", category: "address"},
+    {name:"Total Square Footage", input_type:"range", required: true, alias: "SQUARE_FOOTAGE", category: "address"},
+
+    # Window Cleaning
+    {name:"What windows would you like cleaned?", input_type:"radio", required: true, alias: "WINDOW_CLEANING_SCOPE", category: "window_cleaning"},
+    {name:"Additional Options", input_type:"select", recurring: true, alias: "WINDOW_CLEANING_ALTERNATING_SCOPE", category: "window_cleaning"},
+
+    # Garbage Can Cleaning
+    {name:"Number of Garbage Cans", input_type:"range", required: true, alias: "NUM_GARBAGE_CANS", category: "garbage_can_cleaning"},
+    {name:"Number of Recycling Bins", input_type:"range", required: true, alias: "NUM_RECYCLE_BINS", category: "garbage_can_cleaning"},
+    {name:"Additional Options", input_type:"select", recurring: true, alias: "GARBAGE_CAN_ALTERNATING_SCOPE", category: "garbage_can_cleaning"},
+
+    # House Cleaning
+    {name:"Number of Cleaning Hours", input_type:"range", required: true, alias: "NUM_CLEANING_HOURS", category: "house_cleaning"},
+
+    # Pest Control
+    {name:"Additional Options", input_type:"radio", required: true, alias: "PEST_CONTROL_SCOPE", category: "pest_control"},
+
+    # Recurring Frequency
+    {name:"Frequency", input_type:"radio", recurring: true, alias: "FREQUENCY_WEEKLY", category: "recurring_frequency"},
+    {name:"Frequency", input_type:"radio", recurring: true, alias: "FREQUENCY_MONTHLY", category: "recurring_frequency"},
+    {name:"Frequency", input_type:"radio", recurring: true, alias: "FREQUENCY_EVERY_OTHER_MONTH", category: "recurring_frequency"},
+    {name:"Frequency", input_type:"radio", recurring: true, alias: "FREQUENCY_QUARTERLY", category: "recurring_frequency"},
 ])
 
-puts "Creating inputs"
+puts "Creating pricing input options"
 
-input = Input.create([
-    {name:"Floors", input_type:"select", required: true},
-    {name:"What windows would you like cleaned?", input_type:"radio", required: true},
-    {name:"Total Square Footage", input_type:"range", required: true},
-    {name:"Additional Options", input_type:"checkbox", required: true },
-    {name:"Frequency", input_type:"radio", recurring: true},
-    {name:"Additional Options", input_type:"select", recurring: true},
-    {name:"Number of Cleaning Hours", input_type:"range", required: true},
-    {name:"Frequency", input_type:"radio", recurring: true},
-    {name:"Number of Garbage Cans", input_type:"range", required: true},
-    {name:"Number of Recycling Bins", input_type:"range", required: true},
-    {name:"Frequency", input_type:"radio", recurring: true},
-    {name:"Additional Options", input_type:"select", recurring: true},
-    {name:"Bedroom(s)", input_type:"range"},
-    {name:"Living Room(s)", input_type:"range"},
-    {name:"Dining Room(s)", input_type:"range"},
-    {name:"Carpet Type", input_type:"select"},
-    {name:"Carpet Condition", input_type:"select"},
-    {name:"Additional Options", input_type:"checkbox"},
-    {name:"", input_type:"checkbox"},
-    {name:"", input_type:"checkbox"},
-    {name:"Frequency", input_type:"radio", recurring: true},
-    {name:"Total Square Footage", input_type:"range", required: true},
-    {name:"Additional Options", input_type:"radio", required: true},
-    {name:"Frequency", input_type:"radio", recurring: true},
-    {name:"Floors", input_type:"select", required: true},
-    {name:"What windows would you like cleaned?", input_type:"radio", required: true},
-    {name:"Total Square Footage", input_type:"range", required: true},
-    {name:"Additional Options", input_type:"checkbox", required: true},
-    {name:"Frequency", input_type:"radio", recurring: true},
-    {name:"Additional Options", input_type:"select", recurring: true}
+pricing_input_options = PricingInputOption.create([
+    # FLOOR_COUNT
+    {option_type:"select", name:"1", value:1.0, pricing_input_id:1},
+    {option_type:"select", name:"2", value:1.2, pricing_input_id:1, default: true},
+    {option_type:"select", name:"3", value:1.5, pricing_input_id:1},
+    # SQUARE_FOOTAGE
+    {option_type:"min", value:1500, pricing_input_id:2},
+    {option_type:"max", value:8000, pricing_input_id:2},
+    {option_type:"step", value:250, pricing_input_id:2},
+    {option_type:"default", value:2500, pricing_input_id:2},
+    # WINDOW_CLEANING_SCOPE
+    {option_type:"radio", name:"Inside/Out", value:1, pricing_input_id:3, default: true},
+    {option_type:"radio", name:"Outside Only", value:0.7, pricing_input_id:3},
+    # WINDOW_CLEANING_ALTERNATING_SCOPE
+    {option_type:"select", name:"Inside/Out", value:1, pricing_input_id:4},
+    {option_type:"select", name:"Outside Only", value:2, pricing_input_id:4},
+    {option_type:"select", name:"Alternating Inside & Out / Outside Only", value:3, pricing_input_id:4},
+    # NUM_GARBAGE_CANS
+    {option_type:"min", value:"0", pricing_input_id:5},
+    {option_type:"max", value:"4", pricing_input_id:5},
+    {option_type:"step", value:"1", pricing_input_id:5},
+    {option_type:"default", value:"1", pricing_input_id:5},
+    # NUM_RECYCLE_BINS
+    {option_type:"min", value:"0", pricing_input_id:6},
+    {option_type:"max", value:"4", pricing_input_id:6},
+    {option_type:"step", value:"1", pricing_input_id:6},
+    {option_type:"default", value:"1", pricing_input_id:6},
+    # GARBAGE_CAN_ALTERNATING_CLEANING_SCOPE
+    {option_type:"select", name:"Clean All Cans Every Service", value:1, pricing_input_id:7},
+    {option_type:"select", name:"Alternate Cleaning: Garbage, Then Recycling", value:2, pricing_input_id:7},
+    {option_type:"select", name:"Hybrid Schedule: Garbage + Recycling, Then Garbage Only", value:3, pricing_input_id:7},
+    # NUM_CLEANING_HOURS
+    {option_type:"min", value:"0", pricing_input_id:8},
+    {option_type:"max", value:"8", pricing_input_id:8},
+    {option_type:"step", value:"1", pricing_input_id:8},
+    {option_type:"default", value:"3", pricing_input_id:8},
+    # PEST_CONTROL_SCOPE
+    {option_type:"radio", name:"Inside/Out", value:1, pricing_input_id:9, default: true},
+    {option_type:"radio", name:"Outside Only", value:0.7, pricing_input_id:9},
+    # FREQUENCY_WEEKLY
+    {option_type:"radio", name:"Every 2 Months", value:6, pricing_input_id:10},
+    {option_type:"radio", name:"Monthly", value:12, pricing_input_id:10},
+    {option_type:"radio", name:"Every 2 Weeks", value:26, pricing_input_id:10},
+    {option_type:"radio", name:"Weekly", value:52, pricing_input_id:10},
+    # FREQUENCY_MONTHLY
+    {option_type:"radio", name:"Once a Year", value:1, pricing_input_id:11},
+    {option_type:"radio", name:"Twice a Year", value:2, pricing_input_id:11},
+    {option_type:"radio", name:"Quarterly", value:4, pricing_input_id:11},
+    {option_type:"radio", name:"Monthly", value:12, pricing_input_id:11},
+    # FREQUENCY_EVERY_OTHER_MONTH
+    {option_type:"radio", name:"Once a Year", value:1, pricing_input_id:12},
+    {option_type:"radio", name:"Twice a Year", value:2, pricing_input_id:12},
+    {option_type:"radio", name:"Quarterly", value:4, pricing_input_id:12},
+    {option_type:"radio", name:"Every 2 Months", value:6, pricing_input_id:12},
+    # FREQUENCY_QUARTERLY
+    {option_type:"radio", name:"Once a Year", value:1, pricing_input_id:13},
+    {option_type:"radio", name:"Twice a Year", value:2, pricing_input_id:13},
+    {option_type:"radio", name:"Quarterly", value:4, pricing_input_id:13},
 ])
 
-puts 'Creating service / inputs joins table'
+puts 'Creating vendor_pricing_inputs joins table'
 
-service_inputs = ServiceInput.create([
-    {input_id: 1, service_id: 1},
-    {input_id: 2, service_id: 1},
-    {input_id: 3, service_id: 1},
-    {input_id: 4, service_id: 1},
-    {input_id: 5, service_id: 1},
-    {input_id: 6, service_id: 1},
-    {input_id: 7, service_id: 5},
-    {input_id: 8, service_id: 5},
-    {input_id: 9, service_id: 3},
-    {input_id: 10, service_id: 3},
-    {input_id: 11, service_id: 3},
-    {input_id: 12, service_id: 3},
-    {input_id: 13, service_id: 2},
-    {input_id: 14, service_id: 2},
-    {input_id: 15, service_id: 2},
-    {input_id: 16, service_id: 2},
-    {input_id: 17, service_id: 2},
-    {input_id: 18, service_id: 2},
-    {input_id: 19, service_id: 2},
-    {input_id: 20, service_id: 2},
-    {input_id: 3, service_id: 2},
-    {input_id: 1, service_id: 2},
-    {input_id: 5, service_id: 2},
-    {input_id: 3, service_id: 4},
-    {input_id: 23, service_id: 4},
-    {input_id: 24, service_id: 4},
-    {input_id: 1, service_id: 7},
-    {input_id: 2, service_id: 7},
-    {input_id: 3, service_id: 7},
-    {input_id: 5, service_id: 7},
-    {input_id: 6, service_id: 7},
-    {input_id: 1, service_id: 8},
-    {input_id: 2, service_id: 8},
-    {input_id: 3, service_id: 8},
-    {input_id: 5, service_id: 8},
-    {input_id: 6, service_id: 8},
-    {input_id: 7, service_id: 9},
-    {input_id: 8, service_id: 9},
-    {input_id: 7, service_id: 10},
-    {input_id: 8, service_id: 10},
-    {input_id: 7, service_id: 11},
-    {input_id: 8, service_id: 11},
-    {input_id: 3, service_id: 12},
-    {input_id: 23, service_id: 12},
-    {input_id: 24, service_id: 12},
-    {input_id: 3, service_id: 13},
-    {input_id: 23, service_id: 13},
-    {input_id: 24, service_id: 13},
-    {input_id: 3, service_id: 14},
-    {input_id: 23, service_id: 14},
-    {input_id: 24, service_id: 14},
-])
+vendor_pricing_inputs = VendorPricingInput.create([
+    #1 - Window Cleaning
+    {pricing_input_id: 1, vendor_id: 1},
+    {pricing_input_id: 2, vendor_id: 1},
+    {pricing_input_id: 3, vendor_id: 1},
+    {pricing_input_id: 4, vendor_id: 1},
+    {pricing_input_id: 13, vendor_id: 1},
 
-puts "Creating options"
+    #2 - Garbage Can Cleaning
+    {pricing_input_id: 5, vendor_id: 2},
+    {pricing_input_id: 6, vendor_id: 2},
+    {pricing_input_id: 7, vendor_id: 2},
+    {pricing_input_id: 13, vendor_id: 2},
 
-option = Option.create([
-    {option_type:"select", name:"1", value:1.0, input_id:1},
-    {option_type:"select", name:"2", value:1.2, input_id:1},
-    {option_type:"select", name:"3", value:1.5, input_id:1},
-    {option_type:"radio", name:"Inside/Out", value:1, input_id:2},
-    {option_type:"radio", name:"Outside Only", value:0.7, input_id:2},
-    {option_type:"min", value:1500, input_id:3},
-    {option_type:"max", value:8000, input_id:3},
-    {option_type:"step", value:250, input_id:3},
-    {option_type:"default", value:2500, input_id:3},
-    {option_type:"checkbox", name:"Screen Cleaning", value:1.28, input_id:4},
-    {option_type:"radio", name:"Once a Year", value:1, input_id:5},
-    {option_type:"radio", name:"Twice a Year", value:2, input_id:5},
-    {option_type:"radio", name:"Quarterly", value:4, input_id:5},
-    {option_type:"select", name:"Inside/Out", value:1, input_id:6},
-    {option_type:"select", name:"Outside Only", value:2, input_id:6},
-    {option_type:"select", name:"Alternating Inside & Out / Outside Only", value:3, input_id:6},
-    {option_type:"min", value:1, input_id:7},
-    {option_type:"max", value:8, input_id:7},
-    {option_type:"step", value:1, input_id:7},
-    {option_type:"default", value:2, input_id:7},
-    {option_type:"radio", name:"Every 2 Months", value:6, input_id:8},
-    {option_type:"radio", name:"Monthly", value:12, input_id:8},
-    {option_type:"radio", name:"Every 2 Weeks", value:26, input_id:8},
-    {option_type:"radio", name:"Weekly", value:52, input_id:8},
-    {option_type:"min", value:"0", input_id:9},
-    {option_type:"max", value:"4", input_id:9},
-    {option_type:"step", value:"1", input_id:9},
-    {option_type:"default", value:"1", input_id:9},
-    {option_type:"min", value:"0", input_id:10},
-    {option_type:"max", value:"4", input_id:10},
-    {option_type:"step", value:"1", input_id:10},
-    {option_type:"default", value:"1", input_id:10},
-    {option_type:"radio", name:"Once a Year", value:1, input_id:11},
-    {option_type:"radio", name:"Twice a Year", value:2, input_id:11},
-    {option_type:"radio", name:"Quarterly", value:4, input_id:11},
-    {option_type:"radio", name:"Monthly", value:12, input_id:11},
-    {option_type:"select", name:"Clean All Cans Every Service", value:1, input_id:12},
-    {option_type:"select", name:"Alternate Cleaning: Garbage, Then Recycling", value:2, input_id:12},
-    {option_type:"select", name:"Hybrid Schedule: Garbage + Recycling, Then Garbage Only", value:3, input_id:12},
-    {option_type:"min", value:"0", input_id:13},
-    {option_type:"max", value:"8", input_id:13},
-    {option_type:"step", value:"1", input_id:13},
-    {option_type:"default", value:"3", input_id:13},
-    {option_type:"min", value:"0", input_id:14},
-    {option_type:"max", value:"4", input_id:14},
-    {option_type:"step", value:"1", input_id:14},
-    {option_type:"default", value:"1", input_id:14},
-    {option_type:"min", value:"0", input_id:15},
-    {option_type:"max", value:"4", input_id:15},
-    {option_type:"step", value:"1", input_id:15},
-    {option_type:"default", value:"1", input_id:15},
-    {option_type:"select", name:"Standard", value:0, input_id:16},
-    {option_type:"select", name:"Delicate", value:10, input_id:16},
-    {option_type:"select", name:"Specialty", value:20, input_id:16},
-    {option_type:"select", name:"Light", value:0, input_id:17},
-    {option_type:"select", name:"Moderate", value:15, input_id:17},
-    {option_type:"select", name:"Heavy", value:30, input_id:17},
-    {option_type:"checkbox", name:"Stain Removal", value:20, input_id:18},
-    {option_type:"checkbox", name:"Pet Odor Removal", value:20, input_id:19},
-    {option_type:"checkbox", name:"Eco Friendly Cleaning", value:20, input_id:20},
-    {option_type:"radio", name:"Once a Year", value:1, input_id:21},
-    {option_type:"radio", name:"Twice a Year", value:2, input_id:21},
-    {option_type:"min", value:1500, input_id:22},
-    {option_type:"max", value:8000, input_id:22},
-    {option_type:"step", value:250, input_id:22},
-    {option_type:"default", value:2500, input_id:22},
-    {option_type:"radio", name:"Inside/Out", value:1, input_id:23},
-    {option_type:"radio", name:"Outside Only", value:0.7, input_id:23},
-    {option_type:"radio", name:"Once a Year", value:1, input_id:24},
-    {option_type:"radio", name:"Twice a Year", value:2, input_id:24},
-    {option_type:"radio", name:"Quarterly", value:4, input_id:24},
-    {option_type:"radio", name:"Every 2 Months", value:6, input_id:24},
+    #3 - Pest Control
+    {pricing_input_id: 2, vendor_id: 3},
+    {pricing_input_id: 9, vendor_id: 3},
+    {pricing_input_id: 12, vendor_id: 3},
+    
+    #4 - House Cleaning
+    {pricing_input_id: 8, vendor_id: 4},
+    {pricing_input_id: 10, vendor_id: 4},
 ])
 
 puts "Creating reviews"
@@ -242,37 +199,19 @@ review = Review.create([
     {user_id: 5, vendor_id: 1, score: 5, body: "Fantastic job by Ease Window Cleaning! They were thorough and my windows have never looked cleaner. Great customer service, highly recommended."},
     {user_id: 6, vendor_id: 1, score: 1, body: "Unsatisfactory service from Ease Window Cleaning. The team was impolite, missed their appointment time, and left streaks. Not using them again."},
 
-    # Reviews for Jdog Carpet Cleaning
-    {user_id: 2, vendor_id: 2, score: 2, body: "Jdog Carpet Cleaning was once my go-to for fresh carpets, but the last service was subpar. The cleaning team missed spots and seemed to be in a hurry."},
-    {user_id: 5, vendor_id: 2, score: 3, body: "I use Jdog Carpet Cleaning now and then, but the results vary. Sometimes my carpets look renewed, other times not so much. They are affordable, though."},
-    {user_id: 4, vendor_id: 2, score: 2, body: "Jdog Carpet Cleaning is convenient, but the cleaning doesn't always live up to my expectations. Carpets are cleaner but not as fresh as I'd like."},
-
     # Reviews for Eco Refresh Garbage Can Cleaning
-    {user_id: 2, vendor_id: 3, score: 4, body: "Eco Refresh does wonders for dirty bins. They come back smelling fresh, but the booking process could be smoother."},
-    {user_id: 2, vendor_id: 3, score: 4, body: "Eco Refresh leaves my garbage bins spotless and smelling like new. It's a bit pricey, but worth it for the convenience and results."},
-    {user_id: 3, vendor_id: 3, score: 3, body: "The cleanliness of my bins after Eco Refresh's visit is noticeable, but they could improve their scheduling flexibility."},
-    {user_id: 4, vendor_id: 3, score: 2, body: "Eco Refresh's cleaning service was underwhelming. The bins were cleaner, but the lingering smell wasn't fully removed. Expected better."},
-    {user_id: 5, vendor_id: 3, score: 5, body: "Eco Refresh does an exceptional job with garbage can cleaning. Their attention to detail is impressive, and my cans have never been cleaner."},
-    {user_id: 6, vendor_id: 3, score: 1, body: "Had a poor experience with Eco Refresh. The crew was late, and the cleaning was superficial. Not worth the cost."},
+    {user_id: 2, vendor_id: 2, score: 5, body: "Eco Refresh does wonders for dirty bins. They come back smelling fresh, but the booking process could be smoother."},
+    {user_id: 2, vendor_id: 2, score: 4, body: "Eco Refresh leaves my garbage bins spotless and smelling like new. It's a bit pricey, but worth it for the convenience and results."},
+    {user_id: 3, vendor_id: 2, score: 3, body: "The cleanliness of my bins after Eco Refresh's visit is noticeable, but they could improve their scheduling flexibility."},
+    {user_id: 4, vendor_id: 2, score: 2, body: "Eco Refresh's cleaning service was underwhelming. The bins were cleaner, but the lingering smell wasn't fully removed. Expected better."},
+    {user_id: 5, vendor_id: 2, score: 5, body: "Eco Refresh does an exceptional job with garbage can cleaning. Their attention to detail is impressive, and my cans have never been cleaner."},
+    {user_id: 6, vendor_id: 2, score: 1, body: "Had a poor experience with Eco Refresh. The crew was late, and the cleaning was superficial. Not worth the cost."},
 
     # Reviews for Dead Aim Pest Control
-    {user_id: 4, vendor_id: 4, score: 4, body: "Dead Aim Pest Control tackled our ant problem efficiently. Very knowledgeable staff, but I wish they had more flexible scheduling."},
+    {user_id: 4, vendor_id: 3, score: 5, body: "Dead Aim Pest Control tackled our ant problem efficiently. Very knowledgeable staff, but I wish they had more flexible scheduling."},
 
     # Reviews for Lily Maid House Cleaning
-    {user_id: 5, vendor_id: 5, score: 5, body: "Lily Maid House Cleaning does an impeccable job. Every nook and cranny shines, and the cleaners are courteous and punctual."},
-
-    # Reviews for Onsite Detail
-    {user_id: 3, vendor_id: 6, score: 4, body: "Onsite Detail left my car looking brand new. Great attention to detail, although it took a bit longer than expected."},
-
-    # Reviews for Example Vendors
-    {user_id: 13, vendor_id: 7, score: 5, body: "Fantastic job by Example 1 Window Cleaning! They were thorough and my windows have never looked cleaner. Great customer service, highly recommended."},
-    {user_id: 13, vendor_id: 8, score: 5, body: "Fantastic job by Example 2 Window Cleaning! They were thorough and my windows have never looked cleaner. Great customer service, highly recommended."},
-    {user_id: 5, vendor_id: 9, score: 5, body: "Example 1 House Cleaning does an impeccable job. Every nook and cranny shines, and the cleaners are courteous and punctual."},
-    {user_id: 5, vendor_id: 10, score: 5, body: "Example 2 House Cleaning does an impeccable job. Every nook and cranny shines, and the cleaners are courteous and punctual."},
-    {user_id: 5, vendor_id: 11, score: 5, body: "Example 3 House Cleaning does an impeccable job. Every nook and cranny shines, and the cleaners are courteous and punctual."},
-    {user_id: 4, vendor_id: 12, score: 5, body: "Dead Aim Pest Control tackled our ant problem efficiently. Very knowledgeable staff, but I wish they had more flexible scheduling."},
-    {user_id: 4, vendor_id: 13, score: 5, body: "Dead Aim Pest Control tackled our ant problem efficiently. Very knowledgeable staff, but I wish they had more flexible scheduling."},
-    {user_id: 4, vendor_id: 14, score: 5, body: "Dead Aim Pest Control tackled our ant problem efficiently. Very knowledgeable staff, but I wish they had more flexible scheduling."},
+    {user_id: 5, vendor_id: 4, score: 5, body: "Lily Maid House Cleaning does an impeccable job. Every nook and cranny shines, and the cleaners are courteous and punctual."},
 ]) 
 
 puts "Creating addresses"
@@ -282,16 +221,6 @@ address = Address.create([
     {city: "St George", state: "UT", zip_code: "84770", street_address: "436 N 300 W", latitude: 38.90334726359773, longitude: -77.00480020327345, addressable_type: "Vendor", addressable_id: 2},
     {city: "St George", state: "UT", zip_code: "84770", street_address: "437 N 300 W", latitude: 38.90275499987932, longitude: -77.02368310867804, addressable_type: "Vendor", addressable_id: 3},
     {city: "St George", state: "UT", zip_code: "84770", street_address: "438 N 300 W", latitude: 38.943563620493634, longitude:  -77.02539987810022, addressable_type: "Vendor", addressable_id: 4},
-    {city: "St George", state: "UT", zip_code: "84770", street_address: "4359 N 300 W", latitude: 38.913859796747104, longitude: -77.03123652015837, addressable_type: "Vendor", addressable_id: 5},
-    {city: "St George", state: "UT", zip_code: "84770", street_address: "43 N 300 W", latitude: 38.90258127078925, longitude: -77.03020670782361, addressable_type: "Vendor", addressable_id: 6},
-    {city: "St George", state: "UT", zip_code: "84770", street_address: "425 N 300 W", latitude: 38.907807481012746, longitude: -77.01694860450546, addressable_type: "Vendor", addressable_id: 7},
-    {city: "St George", state: "UT", zip_code: "84770", street_address: "564 N 300 W", latitude: 38.90713986135493, longitude: -76.9792201390115, addressable_type: "Vendor", addressable_id: 8},
-    {city: "St George", state: "UT", zip_code: "84770", street_address: "4351 N 300 W", latitude: 38.90628046175839, longitude: -77.03380860725424, addressable_type: "Vendor", addressable_id: 9},
-    {city: "St George", state: "UT", zip_code: "84770", street_address: "4352 N 300 W", latitude: 38.88992360655783, longitude:  -77.02591234052085, addressable_type: "Vendor", addressable_id: 10},
-    {city: "St George", state: "UT", zip_code: "84770", street_address: "4353 N 300 W", latitude: 39.26682768252805, longitude: -76.65116402435393, addressable_type: "Vendor", addressable_id: 11},
-    {city: "St George", state: "UT", zip_code: "84770", street_address: "4354 N 300 W", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "Vendor", addressable_id: 12},
-    {city: "St George", state: "UT", zip_code: "84770", street_address: "4354 N 300 W", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "Vendor", addressable_id: 13},
-    {city: "St George", state: "UT", zip_code: "84770", street_address: "4354 N 300 W", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "Vendor", addressable_id: 14},
     {city: "St George", state: "UT", zip_code: "84770", street_address: "4354 S 300 E", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 1, default: true},
     {city: "St George", state: "UT", zip_code: "84770", street_address: "4354 S 300 E", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 2, default: true},
     {city: "St George", state: "UT", zip_code: "84770", street_address: "4354 S 300 E", latitude: 38.93545426364675, longitude: -77.01545017678886, addressable_type: "User", addressable_id: 3, default: true},
@@ -303,6 +232,7 @@ address = Address.create([
 puts "creating images!"
 
 images = Image.create([
+    # Window Cleaning
     {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9928.jpg", alt:"ease window cleaner", vendor_id: 1,image_type: "gallery"},
     {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9955.jpg", alt:"three window cleaners cleaning windows", vendor_id: 1,image_type: "gallery"},
     {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9963.jpg", alt:"two window cleaners cleaning windows", vendor_id:1 ,image_type: "gallery"},
@@ -312,75 +242,26 @@ images = Image.create([
     {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/E22A3531%20copy.jpg", alt:"detailed window track cleaning with towel", vendor_id: 1,image_type: "gallery"},
     {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9972.jpg", alt:"window cleaner wiping down window", vendor_id: 1,image_type: "gallery"},
     {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9901.jpg", alt:"window cleaner cleaning a window on a ladder", vendor_id: 1,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/jdog_carpet_cleaning/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-1.jpg", alt:"carpet cleaning truck", vendor_id: 2,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/jdog_carpet_cleaning/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-10.jpg", alt:"carpet cleaning nozzel", vendor_id: 2,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/jdog_carpet_cleaning/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-14.jpg", alt:"carpet cleaner cleaning carpets", vendor_id: 2,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/jdog_carpet_cleaning/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-3.jpg", alt:"carpet cleaner machine", vendor_id: 2,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/jdog_carpet_cleaning/Dry%20Wall%2C%20Pool%20House%2C%20Roofing-15.jpg", alt:"carpet cleaner guage", vendor_id: 2,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-29.jpg", alt:"garbage can cleaner in action", vendor_id: 3,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-22.jpg", alt:"freshly cleaned garbage can", vendor_id: 3,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-38%20copyss.png", alt:"garbage cans being cleaned in truck", vendor_id: 3,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-34.jpg", alt:"two trash cans being cleaed", vendor_id: 3,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-43.jpg", alt:"garbage can being pressure washed", vendor_id: 3,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-1.jpg", alt:"pest control truck", vendor_id: 4,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-3.jpg", alt:"pest control technician spraying chemicals", vendor_id: 4,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-7.jpg", alt:"close up of pest control technician spraying home", vendor_id: 4,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-9.jpg", alt:"pest control technician loading up truck", vendor_id: 4,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-12.jpg", alt:"house cleaner cleaning bathroom sink", vendor_id: 5,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-13.jpg", alt:"close up shot of house cleaner cleaning bathroom sink", vendor_id: 5,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-14.jpg", alt:"house cleaner wiping down shower door", vendor_id: 5,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-11.jpg", alt:"house cleaner making bed", vendor_id: 5,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-18.jpg", alt:"two house cleaners cleaning a bathroom", vendor_id: 5,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-25.jpg", alt:"two house cleaners cleaning kitchen", vendor_id: 5,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-26.jpg", alt:"close up of house cleaner wiping down kitchen counter", vendor_id: 5,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-28.jpg", alt:"house cleaner dusting kitchen cabinents", vendor_id: 5,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/onsite_detail_square/11-09282019_OnsiteDetail011.jpg", alt:"auto detailer buffing out truck", vendor_id: 6,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/onsite_detail_square/167-09282019_OnsiteDetail0167.jpg", alt:"auto detailer cleaning inside the car", vendor_id: 6,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/onsite_detail_square/196-09282019_OnsiteDetail0196.jpg", alt:"auto detailer outside of home", vendor_id: 6,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/onsite_detail_square/52-09282019_OnsiteDetail052.jpg", alt:"auto detailer van", vendor_id: 6,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/onsite_detail_square/60-09282019_OnsiteDetail060.jpg", alt:"auto detailer wiping down truck", vendor_id: 6,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9928.jpg", alt:"ease window cleaner", vendor_id: 7,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9955.jpg", alt:"three window cleaners cleaning windows", vendor_id: 7,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9963.jpg", alt:"two window cleaners cleaning windows", vendor_id:1 ,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9975.jpg", alt:"window cleaner on rooftop", vendor_id: 7,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9985.jpg", alt:"window cleaning truck", vendor_id: 7,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9982.jpg", alt:"window cleaner on metal roof with ladder", vendor_id: 7,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/E22A3531%20copy.jpg", alt:"detailed window track cleaning with towel", vendor_id: 7,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9972.jpg", alt:"window cleaner wiping down window", vendor_id: 7,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9928.jpg", alt:"ease window cleaner", vendor_id: 8,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9955.jpg", alt:"three window cleaners cleaning windows", vendor_id: 8,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9963.jpg", alt:"two window cleaners cleaning windows", vendor_id:1 ,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9975.jpg", alt:"window cleaner on rooftop", vendor_id: 8,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9985.jpg", alt:"window cleaning truck", vendor_id: 8,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9982.jpg", alt:"window cleaner on metal roof with ladder", vendor_id: 8,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/E22A3531%20copy.jpg", alt:"detailed window track cleaning with towel", vendor_id: 8,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/ease_photoshoot_1/DSC_9972.jpg", alt:"window cleaner wiping down window", vendor_id: 8,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-12.jpg", alt:"house cleaner cleaning bathroom sink", vendor_id: 9,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-13.jpg", alt:"close up shot of house cleaner cleaning bathroom sink", vendor_id: 9,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-14.jpg", alt:"house cleaner wiping down shower door", vendor_id: 9,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-11.jpg", alt:"house cleaner making bed", vendor_id: 9,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-18.jpg", alt:"two house cleaners cleaning a bathroom", vendor_id: 9,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-25.jpg", alt:"two house cleaners cleaning kitchen", vendor_id: 9,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-26.jpg", alt:"close up of house cleaner wiping down kitchen counter", vendor_id: 9,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-28.jpg", alt:"house cleaner dusting kitchen cabinents", vendor_id: 9,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-12.jpg", alt:"house cleaner cleaning bathroom sink", vendor_id: 10,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-13.jpg", alt:"close up shot of house cleaner cleaning bathroom sink", vendor_id: 10,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-14.jpg", alt:"house cleaner wiping down shower door", vendor_id: 10,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-11.jpg", alt:"house cleaner making bed", vendor_id: 10,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-18.jpg", alt:"two house cleaners cleaning a bathroom", vendor_id: 10,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-25.jpg", alt:"two house cleaners cleaning kitchen", vendor_id: 10,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-26.jpg", alt:"close up of house cleaner wiping down kitchen counter", vendor_id: 10,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-28.jpg", alt:"house cleaner dusting kitchen cabinents", vendor_id: 10,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-12.jpg", alt:"house cleaner cleaning bathroom sink", vendor_id: 11,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-13.jpg", alt:"close up shot of house cleaner cleaning bathroom sink", vendor_id: 11,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-14.jpg", alt:"house cleaner wiping down shower door", vendor_id: 11,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-11.jpg", alt:"house cleaner making bed", vendor_id: 11,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-18.jpg", alt:"two house cleaners cleaning a bathroom", vendor_id: 11,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-25.jpg", alt:"two house cleaners cleaning kitchen", vendor_id: 11,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-26.jpg", alt:"close up of house cleaner wiping down kitchen counter", vendor_id: 11,image_type: "gallery"},
-    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-28.jpg", alt:"house cleaner dusting kitchen cabinents", vendor_id: 11,image_type: "gallery"},
-    
-    
+    # Garbage Can Cleaning
+    {url:"https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-29.jpg", alt:"garbage can cleaner in action", vendor_id: 2,image_type: "gallery"},
+    {url:"https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-22.jpg", alt:"freshly cleaned garbage can", vendor_id: 2,image_type: "gallery"},
+    {url:"https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-38%20copyss.png", alt:"garbage cans being cleaned in truck", vendor_id: 2,image_type: "gallery"},
+    {url:"https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-34.jpg", alt:"two trash cans being cleaed", vendor_id: 2,image_type: "gallery"},
+    {url:"https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-43.jpg", alt:"garbage can being pressure washed", vendor_id: 2,image_type: "gallery"},
+    # Pest Control
+    {url:"https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-1.jpg", alt:"pest control truck", vendor_id: 3,image_type: "gallery"},
+    {url:"https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-3.jpg", alt:"pest control technician spraying chemicals", vendor_id: 3,image_type: "gallery"},
+    {url:"https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-7.jpg", alt:"close up of pest control technician spraying home", vendor_id: 3,image_type: "gallery"},
+    {url:"https://spencerheywood.com/images/servo/Pictures/PEST%20%2B%20GARBAGE%20PICTURES/drive-download-20211114T015454Z-001/Servo%20Pictures-9.jpg", alt:"pest control technician loading up truck", vendor_id: 3,image_type: "gallery"},
+    # House Cleaning
+    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-12.jpg", alt:"house cleaner cleaning bathroom sink", vendor_id: 4,image_type: "gallery"},
+    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-13.jpg", alt:"close up shot of house cleaner cleaning bathroom sink", vendor_id: 4,image_type: "gallery"},
+    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-14.jpg", alt:"house cleaner wiping down shower door", vendor_id: 4,image_type: "gallery"},
+    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-11.jpg", alt:"house cleaner making bed", vendor_id: 4,image_type: "gallery"},
+    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-18.jpg", alt:"two house cleaners cleaning a bathroom", vendor_id: 4,image_type: "gallery"},
+    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-25.jpg", alt:"two house cleaners cleaning kitchen", vendor_id: 4,image_type: "gallery"},
+    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-26.jpg", alt:"close up of house cleaner wiping down kitchen counter", vendor_id: 4,image_type: "gallery"},
+    {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-28.jpg", alt:"house cleaner dusting kitchen cabinents", vendor_id: 4,image_type: "gallery"}
 ])
 
 puts "Done!"

@@ -1,8 +1,8 @@
 class Api::PaymentsController < ApplicationController
     def create
-        cart_item = params[:cart_item]
-        vendor = Vendor.find(cart_item.vendor_id)
-        total_amount = calculate_total_amount(cart_item)
+        booking = params[:booking]
+        vendor = Vendor.find(booking.vendor_id)
+        total_amount = calculate_total_amount(booking)
         total_amount_in_cents = (total_amount * 100).to_i
         
         begin
@@ -19,7 +19,7 @@ class Api::PaymentsController < ApplicationController
     end
 
     private
-    def calculate_total_amount(cart_item)
-        cart_item.price
+    def calculate_total_amount(booking)
+        booking.price
     end
 end

@@ -9,7 +9,7 @@ import ProviderPricing from './ProviderPricing/ProviderPricing'
 import ProviderScheduling from './ProviderScheduling/ProviderScheduling'
 import Modal from '../Modal'
 import ReviewForm from '../Reviews/ReviewForm'
-import { toggleCart, updateCartItem } from '../store/cart'
+import { updateBooking } from '../store/bookings'
 import { addDays, format, parseISO } from 'date-fns'
 import ProviderSummary from './ProviderSummary/ProviderSummary'
 import ProviderGallery from './ProviderGallery/ProviderGallery'
@@ -28,14 +28,22 @@ const ProviderShow = () => {
     const { vendor, calendarData, userLoggedIn } = useSelector(state => {
         return {
             vendor: state.vendors[id],
-            calendarData: state?.vendors && state.vendors[id]?.calendarData ? state.vendors[id].calendarData : [],
+            calendarData: state?.vendors 
+            && state.vendors[id]?.calendarData 
+            ? state.vendors[id].calendarData 
+            : [],
             userLoggedIn: isLoggedIn(state)
         }
     })
     const reviews = vendor?.reviews ? Object.values(vendor.reviews) : [];
-    const vendorCartItem = useSelector(state =>
-        Object.values(state.cart?.cartItems).find(item => item.vendorId === parseInt(id))
-    );
+    const vendorBooking = useSelector(state => {
+        return Object.values(state.bookings).find(item => {
+            const parsedId = parseInt(id, 10);
+            return item?.vendorId === parsedId && 
+                   item?.status !== 'paid' && 
+                   item?.status !== 'completed';
+        });
+    });
 
     // States
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
@@ -48,24 +56,14 @@ const ProviderShow = () => {
     });
 
     // Variables
-    const defaultService = vendor?.services ? Object.values(vendor.services)[0] : {};
+    // const defaultService = vendor?.services ? Object.values(vendor.services)[0] : {};
     const nextAvailableAppointment = calendarData.length > 0 ? parseISO(calendarData[0].start_time) : addDays(new Date(), 2);
     const formattedNextAvailableAppointment = format(nextAvailableAppointment, "EEE, MMM do");
-    const cartItemStatus = vendorCartItem?.status;
+    const bookingStatus = vendorBooking?.status;
     const allComponentsClosed = Object.values(openComponent).every(val => val === false);
     const phoneNumber = vendor?.phoneNumber ? vendor.phoneNumber : '*********'
     const formattedPhoneNumber = formatPhoneNumber(phoneNumber);
     let isMobile = window.innerWidth < 700;
-
-    // Map for category parsing
-    const categoryMap = {
-        window_cleaning: "Window Cleaning",
-        house_cleaning: "House Cleaning",
-        pest_control: "Pest Control",
-        carpet_cleaning: "Carpet Cleaning",
-        garbage_can_cleaning: "Garbage Can Cleaning",
-        car_detailing: "Auto Detailing"
-    }
     
     // useEffects
     useEffect(() => {
@@ -105,7 +103,7 @@ const ProviderShow = () => {
 
     // Click handlers
     const handleScheduleClick = ({bypass}) => {
-        if(cartItemStatus && !openComponent.pricing || bypass){
+        if(bookingStatus && !openComponent.pricing || bypass){
             setOpenComponent({
                 pricing: false,
                 scheduling: true,
@@ -123,7 +121,7 @@ const ProviderShow = () => {
     }
 
     const handleSummaryClick = ({ bypass = false } = {}) =>{
-        if(((cartItemStatus === 'scheduled' || cartItemStatus === 'pending') && 
+        if(((bookingStatus === 'scheduled' || bookingStatus === 'pending') && 
             !openComponent.scheduling) || 
             bypass
         ){
@@ -136,36 +134,35 @@ const ProviderShow = () => {
     }
 
     const handleCheckout = () => {
-        let cartItemData = {
-            ...vendorCartItem,
+        let bookingData = {
+            ...vendorBooking,
             status: 'pending'
         }
-        let cartItemObject = {
-            cartItem: cartItemData
-        }
-        dispatch(updateCartItem(cartItemObject));
-        dispatch(toggleCart());
+        // let bookingObject = {
+        //     booking: bookingData
+        // }
+        dispatch(updateBooking({booking: bookingData}));
         setPaymentGatewayOpen(true);
     }
 
     // Helper functions
     let formattedDate = () =>{
-        if(vendorCartItem?.appointmentAt){
+        if(vendorBooking?.appointmentAt){
             return isMobile
-            ? format(parseISO(vendorCartItem?.appointmentAt), "MMM do @ h:mm")
-            : format(parseISO(vendorCartItem?.appointmentAt), "EEEE, MMMM do @ h:mmaaa");
+            ? format(parseISO(vendorBooking?.appointmentAt), "MMM do @ h:mm")
+            : format(parseISO(vendorBooking?.appointmentAt), "EEEE, MMMM do @ h:mmaaa");
         }else{
             return "--"
         }
     }
 
-    const closeAllComponents = () =>{
-        setOpenComponent({
-            pricing: false,
-            scheduling: false,
-            summary: false
-        })
-    }
+    // const closeAllComponents = () =>{
+    //     setOpenComponent({
+    //         pricing: false,
+    //         scheduling: false,
+    //         summary: false
+    //     })
+    // }
 
     const toggleReviewModal = () => {
         setReviewModalOpen(!reviewModalOpen)
@@ -182,10 +179,10 @@ const ProviderShow = () => {
 
     // Conditional element rendering
     const basePricingDiv = <div className="pricing-preview">
-                                Starting at: <br/>${defaultService?.price ? defaultService.price : "--"}
+                                Starting at: <br/>${vendor?.minPrice ? vendor.minPrice : "--"}
                             </div>
     const confirmedPricingDiv = <div className="pricing-preview--confirmed">
-                                    Custom Quote<div className="green-text"> ${vendorCartItem?.price.toFixed(2)}</div>
+                                    Custom Quote<div className="green-text"> ${vendorBooking?.price.toFixed(2)}</div>
                                 </div>
 
     const defaultSchedulingDiv = <div className="scheduling-preview">Next Available Appointment: 
@@ -205,7 +202,7 @@ const ProviderShow = () => {
                     <div className="provider-show-left">
                         <div className="meta-info-block">
                             <div className="provider-logo-background">
-                                <img className="provider-logo" src={vendor?.iconImageUrl} />
+                                <img className="provider-logo" src={vendor?.logoImageUrl} />
                             </div>
                             <div className="meta-info-container">
                                 <h1 className="provider-name">{vendor?.name ? vendor.name : "--"}</h1>
@@ -237,51 +234,53 @@ const ProviderShow = () => {
 
                     <div className="provider-show-right">
                         <ProviderGallery id={id} />
-                        <ProviderPricing basePrice={defaultService?.price} 
-                                            inputs={defaultService?.inputs} 
-                                            service={defaultService} 
-                                            pricingOpen={openComponent.pricing}
-                                            onContinue={handleScheduleClick}
-                                            cartItem={vendorCartItem}
+                        <ProviderPricing
+                                    pricingOpen={openComponent.pricing}
+                                    onContinue={handleScheduleClick}
+                                    vendor={vendor}
+                                    booking={vendorBooking}
                         />
                         <div className={`provider-pricing ${openComponent.pricing ? 'minimize' : ''}`}>
                             <img className="provider-price-icon" 
                             src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-04.png" 
                             alt="get price icon servo instance price" />
-                            {vendorCartItem ? confirmedPricingDiv : basePricingDiv}
-                            <button onClick={handleGetPriceClick} className={`get-price-button green-out ${vendorCartItem ? 'anchor-style' : ''}`}>
-                                {vendorCartItem ? 'Edit Service' : '1. Get Price'}
+                            {vendorBooking ? confirmedPricingDiv : basePricingDiv}
+                            <button onClick={handleGetPriceClick} 
+                                    className={`get-price-button green-out 
+                                    ${vendorBooking ? 'anchor-style' : ''}`}
+                            >
+                                {vendorBooking ? 'Edit Service' : '1. Get Price'}
                             </button>
                         </div>
                         <ProviderScheduling schedulingOpen={openComponent.scheduling} 
                                                 calendarIntegration={vendor?.calendar ? id : false}
                                                 calendarData={calendarData} 
-                                                cartItem={vendorCartItem}
+                                                booking={vendorBooking}
                                                 onContinue={handleSummaryClick}
                         />
                         <div className={`provider-scheduling ${openComponent.scheduling ? 'minimize' : ''}`}>
                             <img className="provider-calendar-icon" 
                             src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-08.png" 
                             alt="schedule now servo icon" />
-                                {(cartItemStatus === 'scheduled' || cartItemStatus === 'pending') 
+                                {(bookingStatus === 'scheduled' || bookingStatus === 'pending') 
                                 ? confirmedSchedulingDiv 
                                 : defaultSchedulingDiv}
                             <button onClick={handleScheduleClick} 
                                     className={`schedule-button green-out
-                                                ${(vendorCartItem && !openComponent.pricing) 
+                                                ${(vendorBooking && !openComponent.pricing) 
                                                 ? '' 
                                                 : 'gray-out'} 
-                                                ${(cartItemStatus && cartItemStatus !== 'priced')
+                                                ${(bookingStatus && bookingStatus !== 'priced')
                                                  ? 'anchor-style' 
                                                 : ''}`}
                             >
-                                {(cartItemStatus && cartItemStatus !== 'priced') 
+                                {(bookingStatus && bookingStatus !== 'priced') 
                                 ? 'Edit Booking' 
                                 : '2. Schedule'}
                             </button>
                         </div>
                         <ProviderSummary summaryOpen={openComponent.summary} 
-                                cartItem={vendorCartItem} 
+                                booking={vendorBooking} 
                                 vendor={vendor}
                                 onCheckout={handleCheckout}
                         />
@@ -290,12 +289,12 @@ const ProviderShow = () => {
                             src={"https://spencerheywood.com/images/servo/icons/icons-07.png"} 
                             alt="mobile checkout icon" />
                             <div className="summary-preview">Summary</div>
-                            <button className={`${vendorCartItem && 
-                                                (cartItemStatus !== 'priced' && allComponentsClosed) 
+                            <button className={`${vendorBooking && 
+                                                (bookingStatus !== 'priced' && allComponentsClosed) 
                                                 ? 'green-out' 
                                                 : 'gray-out'}`} 
                                                 onClick={handleSummaryClick}>
-                                {cartItemStatus === 'scheduled' || cartItemStatus === 'pending' ? 'Continue' : '3. Checkout'}
+                                {bookingStatus === 'scheduled' || bookingStatus === 'pending' ? 'Continue' : '3. Checkout'}
                             </button>
                         </div>
                     </div>
@@ -305,7 +304,7 @@ const ProviderShow = () => {
                 <ReviewForm vendorName={vendor?.name} vendorId={id} onClose={toggleReviewModal} />
             </Modal>
             <Modal isOpen={paymentGatewatOpen} onClose={togglePaymentGateway}>
-                <PaymentGateway cartItem={vendorCartItem} />
+                <PaymentGateway booking={vendorBooking} />
             </Modal>
             {/* <Modal isOpen={reviewShowOpen} onClose={toggleReviewShow}>
                 <ReviewShow review={review} author={author} onClose={toggleReviewShow}/>

@@ -3,18 +3,18 @@ import './ProviderPricing.css'
 import Selector from '../../formComponents/Selector';
 import RadioButton from '../../formComponents/RadioButton';
 import RangeSlider from '../../formComponents/RangeSlider';
-import Checkbox from '../../formComponents/Checkbox';
-import { addToCart, updateCartItem } from '../../store/cart';
+// import Checkbox from '../../formComponents/Checkbox';
+import { createBooking, updateBooking } from '../../store/bookings';
 import { useDispatch, useSelector } from 'react-redux';
 
-const ProviderPricing = ({pricingOpen, service, onContinue, cartItem}) => {
+const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
     const dispatch = useDispatch();
-    const basePrice = service?.price
-    const formula = service?.formula ? service.formula : "x";
-    const inputs = service?.inputs
+    const basePrice = vendor?.minPrice
+    const formula = vendor?.pricingFormula ? vendor.pricingFormula : "x";
+    const inputs = vendor?.pricingInputs
     const [recurringOn, setRecurringOn] = useState(false);
     const [inputValues, setInputValues] = useState({});
-    const [checkboxValues, setCheckboxValues] = useState({});
+    // const [checkboxValues, setCheckboxValues] = useState({});
     const [calculatedPrice, setCalculatedPrice] = useState(basePrice);
     const inputFloats = Object.values(inputValues).map(val => parseFloat(val));
     const currentUserId = useSelector(state => state.session.user?.id)
@@ -35,27 +35,26 @@ const ProviderPricing = ({pricingOpen, service, onContinue, cartItem}) => {
                 console.error("Error evaluating formula:", e);
             }   
         }
-    },[inputValues, formula, service])
+    },[inputValues, formula, vendor])
 
     const inputTypeKey = {
         radio: RadioButton,
         select: Selector,
-        range: RangeSlider,
-        checkbox: Checkbox
+        range: RangeSlider
     }
 
     // Used to calculate the price difference for additional items like screen cleaning
-    useEffect(()=> {
-        if(inputs){
-            const newCheckboxValues = {}
-            Object.values(inputs).forEach(input => {
-                if(input.inputType === 'checkbox'){
-                        newCheckboxValues[input.id] = Object.values(input.options)[0].value
-                }
-            })
-            setCheckboxValues(newCheckboxValues)
-        }
-    },[inputs])
+    // useEffect(()=> {
+    //     if(inputs){
+    //         const newCheckboxValues = {}
+    //         Object.values(inputs).forEach(input => {
+    //             if(input.inputType === 'checkbox'){
+    //                     newCheckboxValues[input.id] = Object.values(input.options)[0].value
+    //             }
+    //         })
+    //         setCheckboxValues(newCheckboxValues)
+    //     }
+    // },[inputs])
 
     const toggleRecurring = () =>{
         setRecurringOn(!recurringOn)
@@ -75,7 +74,7 @@ const ProviderPricing = ({pricingOpen, service, onContinue, cartItem}) => {
             }
             return <InputComponent 
                 name={input?.name}
-                options={input?.options} 
+                options={input?.pricingInputOptions} 
                 key={input?.id} 
                 onChange={(value) => handleInputChange(input, value)}
             />
@@ -83,23 +82,22 @@ const ProviderPricing = ({pricingOpen, service, onContinue, cartItem}) => {
     }
 
     const handleContinueClick = () => {
-        let cartItemData = {
+        let bookingData = {
             userId: currentUserId,
             addressId: 1,
-            serviceId: service.id,
-            options: JSON.stringify(inputValues),
+            optionsSnapshot: JSON.stringify(inputValues),
             price: calculatedPrice,
-            vendorId: service.vendorId,
+            vendorId: vendor.id,
             status: "priced"
         }
-        let cartItemObject = {
-            cartItem: cartItemData
+        let bookingObject = {
+            booking: bookingData
         }
-        if(cartItem){
-            cartItemObject.cartItem.id = cartItem.id
-            dispatch(updateCartItem(cartItemObject))
+        if(booking){
+            bookingObject.booking.id = booking.id
+            dispatch(updateBooking(bookingObject))
         }else{
-            dispatch(addToCart(cartItemObject))
+            dispatch(createBooking(bookingObject))
         }
         onContinue({bypass: true})
     }

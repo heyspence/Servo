@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux'
 import './ProviderScheduling.css'
 import DatePicker from 'react-datepicker';
 import { addDays, format, getDay, isSameDay, parseISO } from 'date-fns';
-import { updateCartItem } from '../../store/cart';
+import { updateBooking } from '../../store/bookings';
 import 'react-datepicker/dist/react-datepicker.css'
 
-const ProviderScheduling = ({schedulingOpen, calendarData = [], cartItem, onContinue}) => {
+const ProviderScheduling = ({schedulingOpen, calendarData = [], booking, onContinue}) => {
     const dispatch = useDispatch();
     const [startDate, setStartDate] = useState(new Date());
     const [availableTimes, setAvailableTimes] = useState([]);
@@ -63,18 +63,18 @@ const ProviderScheduling = ({schedulingOpen, calendarData = [], cartItem, onCont
     };
 
     const handleContinueClick = async () => {
-        let cartItemData = {
-            ...cartItem,
+        let bookingData = {
+            ...booking,
             appointmentAt: startDate,
             status: 'scheduled'
         }
-        let cartItemObject = {
-            cartItem: cartItemData
+        let bookingObject = {
+            booking: bookingData
         }
 
-        cartItemObject.cartItem.id = cartItem.id
+        bookingObject.booking.id = booking.id
 
-        dispatch(updateCartItem(cartItemObject))
+        dispatch(updateBooking(bookingObject))
         onContinue({bypass: true})
     }
 

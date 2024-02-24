@@ -3,8 +3,9 @@ import './CheckoutForm.css'
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createOrder } from '../../../store/orders';
+import { updateBooking } from '../../../store/bookings';
 
-const CheckoutForm = ({price, cartItem, onStatusChange}) => {
+const CheckoutForm = ({price, booking, onStatusChange}) => {
     const stripe = useStripe();
     const elements = useElements();
     const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const CheckoutForm = ({price, cartItem, onStatusChange}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const redirectUrl = `${process.env.REACT_APP_STRIPE_REDIRECT_URL}/vendors/${cartItem.vendorId}?open_payment_gateway=true`
+        const redirectUrl = `${process.env.REACT_APP_STRIPE_REDIRECT_URL}/vendors/${booking.vendorId}?open_payment_gateway=true`
 
         if (!stripe || !elements) {
         // Stripe.js hasn't yet loaded.
@@ -69,13 +70,12 @@ const CheckoutForm = ({price, cartItem, onStatusChange}) => {
             const { status } = paymentIntent;
             onStatusChange(status);
             if (status === 'succeeded') {
-                const order = { order:{
-                    userId: cartItem.userId,
-                    vendorId: cartItem.vendorId,
-                    total: cartItem.price + 2.55
+                const bookingData = { booking:{
+                    ...booking,
+                    status: "paid"
                 }}
-                dispatch(createOrder(order)).then(()=>{
-                    // dispatch(deleteCartItems(1))
+                dispatch(updateBooking(bookingData)).then(()=>{
+                    // dispatch(deletebookings(1))
                 })
                 onStatusChange('succeeded') // Your success logic here
             }
