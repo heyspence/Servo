@@ -89,6 +89,17 @@ export const updateBooking = booking => async dispatch => {
     }
 }
 
+export const createOrder = booking => async dispatch => {
+    const res = await csrfFetch(`/api/bookings/${booking.booking.id}/create-order`,{
+        method: 'PATCH',
+        body: JSON.stringify(booking)
+    })
+    if(res.ok){
+        const data = await res.json()
+        dispatch(receiveBooking(data.booking))
+    }
+}
+
 const bookingsReducer = (state = {}, action) => {
     let newState = { ...state }
     switch(action.type){

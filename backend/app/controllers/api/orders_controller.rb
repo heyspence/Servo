@@ -10,18 +10,6 @@ class Api::OrdersController < ApplicationController
         render :index
     end
 
-    # def create
-    #     @order = Booking.where("user_id=? AND vendor_id=?", params[:booking][:user_id], params[:booking][:vendor_id])
-    #     if @order && @order.update(status: "paid")
-    #         render :show
-    #         VendorMailer.work_order(@order).deliver_now
-    #         AdminMailer.new_order(@order).deliver_now
-    #         UserMailer.order_confirmation(@order).deliver_now
-    #     else
-    #         render json: "Unable to find booking", status: 422
-    #     end
-    # end
-
     def create_payment_intent
         total_amount = calculate_total_amount
         render json: {error: 'potential price forgery: price cannot be verified'}, status: :unprocessable_entity and return unless total_amount
@@ -44,7 +32,7 @@ class Api::OrdersController < ApplicationController
         price = booking_params[:price].to_f
 
         if valid_price?(price)
-            return price + 2.55
+            return price + ENV["SERVO_SERVICE_CHARGE"].to_f
         else
             return nil
         end
@@ -62,8 +50,4 @@ class Api::OrdersController < ApplicationController
     def order_params
         params.require(:order).permit(:user_id, :total, :vendor_id)
     end
-
-    # def order_detail_params
-    #     params.require(:order_details).permit(:service_id, :price)
-    # end
 end

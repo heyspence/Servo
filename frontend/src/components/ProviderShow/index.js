@@ -25,14 +25,15 @@ const ProviderShow = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const queryParams = useQueryParams();
-    const { vendor, calendarData, userLoggedIn } = useSelector(state => {
+    const { vendor, calendarData, userLoggedIn, serviceCharge } = useSelector(state => {
         return {
             vendor: state.vendors[id],
             calendarData: state?.vendors 
             && state.vendors[id]?.calendarData 
             ? state.vendors[id].calendarData 
             : [],
-            userLoggedIn: isLoggedIn(state)
+            userLoggedIn: isLoggedIn(state),
+            serviceCharge: state.session.user.serviceCharge
         }
     })
     const reviews = vendor?.reviews ? Object.values(vendor.reviews) : [];
@@ -285,6 +286,7 @@ const ProviderShow = () => {
                                 booking={vendorBooking} 
                                 vendor={vendor}
                                 onCheckout={handleCheckout}
+                                serviceCharge={serviceCharge}
                         />
                         <div className={`provider-summary ${openComponent.summary ? 'minimize' : ''}`} >
                             <img className="provider-summary-icon" 

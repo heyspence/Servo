@@ -2,8 +2,7 @@ import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import './CheckoutForm.css'
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createOrder } from '../../../store/orders';
-import { updateBooking } from '../../../store/bookings';
+import { createOrder } from '../../../store/bookings';
 
 const CheckoutForm = ({price, booking, onStatusChange}) => {
     const stripe = useStripe();
@@ -74,7 +73,7 @@ const CheckoutForm = ({price, booking, onStatusChange}) => {
                     ...booking,
                     status: "paid"
                 }}
-                dispatch(updateBooking(bookingData)).then(()=>{
+                dispatch(createOrder(bookingData)).then(()=>{
                     // dispatch(deletebookings(1))
                 })
                 onStatusChange('succeeded') // Your success logic here

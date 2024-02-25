@@ -2,7 +2,7 @@ import { format, parseISO } from 'date-fns';
 import './ProviderSummary.css'
 import { useEffect, useState } from 'react';
 
-const ProviderSummary = ({summaryOpen, booking, vendor, onCheckout}) => {
+const ProviderSummary = ({summaryOpen, booking, vendor, onCheckout, serviceCharge}) => {
     const options = booking?.optionsSnapshot ? JSON.parse(booking.optionsSnapshot) : {}
     const serviceInputs = vendor?.pricingInputs
     const [parsedOptions, setParsedOptions] = useState({})
@@ -75,7 +75,7 @@ const ProviderSummary = ({summaryOpen, booking, vendor, onCheckout}) => {
                     </div>
                     <div className="pricing-summary-item-container">
                         <p>Service Charge</p>
-                        <p>$2.55</p>
+                        <p>${serviceCharge}</p>
                     </div>
                     {/* <div className="pricing-summary-item-container">
                         <p>Discounts</p>
@@ -84,7 +84,7 @@ const ProviderSummary = ({summaryOpen, booking, vendor, onCheckout}) => {
                     <hr/>
                     <div className="pricing-summary-item-container">
                         <p>Total</p>
-                        <p>${(booking?.price + 2.55).toFixed(2)}</p>
+                        <p>${(booking?.price + parseFloat(serviceCharge)).toFixed(2)}</p>
                     </div>
                 </div>
                 <div className="summary-action-buttons">

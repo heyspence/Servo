@@ -7,4 +7,5 @@ json.user do
             end
         end
     end
+    json.service_charge ENV["SERVO_SERVICE_CHARGE"].to_f
 end

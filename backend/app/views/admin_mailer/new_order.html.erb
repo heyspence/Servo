@@ -8,10 +8,10 @@
     <p>Vendor: <%= @vendor.name %>
     <hr/>
     <p><span style="font-weight: bold">Amount Collected From Customer:</span> $<%= sprintf('%.2f', @order.price) %></p>
-    <p><span style="font-weight: bold">Amount Alloted for Vendor:</span> $<%= sprintf('%.2f', ((@order.price - 2.55) * 0.9)) %></p>
-    <p><span style="font-weight: bold">Gross Revenue:</span> $<%= sprintf('%.2f', ((@order.price - 2.55) * 0.1) + 2.55) %></p>
+    <p><span style="font-weight: bold">Amount Alloted for Vendor:</span> $<%= sprintf('%.2f', ((@order.price - ENV["SERVO_SERVICE_CHARGE"].to_f) * (1 - ENV["SERVO_VENDOR_COMMISSION"].to_f))) %></p>
+    <p><span style="font-weight: bold">Gross Revenue:</span> $<%= sprintf('%.2f', ((@order.price - ENV["SERVO_SERVICE_CHARGE"].to_f) * ENV["SERVO_VENDOR_COMMISSION"].to_f) + ENV["SERVO_SERVICE_CHARGE"].to_f) %></p>
     <p><span style="font-weight: bold">Transaction Fee:</span> -$<%= sprintf('%.2f', ((@order.price) * 0.029) + 0.3) %></p>
-    <p><span style="font-weight: bold">Profit:</span> $<%= sprintf('%.2f', (((@order.price - 2.55) * 0.1) + 2.55) - (((@order.price) * 0.029) + 0.3)) %></p> 
+    <p><span style="font-weight: bold">Profit:</span> $<%= sprintf('%.2f', (((@order.price - ENV["SERVO_SERVICE_CHARGE"].to_f) * ENV["SERVO_VENDOR_COMMISSION"].to_f) + ENV["SERVO_SERVICE_CHARGE"].to_f) - (((@order.price) * 0.029) + 0.3)) %></p> 
     <hr/>
     <p>The attached work order has been sent to the service provider</p>
     <p style="font-size: 10px">You are living life you used to dream of.</p>

@@ -7,11 +7,14 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resource :session, only: [:create, :destroy, :show]
     resources :users, only: [:create, :show]
-    resources :bookings, only: [:create, :destroy, :show, :update]
     resources :events, only: [:index, :create]
     resources :addresses, only: [:create]
     resources :contact, only: [:create]
     post 'auth/google/callback', to: 'authentication#google_callback'
+
+    resources :bookings, only: [:create, :destroy, :show, :update] do
+      patch '/create-order', on: :member, to: 'bookings#create_order'
+    end
 
     resources :user, only: [:index] do
       resources :bookings, only: [:index] do
@@ -20,8 +23,7 @@ Rails.application.routes.draw do
       resources :orders, only: [:index]
     end
 
-    resources :orders, only: [:create] do 
-      resources :order_details, only: [:index]
+    resources :orders do 
       post '/create-payment-intent', on: :collection, to: 'orders#create_payment_intent'
     end
 
