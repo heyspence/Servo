@@ -40,8 +40,12 @@
     padding: 7px;
 }
 
+.sign-in-form input{
+    margin-bottom: 20px; 
+}
+
 .sign-in-form input[type=submit]{
-    margin: 30px auto;
+    margin: 0 auto 20px auto;
     width: 80%;
     font-weight: bold;
 }

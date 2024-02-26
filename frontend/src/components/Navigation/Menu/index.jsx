@@ -12,7 +12,7 @@ const Menu = ({isMenuOpen, closeMenu}) => {
     const handleSignOut = () => {
         closeMenu();
         dispatch(logout());
-        history.push('/')
+        window.location.href = '/';
     }
 
     const handleMenuClick = (e) => {

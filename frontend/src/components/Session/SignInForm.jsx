@@ -44,18 +44,18 @@ const SignInForm = ({ onClose }) => {
             <CloseIcon onClick={onClose} className="close-icon"/>
             <h2>Sign In </h2>
             <form onSubmit={submitHandler}>
-                <label htmlFor="email">Email </label>
-                <input id="email" type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                {/* <label htmlFor="email">Email </label> */}
+                <input id="email" type="text" value={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
 
-                <label htmlFor="new-password">Password </label>
-                <input id="new-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                {/* <label htmlFor="new-password">Password </label> */}
+                <input id="new-password" type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
 
-                <span><p><a onClick={signInDemoUser}>Sign in as demo user</a>|
-                <a onClick={signInDemoVendor}>Sign in as demo vendor</a></p></span>
+                {/* <span><p><a onClick={signInDemoUser}>Sign in as demo user</a>| */}
+                {/* <a onClick={signInDemoVendor}>Sign in as demo vendor</a></p></span> */}
                 <Errors />
                 <input type="submit" value="Sign In" className='button' />
                 <p>By continuing with the sign in process, we may send you 
-                    a one-time verification code via text message to the phone 
+                    a one-time verification code via email to the email address 
                     number associated with your account.
                 </p>
             </form>

@@ -6,6 +6,7 @@ import RangeSlider from '../../formComponents/RangeSlider';
 // import Checkbox from '../../formComponents/Checkbox';
 import { createBooking, updateBooking } from '../../store/bookings';
 import { useDispatch, useSelector } from 'react-redux';
+import TextArea from '../../formComponents/TextArea/TextArea';
 
 const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
     const dispatch = useDispatch();

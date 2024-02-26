@@ -18,7 +18,7 @@ const SplashPage = () => {
     },[user, userLoggedIn])
 
     return (
-        <main>
+        <main className="splash-page">
             <div style={{
                 height: '800px',
                 width: '100%',
@@ -52,8 +52,37 @@ const SplashPage = () => {
                     </h1>
                 </div>
             </div>
-            {/* <img style={{width: '300px', height: '300px'}} src="https://spencerheywood.com/images/servo/Pictures/web_optimized/professional-home-cleaning-service.avif" alt="Professional home cleaning service in action with smiling cleaner vacuuming living room, offering easy online booking and scheduling." /> */}
-            {/* <img style={{width: '50%'}} src="https://spencerheywood.com/images/servo/Pictures/web_optimized/professional-window-cleaning-technician-action.avif" alt="Skilled window cleaning technician with professional tools and equipment wiping residential window, available for online booking and scheduling." /> */}
+            <div className="splash-page-section three-step-section">
+                <div className="splash-page-icon">
+                    <img className="splash-page-icon-image" src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-04.png" />
+                    <h3>1. Online Quote</h3>
+                    <p>No waiting, no surprises. Uncover your exact cost in moments.</p>
+                </div>
+                <div className="splash-page-icon">
+                    <img className="splash-page-icon-image" src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-08.png" />
+                    <h3>2. Instant Schedule</h3>
+                    <p>Select the time that works for you. It’s as simple as picking a day on your calendar.</p>
+                </div>
+                <div className="splash-page-icon">
+                    <img className="splash-page-icon-image" src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-09.png" />
+                    <h3>3. Secure Pay</h3>
+                    <p>Rest easy knowing your payment and personal details are protected.</p>
+                </div>
+            </div>
+            <div className="splash-page-section">
+                <img className="splash-page-image" src="https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-43.jpg" />
+                <div className="section-text">
+                    <h2>Comming Soon: Recurring Booking</h2>
+                    <h3 style={{fontWeight:'normal'}}>Set it and forget it by putting your favorite services on auto pilot.</h3>
+                    <p>Servo allows you to instantly compare prices between service providers. Pick the company that is the best fit for you and set the frequency that matches your needs.</p>
+                </div>
+            </div>
+            <div className="splash-page-section logo-section">
+                <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png"/>
+                <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/Screen%20Shot%202021-06-21%20at%2010.19.09%20PM.png"/>
+                <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/refresh-ecowash-logo.png"/>
+                <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/Ease-Logo-A1%20%282%29%20%283%29%20copy%202.png"/>
+            </div>
         </main>
     )
 };
