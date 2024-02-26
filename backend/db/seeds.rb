@@ -135,7 +135,7 @@ pricing_input_options = PricingInputOption.create([
     {option_type:"select", name:"Alternate Cleaning: Garbage, Then Recycling", value:2, pricing_input_id:7},
     {option_type:"select", name:"Hybrid Schedule: Garbage + Recycling, Then Garbage Only", value:3, pricing_input_id:7},
     # NUM_CLEANING_HOURS
-    {option_type:"min", value:"0", pricing_input_id:8},
+    {option_type:"min", value:"1", pricing_input_id:8},
     {option_type:"max", value:"8", pricing_input_id:8},
     {option_type:"step", value:"1", pricing_input_id:8},
     {option_type:"default", value:"3", pricing_input_id:8},

@@ -33,7 +33,7 @@ const ProviderShow = () => {
             ? state.vendors[id].calendarData 
             : [],
             userLoggedIn: isLoggedIn(state),
-            serviceCharge: state.session.user.serviceCharge
+            serviceCharge: state.session.user?.serviceCharge
         }
     })
     const reviews = vendor?.reviews ? Object.values(vendor.reviews) : [];

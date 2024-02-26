@@ -14,7 +14,7 @@
     <hr/>
     <p><span style="font-weight: bold">Work Order Number:</span> #<%= @order.id %></p>
     <p><span style="font-weight: bold">Issued Date:</span> <%= @order.created_at %></p>
-    <p><span style="font-weight: bold">Scheduled Date and Time:</span> ===TODO===</p>
+    <p><span style="font-weight: bold">Scheduled Date and Time:</span> <%= @order.appointment_at %></p>
     <p><span style="font-weight: bold">Location:</span> <%= @address.street_address %> <%= @address.city %>, <%= @address.zip_code %></p>
     <p><span style="font-weight: bold">Client Name:</span> <%= @client.first_name %> <%= @client.last_name %></p>
     <p><span style="font-weight: bold">Client Phone Number:</span> (<%= @client.phone_number.slice(0,3) %>) <%= @client.phone_number.slice(3,3) %>-<%= @client.phone_number.slice(6,4) %></p>

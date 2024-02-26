@@ -51,22 +51,46 @@
     border: none;
 }
 
-.appointment-scheduling .react-datepicker__current-month{
-    margin: 5px 0 10px 0;
+.appointment-scheduling .react-datepicker__current-month {
+    margin: 10px 0 15px 0;
+    font-size: 16px;
+    color: var(--primary-red)
 }
 
 .react-datepicker__aria-live {
     display: none;
 }
 
-.appointment-scheduling .react-datepicker__day--selected{
+.react-datepicker__day-names{
     background-color: var(--primary-red);
-    color: white !important;
+}
+
+.react-datepicker__day-names .react-datepicker__day-name{
+    color: var(--primary-white);
+}
+
+.react-datepicker__day--today{
+    font-weight: normal !important;
+}
+
+.react-datepicker__day{
+     border: 1px solid transparent;
+     box-sizing: border-box;
+     padding: calc([ExistingPadding] - 1px);
+}
+
+.appointment-scheduling .react-datepicker__day--selected{
+    border: 1px solid black;
+    color: black;
+    background-color: var(--primary-white);
+    font-weight: normal;
+    box-sizing: border-box;
 }
 
 .appointment-scheduling .react-datepicker__day--selected:hover{
-    background-color: var(--secondary-red);
-    color: white !important;
+    background-color: var(--primary-white);
+    /* color: white !important; */
+    cursor: pointer
 }
 
 .appointment-scheduling .react-datepicker__navigation--previous, .appointment-scheduling .react-datepicker__navigation--next{
@@ -82,12 +106,29 @@
     display: none;
 }
 
-.react-datepicker__time-list-item--selected{
+/* .react-datepicker__time-list-item--selected{
     background-color: var(--primary-red) !important;
+} */
+
+li.react-datepicker__time-list-item--selected{
+    background-color: white !important;
+    border: 2px solid black !important;
+    color: black !important;
+    font-weight: normal !important;
+    height: 28px !important;
+}
+
+li.react-datepicker__time-list-item--selected:hover{
+    background-color: white !important;
+    border: 2px solid black !important;
+    color: black !important;
+    font-weight: normal !important;
+    height: 28px !important;
 }
 
 .react-datepicker__day--outside-month{
     color: #ccc !important;
+    border: none !important;
 }
 
 .scheduling-continue-button{

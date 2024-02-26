@@ -25,7 +25,7 @@ class PdfGenerator
                 pdf.move_down 5
                 pdf.formatted_text [
                 { text: "Date and Time: " },
-                { text: "March 13, 2024, 12:30 PM", color: "f2bb46", styles: [:bold] }
+                { text: "#{order.appointment_at}", color: "f2bb46", styles: [:bold] }
                 ]
                 pdf.text "Estimated Duration: 2 hours 15 minutes"
             end

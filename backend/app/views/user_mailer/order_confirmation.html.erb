@@ -12,7 +12,7 @@
     <hr/>
     <p><span style="font-weight: bold">Order Number:</span> #<%= @order.id %></p>
     <p><span style="font-weight: bold">Order Date:</span> <%= @order.created_at %></p>
-    <p><span style="font-weight: bold">Scheduled Date and Time:</span> ===TODO===</p>
+    <p><span style="font-weight: bold">Scheduled Date and Time:</span> <%= @order.appointment_at %></p>
     <p><span style="font-weight: bold">Address:</span> <%= @address.street_address %> <%= @address.city %>, <%= @address.zip_code %></p>
     <p><span style="font-weight: bold">Service Total:</span> $<%= sprintf('%.2f', @order.price) %></p>
     <hr/>
