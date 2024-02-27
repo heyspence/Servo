@@ -20,17 +20,20 @@ const RangeSlider = ({name, options, onChange}) => {
     const onSliderChange = (val) => {
         setSliderValue(val)
         onChange(val)
-        let percent = (val - min) / (max - min)
-        let currentSliderWidth = sliderEl.current.offsetWidth
-        let currentValueWidth = outputEl.current.offsetWidth
-        let adjustedLeft = percent * (currentSliderWidth - currentValueWidth)
-        let newLeft = adjustedLeft + (currentValueWidth / 2)
-        outputEl.current.style.left = newLeft + 'px'
+        // let percent = (val - min) / (max - min)
+        // let currentSliderWidth = sliderEl.current.offsetWidth
+        // let currentValueWidth = outputEl.current.offsetWidth
+        // let adjustedLeft = percent * (currentSliderWidth - currentValueWidth)
+        // let newLeft = adjustedLeft + (currentValueWidth / 2)
+        // outputEl.current.style.left = newLeft + 'px'
     }
 
     return (
         <div className="range-slider-container">
             <label>{name}</label>
+            <output ref={outputEl} className="slider-value">
+                {sliderValue}
+            </output>
             <input class="range-slider" 
                     type="range" max={max} 
                     min={min} step={step} 
@@ -40,9 +43,6 @@ const RangeSlider = ({name, options, onChange}) => {
                         onSliderChange(e.target.value)
                     }}>
             </input>
-            <output ref={outputEl} className="slider-value">
-                {sliderValue}
-            </output>
         </div>
     )
 }

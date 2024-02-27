@@ -7,7 +7,7 @@ const AboutUs = () => {
                 <h1>About Us - Servo</h1>
                 <section>
                 <h2>Our Beginning</h2>
-                <p>Founded in 2016, Servo was born out of a vision to simplify the booking of home services. Starting with an idea to bring pricing, booking, and payment for services like house cleaning and pest control online, we've spent years refining our approach to meet your needs.</p>
+                <p>In 2016, Servo was born out of a vision to simplify the booking of home services... it just didn't have a name yet. Starting with an idea to bring pricing, booking, and payment for services like house cleaning and pest control online, we've spent years refining our approach to meet your needs.</p>
             </section>
             <section>
                 <h2>Building Our Foundation</h2>

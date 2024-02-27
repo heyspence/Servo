@@ -17,13 +17,13 @@
   border-radius: 10px;
 }
 
-.main-nav-logo path{
+/* .main-nav-logo path{
   fill: white !important;
 }
 
 .main-nav-logo #path88{
   fill: var(--primary-yellow) !important;
-}
+} */
 
 .main-nav-links{
   margin-right: 5%
@@ -47,6 +47,22 @@
 .main-sign-up-button:hover {
   color: var(--secondary-red);
   background-color: var(--primary-white);
+}
+
+.logo-accent-blue{
+  fill: var(--primary-yellow);
+}
+
+.logo-blue{
+  fill: var(--primary-red);
+}
+
+.logo-accent-white{
+  fill: var(--primary-yellow);
+}
+
+.logo-white{
+  fill: var(--primary-white);
 }
 
 @media screen and (max-width: 599px){
