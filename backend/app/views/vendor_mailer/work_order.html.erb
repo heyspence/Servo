@@ -18,7 +18,7 @@
     <p><span style="font-weight: bold">Location:</span> <%= @address.street_address %> <%= @address.city %>, <%= @address.zip_code %></p>
     <p><span style="font-weight: bold">Client Name:</span> <%= @client.first_name %> <%= @client.last_name %></p>
     <p><span style="font-weight: bold">Client Phone Number:</span> (<%= @client.phone_number.slice(0,3) %>) <%= @client.phone_number.slice(3,3) %>-<%= @client.phone_number.slice(6,4) %></p>
-    <p><span style="font-weight: bold">Service Total:</span> $<%= sprintf('%.2f', ((@order.price - ENV["SERVO_SERVICE_CHARGE"].to_f) * (1 - ENV["SERVO_VENDOR_COMMISSION"].to_f))) %></p>
+    <p><span style="font-weight: bold">Service Total:</span> $<%= sprintf('%.2f', ((@order.price) * (1 - ENV["SERVO_VENDOR_COMMISSION"].to_f))) %></p>
     <hr/>
     <p>We appreciate your swift response to this work order and value our ongoing collaboration. Should you have any inquiries or recommendations concerning this work order or the 
       Servo operational procedures, please reach out.</p>

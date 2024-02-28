@@ -80,16 +80,15 @@
 }
 
 .appointment-scheduling .react-datepicker__day--selected{
-    border: 1px solid black;
-    color: black;
-    background-color: var(--primary-white);
+    color: white;
+    background-color: var(--primary-red);
     font-weight: normal;
     box-sizing: border-box;
 }
 
 .appointment-scheduling .react-datepicker__day--selected:hover{
-    background-color: var(--primary-white);
-    /* color: white !important; */
+    background-color: var(--secondary-red);
+    color: white;
     cursor: pointer
 }
 
@@ -106,24 +105,16 @@
     display: none;
 }
 
-/* .react-datepicker__time-list-item--selected{
-    background-color: var(--primary-red) !important;
-} */
-
 li.react-datepicker__time-list-item--selected{
-    background-color: white !important;
-    border: 2px solid black !important;
-    color: black !important;
+    background-color: var(--primary-red) !important;
+    color: white !important;
     font-weight: normal !important;
-    height: 28px !important;
 }
 
 li.react-datepicker__time-list-item--selected:hover{
-    background-color: white !important;
-    border: 2px solid black !important;
-    color: black !important;
+    background-color: var(--secondary-red) !important;
+    color: white !important;
     font-weight: normal !important;
-    height: 28px !important;
 }
 
 .react-datepicker__day--outside-month{

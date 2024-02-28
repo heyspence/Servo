@@ -9,13 +9,17 @@
   <body>
     <h1 style="font-size: 20px">Your Service Booking</h1>
     <p style="font-weight: bold"><%= @vendor.name %></p>
+    <p>(<%= @vendor.phone_number.slice(0,3) %>) <%= @vendor.phone_number.slice(3,3) %>-<%= @vendor.phone_number.slice(6,4) %></p>
+    <p><%= @vendor.email %></p>
     <hr/>
-    <p><span style="font-weight: bold">Order Number:</span> #<%= @order.id %></p>
-    <p><span style="font-weight: bold">Order Date:</span> <%= @order.created_at %></p>
-    <p><span style="font-weight: bold">Scheduled Date and Time:</span> <%= @order.appointment_at %></p>
+    <p><span style="font-weight: bold">Service Number:</span> #<%= @order.id %></p>
+    <p><span style="font-weight: bold">Service Date and Time:</span> <%= @order.appointment_at %></p>
+    <p><span style="font-weight: bold">Order Placed On:</span> <%= @order.created_at %></p>
     <p><span style="font-weight: bold">Address:</span> <%= @address.street_address %> <%= @address.city %>, <%= @address.zip_code %></p>
-    <p><span style="font-weight: bold">Service Total:</span> $<%= sprintf('%.2f', @order.price) %></p>
+    <p><span style="font-weight: bold">Service Total:</span> $<%= sprintf('%.2f', (@order.price + (ENV['SERVO_SERVICE_CHARGE']).to_f)) %></p>
     <hr/>
     <p>Thank you for booking, <%= @user.first_name %>!</p>
+    <p>For additional information regarding your booking and order history visit <a href="https://bookservo.com" target="blank">BookServo.com</a>.</p>
+    <p>Please reach out to your service provider for specific service-related questions.</p>
   </body>
 </html>

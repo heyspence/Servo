@@ -120,7 +120,7 @@ const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
             </div>
             <div className="calculator-right">
                 <div className="recurring-section-header">
-                    <h3>Recurring</h3>
+                    <h3>Set Up Reminders</h3>
                     <div onClick={toggleRecurring} className="recurring-toggle-background">
                         <div className={`recurring-toggle-circle ${recurringOn ? 'recurring-circle-active' : ''}`}>
                         </div>

@@ -21,11 +21,11 @@ class AdminMailer < ApplicationMailer
         @order = order
         @vendor = Vendor.find(order.vendor_id)
         # Generate work order pdf
-        file_path = PdfGenerator.generateWorkOrder(order)
+        file_path = PdfGenerator.generateWorkOrder(@order)
         # Attach pdf to email
         attachments["WO#{order.id}.pdf"] = File.read(file_path)
         # Send email
-        mail(subject: "You Received an Order - $#{sprintf('%.2f', order.price)}")
+        mail(subject: "You Received an Order - $#{sprintf('%.2f', (@order.price + (ENV['SERVO_SERVICE_CHARGE']).to_f))}")
         # Delete pdf
         File.delete(file_path) if File.exist?(file_path)
     end

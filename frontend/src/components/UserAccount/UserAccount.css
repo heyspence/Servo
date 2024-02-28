@@ -2,4 +2,23 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    background-color: var(--secondary-white);
+}
+
+.user-account-backdrop{
+    margin-top: 30px;
+    width: 80%;
+    height: 500px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.user-account input[type=text]{
+    background-color: white;
+    margin-top: 15px;
+}
+
+.user-account form{
+    display: flex;
+    flex-direction: column;
 }
