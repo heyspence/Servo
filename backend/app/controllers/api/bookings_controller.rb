@@ -20,12 +20,12 @@ class Api::BookingsController < ApplicationController
 
     def create_order
         @booking = Booking.find(params[:id])
+        # @user = User.find(@booking.user_id)
         if @booking.status == 'pending' && params[:booking][:status] == 'paid'
             if @booking.update(booking_params)
-                order = @booking
-                VendorMailer.work_order(order).deliver_now
-                AdminMailer.new_order(order).deliver_now
-                UserMailer.order_confirmation(order).deliver_now
+                VendorMailer.work_order(@booking).deliver_now
+                UserMailer.order_confirmation(@booking).deliver_now
+                AdminMailer.new_order(@booking).deliver_now
                 render :show
             else
                 render json: { errors: @booking.errors.full_messages }

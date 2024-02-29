@@ -5,18 +5,15 @@ const CalculatorResults = ({price, duration}) => {
         <>
             <div className="calculator-results">
                 <div className="calculated-price">
-                    <h3>Subtotal</h3>
+                    <h4>Subtotal</h4>
                     <p>${price}</p>
                 </div>
+                <div className="vertical-line" />
                 <div className="calculated-duration">
-                    <h3>Duration</h3>
-                    <p>~{duration.toFixed(2)} Hrs</p>
+                    <h4>Duration</h4>
+                    <p>~{duration} Hrs</p>
                 </div>
             </div>
-            {/* <div className="discounts">
-                <p>-$7.50</p>
-            </div> */}
-            
         </>
     )
 }

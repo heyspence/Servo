@@ -14,7 +14,8 @@ class AdminMailer < ApplicationMailer
         @message = message[:message]
         @name = message[:name]
         @email = message[:email]
-        mail(subject: "IMPORTANT: New Message from #{@name}")
+        subject = message[:subject]
+        mail(subject: "SERVO: #{subject} from #{@name}")
     end
 
     def new_order(order)

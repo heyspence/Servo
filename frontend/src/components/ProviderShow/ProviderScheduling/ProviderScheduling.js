@@ -12,7 +12,7 @@ const ProviderScheduling = ({schedulingOpen, calendarData = [], booking, onConti
     const [availableTimes, setAvailableTimes] = useState([]);
     const [windowSize, setWindowSize] = useState({width: undefined, height: undefined})
     const availableDates = calendarData.map(entry => parseISO(entry.start_time));
-    let isMobile = window.innerWidth < 1325;
+    let isMobile = window.innerWidth < 1325 && !(window.innerWidth <= 1000 && window.innerWidth >= 750);
     let startTimesList = calendarData.map(entry => parseISO(entry.start_time));
     let formattedDate = format(startDate, "M/d/yy");
     let formattedHeader = isMobile
@@ -90,7 +90,7 @@ const ProviderScheduling = ({schedulingOpen, calendarData = [], booking, onConti
         conditionalProps = {
             minTime: new Date(currentTime).setHours(8, 0, 0),
             maxTime: new Date(currentTime).setHours(17, 0, 0),
-            timeIntervals: 120,
+            timeIntervals: 240,
             // highlightDates: [addDays(currentTime, 8)],
             minDate: addDays(currentTime, 2),
             maxDate: addDays(currentTime, 365),
@@ -102,6 +102,7 @@ const ProviderScheduling = ({schedulingOpen, calendarData = [], booking, onConti
         <div className={`appointment-scheduling ${schedulingOpen ? '' : 'minimize' }`}>
             <div className="scheduling-container">
                 <div className="scheduling-output">
+                    <h3>Appointment Scheduling</h3>
                     {formattedHeader}
                 </div>
                 <DatePicker

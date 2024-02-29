@@ -3,7 +3,7 @@ import './ContactUs.css'
 import csrfFetch from '../store/csrf';
 
 const ContactUs = () => {
-    const [contactValues, setContactValues] = useState({name: '', email: '', message: ''})
+    const [contactValues, setContactValues] = useState({name: '', email: '', message: '', subject: ''})
     const [messageState, setMessageState] = useState('unsent')
     
     const handleSubmit = async(e) => {
@@ -30,10 +30,13 @@ const ContactUs = () => {
         if(messageState === 'unsent' || messageState === 'loading'){
             return (
                 <>
+                    <p>Accessibility is important to us. We aim to respond to all inquiries within 24 hours. Thanks for getting in touch!</p>
+                    <br/>
                     <h2>Send a Message</h2>
                     <form className="contact-us-form" onSubmit={handleSubmit}>
                         <input type='text' placeholder='Name' value={contactValues.name} onChange={e => setContactValues(prevValues => ({...prevValues, name: e.target.value}))}/>
-                        <input type='text' placeholder='Your email address'value={contactValues.email} onChange={e => setContactValues(prevValues => ({...prevValues, email: e.target.value}))}/>
+                        <input type='text' placeholder='Your Email Address'value={contactValues.email} onChange={e => setContactValues(prevValues => ({...prevValues, email: e.target.value}))}/>
+                        <input type='text' placeholder='Subject'value={contactValues.subject} onChange={e => setContactValues(prevValues => ({...prevValues, subject: e.target.value}))}/>
                         <textarea placeholder='Your message here.' value={contactValues.message} onChange={e => setContactValues(prevValues => ({...prevValues, message: e.target.value}))}/>
                         <button>{messageState === 'loading' ? 'Sending Message...' : 'Send Message'}</button>
                     </form>

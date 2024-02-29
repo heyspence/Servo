@@ -16,7 +16,8 @@
 .scheduling-output{
     color: var(--primary-red);
     font-weight: bold;
-    font-size: 22px;
+    font-size: 20px;
+    line-height: 25px;
 }
 
 .appointment-scheduling .react-datepicker{
@@ -36,6 +37,16 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+}
+
+.scheduling-left{
+    width: 70%;
+    box-sizing: border-box;
+}
+
+.scheduling-right{
+    width: 30%;
+    box-sizing: border-box;
 }
 
 .react-datepicker__day{

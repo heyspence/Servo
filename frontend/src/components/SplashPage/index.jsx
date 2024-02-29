@@ -72,7 +72,7 @@ const SplashPage = () => {
             <div className="splash-page-section">
                 <img className="splash-page-image" src="https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-43.jpg" />
                 <div className="section-text">
-                    <h2>Coming Soon: Frequency Reminders</h2>
+                    <h2>Coming Soon: Service Reminders</h2>
                     <h3 style={{fontWeight:'normal'}}>Set it and forget it by putting your favorite services on auto pilot.</h3>
                     <p>New Servo features allow you to opt in for periodic reminders for services you utilize on a recurring basis. Choose your prefered freqency and enjoy 3-click booking on all your future bookings with that service provider.</p>
                 </div>

@@ -6,6 +6,6 @@ class Api::ContactController < ApplicationController
 
     private
     def contact_params
-        params.require(:message).permit(:name, :email, :message)
+        params.require(:message).permit(:name, :email, :message, :subject)
     end
 end

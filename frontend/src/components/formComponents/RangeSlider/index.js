@@ -34,7 +34,7 @@ const RangeSlider = ({name, options, onChange}) => {
             <output ref={outputEl} className="slider-value">
                 {sliderValue}
             </output>
-            <input class="range-slider" 
+            <input className="range-slider" 
                     type="range" max={max} 
                     min={min} step={step} 
                     value={sliderValue} 

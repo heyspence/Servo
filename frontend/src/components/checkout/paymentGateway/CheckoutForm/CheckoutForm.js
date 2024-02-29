@@ -101,6 +101,7 @@ const CheckoutForm = ({price, booking, onStatusChange}) => {
             </h2>
             <form id="payment-form" onSubmit={handleSubmit}>
                 <PaymentElement id="payment-element" options={paymentElementOptions} />
+                <p style={{fontSize: '12px', color: '#6d6e78', lineHeight: '18px', marginBottom: '20px'}}>Servo securely stores payment information for convenient checkout on future orders. Each transaction for purchased services will always require your explicit consent.</p>
                 <div className="servo-certified-icon">
                     <hr/>
                     <img src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-09.png"

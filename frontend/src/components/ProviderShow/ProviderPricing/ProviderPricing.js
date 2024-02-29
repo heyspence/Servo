@@ -7,18 +7,19 @@ import RangeSlider from '../../formComponents/RangeSlider';
 import { createBooking, updateBooking } from '../../store/bookings';
 import { useDispatch, useSelector } from 'react-redux';
 import TextArea from '../../formComponents/TextArea/TextArea';
+import CalculatorResults from './CalculatorResults/index'
 
 const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
     const dispatch = useDispatch();
     const basePrice = vendor?.minPrice
     const formula = vendor?.pricingFormula ? vendor.pricingFormula : "x";
     const inputs = vendor?.pricingInputs
-    const [recurringOn, setRecurringOn] = useState(false);
     const [inputValues, setInputValues] = useState({});
     // const [checkboxValues, setCheckboxValues] = useState({});
     const [calculatedPrice, setCalculatedPrice] = useState(basePrice);
     const inputFloats = Object.values(inputValues).map(val => parseFloat(val));
     const currentUserId = useSelector(state => state.session.user?.id)
+    const priceToDurationRate = vendor?.priceToDurationRate ? vendor.priceToDurationRate : 35
 
     useEffect(()=>{
         if(inputs && inputFloats.every(val => val !== NaN)){
@@ -56,10 +57,6 @@ const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
     //         setCheckboxValues(newCheckboxValues)
     //     }
     // },[inputs])
-
-    const toggleRecurring = () =>{
-        setRecurringOn(!recurringOn)
-    }
 
     const renderInput = (input) => {
         const InputComponent = inputTypeKey[input.inputType]
@@ -119,24 +116,9 @@ const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
                 </div>
             </div>
             <div className="calculator-right">
-                <div className="recurring-section-header">
-                    <h3>Set Up Reminders</h3>
-                    <div onClick={toggleRecurring} className="recurring-toggle-background">
-                        <div className={`recurring-toggle-circle ${recurringOn ? 'recurring-circle-active' : ''}`}>
-                        </div>
-                    </div>
-                </div>
-                <div className="recurring-options">
-                    <form className={`${recurringOn ? '' : 'minimize'}`}>
-                        {inputs && Object.values(inputs).map(input => {
-                            if(input?.recurring){
-                                return renderInput(input)
-                            }
-                        })}
-                    </form>
-                </div>
-                {/* <CalculatorResults price={calculatedPrice?.toFixed(2)} duration={(calculatedPrice/35).toFixed(1)}/> */}
-                <button className="accept-button" onClick={handleContinueClick}>Continue - ${calculatedPrice?.toFixed(2)}</button>
+                <h3>Results</h3>
+                <CalculatorResults price={calculatedPrice?.toFixed(2)} duration={(calculatedPrice/priceToDurationRate).toFixed(1)}/>
+                <button className="accept-button" onClick={handleContinueClick}>Continue</button>
             </div>
         </div>
     )

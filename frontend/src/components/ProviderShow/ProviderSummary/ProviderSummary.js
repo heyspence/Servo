@@ -77,10 +77,6 @@ const ProviderSummary = ({summaryOpen, booking, vendor, onCheckout, serviceCharg
                         <p>Service Charge</p>
                         <p>${serviceCharge}</p>
                     </div>
-                    {/* <div className="pricing-summary-item-container">
-                        <p>Discounts</p>
-                        <p>-$0.00</p>
-                    </div> */}
                     <hr/>
                     <div className="pricing-summary-item-container">
                         <p>Total</p>

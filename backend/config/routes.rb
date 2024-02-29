@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
 
     resources :user, only: [:index] do
+      get '/get-payment-methods', to: 'orders#get_payment_methods'
       resources :bookings, only: [:index] do
         delete :destroy_all, on: :collection
       end

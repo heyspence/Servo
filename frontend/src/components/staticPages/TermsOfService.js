@@ -38,7 +38,7 @@ const TermsOfService = () => {
                         <p>Any claim relating to Servo, LLC's website shall be governed by the laws of the State of Utah without regard to its conflict of law provisions.</p>
                     </section>
 
-                    <section class="contact-info">
+                    <section className="contact-info">
                         <h2>Contact Us</h2>
                         <p>If you have any questions about these Terms, please contact us at:</p>
                         <p>Email: spencer@bookservo.com</p>
