@@ -12,75 +12,79 @@ class Api::OrdersController < ApplicationController
         render :index
     end
 
-    def charge_customer
-        # # Lookup the payment methods available for the customer
-        # payment_methods = Stripe::PaymentMethod.list(
-        #   customer: customerId,
-        #   type: 'card'
-        # )
-        payment_method = charge_params[:payment_method_id]
-        customer_id = charge_params[:stripe_customer_id]
-        price = (charge_params[:price].to_f * 100).to_i
+    # def charge_customer
+    #     total_amount = calculate_total_amount
+    #     render json: {error: 'potential price forgery: price cannot be verified'}, status: :unprocessable_entity and return unless total_amount
+    #     total_amount_in_cents = (total_amount * 100).to_i
 
-        render json: "Unauthorized user" unless customer_id == @current_user.stripe_customer_id
+    #     user = User.find(booking_params[:user_id])
+    #     payment_method = booking_params[:payment_method_id]
+    #     customer_id = booking_params[:stripe_customer_id]
+    #     return_url = booking_params[:return_url]
 
-        begin
-          # Charge the customer and payment method immediately
-          payment_intent = Stripe::PaymentIntent.create(
-            amount: price,
-            currency: 'usd',
-            customer: customer_id,
-            payment_method: payment_method,
-            off_session: false,
-            confirm: true
-          )
-        rescue Stripe::CardError => e
-          # Error code will be authentication_required if authentication is needed
-          puts "Error is: \#{e.error.code}"
-          payment_intent_id = e.error.payment_intent.id
-          payment_intent = Stripe::PaymentIntent.retrieve(payment_intent_id)
-          puts payment_intent.id
-        end
-    end
+    #     render json: "Unauthorized user" unless customer_id == @current_user.stripe_customer_id
 
-    def get_payment_methods
-        user = User.find(params[:user_id])
-        if user.stripe_customer_id
-            payment_methods = Stripe::PaymentMethod.list(
-                    customer: user.stripe_customer_id,
-                    type: 'card'
-            )
-            render json: payment_methods
-        else
-            render errors: {message: 'User is not a return customer or does not have payment info saved'}, status: 422
-        end
-    end
+    #     begin
+    #       # Charge the customer and payment method immediately
+    #       payment_intent = Stripe::PaymentIntent.create(
+    #         amount: total_amount_in_cents,
+    #         currency: 'usd',
+    #         customer: user.stripe_customer_id,
+    #         payment_method: payment_method,
+    #         off_session: false,
+    #         confirm: true,
+    #         return_url: return_url
+    #       )
+    #     #   render json: { clientSecret: payment_intent.client_secret, price: price}
+    #     rescue Stripe::CardError => e
+    #       # Error code will be authentication_required if authentication is needed
+    #       puts "Error is: \#{e.error.code}"
+    #       payment_intent_id = e.error.payment_intent.id
+    #       payment_intent = Stripe::PaymentIntent.retrieve(payment_intent_id)
+    #       puts payment_intent.id
+    #     end
+    # end
 
     def create_payment_intent
-        total_amount = calculate_total_amount
+        total_amount = calculate_total_amount # Verify price before continuing
         render json: {error: 'potential price forgery: price cannot be verified'}, status: :unprocessable_entity and return unless total_amount
         total_amount_in_cents = (total_amount * 100).to_i
+        payment_methods = []
+        return_customer = false
 
         user = User.find(booking_params[:user_id])
 
-        if(!user.stripe_customer_id)
+        if !user.stripe_customer_id # Create stripe customer id if needed
             customer = Stripe::Customer.create(name: "#{user.first_name} #{user.last_name}", email: "#{user.email}")
             user.update(stripe_customer_id: customer[:id])
+        else
+            payment_methods = get_payment_methods(user) # Get payment methods (if any) if return customer
         end
 
-        vendor = Vendor.find(booking_params[:vendor_id])
+        vendor = Vendor.find(booking_params[:vendor_id]) # Used for statement descriptor
+
+        options = {
+            amount: total_amount_in_cents,
+            currency: 'usd',
+            customer: user.stripe_customer_id,
+            statement_descriptor: "SERVO | #{vendor.name.slice(0,14)}",
+            metadata: {booking_id: booking_params[:id]},
+            setup_future_usage: 'on_session'
+        }
+
+        # Add conditional options based on the presence of payment methods
+        if payment_methods.empty?
+            # options.merge!(setup_future_usage: 'on_session')
+        else
+            return_customer = true
+        end
 
         begin
-            intent = Stripe::PaymentIntent.create({
-                amount: total_amount_in_cents,
-                currency: 'usd',
-                customer: user.stripe_customer_id,
-                setup_future_usage: 'on_session',
-                statement_descriptor: "SERVO | #{vendor.name.slice(0,14)}",
-                metadata: {booking_id: booking_params[:id]}
-            })
-
-            render json: { clientSecret: intent.client_secret, price: total_amount }
+            intent = Stripe::PaymentIntent.create(options)
+            response = {
+                clientSecret: intent.client_secret, price: total_amount, paymentMethods: payment_methods
+            }
+            render json: response
         rescue Stripe::StripeError => e 
             render json: { error: e.message }, status: 422
         end
@@ -103,14 +107,23 @@ class Api::OrdersController < ApplicationController
     end
 
     def booking_params
-        params.require(:booking).permit(:price, :id, :user_id, :vendor_id)
+        params.require(:booking).permit(:price, :id, :user_id, :vendor_id, :payment_method_id, :return_url)
     end
 
-    def charge_params
-        params.require(:charge).permit(:payment_method_id, :stripe_customer_id, :price)
-    end
+    # def charge_params
+    #     params.require(:charge).permit(:payment_method_id, :stripe_customer_id, :price, :return_url)
+    # end
 
     def order_params
         params.require(:order).permit(:user_id, :total, :vendor_id)
+    end
+
+    def get_payment_methods(user)
+        user.stripe_customer_id
+        payment_methods = Stripe::PaymentMethod.list(
+                customer: user.stripe_customer_id,
+                type: 'card'
+        )
+        return payment_methods.data
     end
 end

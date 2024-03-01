@@ -4,13 +4,14 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createOrder } from '../../../store/bookings';
 
-const CheckoutForm = ({price, booking, onStatusChange}) => {
+const CheckoutForm = ({price, booking, onStatusChange, checkoutType, prevPaymentMethods, clientSecret, changeCheckoutType}) => {
     const stripe = useStripe();
     const elements = useElements();
     const dispatch = useDispatch();
 
     const [message, setMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(prevPaymentMethods ? prevPaymentMethods[0]?.id : {})
 
     useEffect(() => {
         if (!stripe) {
@@ -56,13 +57,21 @@ const CheckoutForm = ({price, booking, onStatusChange}) => {
 
         setIsLoading(true);
 
-        const { error, paymentIntent } = await stripe.confirmPayment({
-        elements,
-        confirmParams: {
-            // Make sure to change this to your payment completion page
-            return_url: redirectUrl,
-        }, redirect: 'if_required'
-        });
+        let paymentOptions = {
+            confirmParams: {
+                return_url: redirectUrl
+            },
+            redirect: 'if_required',
+        }
+
+        if(checkoutType === 'return'){
+            paymentOptions.confirmParams.payment_method = selectedPaymentMethod;
+            paymentOptions.clientSecret = clientSecret
+        }else{
+            paymentOptions.elements = elements
+        }
+
+        const { error, paymentIntent } = await stripe.confirmPayment(paymentOptions);
 
         if (paymentIntent) {
             // Check paymentIntent status
@@ -100,8 +109,30 @@ const CheckoutForm = ({price, booking, onStatusChange}) => {
                 Complete Your Booking
             </h2>
             <form id="payment-form" onSubmit={handleSubmit}>
-                <PaymentElement id="payment-element" options={paymentElementOptions} />
-                <p style={{fontSize: '12px', color: '#6d6e78', lineHeight: '18px', marginBottom: '20px'}}>Servo securely stores payment information for convenient checkout on future orders. Each transaction for purchased services will always require your explicit consent.</p>
+                {checkoutType === 'new' ? (
+                    <>
+                        {prevPaymentMethods.length > 0 ? (
+                                <button onClick={() => changeCheckoutType('return')} className="anchor-style" style={{margin: '0 0 20px 0'}}>Use a Saved Payment Method</button>
+                            ) : ('')
+                        }
+                        <PaymentElement id="payment-element" options={paymentElementOptions} />
+                        <p style={{fontSize: '12px', color: '#6d6e78', lineHeight: '18px', marginBottom: '20px'}}>Servo securely stores payment information for convenient checkout on future orders. Each transaction for purchased services will always require your explicit consent.</p>
+                    </>
+                    ) : (
+                        <div className="previous-payment-methods-container" style={{marginBottom: '40px'}}>
+                            <h3>Select Payment Method</h3>
+                            {prevPaymentMethods && prevPaymentMethods.map(method => {
+                                return (
+                                    <li key={method.id} onClick={e => setSelectedPaymentMethod(method.id)} >
+                                        <input readOnly={true} checked={selectedPaymentMethod === method.id} type="radio" value={method.id} />
+                                        <label>Exp: {method.card.exp_month}/{method.card.exp_year.toString().slice(2,4)} - {method.card.brand.charAt(0).toUpperCase() + method.card.brand.slice(1, method.card.brand.length)} ...{method.card.last4}</label>
+                                    </li>
+                                )
+                            })}
+                            <button onClick={() => changeCheckoutType('new')} className="anchor-style">Use Different Payment Method</button>
+                        </div>
+                    ) 
+                }
                 <div className="servo-certified-icon">
                     <hr/>
                     <img src="https://spencerheywood.com/images/servo/icons/icons%203/icon_clear_bkgd/icons-09.png"

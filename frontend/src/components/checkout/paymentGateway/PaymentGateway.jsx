@@ -7,7 +7,6 @@ import stripePromise from '../../../util/stripe/stripeClient';
 import csrfFetch from '../../store/csrf';
 import PaymentConfirmation from '../PaymentConfirmation'
 import { useSelector } from 'react-redux';
-import ReturnCustomerCheckoutForm from './ReturnCustomerCheckoutForm/ReturnCustomerCheckoutForm';
 
 const PaymentGateway = ({booking}) => {
     const [clientSecret, setClientSecret] = useState("");
@@ -15,8 +14,7 @@ const PaymentGateway = ({booking}) => {
     const [paymentStatus, setPaymentStatus] = useState();
     const [loadingMessage, setLoadingMessage] = useState("Loading...");
     const [checkoutType, setCheckoutType] = useState('new')
-    const [prevPaymentMethods, setPrevPaymentMethods] = useState([])
-    const currentUser = useSelector(state => state.session.user)
+    const [prevPaymentMethods, setPrevPaymentMethods] = useState([]);
 
     const getPaymentIntent = booking => {
         setLoadingMessage('Initializing...')
@@ -35,7 +33,11 @@ const PaymentGateway = ({booking}) => {
         .then((data) => {
             setClientSecret(data.clientSecret);
             setPrice(data.price);
-            setLoadingMessage('Success')
+            setLoadingMessage('Success');
+            if(data.paymentMethods.length > 0){
+                setCheckoutType('return')
+                setPrevPaymentMethods(data.paymentMethods)
+            }
         })
         .catch(error => {
             console.error('Failed to initialize payment gateway:', error);
@@ -44,32 +46,7 @@ const PaymentGateway = ({booking}) => {
     }
 
     useEffect(() => {
-        if(!currentUser.stripeCustomerId){
-            getPaymentIntent(booking)
-        }else{
-            setLoadingMessage('Loading...')
-            csrfFetch(`/api/user/${currentUser.id}/get-payment-methods`)
-                .then(res => {
-                    if(res.ok){
-                        return res.json()
-                    }else{
-                        throw new Error('Network response was not ok')
-                    }
-                })
-                .then(data => {
-                    setLoadingMessage('Success')
-                    if(data.data.length > 0){
-                        setCheckoutType('return')
-                        setPrevPaymentMethods(data.data)
-                    }else{
-                        getPaymentIntent(booking)
-                    }
-                })
-                .catch(error => {
-                    console.error('Failed to retrieve payment information:', error)
-                    setLoadingMessage('Error #1932: Failed to retrieve payment information. Please contact spencer@bookservo.com to resolve this issue.')
-                })
-        }
+        getPaymentIntent(booking)
     }, []);
 
     const handleStatusUpdate = status => {
@@ -114,26 +91,21 @@ const PaymentGateway = ({booking}) => {
         <>
             {paymentStatus === 'succeeded' ? (
                 <PaymentConfirmation /> 
-                ) : checkoutType === 'return' ? 
-                    <div className="checkout-form">
-                        <ReturnCustomerCheckoutForm 
-                            paymentMethods={prevPaymentMethods} 
-                            price={price} 
-                            booking={booking} 
-                            onStatusChange={handleStatusUpdate} 
-                            onAddPaymentMethod={()=>{
-                                setCheckoutType('new')
-                                getPaymentIntent(booking)
-                        }}
-                        />
-                    </div>
-                 : (clientSecret ? (
-                    <Elements options={options} stripe={stripePromise}>
-                        <CheckoutForm price={price} booking={booking} onStatusChange={handleStatusUpdate} />
-                    </Elements>
+                ) : (clientSecret ? (
+                    <>
+                        <Elements options={options} stripe={stripePromise}>
+                                <CheckoutForm price={price} 
+                                booking={booking} 
+                                onStatusChange={handleStatusUpdate} 
+                                checkoutType={checkoutType} 
+                                prevPaymentMethods={prevPaymentMethods} 
+                                clientSecret={clientSecret}
+                                changeCheckoutType={(type) => setCheckoutType(type)}
+                                />
+                        </Elements>
+                    </>
                 ) : (
                     <div className='checkout-form' style={{padding: "30px", display:'flex', justifyContent: 'center'}}>
-                        {/* <span><img src="https://spencerheywood.com/images/servo/icons/icons-07.png" style={{height:'43px', margin: '-3px -2px 0 0'}} alt="Servo Checkbox Branded Icon"/></span> */}
                         <h2>{loadingMessage}</h2>
                     </div>
                 ))}
