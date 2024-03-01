@@ -9,3 +9,19 @@ export const formatAddress = userAddress => {
         return <></>
     }
 }
+
+export const formatDuration = decimal => {
+    let hours;
+    let minutes;
+
+    hours = decimal - (decimal % 1)
+    minutes = Math.round((60 * (decimal % 1)) / 5) * 5
+
+    if(hours > 0 && minutes > 0){
+        return `${hours}h ${minutes}m`
+    }else if(hours > 0 && minutes === 0){
+        return `${hours}${hours > 1 ? 'hrs' : 'hr'}`
+    }else{
+        return `${minutes}mins`
+    }
+}

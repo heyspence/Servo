@@ -22,7 +22,7 @@ const RadioButton = ({name, options, onChange}) => {
 
     return (
         <div className="radio-buttons">
-            <label>{name}</label><br/>
+            <label>{name}</label>
             {options && Object.values(options).map((option, index) => {
                 return(
                     <li key={index}>

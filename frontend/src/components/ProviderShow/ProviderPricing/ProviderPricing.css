@@ -25,6 +25,7 @@
     position: relative;
     flex-direction: column;
     display: flex;
+    justify-content: space-between;
 }
 
 .calculator-main{
@@ -43,10 +44,10 @@ form{
 }
 
 .accept-button{
-    margin: 25px 0 0 0;
+    margin: 20px 0 0 0;
     border-radius: 6px;
     background-color: var(--primary-red);
-    width: auto;
+    width: 100%;
 }
 
 .accept-button:hover{

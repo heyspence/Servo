@@ -6,3 +6,7 @@
 .radio-buttons{
     accent-color: var(--secondary-red);
 }
+
+.radio-buttons li label{
+    font-size: 14px;
+}

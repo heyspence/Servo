@@ -104,7 +104,7 @@ const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
         <div className={`pricing-calculator ${pricingOpen ? '' :  'minimize'}`}>
             <div className="calculator-left">
                 <h3>Instant Pricing</h3>
-                <div className="subtotal">${calculatedPrice?.toFixed(2)}</div>
+                {/* <div className="subtotal">${calculatedPrice?.toFixed(2)}</div> */}
                 <div className="calculator-main">
                     <form>
                         {inputs && Object.values(inputs).map(input => {
@@ -116,9 +116,11 @@ const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
                 </div>
             </div>
             <div className="calculator-right">
-                <h3>Results</h3>
-                <CalculatorResults price={calculatedPrice?.toFixed(2)} duration={(calculatedPrice/priceToDurationRate).toFixed(1)}/>
-                <button className="accept-button" onClick={handleContinueClick}>Continue</button>
+                <div style={{display: 'flex', flexDirection:'column', alignItems:'center', textAlign:'center'}}>
+                    <CalculatorResults price={calculatedPrice?.toFixed(2)} duration={(calculatedPrice/priceToDurationRate).toFixed(1)}/>
+                    <p style={{color: 'var(--primary-gray)', fontSize:'13px', maxWidth: '275px'}}>The provided duration is only an estimate; the actual time required may differ.</p>
+                    <button className="accept-button" onClick={handleContinueClick}>Continue</button>
+                </div>
             </div>
         </div>
     )

@@ -102,7 +102,7 @@ const ProviderScheduling = ({schedulingOpen, calendarData = [], booking, onConti
         <div className={`appointment-scheduling ${schedulingOpen ? '' : 'minimize' }`}>
             <div className="scheduling-container">
                 <div className="scheduling-output">
-                    <h3>Appointment Scheduling</h3>
+                    <h3>Service Scheduling</h3>
                     {formattedHeader}
                 </div>
                 <DatePicker

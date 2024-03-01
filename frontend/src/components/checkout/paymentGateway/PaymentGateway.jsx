@@ -6,7 +6,6 @@ import { Elements } from '@stripe/react-stripe-js';
 import stripePromise from '../../../util/stripe/stripeClient';
 import csrfFetch from '../../store/csrf';
 import PaymentConfirmation from '../PaymentConfirmation'
-import { useSelector } from 'react-redux';
 
 const PaymentGateway = ({booking}) => {
     const [clientSecret, setClientSecret] = useState("");
@@ -41,7 +40,7 @@ const PaymentGateway = ({booking}) => {
         })
         .catch(error => {
             console.error('Failed to initialize payment gateway:', error);
-            setLoadingMessage('Error #1931: Unable to initialize payment gateway. Please contact spencer@bookservo.com to resolve this issue.');
+            setLoadingMessage('Unable to initialize payment gateway. Please check your internet connection.');
         })
     }
 

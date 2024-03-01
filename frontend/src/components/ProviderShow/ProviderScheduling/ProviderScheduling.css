@@ -14,10 +14,10 @@
 }
 
 .scheduling-output{
-    color: var(--primary-red);
-    font-weight: bold;
-    font-size: 20px;
+    color: var(--primary-gray);
+    font-size: 18px;
     line-height: 25px;
+    font-weight: bold;
 }
 
 .appointment-scheduling .react-datepicker{
