@@ -3,9 +3,12 @@ import csrfFetch from '../../../../store/csrf';
 import './VendorAuthorization.css'
 import { useGoogleLogin } from '@react-oauth/google';
 import { ReactComponent as Close } from '../../../../../assets/svg/Close.svg'
+import { useDispatch } from 'react-redux';
+import { receiveCalendarId, removeCalendarId } from '../../../../store/vendor';
 
 const VendorAuthorization = ({vendor}) =>{ 
     const [isConnected, setIsConnected] = useState(!!vendor?.calendar)
+    const dispatch = useDispatch();
 
     useEffect(()=>{
         setIsConnected(!!vendor?.calendar)
@@ -13,7 +16,7 @@ const VendorAuthorization = ({vendor}) =>{
 
     const googleLogin = useGoogleLogin({
         flow: 'auth-code',
-        scope: 'https://www.googleapis.com/auth/calendar.events.freebusy',
+        scope: 'https://www.googleapis.com/auth/calendar.events',
         prompt: 'consent',
         onSuccess: async (codeResponse) => {
             try {
@@ -26,6 +29,8 @@ const VendorAuthorization = ({vendor}) =>{
                     body: JSON.stringify({ code: codeResponse.code }),
                 });
                 if(response.ok){
+                    let data = await response.json();
+                    dispatch(receiveCalendarId({id: vendor.id, calendarId: data.calendarId}))
                     setIsConnected(true);
                 }
             } catch (error) {
@@ -35,12 +40,26 @@ const VendorAuthorization = ({vendor}) =>{
         onError: errorResponse => console.log(errorResponse),
     });
 
+    const deleteCalendar = async() => {
+        const res = await csrfFetch(`/api/vendor_calendars/${vendor.calendar}`,{
+            method: "DELETE"
+        })
+
+        if(res.ok){
+            dispatch(removeCalendarId(vendor.id))
+            setIsConnected(false)
+        }else{
+            let data = await res.json()
+            console.error(`Unable to delete calendar: ${data.errors}`)
+        }
+    }
+
     const calendarButton = () => {
         if(isConnected){
             return <div className="calendar-button-container">
                         <div className="status-circle"></div>
                         <div className="connect-google-calendar--disconnect">Connected </div>
-                        <Close style={{transform: "scale(0.75)"}}/>
+                        <Close className="calendar-disconnect-button" onClick={deleteCalendar} style={{transform: "scale(0.75)"}}/>
                     </div>
         }else{
             return <button className="connect-google-calendar" onClick={() => googleLogin()}>Connect</button>

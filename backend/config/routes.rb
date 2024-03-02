@@ -28,14 +28,14 @@ Rails.application.routes.draw do
     end
 
     resources :vendors, only: [:index, :show, :update] do
-      # resources :services, only: [:index]
       resources :reviews, only: [:index, :create]
       resources :images, only: [:index]
       resources :vendor_calendars, only: [:index]
     end
 
+    resources :vendor_calendars, on: :member, only: [:destroy]
+
     resources :services, only: [:show]
     resources :reviews, only: [:destroy, :show, :update]
   end
-  # get '*path', to: "static_pages#frontend_index"
 end

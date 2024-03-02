@@ -14,7 +14,7 @@
 #  appointment_at   :datetime
 #
 class Booking < ApplicationRecord
-    validates :status, inclusion: {in: ["priced", "scheduled", "pending", "paid", "completed"]}
+    validates :status, inclusion: {in: ["priced", "scheduled", "pending", "paid", "completed", "cancelled", "expired"]}
     belongs_to :user
     belongs_to :vendor
     belongs_to :address

@@ -4,6 +4,8 @@ const RECEIVE_VENDORS = 'vendors/RECEIVE_VENDORS'
 const RECEIVE_VENDOR = 'vendor/RECEIVE_VENDOR'
 const RECEIVE_SERVICES = 'vendor/RECEIVE_SERVICES'
 const RECEIVE_CALENDAR_DATA = 'vendor/RECEIVE_CALENDAR_DATA'
+const RECEIVE_CALENDAR_ID = 'vendor/RECEIVE_CALENDAR_ID'
+const REMOVE_CALENDAR_ID = 'vendor/REMOVE_CALENDAR_ID'
 
 const recieveVendors = vendors => ({
     type: RECEIVE_VENDORS,
@@ -20,9 +22,19 @@ const recieveServices = services => ({
     services
 })
 
-const recieveCalendarData = calendarData => ({
+const receiveCalendarData = calendarData => ({
     type: RECEIVE_CALENDAR_DATA,
     calendarData
+})
+
+export const receiveCalendarId = payload => ({
+    type: RECEIVE_CALENDAR_ID,
+    payload
+})
+
+export const removeCalendarId = id => ({
+    type: REMOVE_CALENDAR_ID,
+    id
 })
 
 export const fetchVendors = () => async dispatch => {
@@ -64,7 +76,7 @@ export const fetchCalendarData = vendorId => async dispatch => {
     if(res.ok){
         let data = await res.json();
         data.id = parseInt(vendorId, 10);
-        dispatch(recieveCalendarData(data));
+        dispatch(receiveCalendarData(data));
     }else{
         console.log(res)
     }
@@ -99,21 +111,30 @@ const vendorsReducer = (state = {}, action) => {
     let newState = { ...state }
     switch(action.type){
         case RECEIVE_VENDORS:
-            const vendors = action.vendors;
+            var vendors = action.vendors;
             return { ...newState, ...vendors};
         case RECEIVE_VENDOR:
             return { ...newState, ...action.vendor}
         case RECEIVE_SERVICES:
-            const vendorId = Object.values(action.services)[0].vendorId
+            var vendorId = Object.values(action.services)[0].vendorId
             if (!newState[vendorId]) {
                 newState[vendorId] = {};
             }
             newState[vendorId].services = action.services;
             return newState
         case RECEIVE_CALENDAR_DATA:
-            const calendarData = action.calendarData
-            const id = calendarData.id
+            var calendarData = action.calendarData
+            var id = calendarData.id
             newState[id].calendarData = calendarData
+            return newState
+        case RECEIVE_CALENDAR_ID:
+            var calendarId = action.payload.calendarId
+            var id = action.payload.id
+            newState[id].calendar = calendarId
+            return newState
+        case REMOVE_CALENDAR_ID:
+            var id = action.id
+            delete newState[id].calendar
             return newState
         default: 
             return state;

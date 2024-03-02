@@ -19,11 +19,13 @@ module CalendarDataMethods
   
     def fetch_events(client)
       calendar_id = 'primary'
+      calendar_id = "appacademy.io_li82k5jv93c6gthkmhsd09pdcg@group.calendar.google.com"
       response = client.list_events(calendar_id,
                                     max_results: 100,
                                     single_events: true,
                                     order_by: 'startTime',
-                                    time_min: Time.now.iso8601)
+                                    time_min: Time.now.iso8601,
+                                    time_max: (Time.now + 1.year).iso8601)
   
       format_events(response.items)
     end
@@ -32,9 +34,10 @@ module CalendarDataMethods
       events.map do |event|
         {
           id: event.id,
-          summary: event.summary,
-          start_time: event.start.date_time,
-          end_time: event.end.date_time
+            summary: event.summary,
+            start_time: event.start.date_time,
+            end_time: event.end.date_time,
+            location: event.location
         }
       end
     end

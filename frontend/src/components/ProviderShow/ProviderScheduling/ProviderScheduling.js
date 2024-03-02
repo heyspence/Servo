@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'
 import './ProviderScheduling.css'
 import DatePicker from 'react-datepicker';
-import { addDays, format, getDay, isSameDay, parseISO } from 'date-fns';
+import { addDays, format, getDay, isSameDay, parseISO, setHours} from 'date-fns';
 import { updateBooking } from '../../store/bookings';
 import 'react-datepicker/dist/react-datepicker.css'
 
-const ProviderScheduling = ({schedulingOpen, calendarData = [], booking, onContinue}) => {
+const ProviderScheduling = ({schedulingOpen, calendarData = false, booking, onContinue}) => {
     const dispatch = useDispatch();
     const [startDate, setStartDate] = useState(new Date());
     const [availableTimes, setAvailableTimes] = useState([]);
@@ -81,16 +81,25 @@ const ProviderScheduling = ({schedulingOpen, calendarData = [], booking, onConti
     let conditionalProps = {};
     const currentTime = new Date();
 
-    if(calendarData && calendarData.length > 0){
+    console.log(calendarData)
+
+    if(calendarData){
         conditionalProps = {
             includeDates: availableDates,
             includeTimes: availableTimes
         }
     }else{
+        let includedTimes = [
+            new Date(currentTime).setHours(8, 0, 0),
+            new Date(currentTime).setHours(12, 0, 0),
+            new Date(currentTime).setHours(16, 0, 0),
+        ]
+
         conditionalProps = {
-            minTime: new Date(currentTime).setHours(8, 0, 0),
-            maxTime: new Date(currentTime).setHours(17, 0, 0),
+            minTime: currentTime.setHours(8, 0, 0),
+            maxTime: currentTime.setHours(17, 0, 0),
             timeIntervals: 240,
+            includeTimes: includedTimes,
             // highlightDates: [addDays(currentTime, 8)],
             minDate: addDays(currentTime, 2),
             maxDate: addDays(currentTime, 365),

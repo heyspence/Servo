@@ -65,7 +65,7 @@
 .appointment-scheduling .react-datepicker__current-month {
     margin: 10px 0 15px 0;
     font-size: 16px;
-    color: var(--primary-red)
+    color: var(--primary-red);
 }
 
 .react-datepicker__aria-live {

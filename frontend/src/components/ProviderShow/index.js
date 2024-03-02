@@ -1,5 +1,4 @@
 import './ProviderShow.css'
-import { ReactComponent as StarSvg } from '../../assets/svg/reviewStar.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { useEffect, useMemo, useState } from 'react'
@@ -14,9 +13,9 @@ import { addDays, format, parseISO } from 'date-fns'
 import ProviderSummary from './ProviderSummary/ProviderSummary'
 import ProviderGallery from './ProviderGallery/ProviderGallery'
 import ProviderReviews from './ProviderReviews/ProviderReviews'
-import { formatAddress, formatPhoneNumber } from '../../util/formatting'
 import PaymentGateway from '../checkout/paymentGateway/PaymentGateway'
 import { useQueryParams } from '../../util/urlQueryParams'
+import ProviderMeta from './ProviderMeta/ProviderMeta'
 
 const ProviderShow = () => {
     // const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
@@ -62,8 +61,6 @@ const ProviderShow = () => {
     const formattedNextAvailableAppointment = format(nextAvailableAppointment, "EEE, MMM do");
     const bookingStatus = vendorBooking?.status;
     const allComponentsClosed = Object.values(openComponent).every(val => val === false);
-    const phoneNumber = vendor?.phoneNumber ? vendor.phoneNumber : '*********'
-    const formattedPhoneNumber = formatPhoneNumber(phoneNumber);
     let isMobile = window.innerWidth < 700;
     
     // useEffects
@@ -159,14 +156,6 @@ const ProviderShow = () => {
         }
     }
 
-    // const closeAllComponents = () =>{
-    //     setOpenComponent({
-    //         pricing: false,
-    //         scheduling: false,
-    //         summary: false
-    //     })
-    // }
-
     const toggleReviewModal = () => {
         setReviewModalOpen(!reviewModalOpen)
     }
@@ -179,8 +168,6 @@ const ProviderShow = () => {
         setReviewShowOpen(!reviewShowOpen)
     }
 
-
-    // Conditional element rendering
     const basePricingDiv = <div className="pricing-preview">
                                 Starting at: <br/>${vendor?.minPrice ? vendor.minPrice : "--"}
                             </div>
@@ -203,28 +190,7 @@ const ProviderShow = () => {
             <div className="provider-show-container">
                 <div className="provider-show">
                     <div className="provider-show-left">
-                        <div className="meta-info-block">
-                            <div className="provider-logo-background">
-                                <img className="provider-logo" src={vendor?.logoImageUrl} />
-                            </div>
-                            <div className="meta-info-container">
-                                <h1 className="provider-name">{vendor?.name ? vendor.name : "--"}</h1>
-                                <p className="review-tag">{eval(reviewAverage) ? reviewAverage : "-.-"}
-                                    <StarSvg className="review-star-svg"/>{reviewCount} ratings
-                                </p>
-                            </div>
-                        </div>
-                        <div className="location-details-container">
-                            <p>{formattedPhoneNumber}</p>
-                            <p style={{margin: "10px 0"}}>{vendor?.email ? vendor.email : '--'}</p>
-                            <p>{vendor?.address ? formatAddress(vendor.address) : '--'}</p>
-                        </div>
-                        {/* <div className="promotions">
-                            <h3 className="promotions-header">Promotions</h3>
-                            <div className="promotion">Coming Soon!</div>
-                            <div className="promotion">10% Off 2/Year Service</div>
-                            <div className="promotion">15% Off 4/year service</div>
-                        </div> */}
+                        <ProviderMeta vendor={vendor} reviewCount={reviewCount} reviewAverage={reviewAverage} />
                         <ProviderReviews toggleReviewModal={toggleReviewModal} id={id} />
                         <div className="disclaimer">
                             At Servo, we ensure a seamless connection with skilled professionals. 

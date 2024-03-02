@@ -12,4 +12,5 @@
 #
 class VendorCalendar < ApplicationRecord
     belongs_to :vendor
+    
 end

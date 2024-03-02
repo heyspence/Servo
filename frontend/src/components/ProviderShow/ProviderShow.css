@@ -117,33 +117,9 @@
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.025);
 }
 
-.promotions-header, .reviews-header, .gallery-header{
+.reviews-header, .gallery-header{
     font-size: 16px;
     margin: 0 15px 15px 0;
-}
-
-.promotions{
-    background-color: var(--secondary-white);
-    background-color: white;
-    width: 100%;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.025);
-}
-
-.promotion{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 32px;
-    background-color: var(--primary-green);
-    color: white;
-    border-radius: 6px;
-    margin-top: 10px;
-}
-
-.promotion:hover{
-    background-color: var(--secondary-green);
-    cursor: pointer;
 }
 
 .provider-gallery, .pricing-calculator{

@@ -30,7 +30,7 @@ class Api::AuthenticationController < ApplicationController
         if response.is_a?(Net::HTTPSuccess)
             vendor = Vendor.find(@current_user.vendor_id)
             save_tokens_for_vendor(vendor, tokens)
-            render json: { status: "Success"}
+            render json: { status: "Success", calendarId: vendor.vendor_calendar.id}
         else
             # Log the error for debugging
             Rails.logger.error("Google OAuth error: #{response.body}")
