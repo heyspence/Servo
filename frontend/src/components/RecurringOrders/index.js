@@ -24,7 +24,7 @@ const RecurringOrders = () => {
     const servicesData = {
         window_cleaning: { name: "Window Cleaning", color: "red" },
         house_cleaning: { name: "House Cleaning", color: "var(--secondary-green)" },
-        pest_control: { name: "Pest Control", color: "var(--primary-red)" },
+        pest_control: { name: "Pest Control", color: "var(--primary-blue)" },
         carpet_cleaning: { name: "Carpet Cleaning", color: "var(--primary-yellow)" },
         garbage_can_cleaning: { name: "Garbage Can Cleaning", color: "purple" },
         car_detailing: { name: "Auto Detailing", color: "orange" }

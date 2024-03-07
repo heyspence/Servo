@@ -46,7 +46,7 @@ form{
 .accept-button{
     margin: 20px 0 0 0;
     border-radius: 6px;
-    background-color: var(--primary-red);
+    background-color: var(--primary-blue);
     width: 100%;
 }
 
@@ -59,7 +59,7 @@ form{
     top: 15px;
     right: 30px;
     font-size: 22px;
-    color: var(--primary-red);
+    color: var(--primary-blue);
     font-weight: bold;
 }
 

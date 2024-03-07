@@ -56,9 +56,9 @@ const PaymentGateway = ({booking}) => {
         theme: 'flat',
 
         variables: {
-            colorPrimary: 'var(--primary-red)',
+            colorPrimary: 'var(--primary-blue)',
             colorBackground: 'var(--secondary-white)',
-            colorText: 'var(--primary-red)',
+            colorText: 'var(--primary-blue)',
             colorDanger: '#df1b41',
             fontFamily: 'Ideal Sans, system-ui, sans-serif',
             spacingUnit: '2px',

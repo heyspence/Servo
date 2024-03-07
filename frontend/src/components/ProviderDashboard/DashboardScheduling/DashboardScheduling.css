@@ -7,7 +7,7 @@
 .google-integration-tooltip::before{
     content: 'Dynamically limit availability by connecting your existing calendar';
     background-color: gray;
-    color: var(--primary-red);
+    color: var(--primary-blue);
     position: absolute;
     top: 0;
     left: 0;
@@ -28,7 +28,7 @@
 #calendar-header-container::before{
     content: 'Dynamically limit availability by connecting your existing calendar';
     background-color: gray;
-    color: var(--primary-red);
+    color: var(--primary-blue);
     position: absolute;
     top: 0;
     left: 0;

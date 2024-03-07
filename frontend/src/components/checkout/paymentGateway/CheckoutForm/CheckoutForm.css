@@ -31,12 +31,12 @@
 
 .servo-certified-icon hr{
     width: 60px;
-    border: 1px solid var(--primary-red)
+    border: 1px solid var(--primary-blue)
 }
 
 .checkout-form li{
     width: 100%;
-    border: 2px solid var(--primary-red);
+    border: 2px solid var(--primary-blue);
     height: 40px;
     border-radius: 8px;
     display: flex;
@@ -44,7 +44,7 @@
     justify-content: space-between;
     padding: 0 10px;
     box-sizing: border-box;
-    accent-color: var(--primary-red);
+    accent-color: var(--primary-blue);
     font-weight: bold;
     margin-top: 10px;
 }
@@ -60,7 +60,7 @@
 
 .checkout-form .anchor-style {
     background-color: unset;
-    color: var(--primary-red);
+    color: var(--primary-blue);
     text-decoration: underline;
     height: unset;
     width: unset;

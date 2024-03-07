@@ -5,7 +5,7 @@
     width: calc(100vw - 325px);
     min-height: 50px;
     opacity: 0.95;
-    background-color: var(--primary-red);
+    background-color: var(--primary-blue);
     color: white;
     display: none;
     justify-content: center;

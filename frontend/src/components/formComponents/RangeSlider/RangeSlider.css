@@ -11,13 +11,13 @@ input[type=range]{
 }
 
 .range-slider{
-    accent-color: var(--primary-red);
+    accent-color: var(--primary-blue);
 }
 
 
 
 .slider-value{
-    color: var(--primary-red);
+    color: var(--primary-blue);
     border-radius: 5px;
     font-size: 16px;
     margin: -15px 0 10px 0;

@@ -111,7 +111,7 @@
     display: flex;
     background-color: white;
     flex-direction: column;
-    color: var(--primary-red);
+    color: var(--primary-blue);
     width: 100%;
     padding: 15px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.025);
@@ -160,7 +160,7 @@
 
 .provider-show .provider-show-right .anchor-style{
     background-color: unset;
-    color: var(--primary-red);
+    color: var(--primary-blue);
     text-decoration: underline;
 }
 .provider-show-right .green-out{
@@ -185,7 +185,7 @@
     align-items: center;
     height: 100%;
     width: 100%;
-    color: var(--primary-red);
+    color: var(--primary-blue);
     font-size: 16px;
     border-radius: 8px;
     line-height: 20px;
@@ -201,7 +201,7 @@
 }
 
 .get-price-button, .schedule-button, .view-gallery-button, .summary-button, .add-to-cart-button{
-    background-color: var(--primary-red);
+    background-color: var(--primary-blue);
     border-radius: 8px;
     width: 120px;
     height: 40px;
@@ -212,8 +212,8 @@
 
 .secondary-continue-button{
     background-color: white;
-    color: var(--primary-red);
-    border: 2px solid var(--primary-red);
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
 }
 
 .secondary-continue-button:hover{
@@ -286,7 +286,7 @@
 }
 
 .provider-summary{
-    color: var(--primary-red);
+    color: var(--primary-blue);
 }
 
 .provider-summary button{

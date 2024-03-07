@@ -65,7 +65,7 @@
 .appointment-scheduling .react-datepicker__current-month {
     margin: 10px 0 15px 0;
     font-size: 16px;
-    color: var(--primary-red);
+    color: var(--primary-blue);
 }
 
 .react-datepicker__aria-live {
@@ -73,7 +73,7 @@
 }
 
 .react-datepicker__day-names{
-    background-color: var(--primary-red);
+    background-color: var(--primary-blue);
 }
 
 .react-datepicker__day-names .react-datepicker__day-name{
@@ -92,7 +92,7 @@
 
 .appointment-scheduling .react-datepicker__day--selected{
     color: white;
-    background-color: var(--primary-red);
+    background-color: var(--primary-blue);
     font-weight: normal;
     box-sizing: border-box;
 }
@@ -117,7 +117,7 @@
 }
 
 li.react-datepicker__time-list-item--selected{
-    background-color: var(--primary-red) !important;
+    background-color: var(--primary-blue) !important;
     color: white !important;
     font-weight: normal !important;
 }

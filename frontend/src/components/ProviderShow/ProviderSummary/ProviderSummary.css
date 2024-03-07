@@ -6,7 +6,7 @@
     height: auto;
     padding: 10px;
     position: relative;
-    color: var(--primary-red);
+    color: var(--primary-blue);
 }
 
 .summary-left, .summary-right{
@@ -50,7 +50,7 @@
 }
 
 .secondary-summary-action-button{
-    background-color: var(--primary-red);
+    background-color: var(--primary-blue);
     color:white;
     box-sizing: border-box;
 }

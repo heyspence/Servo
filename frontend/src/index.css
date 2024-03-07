@@ -54,8 +54,8 @@ table {
 
 
 :root{
-    --primary-red: rgb(35 37 78);
-    --secondary-red: rgb(53 55 113);
+    --primary-blue: rgb(35 37 78);
+    --secondary-blue: rgb(53 55 113);
     --primary-white: rgb(255 255 255);
     --secondary-white: rgb(247, 247, 247);
     --primary-black: rgb(25 25 25);
@@ -73,7 +73,7 @@ table {
     width: 78px;
     height: 34px;
     color: var(--primary-white);
-    background-color: var(--primary-red);
+    background-color: var(--primary-blue);
     text-decoration: none;
     border-radius: 8px;
     font-size: 15px;
@@ -107,28 +107,28 @@ body {
 }
 
 p{
-    color: var(--primary-red)
+    color: var(--primary-blue)
 }
 
 h1{
     font-size: 30px;
-    color: var(--primary-red);
+    color: var(--primary-blue);
 }
 
 h2{
     font-size: 20px;
     font-weight: bold;
-    color: var(--primary-red)
+    color: var(--primary-blue)
 }
 
 h3{
     font-size: 15px;
     font-weight: bold;
-    color: var(--primary-red);
+    color: var(--primary-blue);
 }
 
 label {
-    color: var(--primary-red);
+    color: var(--primary-blue);
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
 }
@@ -160,7 +160,7 @@ strong{
 
 a{
     text-decoration: underline;
-    color: var(--primary-red)
+    color: var(--primary-blue)
 }
 
 a:hover{

@@ -30,14 +30,14 @@
     height: 28px;
     margin: 10px 0 0 0;
     background-color: white;
-    border: 2px solid var(--primary-red);
-    color: var(--primary-red)
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue)
 }
 
 .edit-button:hover{
     background-color: var(--secondary-white);
-    border: 2px solid var(--primary-red);
-    color: var(--primary-red)
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue)
 }
 
 .general-info-container{
