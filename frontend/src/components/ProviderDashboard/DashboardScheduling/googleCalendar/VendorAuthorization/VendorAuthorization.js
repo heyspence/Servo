@@ -7,16 +7,16 @@ import { useDispatch } from 'react-redux';
 import { receiveCalendarId, removeCalendarId } from '../../../../store/vendor';
 
 const VendorAuthorization = ({vendor}) =>{ 
-    const [isConnected, setIsConnected] = useState(!!vendor?.calendar)
+    const [isConnected, setIsConnected] = useState(false)
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        setIsConnected(!!vendor?.calendar)
+        setIsConnected(vendor ? vendor.calendar.apiItegrated : false)
     }, [vendor])
 
     const googleLogin = useGoogleLogin({
         flow: 'auth-code',
-        scope: 'https://www.googleapis.com/auth/calendar.events',
+        scope: 'https://www.googleapis.com/auth/calendar.events.owned',
         prompt: 'consent',
         onSuccess: async (codeResponse) => {
             try {
@@ -46,7 +46,7 @@ const VendorAuthorization = ({vendor}) =>{
         })
 
         if(res.ok){
-            dispatch(removeCalendarId(vendor.id))
+            dispatch(removeCalendarId)
             setIsConnected(false)
         }else{
             let data = await res.json()

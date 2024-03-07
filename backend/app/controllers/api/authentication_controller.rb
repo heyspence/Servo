@@ -4,7 +4,7 @@ class Api::AuthenticationController < ApplicationController
     require 'byebug'
 
     protect_from_forgery except: :google_callback
-    before_action :authenticate_user, only: [:google_callback]
+    before_action :validate_vendor_permissions, only: [:google_callback]
 
     def google_callback
         # Step 1: Extract the Authorization Code
@@ -48,16 +48,7 @@ class Api::AuthenticationController < ApplicationController
           access_token: tokens["access_token"],
           refresh_token: tokens["refresh_token"],
           expires_at: Time.now + tokens["expires_in"].to_i.seconds,
+          api_integrated: true
         )
-    end
-
-    def authenticate_user
-        session_token = session[:user_token]
-        @current_user = User.find_by_session_token(session[:session_token])
-
-        unless @current_user && @current_user.user_type == 'vendor'
-            render json: { error: "User not authorized." }, status: :unauthorized
-            return
-        end
     end
 end

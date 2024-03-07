@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
     include ActionController::RequestForgeryProtection
-    # protect_from_forgery with: :exception
+    protect_from_forgery with: :exception
     rescue_from ActionController::InvalidAuthenticityToken, with: :handle_csrf_exception
     before_action :snake_case_params, :attach_authenticity_token
 
@@ -44,6 +44,14 @@ class ApplicationController < ActionController::API
     def require_vendor_logged_in
         unless current_user.vendor_id == params[:id].to_i()
             render json: { message: 'Unauthorized user'}, status: :unauthorized
+        end
+    end
+
+    def validate_vendor_permissions
+        unless current_user && current_user.user_type == 'vendor'
+            debugger
+            render json: { error: "User not authorized." }, status: :unauthorized
+            return
         end
     end
 

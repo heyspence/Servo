@@ -7,11 +7,12 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  options_snapshot :json
-#  price            :decimal(, )      not null
+#  price            :float            not null
 #  address_id       :bigint           not null
 #  vendor_id        :bigint           not null
 #  status           :string           default("priced"), not null
 #  appointment_at   :datetime
+#  duration         :integer          default(90), not null
 #
 class Booking < ApplicationRecord
     validates :status, inclusion: {in: ["priced", "scheduled", "pending", "paid", "completed", "cancelled", "expired"]}

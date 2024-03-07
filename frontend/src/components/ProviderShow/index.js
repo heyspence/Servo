@@ -19,7 +19,6 @@ import ProviderMeta from './ProviderMeta/ProviderMeta'
 
 const ProviderShow = () => {
     // const [seeMoreModalOpen, setSeeMoreModalOpen] = useState(false);
-    // Hook calls
     const { id }= useParams();
     const history = useHistory();
     const dispatch = useDispatch();
@@ -36,6 +35,8 @@ const ProviderShow = () => {
         }
     })
     const reviews = vendor?.reviews ? Object.values(vendor.reviews) : [];
+
+    // Grab existing booking (if any) that have a state of "priced", "scheduled", or "pending"
     const vendorBooking = useSelector(state => {
         return Object.values(state.bookings).find(item => {
             const parsedId = parseInt(id, 10);
@@ -45,7 +46,6 @@ const ProviderShow = () => {
         });
     });
 
-    // States
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [reviewShowOpen, setReviewShowOpen] = useState(false);
     const [paymentGatewatOpen, setPaymentGatewayOpen] = useState(false);
@@ -55,15 +55,12 @@ const ProviderShow = () => {
         summary: false
     });
 
-    // Variables
-    // const defaultService = vendor?.services ? Object.values(vendor.services)[0] : {};
     const nextAvailableAppointment = calendarData.length > 0 ? parseISO(calendarData[0].start_time) : addDays(new Date(), 2);
     const formattedNextAvailableAppointment = format(nextAvailableAppointment, "EEE, MMM do");
     const bookingStatus = vendorBooking?.status;
     const allComponentsClosed = Object.values(openComponent).every(val => val === false);
     let isMobile = window.innerWidth < 700;
     
-    // useEffects
     useEffect(() => {
         if(!userLoggedIn){
             history.push('/')
@@ -73,7 +70,8 @@ const ProviderShow = () => {
     }, [dispatch, id, history, userLoggedIn]);
 
     useEffect(()=>{
-        if(vendor?.calendar){
+        if(!vendor) return
+        if(vendor.calendar.apiIntegrated === true){
             dispatch(fetchCalendarData(id));
         }
     }, [vendor])
@@ -96,7 +94,6 @@ const ProviderShow = () => {
             reviewCount
         })
     }, [reviews])
-
 
 
     // Click handlers
@@ -145,7 +142,6 @@ const ProviderShow = () => {
         })
     }
 
-    // Helper functions
     let formattedDate = () =>{
         if(vendorBooking?.appointmentAt){
             return isMobile
@@ -222,7 +218,7 @@ const ProviderShow = () => {
                             </button>
                         </div>
                         <ProviderScheduling schedulingOpen={openComponent.scheduling} 
-                                                calendarIntegration={vendor?.calendar ? id : false}
+                                                calendarIntegration={vendor ? vendor.calendar.apiIntegrated : false}
                                                 calendarData={calendarData} 
                                                 booking={vendorBooking}
                                                 onContinue={handleSummaryClick}

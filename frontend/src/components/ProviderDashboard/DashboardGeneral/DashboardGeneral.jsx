@@ -8,17 +8,18 @@ import { formatPhoneNumber } from '../../../util/formatting';
 import { useEffect } from 'react';
 
 const DashboardGeneral = ({vendor = {}}) => {
+    // TODO: Allow user to update address
     const dispatch = useDispatch();
     const [openForm, setOpenForm] = useState(null);
     const [indexImage, setIndexImage] = useState(vendor?.imageUrl)
     const [formData, setFormData] = useState({
         name: vendor.name,
         phoneNumber: vendor.phoneNumber,
-        address: vendor.address
+        // address: vendor.address
     });
 
     useEffect(()=>{
-        setIndexImage(vendor.imageUrl)
+        setIndexImage(vendor.thumbnailImageUrl)
     },[vendor])
 
     const handleInfoSubmit = (e) => {
@@ -53,7 +54,7 @@ const DashboardGeneral = ({vendor = {}}) => {
         return (
             <form className={openForm === 'Info' ? 'info-form' : 'minimize'}>
                 <input placeholder="Name" type="text" value={formData.name} onChange={(e) => handleFormChange('name', e.target.value)}/>
-                <input placeholder="Address" type="text" value={formData.address} onChange={(e) => handleFormChange('address', e.target.value)}/>
+                {/* <input placeholder="Address" type="text" value={formData.address} onChange={(e) => handleFormChange('address', e.target.value)}/> */}
                 <input placeholder={vendor.phoneNumber} type="text" value={formData.phoneNumber}onChange={(e) => handleFormChange('phoneNumber', e.target.value)}/>
                 <button className="edit-button info-submit-button" onClick={handleInfoSubmit}>Save</button>
             </form>
@@ -77,7 +78,7 @@ const DashboardGeneral = ({vendor = {}}) => {
                 <div className="general-info-container">
                     <div className={openForm === 'Info' ? 'minimize' : ''}>
                         <h2>{vendor.name}</h2>
-                        <p>{vendor.address}</p>
+                        {/* <p>{vendor.address}</p> */}
                         <p>{formatPhoneNumber(vendor.phoneNumber)}</p>
                         <button className="edit-button" onClick={()=>setOpenForm('Info')}>Edit</button>
                     </div>

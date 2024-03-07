@@ -111,7 +111,7 @@ pricing_input_options = PricingInputOption.create([
     # SQUARE_FOOTAGE
     {option_type:"min", value:1500, pricing_input_id:2},
     {option_type:"max", value:8000, pricing_input_id:2},
-    {option_type:"step", value:250, pricing_input_id:2},
+    {option_type:"step", value:100, pricing_input_id:2},
     {option_type:"default", value:2500, pricing_input_id:2},
     # WINDOW_CLEANING_SCOPE
     {option_type:"radio", name:"Inside/Out", value:1, pricing_input_id:3, default: true},
@@ -264,4 +264,12 @@ images = Image.create([
     {url:"https://spencerheywood.com/images/servo/Pictures/lily_maid_cleaning_cropped/Lily%20Maid%20Cleaning%20Shoot-28.jpg", alt:"house cleaner dusting kitchen cabinents", vendor_id: 4,image_type: "gallery"}
 ])
 
+puts "Creating Vendor Calendars!"
+
+calendar = VendorCalendar.create([
+    {vendor_id: 1, booking_window_start_days: 2, booking_window_end_days: 30, workday_end_time: "2000-01-01 19:00:00 +00:00", drive_time_buffer_mins: 10},
+    {vendor_id: 2, booking_window_start_days: 7, booking_window_end_days: 180, workday_start_time: "2000-01-01 08:00:00 +00:00", workday_end_time: "2000-01-01 05:00:00", drive_time_buffer_mins: 5},
+    {vendor_id: 3, booking_window_start_days: 0, booking_window_end_days: 120, workday_start_time: "2000-01-01 10:00:00 +00:00", workday_end_time: "2000-01-01 20:00:00", drive_time_buffer_mins: 20},
+    {vendor_id: 4, booking_window_start_days: 3, booking_window_end_days: 60, workday_start_time: "2000-01-01 09:00:00 +00:00", workday_end_time: "2000-01-01 19:00:00", drive_time_buffer_mins: 25},
+])
 puts "Done!"

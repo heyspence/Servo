@@ -36,5 +36,7 @@ json.set! @vendor.id do
             json.extract! @booking, :user_id, :id, :price, :options_snapshot, :address_id, :vendor_id, :status, :appointment_at
         end   
     end 
-    json.calendar @calendar.id if @calendar.present?
+    json.calendar do
+        json.extract! @calendar, :id, :vendor_id, :booking_window_start_days, :booking_window_end_days, :workday_start_time, :workday_end_time, :drive_time_buffer_mins, :api_integrated
+    end
 end

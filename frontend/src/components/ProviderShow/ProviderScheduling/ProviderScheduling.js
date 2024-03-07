@@ -81,8 +81,6 @@ const ProviderScheduling = ({schedulingOpen, calendarData = false, booking, onCo
     let conditionalProps = {};
     const currentTime = new Date();
 
-    console.log(calendarData)
-
     if(calendarData){
         conditionalProps = {
             includeDates: availableDates,

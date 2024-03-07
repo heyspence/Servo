@@ -1,14 +1,15 @@
 module CalendarDataMethods
-    def fetch_calendar_data(vendor)
+    def fetch_calendar_data(vendor, start_day, end_day)
+      calendar = vendor&.vendor_calendar
       return { error: 'No calendar connected.' } unless vendor.vendor_calendar
   
       refresh_token_if_needed(vendor.vendor_calendar)
-  
+      
       access_token = vendor.vendor_calendar.access_token
       client = Google::Apis::CalendarV3::CalendarService.new
       client.authorization = access_token
-  
-      fetch_events(client)
+
+      fetch_events(client, start_day, end_day)
     end
   
     private
@@ -17,15 +18,13 @@ module CalendarDataMethods
       refresh_access_token(calendar) if calendar.expires_at <= Time.now + 5.minutes
     end
   
-    def fetch_events(client)
+    def fetch_events(client, start_day, end_day)
       calendar_id = 'primary'
-      calendar_id = "appacademy.io_li82k5jv93c6gthkmhsd09pdcg@group.calendar.google.com"
       response = client.list_events(calendar_id,
-                                    max_results: 100,
                                     single_events: true,
                                     order_by: 'startTime',
-                                    time_min: Time.now.iso8601,
-                                    time_max: (Time.now + 1.year).iso8601)
+                                    time_min: start_day,
+                                    time_max: end_day)
   
       format_events(response.items)
     end
