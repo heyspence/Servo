@@ -71,7 +71,7 @@
 
 .checkout-form .anchor-style:hover {
     background-color: unset;
-    color: var(--secondary-red);
+    color: var(--secondary-blue);
     text-decoration: none;
 }
 

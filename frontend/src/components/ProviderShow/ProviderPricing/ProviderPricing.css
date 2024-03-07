@@ -51,7 +51,7 @@ form{
 }
 
 .accept-button:hover{
-    background-color: var(--secondary-red);
+    background-color: var(--secondary-blue);
 }
 
 .subtotal{

@@ -85,7 +85,7 @@ table {
 }
 
 .button:hover, button:hover{
-    background-color: var(--secondary-red);
+    background-color: var(--secondary-blue);
     cursor: pointer;
 }
 
@@ -164,6 +164,6 @@ a{
 }
 
 a:hover{
-    color: var(--secondary-red);
+    color: var(--secondary-blue);
     cursor: pointer;
 }

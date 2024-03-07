@@ -45,7 +45,7 @@
 }
 
 .main-sign-up-button:hover {
-  color: var(--secondary-red);
+  color: var(--secondary-blue);
   background-color: var(--primary-white);
 }
 

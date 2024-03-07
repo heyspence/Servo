@@ -170,7 +170,7 @@
 
 .provider-show .provider-show-right .anchor-style:hover{
     background-color: unset;
-    color: var(--secondary-red);
+    color: var(--secondary-blue);
     cursor: pointer;
 }
 
@@ -218,8 +218,8 @@
 
 .secondary-continue-button:hover{
     background-color: white;
-    border-color: var(--secondary-red);
-    color: var(--secondary-red)
+    border-color: var(--secondary-blue);
+    color: var(--secondary-blue)
 }
 
 .summary-button{
@@ -232,7 +232,7 @@
 }
 
 .get-price-button:hover, .schedule-button:hover{
-    background-color: var(--secondary-red);
+    background-color: var(--secondary-blue);
 }
 
 .disclaimer{
