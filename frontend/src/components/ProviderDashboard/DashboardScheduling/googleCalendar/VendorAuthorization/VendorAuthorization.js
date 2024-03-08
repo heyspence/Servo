@@ -11,7 +11,7 @@ const VendorAuthorization = ({vendor}) =>{
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        setIsConnected(vendor ? vendor.calendar.apiItegrated : false)
+        setIsConnected(vendor ? vendor.calendar.apiIntegrated : false)
     }, [vendor])
 
     const googleLogin = useGoogleLogin({
