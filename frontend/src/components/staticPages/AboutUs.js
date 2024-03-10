@@ -4,28 +4,39 @@ const AboutUs = () => {
     return(
         <div className="about-us-container">
             <div className="about-us">
-                <h1>About Us - Servo</h1>
-                <section>
-                <h2>Our Beginning</h2>
-                <p>In 2016, Servo was born out of a vision to simplify the booking of home services... it just didn't have a name yet. Starting with an idea to bring pricing, booking, and payment for services like house cleaning and pest control online, we've spent years refining our approach to meet your needs.</p>
-            </section>
+                <h1>About Us</h1>
             <section>
-                <h2>Building Our Foundation</h2>
-                <p>Our journey took a significant leap forward between 2019 and 2020 when our prototype was developed on Shopify. Recognizing the need for advanced technical skills, our founder attended App Academy, excelling as one of the top performers. This experience was pivotal in rebuilding Servo on dedicated hardware, laying the groundwork for a robust and reliable platform.</p>
+                <h2>Our Impact</h2>
+                <p>Our mission is to minimize humanity's expenditure on menial tasks.</p>
+                <br/>
+            <p>As the world searches for meaning, we can all agree that it is not found doing mindless, repetitive tasks. 
+                At the end of the day, Servo is a group of people putting their skills and interests to use by freeing up time for humanity to do meaningful work. 
+                There is an amount of friction involved in caring for our homes. This friction is costly and unneccesary. 
+                The technologies that can minimize this friction already exist, we just put the peices together in order to solve this long overdue problem.
+            </p>
+            <br/>
+            <p>More specifically, Servo is streamlining quoting, scheduling, and billing tasks for home services. 
+               Success for us not only means improving the service booking experience, it means overal lower costs for both local service providers and their customers.</p>
             </section>
             <section>
                 <h2>Innovation at Our Core</h2>
-                <p>Servo stands at the forefront of innovation in the home service industry. We introduced geo-scheduling and online booking capabilities for service providers, transforming the way services are scheduled and managed. Our platform is a testament to our commitment to improving service delivery and customer satisfaction.</p>
+                <p>While our mission begins with the application of existing technologies, Servo moves to the forefront of innovation in the home service industry with never before seen features. 
+                    We are developing location-based scheduling paired with dynamic pricing, transforming the way services are scheduled and managed. 
+                </p>
+                <br/>
+                <p>Servo's sights are set on expanding support to include carpet cleaning, auto detailing, mobile lube, yard maintenence, pool maintence, and much more. 
+                    Our vision for the future is filled with possibilities, driven by innovation and community support.</p>
             </section>
             <section>
-                <h2>Our Commitment to Local Communities</h2>
-                <p>At Servo, we believe in supporting local businesses and keeping the majority of revenue within our community. Our partnerships with locally owned businesses ensure that we provide not only exceptional service but also contribute to the local economy's growth and sustainability.</p>
+                <h2>Our History</h2>
+                <p>In 2016, Servo's vision of simplifing the home service industry was born... it just didn't have a name yet. Starting with the idea of streamlining overlapping costs for service businesses like house cleaning and pest control, we've spent years refining our approach.</p>
+                <br/>
+                <p>Our journey took a significant leap forward between 2021 and 2022 when our prototype was developed on Shopify. 
+                    As the need for more advanced technologies grew, all aspects of Servo were brought in-house and developed again from stratch, this time with advanced features in mind. 
+                    Reconstruction of Servo started in late 2023 and is poised to launch again in 2024.</p>
             </section>
-            <section>
-                <h2>Looking Ahead</h2>
-                <p>As we continue to expand our services and features, Servo remains dedicated to offering a seamless, user-friendly platform for all your home service needs. Our vision for the future is filled with possibilities, driven by innovation, community support, and a relentless pursuit of excellence.</p>
-            </section>
-            <p>Thank you for choosing Servo. Together, we're not just booking services; we're building a stronger, more connected community.</p>
+            <h2>Thank You!</h2>
+            <p>Thank you for choosing Servo. Together, we're not just booking services; we're building a meaningful future. The purchases you make on Servo are the lifeblood of what moves this mission forward.</p>
             </div>
         </div>
     )
