@@ -7,16 +7,16 @@ const AboutUs = () => {
                 <h1>About Us</h1>
             <section>
                 <h2>Our Impact</h2>
-                <p>Our mission is to minimize humanity's expenditure on menial tasks.</p>
+                <p>Our mission is to minimize humanity's expenditure on quoting, scheduling, and billing tasks for home services.</p>
+            <br/>
+                <p> 
+                Success for us not only means improving the service booking experience, it means overal lower costs for both local service providers and their customers.</p>
                 <br/>
-            <p>As the world searches for meaning, we can all agree that it is not found doing mindless, repetitive tasks. 
-                At the end of the day, Servo is a group of people putting their skills and interests to use by freeing up time for humanity to do meaningful work. 
+            <p>
+                Servo is a group of people putting their skills and interests to use by freeing up time for humanity to do meaningful work. 
                 There is an amount of friction involved in caring for our homes. This friction is costly and unneccesary. 
                 The technologies that can minimize this friction already exist, we just put the peices together in order to solve this long overdue problem.
             </p>
-            <br/>
-            <p>More specifically, Servo is streamlining quoting, scheduling, and billing tasks for home services. 
-               Success for us not only means improving the service booking experience, it means overal lower costs for both local service providers and their customers.</p>
             </section>
             <section>
                 <h2>Innovation at Our Core</h2>

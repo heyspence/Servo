@@ -42,12 +42,12 @@ const SplashPage = () => {
                         top: '215px'
                     }}
                 >
-                    <h1 style={{whiteSpace:'pre', textAlign: 'right', fontWeight: 'bold', fontSize: '35px'}}>
-                        Book All Your Services{'\n'}
+                    <h1 style={{whiteSpace:'pre', textAlign: 'right', fontWeight: 'bold', fontSize: '39px'}}>
+                        Your Time Matters{'\n'}
                         <span style={{
                             color: 'var(--primary-white)'
                         }}>
-                            Online.
+                            Book Online
                         </span>
                     </h1>
                 </div>
@@ -72,9 +72,9 @@ const SplashPage = () => {
             <div className="splash-page-section">
                 <img className="splash-page-image" src="https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-43.jpg" />
                 <div className="section-text">
-                    <h2>Coming Soon: Service Reminders</h2>
-                    <h3 style={{fontWeight:'normal'}}>Set it and forget it by putting your favorite services on auto pilot.</h3>
-                    <p>New Servo features allow you to opt in for periodic reminders for services you utilize on a recurring basis. Choose your prefered freqency and enjoy 3-click booking on all your future bookings with that service provider.</p>
+                    <h2>Calling Service Providers and Entrepreneurs!</h2>
+                    <h3 style={{fontWeight:'normal', lineHeight:'30px'}}>Do you run a service-oriented business in St. George? Grow your business with Servo.</h3>
+                    <p style={{lineHeight:'25px', 'textUnderlineOffset': "8px"}}>Our online booking platform is dedicated to home services, offering your clients a seamless 3-click booking experience. Be amung the first and <a href='/contact-us'>get in touch</a>.</p>
                 </div>
             </div>
             <div className="splash-page-section logo-section">
