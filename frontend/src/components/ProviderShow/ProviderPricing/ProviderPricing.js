@@ -14,7 +14,7 @@ const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
     const basePrice = vendor?.minPrice
     const formula = vendor?.pricingFormula ? vendor.pricingFormula : "x";
     const inputs = vendor?.pricingInputs
-    const [inputValues, setInputValues] = useState({});
+    const [inputValues, setInputValues] = useState({}); // Use this for saving user_inputs on the backend as part of the handleContinueClick action
     // const [checkboxValues, setCheckboxValues] = useState({});
     const [calculatedPrice, setCalculatedPrice] = useState(basePrice);
     const inputFloats = Object.values(inputValues).map(val => parseFloat(val));
