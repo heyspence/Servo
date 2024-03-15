@@ -41,7 +41,7 @@ const VendorAuthorization = ({vendor}) =>{
     });
 
     const deleteCalendar = async() => {
-        const res = await csrfFetch(`/api/vendor_calendars/${vendor.calendar}`,{
+        const res = await csrfFetch(`/api/vendor_calendars/${vendor.calendar.id}`,{
             method: "DELETE"
         })
 
