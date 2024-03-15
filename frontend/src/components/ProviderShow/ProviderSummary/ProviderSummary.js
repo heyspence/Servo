@@ -4,20 +4,6 @@ import { useEffect, useState } from 'react';
 
 const ProviderSummary = ({summaryOpen, booking, vendor, onCheckout, serviceCharge}) => {
     const options = booking?.optionsSnapshot ? JSON.parse(booking.optionsSnapshot) : {}
-    const serviceInputs = vendor?.pricingInputs
-    const [parsedOptions, setParsedOptions] = useState({})
-
-    useEffect(()=>{
-        let newParsedOptions = {}
-        if(!!options && !!serviceInputs){
-            for(let option in options){
-                let key = serviceInputs[option]?.name
-                let value = options[option]
-                newParsedOptions[key] = value
-            }
-        }
-        setParsedOptions(newParsedOptions)
-    },[vendor, booking])
 
     const categoryMap = {
         window_cleaning: "Window Cleaning",
@@ -47,7 +33,7 @@ const ProviderSummary = ({summaryOpen, booking, vendor, onCheckout, serviceCharg
                         <p>Service</p>
                         <p>{categoryMap[vendor?.category]}</p>
                     </div>
-                    {parsedOptions && Object.entries(parsedOptions).map((entry, index) => (
+                    {options && Object.entries(options).map((entry, index) => (
                         <div className="pricing-summary-item-container" key={index}>
                             <p>{entry[0]}</p>
                             <p>{entry[1]}</p>

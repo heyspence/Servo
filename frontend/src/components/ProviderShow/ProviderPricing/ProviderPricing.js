@@ -14,6 +14,7 @@ const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
     const basePrice = vendor?.minPrice
     const formula = vendor?.pricingFormula ? vendor.pricingFormula : "x";
     const inputs = vendor?.pricingInputs
+    const [parsedInputValues, setParsedInputValues] = useState({})
     const [inputValues, setInputValues] = useState({}); // Use this for saving user_inputs on the backend as part of the handleContinueClick action
     // const [checkboxValues, setCheckboxValues] = useState({});
     const [calculatedPrice, setCalculatedPrice] = useState(basePrice);
@@ -45,7 +46,7 @@ const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
         range: RangeSlider
     }
 
-    // Used to calculate the price difference for additional items like screen cleaning
+    // Used to calculate the price difference for add-on items like screen cleaning
     // useEffect(()=> {
     //     if(inputs){
     //         const newCheckboxValues = {}
@@ -58,18 +59,28 @@ const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
     //     }
     // },[inputs])
 
+    const handleInputChange = (input, parsedOption) => {
+        if (input && input.id && parsedOption && parsedOption.label !== undefined && parsedOption.name !== undefined) {
+            // Keep track of the user selected input value to use as prefill data in the future
+            setInputValues(prevValues => ({
+                ...prevValues,
+                [input.id]: parsedOption.value
+            }))
+
+            // Save a parsed version to display back to the user at summary
+            setParsedInputValues(prevValues => ({
+                ...prevValues, 
+                [parsedOption.label]: parsedOption.name
+            }))
+        }
+    }
+
     const renderInput = (input) => {
         const InputComponent = inputTypeKey[input.inputType]
 
         if(!InputComponent){
             return <p>Unknown InputType</p>
         }else{
-            const handleInputChange = (input, value) => {
-                setInputValues(prevValues => ({
-                    ...prevValues,
-                    [input.id]: value
-                }))
-            }
             return <InputComponent 
                 name={input?.name}
                 options={input?.pricingInputOptions} 
@@ -83,7 +94,7 @@ const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
         let bookingData = {
             userId: currentUserId,
             addressId: 1,
-            optionsSnapshot: JSON.stringify(inputValues),
+            optionsSnapshot: JSON.stringify(parsedInputValues),
             price: calculatedPrice,
             vendorId: vendor.id,
             status: "priced"
