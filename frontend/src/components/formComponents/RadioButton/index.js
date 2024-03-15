@@ -6,8 +6,9 @@ const RadioButton = ({name, options, onChange}) => {
     const [selectedValue, setSelectedValue] = useState('');
 
     const handleChange = (e) => {
-        setSelectedValue(e.target.value)
-        onChange(e.target.value)
+        const option = Object.values(options).find(({id}) => id === Number(e.target.id))
+        setSelectedValue(option.value.toString())
+        onChange({label: name, value: option.value, name: option.name})
     }
 
     useEffect(() => {
@@ -15,7 +16,7 @@ const RadioButton = ({name, options, onChange}) => {
             const defaultOption = selectedValue === '' ? Object.values(options).find(option => option.default === true) : null;
             if (defaultOption) {
                 setSelectedValue(defaultOption.value.toString());
-                onChange(defaultOption.value);
+                onChange({label: name, value: defaultOption.value, name: defaultOption.name});
             }
         }
     }, [options, onChange])
@@ -27,10 +28,10 @@ const RadioButton = ({name, options, onChange}) => {
                 return(
                     <li key={index}>
                         <input type="radio" 
-                        id={`radio-${index}`} 
+                        id={option.id} 
                         name={name} 
                         value={option.value} 
-                        onChange={handleChange}
+                        onChange={e => handleChange(e)}
                         checked={selectedValue === option.value.toString()}
                     />
                         <label htmlFor={`radio-${index}`}>{option.name}</label><br/>

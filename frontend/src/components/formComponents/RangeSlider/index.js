@@ -12,14 +12,16 @@ const RangeSlider = ({name, options, onChange}) => {
     const sliderEl = useRef(null);
 
     useEffect(()=>{
-        onChange(defaultValue ? defaultValue : '')
+        if(defaultValue){
+            onChange({label: name, value: defaultValue, name: defaultValue})
+        }
         let percent = (defaultValue - min) / (max - min) * 100
         outputEl.current.style.left = `calc((${percent}% - 30px) + 30px)`
     },[defaultValue])
 
     const onSliderChange = (val) => {
-        setSliderValue(val)
-        onChange(val)
+        setSliderValue(val.value)
+        onChange({label: name, value: val.value, name: val.value})
         // let percent = (val - min) / (max - min)
         // let currentSliderWidth = sliderEl.current.offsetWidth
         // let currentValueWidth = outputEl.current.offsetWidth
@@ -40,7 +42,7 @@ const RangeSlider = ({name, options, onChange}) => {
                     value={sliderValue} 
                     ref={sliderEl}
                     onChange={(e) => {
-                        onSliderChange(e.target.value)
+                        onSliderChange(e.target)
                     }}>
             </input>
         </div>
