@@ -85,7 +85,7 @@ const DashboardGeneral = ({vendor = {}}) => {
                     {infoForm()}
                 </div>
                 <div className="general-info-container">
-                    <VendorIndexItem id={vendor.id} name={vendor.name} imageUrl={indexImage}/>
+                    <VendorIndexItem id={vendor.id} name={vendor.name} imageUrl={indexImage} logoImageUrl={vendor?.logoImageUrl}/>
                     {indexImageEditTools()}
                 </div>
             </div>

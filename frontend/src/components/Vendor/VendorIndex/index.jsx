@@ -34,6 +34,7 @@ const VendorIndex = ({category}) => {
                             return <VendorIndexItem 
                                 name={vendor.name} 
                                 imageUrl={vendor.thumbnailImageUrl} 
+                                logoImageUrl={vendor.logoImageUrl}
                                 id={vendor.id} 
                                 key={vendor.id} />
                         }))}
