@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 import "./UserAccount.css";
 import { useDispatch, useSelector } from "react-redux";
 import { isLoggedIn } from "../store/session";
@@ -15,10 +15,10 @@ const UserAccount = () => {
   const history = useHistory();
   const [accountFormValues, setAccountFormValues] = useState({ ...user });
 
-  if (!user) history.push("/");
+  if (Object.values(user).length === 0) history.push("/");
 
   const handleUpdateUser = () => {
-    const { firstName, lastName, email, phoneNumber } = accountFormValues;
+    const { id, firstName, lastName, email, phoneNumber } = accountFormValues;
     const updatedUserData = {
       first_name: firstName,
       last_name: lastName,
@@ -26,7 +26,7 @@ const UserAccount = () => {
       phone_number: phoneNumber,
     }; // temp since snake_case_params isnt working on backend
     // debugger;
-    dispatch(updateUser(updatedUserData, accountFormValues.id));
+    dispatch(updateUser(updatedUserData, id));
   };
 
   return (

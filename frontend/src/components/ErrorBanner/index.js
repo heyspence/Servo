@@ -6,35 +6,40 @@ import { removeErrors } from '../store/errors';
 import { useLocation } from 'react-router-dom';
 
 const ErrorBanner = () => {
-    const errors = useSelector(state => state.errors);
-    const [animate, setAnimate] = useState(false);
-    const dispatch = useDispatch();
-    const location = useLocation();
+  const errors = useSelector((state) => state.errors);
+  const [animate, setAnimate] = useState(false);
+  const dispatch = useDispatch();
+  const location = useLocation();
 
-    useEffect(() => {
-        if (errors && errors.length > 0) {
-            setAnimate(false);
-            setTimeout(() => setAnimate(true), 50);
-        }
-    }, [errors]);
+  useEffect(() => {
+    if (errors && errors.length > 0) {
+      setAnimate(false);
+      setTimeout(() => setAnimate(true), 50);
+    }
+  }, [errors]);
 
-    // useEffect(() => { // comment out for now bc we want errors to render on // account
-    //     if(!location.pathname.includes('/vendors')){
-    //         dispatch(removeErrors());
-    //     }
-    // }, [location])
+  // useEffect(() => { // comment out for now bc we want errors to render on /account or add || (!location.pathname.includes('/account'))
+  //     if(!location.pathname.includes('/vendors')){
+  //         dispatch(removeErrors());
+  //     }
+  // }, [location])
 
-    const onAnimationEnd = () => {
-        dispatch(removeErrors());
-    };
+  const onAnimationEnd = () => {
+    dispatch(removeErrors());
+  };
 
-    return errors && errors.length && location.pathname.includes('/vendors') > 0 ? (
-        <div className={`error-banner ${animate ? 'slide-out-animation' : ''}`} onAnimationEnd={onAnimationEnd}>
-            {errors.map((error, index) => (
-                <p key={index}>{error}</p>
-            ))}
-        </div>
-    ) : null;
+  return errors &&
+    errors.length &&
+    location.pathname.includes("/vendors") > 0 ? (
+    <div
+      className={`error-banner ${animate ? "slide-out-animation" : ""}`}
+      onAnimationEnd={onAnimationEnd}
+    >
+      {errors.map((error, index) => (
+        <p key={index}>{error}</p>
+      ))}
+    </div>
+  ) : null;
 };
 
 export default ErrorBanner

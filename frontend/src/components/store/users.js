@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { receiveErrors } from "./errors";
 
 export const RECEIVE_USER = "users/RECEIVE_USER";
 
@@ -7,20 +8,37 @@ export const receiveUser = (user) => ({
   user,
 });
 
-export const updateUser = (userData, userId) => async (dispatch) => {
-  console.log("🦋🦋🦋 ~ userData:", userData);
-  // debugger;
-  const res = await csrfFetch(`/api/users/${userId}`, {
-    method: "PATCH",
-    body: JSON.stringify(userData),
-  });
+// export const updateUser = (userData, userId) => async (dispatch) => {
+//   console.log("🦋🦋🦋 ~ userData:", userData);
+//   // debugger;
+//   const res = await csrfFetch(`/api/users/${userId}`, {
+//     method: "PATCH",
+//     body: JSON.stringify(userData),
+//   });
+//   debugger;
 
-  const updatedUser = await res.json();
-  console.log('🦋🦋🦋 ~ res:', res);
-  console.log('🦋🦋🦋 ~ updatedUser:', updatedUser);
+//   console.log('🦋🦋🦋 ~ res:', res);
+//   const updatedUser = await res.json();
+//   console.log('🦋🦋🦋 ~ updatedUser:', updatedUser);
+//   dispatch(receiveUser(updatedUser));
+//   return res;
+// };
+
+export const updateUser = (userData, userId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/users/${userId}`, {
+    headers: { "Content-Type": "application/json" },
+    method: "PATCH",
+    body: JSON.stringify({ user: userData }),
+  });
   debugger
-  dispatch(receiveUser(updatedUser));
-  return res;
+  if (res.ok) {
+    let data = await res.json();
+    // dispatch({ type: RECEIVE_USER, user: data.user });
+    RECEIVE_USER(data.user);
+  } else {
+    let data = await res.json();
+    dispatch(receiveErrors(data.errors));
+  }
 };
 
 const usersReducer = (state = {}, action) => {
