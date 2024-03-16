@@ -18,6 +18,8 @@ const LogoSvg = (onClick) => {
                 return 'blue'
             case('about-us'):
                 return 'blue';
+            case('vendor-onboarding'):
+                return 'blue'
             default:
                 return 'white'
         }

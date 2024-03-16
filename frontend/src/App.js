@@ -17,6 +17,7 @@ import PrivacyPolicy from "./components/staticPages/PrivacyPolicy";
 import TermsOfService from "./components/staticPages/TermsOfService";
 import AboutUs from "./components/staticPages/AboutUs";
 import ContactUs from "./components/staticPages/ContactUs";
+import VendorOnboarding from "./components/staticPages/VendorOnboarding";
 
 function App({ store }) {
   return (
@@ -38,6 +39,7 @@ function App({ store }) {
               <Route exact path="/terms-of-service" component={TermsOfService} />
               <Route exact path="/about-us" component={AboutUs} />
               <Route exact path="/contact-us" component={ContactUs} />
+              <Route exact path="/vendor-onboarding" component={VendorOnboarding} />
               <Route path="/" component={SplashPage} />
             </Switch>
             <Footer />
