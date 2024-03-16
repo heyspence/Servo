@@ -65,6 +65,31 @@
 
 /* =========================== */
 
+/* ==========ST PATRICKS DAY THEME -- LOGO================= */
+
+.main-logo #path68{
+    fill: #42b546 !important;
+}
+
+.main-logo #path72{
+    fill: var(--primary-green) !important;
+}
+
+.main-logo #path76{
+    fill: #42b546 !important;
+}
+
+.main-logo #path80{
+    fill: var(--primary-green) !important;
+}
+
+.main-logo #path84{
+    fill: #42b546 !important;
+}
+
+
+/* =========================== */
+
 .hamburger-menu{
     fill: var(--primary-gray);
     color: var(--primary-gray);
