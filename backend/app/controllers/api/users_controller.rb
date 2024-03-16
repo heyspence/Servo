@@ -30,7 +30,7 @@ class Api::UsersController < ApplicationController
         if @user
             if @user.update(user_params)
                 # render :show
-                render json: {user: user}
+                render json: {user: @user}, status: :ok
             else
                 render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
             end
