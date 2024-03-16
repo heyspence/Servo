@@ -18,10 +18,15 @@ const UserAccount = () => {
   if (!user) history.push("/");
 
   const handleUpdateUser = () => {
-    const { id, firstName, lastName, email, phoneNumber } = accountFormValues;
-    const updatedUserData = { id, first_name: firstName, last_name: lastName, email, phone_number: phoneNumber }; // temp since snake_case_params isnt working on backend
+    const { firstName, lastName, email, phoneNumber } = accountFormValues;
+    const updatedUserData = {
+      first_name: firstName,
+      last_name: lastName,
+      email,
+      phone_number: phoneNumber,
+    }; // temp since snake_case_params isnt working on backend
     // debugger;
-    dispatch(updateUser(updatedUserData));
+    dispatch(updateUser(updatedUserData, accountFormValues.id));
   };
 
   return (

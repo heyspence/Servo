@@ -7,10 +7,10 @@ export const receiveUser = (user) => ({
   user,
 });
 
-export const updateUser = (userData) => async (dispatch) => {
+export const updateUser = (userData, userId) => async (dispatch) => {
   console.log("🦋🦋🦋 ~ userData:", userData);
   // debugger;
-  const res = await csrfFetch(`/api/users/${userData.id}`, {
+  const res = await csrfFetch(`/api/users/${userId}`, {
     method: "PATCH",
     body: JSON.stringify(userData),
   });

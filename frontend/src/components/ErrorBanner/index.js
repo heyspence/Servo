@@ -18,11 +18,11 @@ const ErrorBanner = () => {
         }
     }, [errors]);
 
-    useEffect(() => {
-        if(!location.pathname.includes('/vendors')){
-            dispatch(removeErrors());
-        }
-    }, [location])
+    // useEffect(() => { // comment out for now bc we want errors to render on // account
+    //     if(!location.pathname.includes('/vendors')){
+    //         dispatch(removeErrors());
+    //     }
+    // }, [location])
 
     const onAnimationEnd = () => {
         dispatch(removeErrors());
