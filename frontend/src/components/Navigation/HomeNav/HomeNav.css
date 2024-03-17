@@ -25,7 +25,6 @@
 
 .user-address{
     font-size: 15px;
-    padding: 0 40px;
     color: var(--primary-gray);
 }
 
@@ -119,28 +118,21 @@
     margin-left: 5%;
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
 }
-
-/* .home-nav-left img{
-    max-width: 35px;
-    height: auto;
-} */
 
 .home-nav-right{
-    /* margin-right: 7%; */
+    margin-right: 5%;
     display: flex;
     align-items: center;
-}
-
-.home-nav-right svg{
-    color: var(--primary-gray);
-    flex-shrink: 0
 }
 
 @media screen and (max-width: 599px) {
     .home-nav h1{
       display: none;
+    }
+
+    .home-nav-right{
+        margin-right: 0;
     }
 
     .user-address{
