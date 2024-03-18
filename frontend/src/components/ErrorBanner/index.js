@@ -1,9 +1,9 @@
-import { useEffect } from 'react'
-import './ErrorBanner.css'
-import { useDispatch, useSelector } from "react-redux"
-import { useState } from 'react';
-import { removeErrors } from '../store/errors';
-import { useLocation } from 'react-router-dom';
+import { useEffect } from "react";
+import "./ErrorBanner.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { removeErrors } from "../store/errors";
+import { useLocation } from "react-router-dom";
 
 const ErrorBanner = () => {
   const errors = useSelector((state) => state.errors);
@@ -18,11 +18,11 @@ const ErrorBanner = () => {
     }
   }, [errors]);
 
-  // useEffect(() => { // comment out for now bc we want errors to render on /account or add || (!location.pathname.includes('/account'))
-  //     if(!location.pathname.includes('/vendors')){
-  //         dispatch(removeErrors());
-  //     }
-  // }, [location])
+  useEffect(() => {
+    if (!location.pathname.includes("/vendors")) {
+      dispatch(removeErrors());
+    }
+  }, [location]);
 
   const onAnimationEnd = () => {
     dispatch(removeErrors());
@@ -42,4 +42,4 @@ const ErrorBanner = () => {
   ) : null;
 };
 
-export default ErrorBanner
+export default ErrorBanner;

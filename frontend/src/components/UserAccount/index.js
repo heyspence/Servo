@@ -1,32 +1,25 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./UserAccount.css";
-import { useDispatch, useSelector } from "react-redux";
-import { isLoggedIn } from "../store/session";
-import { useState } from "react";
 import { updateUser } from "../store/users";
+import Errors from "../Session/Errors";
+import { removeErrors } from "../store/errors";
 
 const UserAccount = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => {
-    return {
-      user: state.session?.user ? state.session.user : {},
-    };
-  });
   const history = useHistory();
+
+  const user = useSelector((state) => state.session?.user);
+  if (!user) history.push("/");
   const [accountFormValues, setAccountFormValues] = useState({ ...user });
 
-  if (Object.values(user).length === 0) history.push("/");
-
-  const handleUpdateUser = () => {
+  const handleUpdateUser = (e) => {
+    e.preventDefault();
+    dispatch(removeErrors())
     const { id, firstName, lastName, email, phoneNumber } = accountFormValues;
-    const updatedUserData = {
-      first_name: firstName,
-      last_name: lastName,
-      email,
-      phone_number: phoneNumber,
-    }; // temp since snake_case_params isnt working on backend
-    // debugger;
-    dispatch(updateUser(updatedUserData, id));
+    const updatedUserData = { id, firstName, lastName, email, phoneNumber };
+    dispatch(updateUser(updatedUserData));
   };
 
   return (
@@ -74,6 +67,7 @@ const UserAccount = () => {
               }));
             }}
           />
+          <Errors />
           <button type="submit">Save</button>
         </form>
       </div>

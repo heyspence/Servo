@@ -8,35 +8,18 @@ export const receiveUser = (user) => ({
   user,
 });
 
-// export const updateUser = (userData, userId) => async (dispatch) => {
-//   console.log("🦋🦋🦋 ~ userData:", userData);
-//   // debugger;
-//   const res = await csrfFetch(`/api/users/${userId}`, {
-//     method: "PATCH",
-//     body: JSON.stringify(userData),
-//   });
-//   debugger;
-
-//   console.log('🦋🦋🦋 ~ res:', res);
-//   const updatedUser = await res.json();
-//   console.log('🦋🦋🦋 ~ updatedUser:', updatedUser);
-//   dispatch(receiveUser(updatedUser));
-//   return res;
-// };
-
-export const updateUser = (userData, userId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/users/${userId}`, {
+export const updateUser = (userData) => async (dispatch) => {
+  const res = await csrfFetch(`/api/users/${userData.id}`, {
     headers: { "Content-Type": "application/json" },
     method: "PATCH",
     body: JSON.stringify({ user: userData }),
   });
-  debugger
+
+  let data = await res.json();
+
   if (res.ok) {
-    let data = await res.json();
-    // dispatch({ type: RECEIVE_USER, user: data.user });
-    RECEIVE_USER(data.user);
+    receiveUser(data.user);
   } else {
-    let data = await res.json();
     dispatch(receiveErrors(data.errors));
   }
 };

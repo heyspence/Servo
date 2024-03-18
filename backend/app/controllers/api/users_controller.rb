@@ -24,16 +24,16 @@ class Api::UsersController < ApplicationController
         end
     end
 
-    # Note: update method created but not tested
     def update
         @user = User.find(params[:id])
-        # debugger
-        if @user && @user.update(user_params)
-            # render :show
-            render json: {user: @user}, status: :ok
+        if @user
+            if @user.update(user_params)
+                render :show
+            else
+                render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+            end
         else
-            # debugger
-            render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+            render json: { errors: "User not found" }, status: :not_found
         end
     end
 
