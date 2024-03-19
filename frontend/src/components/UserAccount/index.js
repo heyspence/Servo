@@ -9,6 +9,7 @@ import { removeErrors } from "../store/errors";
 const UserAccount = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [newPassword, setNewPassword] = useState("");
 
   const user = useSelector((state) => state.session?.user);
   if (!user) history.push("/");
@@ -18,7 +19,7 @@ const UserAccount = () => {
     e.preventDefault();
     dispatch(removeErrors())
     const { id, firstName, lastName, email, phoneNumber } = accountFormValues;
-    const updatedUserData = { id, firstName, lastName, email, phoneNumber };
+    const updatedUserData = { id, firstName, lastName, email, phoneNumber, password: newPassword };
     dispatch(updateUser(updatedUserData));
   };
 
@@ -66,6 +67,12 @@ const UserAccount = () => {
                 email: e.target.value,
               }));
             }}
+          />
+          <input
+            type="password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            placeholder="New Password"
           />
           <Errors />
           <button type="submit">Save</button>
