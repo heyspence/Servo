@@ -28,9 +28,6 @@ With  `Servo` users can:
     * Write public reviews
     * View real-time vendor review average
     * View individual reviews w/ authors + score
-* Hold a cart
-    * Add/remove services
-    * Persist between sessions
 * Book services
     * Order histoy
     * Persist between sessions
