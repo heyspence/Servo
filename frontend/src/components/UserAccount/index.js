@@ -9,7 +9,9 @@ import { removeErrors } from "../store/errors";
 const UserAccount = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [newPassword, setNewPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("fakePassword");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("fakePassword");
+  const [error, setError] = useState("");
 
   const user = useSelector((state) => state.session?.user);
   if (!user) history.push("/");
@@ -17,10 +19,25 @@ const UserAccount = () => {
 
   const handleUpdateUser = (e) => {
     e.preventDefault();
-    dispatch(removeErrors())
-    const { id, firstName, lastName, email, phoneNumber } = accountFormValues;
-    const updatedUserData = { id, firstName, lastName, email, phoneNumber, password: newPassword };
-    dispatch(updateUser(updatedUserData));
+    setError("");
+    setNewPassword("");
+    setConfirmNewPassword("");
+
+    if (newPassword === confirmNewPassword) {
+      dispatch(removeErrors());
+      const { id, firstName, lastName, email, phoneNumber } = accountFormValues;
+      const updatedUserData = {
+        id,
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        password: newPassword,
+      };
+      dispatch(updateUser(updatedUserData));
+    } else {
+      setError("Confirm Password field must be the same as the Password field");
+    }
   };
 
   return (
@@ -74,7 +91,14 @@ const UserAccount = () => {
             onChange={(e) => setNewPassword(e.target.value)}
             placeholder="New Password"
           />
+          <input
+            type="password"
+            value={confirmNewPassword}
+            onChange={(e) => setConfirmNewPassword(e.target.value)}
+            placeholder="Confirm New Password"
+          />
           <Errors />
+          {error !== "" && error}
           <button type="submit">Save</button>
         </form>
       </div>
