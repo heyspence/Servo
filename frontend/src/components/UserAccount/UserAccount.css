@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     background-color: var(--secondary-white);
+    color: pink;
 }
 
 .user-account-backdrop{
@@ -13,7 +14,7 @@
     padding: 20px;
 }
 
-.user-account input[type=text]{
+.user-account input{
     background-color: white;
     margin-top: 15px;
 }
