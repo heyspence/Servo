@@ -19,6 +19,7 @@ export const updateUser = (userData) => async (dispatch) => {
 
   if (res.ok) {
     receiveUser(data.user);
+    return res
   } else {
     dispatch(receiveErrors(data.errors));
   }

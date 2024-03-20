@@ -78,6 +78,7 @@ export const signIn =
           let data = await res.json();
           dispatch({ type: SET_CURRENT_USER, user: data.user });
           storeCurrentUser(data.user);
+          return res
         } else {
           let data = await res.json();
 
