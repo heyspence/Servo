@@ -11,9 +11,16 @@ const storeCurrentUser = (user) => {
   else sessionStorage.removeItem("currentUser");
 };
 
-export const getActiveAddress = (state) => { 
+// export const getActiveAddress = (state) => {
+//   const addresses = state.session?.user ? state.session.user?.addresses : null;
+//   if (addresses.default) return addresses
+// };
+
+export const getActiveAddress = (state) => {
   const addresses = state.session?.user ? state.session.user?.addresses : null;
-  if (addresses.default) return addresses
+  if (addresses) {
+    return Object.values(addresses).find((address) => address.default === true);
+  }
 };
 
 const removeCurrentUser = () => {
@@ -119,18 +126,17 @@ export const createUserAddress = (address) => async (dispatch) => {
 };
 
 // This function has not yet been tested
-export const updateUserAddress = (address) => async dispatch => {
+export const updateUserAddress = (address) => async (dispatch) => {
+  const res = await csrfFetch(`/api/addresses/${address.id - 1}`, {
+    method: "PATCH",
+    body: JSON.stringify(address),
+  });
 
-    const res = await csrfFetch(`/api/addresses/${address.id}`,{
-        method: 'PATCH',
-        body: JSON.stringify(address)
-    })
-
-    if(res.ok){
-        const data = await res.json();
-        dispatch({type: UPDATE_CURRENT_USER_ADDRESS, ...data.user})
-    }
-}
+  if (res.ok) {
+    const data = await res.json();
+    dispatch({ type: UPDATE_CURRENT_USER_ADDRESS, ...data.user });
+  }
+};
 
 const initialState = {
   user: JSON.parse(sessionStorage.getItem("currentUser")),
@@ -156,15 +162,16 @@ const sessionReducer = (state = initialState, action) => {
       };
     // this function has not yet been tested
     case UPDATE_CURRENT_USER_ADDRESS:
-        return {
-            ...newState,
-            user: {
-                ...newState.user,
-                addresses:{
-                    ...newState.user.addresses,
-                    [action.address.id]: action.address
-                }
-            }}
+      return {
+        ...newState,
+        user: {
+          ...newState.user,
+          addresses: {
+            ...newState.user.addresses,
+            [action.address.id]: action.address,
+          },
+        },
+      };
     default:
       return state;
   }

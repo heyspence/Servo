@@ -8,6 +8,7 @@ const UpdatePasswordForm = ({ user }) => {
   const dispatch = useDispatch();
 
   const [error, setError] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
@@ -27,6 +28,12 @@ const UpdatePasswordForm = ({ user }) => {
   return (
     <form onSubmit={handleUpdatePassword}>
       <h2>Password</h2>
+      <input
+        type="password"
+        value={currentPassword}
+        onChange={(e) => setCurrentPassword(e.target.value)}
+        placeholder="Current Password"
+      />
       <input
         type="password"
         value={newPassword}

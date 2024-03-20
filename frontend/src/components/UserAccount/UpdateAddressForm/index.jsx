@@ -6,7 +6,7 @@ import { updateUser } from "../../store/users";
 import { updateUserAddress } from "../../store/session";
 
 const UpdateAddressForm = ({ addresses, user }) => {
-  console.log('🦋🦋🦋 ~ addresses:', addresses);
+  // console.log('🦋🦋🦋 ~ addresses:', addresses);
   const dispatch = useDispatch();
 
   const [streetAddress, setStreetAddress] = useState(addresses.streetAddress);

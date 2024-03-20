@@ -5,6 +5,7 @@ import "./UserAccount.css";
 import UpdateAddressForm from "./UpdateAddressForm";
 import UpdateGeneralForm from "./UpdateGeneralForm";
 import UpdatePasswordForm from "./UpdatePasswordForm";
+import Modal from "../Modal";
 
 const UserAccount = () => {
   const history = useHistory();
@@ -12,6 +13,7 @@ const UserAccount = () => {
   const user = useSelector((state) => state.session?.user);
   if (!user) history.push("/");
   const [accountFormValues, setAccountFormValues] = useState({ ...user });
+  const [isUpdatePasswordOpen, setIsUpdatePasswordOpen] = useState(false);
 
   return (
     <div className="user-account">
@@ -28,8 +30,15 @@ const UserAccount = () => {
             user={user}
           />
         </div>
-        <span className="fake-link">Update Password</span>
-        {/* <UpdatePasswordForm user={user} /> */}
+        <span className="fake-link" onClick={() => setIsUpdatePasswordOpen(true)}>
+          Update Password
+        </span>
+        <Modal
+          isOpen={isUpdatePasswordOpen}
+          onClose={() => setIsUpdatePasswordOpen(false)}
+        >
+          <UpdatePasswordForm onClose={() => setIsUpdatePasswordOpen(false)} user={user} />
+        </Modal>
       </div>
     </div>
   );
