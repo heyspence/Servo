@@ -9,7 +9,6 @@ export const receiveUser = (user) => ({
 });
 
 export const updateUser = (userData) => async (dispatch) => {
-  console.log('🦋🦋🦋 ~ userData:', userData);
   const res = await csrfFetch(`/api/users/${userData.id}`, {
     headers: { "Content-Type": "application/json" },
     method: "PATCH",

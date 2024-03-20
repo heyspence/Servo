@@ -14,6 +14,10 @@
     padding: 20px;
 }
 
+.update-forms {
+    display: flex;
+}
+
 .user-account input{
     background-color: white;
     margin-top: 15px;
@@ -22,4 +26,12 @@
 .user-account form{
     display: flex;
     flex-direction: column;
+}
+
+/* media queuries */
+
+@media screen and (max-width: 699px) {
+    .update-forms {
+        flex-direction: column;
+    }
 }

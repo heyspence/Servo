@@ -17,6 +17,7 @@ const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
 
   return (
     <form onSubmit={handleUpdateUser}>
+      <h2>General</h2>
       <input
         type="text"
         value={accountFormValues.firstName}

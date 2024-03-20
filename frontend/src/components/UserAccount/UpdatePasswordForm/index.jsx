@@ -16,7 +16,7 @@ const UpdatePasswordForm = ({ user }) => {
     setError("");
     dispatch(removeErrors());
 
-    if (newPassword === confirmNewPassword) {
+    if (newPassword === confirmNewPassword && newPassword !== "") { // temp: newPassword !== ""
       const updatedUser = { password: newPassword, id: user.id }; 
       dispatch(updateUser(updatedUser));
     } else {
@@ -26,6 +26,7 @@ const UpdatePasswordForm = ({ user }) => {
 
   return (
     <form onSubmit={handleUpdatePassword}>
+      <h2>Password</h2>
       <input
         type="password"
         value={newPassword}
