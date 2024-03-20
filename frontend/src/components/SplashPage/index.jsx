@@ -72,11 +72,14 @@ const SplashPage = () => {
             <div className="splash-page-section logo-section">
                 <div className="splash-page-logo-container">
                     <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/Pictures/web_optimized/maid_to_perfection_logo.png" />
-                    <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png"/>
+                    {/* <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png"/> */}
                     <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/Screen%20Shot%202021-06-21%20at%2010.19.09%20PM.png"/>
                     <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/refresh-ecowash-logo.png"/>
                     <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/Ease-Logo-A1%20%282%29%20%283%29%20copy%202.png"/>
                     <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/Pictures/web_optimized/provent_pest_control_logo.jpeg" />
+                    <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/Pictures/web_optimized/emerald_pest_control_logo.png" />
+                    <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/Pictures/web_optimized/2-Local-Gals-Logo.webp" />
+                    <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/Pictures/web_optimized/bug_blasters_pest_control_logo.png" />
                 </div>
             </div>
             <div className="splash-page-section" style={{paddingBottom: '100px'}}>
