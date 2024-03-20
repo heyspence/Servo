@@ -69,20 +69,22 @@ const SplashPage = () => {
                     <p>Rest easy knowing your payment and personal details are protected.</p>
                 </div>
             </div>
-            <div className="splash-page-section">
+            <div className="splash-page-section logo-section">
+                <div className="splash-page-logo-container">
+                    <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/Pictures/web_optimized/maid_to_perfection_logo.png" />
+                    <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png"/>
+                    <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/Screen%20Shot%202021-06-21%20at%2010.19.09%20PM.png"/>
+                    <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/refresh-ecowash-logo.png"/>
+                    <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/Ease-Logo-A1%20%282%29%20%283%29%20copy%202.png"/>
+                    <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/Pictures/web_optimized/provent_pest_control_logo.jpeg" />
+                </div>
+            </div>
+            <div className="splash-page-section" style={{paddingBottom: '100px'}}>
                 <img className="splash-page-image" src="https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-43.jpg" />
                 <div className="section-text">
                     <h2>Calling Service Providers and Entrepreneurs!</h2>
                     <h3 style={{fontWeight:'normal', lineHeight:'30px'}}>Do you run a service-oriented business in St. George? Grow your business with Servo.</h3>
                     <p style={{lineHeight:'25px', 'textUnderlineOffset': "8px"}}>Our online booking platform is dedicated to home services, offering your clients a seamless 3-click booking experience integrated into your existing flow. Take the first step to becoming one of our platform's first vendors. Click here to <a href='/vendor-onboarding'>learn more</a>.</p>
-                </div>
-            </div>
-            <div className="splash-page-section logo-section">
-                <div className="splash-page-logo-container">
-                    <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png"/>
-                    <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/Screen%20Shot%202021-06-21%20at%2010.19.09%20PM.png"/>
-                    <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/refresh-ecowash-logo.png"/>
-                    <img className="splash-page-logo" src="https://spencerheywood.com/images/servo/logos_and_icons/Ease-Logo-A1%20%282%29%20%283%29%20copy%202.png"/>
                 </div>
             </div>
         </main>
