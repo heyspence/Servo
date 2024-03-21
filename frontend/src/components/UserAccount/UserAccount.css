@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     background-color: var(--secondary-white);
-    color: pink;
+    color: var(--primary-blue);
 }
 
 .user-account-backdrop{
@@ -65,4 +65,27 @@
     .update-forms {
         flex-direction: column;
     }
+}
+
+/* display mode */
+
+.display-mode-div {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin-top: 2%;
+}
+
+.display-mode-div .info-content {
+    margin-bottom: 15px;
+}
+
+.display-mode-div .info-item {
+    margin-bottom: 10px;
+}
+
+.display-mode-div span {
+    font-weight: bold;
 }
