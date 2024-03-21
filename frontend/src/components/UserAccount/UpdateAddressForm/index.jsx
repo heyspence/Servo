@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { removeErrors } from "../../store/errors";
 import { updateUser } from "../../store/users";
 import { updateUserAddress } from "../../store/session";
+import UpdateFormErrors from "../UpdateFormErrors/UpdateFormErrors";
 
 const UpdateAddressForm = ({ addresses, user }) => {
   // console.log('🦋🦋🦋 ~ addresses:', addresses);
@@ -57,7 +58,7 @@ const UpdateAddressForm = ({ addresses, user }) => {
         onChange={(e) => setZipCode(e.target.value)}
         placeholder="Zip Code"
       />
-      <Errors />
+      <UpdateFormErrors formType={"address"}/>
       <button type="submit" disabled={zipCode === "" || state === "" || city === "" || streetAddress === "" || streetAddress2 === ""}>Save</button>
     </form>
   )

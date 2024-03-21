@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { removeErrors } from "../../store/errors";
 import { updateUser } from "../../store/users";
-import Errors from "../../Session/Errors";
+import UpdateFormErrors from "../UpdateFormErrors/UpdateFormErrors";
 
 const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
   const dispatch = useDispatch();
@@ -62,7 +62,7 @@ const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
         }}
         placeholder="Email"
       />
-      <Errors />
+      <UpdateFormErrors />
       <button type="submit">Save</button>
     </form>
   )

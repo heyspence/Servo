@@ -31,7 +31,7 @@ const UpdatePasswordForm = ({ user, onClose }) => {
         const res2 = await dispatch(updateUser(updatedUser));
 
         if (res2?.ok) {
-          onClose()
+          onClose() // or display msg that password updated successfully
         } else {
           dispatch(removeErrors()); 
           setError("Password is too short (minimum is 8 characters)")

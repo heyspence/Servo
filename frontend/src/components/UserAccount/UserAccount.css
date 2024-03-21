@@ -14,6 +14,10 @@
     padding: 20px;
 }
 
+.user-account h1 {
+    margin-bottom: 3%;
+}
+
 .update-forms {
     display: flex;
 }
@@ -21,11 +25,16 @@
 .user-account input{
     background-color: white;
     margin-top: 15px;
+    width: 90%;
 }
 
 .user-account form{
     display: flex;
     flex-direction: column;
+}
+
+.user-account form button {
+    margin-top: 15px;
 }
 
 /* media queuries */
