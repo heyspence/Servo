@@ -3,4 +3,7 @@ class UserMailerPreview < ActionMailer::Preview
       user = User.last
       UserMailer.welcome_email(user)
     end
+
+    def upcoming_reminder 
+    end 
 end

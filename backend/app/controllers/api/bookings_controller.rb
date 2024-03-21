@@ -26,6 +26,7 @@ class Api::BookingsController < ApplicationController
                 VendorMailer.work_order(@booking).deliver_now
                 UserMailer.order_confirmation(@booking).deliver_now
                 AdminMailer.new_order(@booking).deliver_now
+                UserMailer.upcoming_reminder(@booking).deliver_later
                 render :show
             else
                 render json: { errors: @booking.errors.full_messages }
