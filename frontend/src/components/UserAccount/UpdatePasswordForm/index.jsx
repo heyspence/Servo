@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { updateUser } from "../../store/users";
 import Errors from "../../Session/Errors";
 import { signIn } from "../../store/session";
+import { useEffect } from "react";
 
 const UpdatePasswordForm = ({ user, onClose }) => {
   const dispatch = useDispatch();
@@ -35,6 +36,10 @@ const UpdatePasswordForm = ({ user, onClose }) => {
         setError("Confirm Password field must be the same as the Password field");
       }
   }
+
+  // useEffect(() => {
+  //   dispatch(removeErrors());
+  // }, [])
 
   return (
     <form onSubmit={handleUpdatePassword} className="checkout-form">

@@ -1,16 +1,13 @@
 import { useSelector } from "react-redux";
 
 const UpdateFormErrors = ({ formType }) => {
-    console.log('🦋🦋🦋 ~ formType:', formType);
     const errors = useSelector(state => state.errors)
-    console.log('🦋🦋🦋 ~ errors:', errors[0]);
     
     if (!errors || errors.length === 0) return null;
     const tempGeneralErrors = ["First", "Last", "Phone", "Email"]
     const generalErrors = new Set(tempGeneralErrors)
     const tempPasswordErrors = ["password", "Password"]
     const passwordErrors = new Set(tempPasswordErrors)
-    console.log('🦋🦋🦋 ~ passwordErrors:', passwordErrors);
 
     return (
         <div className="errors">
