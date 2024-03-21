@@ -22,6 +22,28 @@
     display: flex;
 }
 
+.update-forms .edit-btn {
+    width: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    margin: 10px 0 0 0;
+    background-color: white;
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    cursor: pointer;
+    border-radius: 8px;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.update-forms .edit-btn:hover {
+    background-color: var(--secondary-white);
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue)
+}
+
 .user-account input{
     background-color: white;
     margin-top: 15px;

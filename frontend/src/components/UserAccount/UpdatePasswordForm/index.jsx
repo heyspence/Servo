@@ -42,7 +42,7 @@ const UpdatePasswordForm = ({ user, onClose }) => {
   // }, [])
 
   return (
-    <form onSubmit={handleUpdatePassword} className="checkout-form">
+    <form onSubmit={handleUpdatePassword} className="checkout-form sign-up-form">
       <h2>Password</h2>
       <input
         type="password"
