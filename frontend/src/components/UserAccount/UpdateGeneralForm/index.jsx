@@ -62,7 +62,7 @@ const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
         }}
         placeholder="Email"
       />
-      <UpdateFormErrors />
+      <UpdateFormErrors formType={"general"}/>
       <button type="submit">Save</button>
     </form>
   )

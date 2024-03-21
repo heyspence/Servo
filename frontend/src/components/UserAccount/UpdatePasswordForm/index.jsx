@@ -25,22 +25,12 @@ const UpdatePasswordForm = ({ user, onClose }) => {
 
     if (newPassword === confirmNewPassword) { 
       const res1 = await dispatch(signIn(userData))
-
       if (res1?.ok) {
         const updatedUser = { password: newPassword, id: user.id }; 
         const res2 = await dispatch(updateUser(updatedUser));
 
-        if (res2?.ok) {
-          onClose() // or display msg that password updated successfully
-        } else {
-          dispatch(removeErrors()); 
-          setError("Password is too short (minimum is 8 characters)")
-        }
-        
-      } else {
-        dispatch(removeErrors()); 
-        setError("Current Password is incorrect");
-      }
+        if (res2?.ok) onClose() // or display msg that password updated successfully
+      } 
     } else {
         setError("Confirm Password field must be the same as the Password field");
       }
