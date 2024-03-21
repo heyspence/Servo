@@ -41,7 +41,7 @@ const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
         placeholder="Last Name"
       />
       <input
-        type="text"
+        type="tel"
         value={accountFormValues.phoneNumber}
         onChange={(e) => {
           setAccountFormValues((prevValues) => ({

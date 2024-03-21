@@ -13,7 +13,7 @@ const UpdatePasswordForm = ({ user, onClose }) => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
-  const isCurrentPassword = async (e) => {
+  const handleUpdatePassword = async (e) => {
     e.preventDefault();
     setError("");
     dispatch(removeErrors());
@@ -24,12 +24,19 @@ const UpdatePasswordForm = ({ user, onClose }) => {
     }
 
     if (newPassword === confirmNewPassword) { 
-      const res = await dispatch(signIn(userData))
-  
-      if (res?.ok) {
+      const res1 = await dispatch(signIn(userData))
+
+      if (res1?.ok) {
         const updatedUser = { password: newPassword, id: user.id }; 
-        const res = await dispatch(updateUser(updatedUser));
-        if (res?.ok) onClose()
+        const res2 = await dispatch(updateUser(updatedUser));
+
+        if (res2?.ok) {
+          onClose()
+        } else {
+          dispatch(removeErrors()); 
+          setError("Password is too short (minimum is 8 characters)")
+        }
+        
       } else {
         dispatch(removeErrors()); 
         setError("Current Password is incorrect");
@@ -39,21 +46,8 @@ const UpdatePasswordForm = ({ user, onClose }) => {
       }
   }
 
-
-  const handleUpdatePassword = (e) => {
-    // e.preventDefault();
-
-
-    // if (newPassword === confirmNewPassword && newPassword !== "") { // temp: newPassword !== ""
-    //   const updatedUser = { password: newPassword, id: user.id }; 
-    //   dispatch(updateUser(updatedUser));
-    // } else {
-    //   setError("Confirm Password field must be the same as the Password field");
-    // }
-  };
-
   return (
-    <form onSubmit={isCurrentPassword}>
+    <form onSubmit={handleUpdatePassword} className="checkout-form">
       <h2>Password</h2>
       <input
         type="password"

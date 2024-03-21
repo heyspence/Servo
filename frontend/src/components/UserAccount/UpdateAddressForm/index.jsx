@@ -53,18 +53,12 @@ const UpdateAddressForm = ({ addresses, user }) => {
       />
       <input
         type="text"
-        value={state}
-        onChange={(e) => setState(e.target.value)}
-        placeholder="State"
-      />
-      <input
-        type="text"
         value={zipCode}
         onChange={(e) => setZipCode(e.target.value)}
         placeholder="Zip Code"
       />
       <Errors />
-      <button type="submit">Save</button>
+      <button type="submit" disabled={zipCode === "" || state === "" || city === "" || streetAddress === "" || streetAddress2 === ""}>Save</button>
     </form>
   )
 }
