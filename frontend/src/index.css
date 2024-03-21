@@ -172,3 +172,7 @@ a:hover{
     text-decoration: underline;
     cursor: pointer;
 }
+
+.errors {
+    color: red;
+}

@@ -5,6 +5,7 @@ import { updateUser } from "../../store/users";
 import Errors from "../../Session/Errors";
 import { signIn } from "../../store/session";
 import { useEffect } from "react";
+import "./UpdatePasswordForm.css"
 
 const UpdatePasswordForm = ({ user, onClose }) => {
   const dispatch = useDispatch();
@@ -37,34 +38,40 @@ const UpdatePasswordForm = ({ user, onClose }) => {
       }
   }
 
-  // useEffect(() => {
-  //   dispatch(removeErrors());
-  // }, [])
+  useEffect(() => {
+    dispatch(removeErrors());
+  }, [dispatch])
 
   return (
-    <form onSubmit={handleUpdatePassword} className="checkout-form sign-up-form">
+    <form onSubmit={handleUpdatePassword} className="update-password-form sign-up-form checkout-form">
       <h2>Password</h2>
-      <input
-        type="password"
-        value={currentPassword}
-        onChange={(e) => setCurrentPassword(e.target.value)}
-        placeholder="Current Password"
-      />
-      <input
-        type="password"
-        value={newPassword}
-        onChange={(e) => setNewPassword(e.target.value)}
-        placeholder="New Password"
-      />
-      <input
-        type="password"
-        value={confirmNewPassword}
-        onChange={(e) => setConfirmNewPassword(e.target.value)}
-        placeholder="Confirm New Password"
-      />
-      {error !== "" && error}
+        <input
+          type="password"
+          value={currentPassword}
+          onChange={(e) => setCurrentPassword(e.target.value)}
+          placeholder="Current Password"
+        />
+        <input
+          type="password"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+          placeholder="New Password"
+        />
+        <input
+          type="password"
+          value={confirmNewPassword}
+          onChange={(e) => setConfirmNewPassword(e.target.value)}
+          placeholder="Confirm New Password"
+        />
+      {error !== "" && <p className="errors">{error}</p>}
       <Errors />
-      <button type="submit" disabled={currentPassword === "" || newPassword === "" || confirmNewPassword === ""}>Save</button>
+      <button 
+        type="submit" 
+        disabled={currentPassword === "" || newPassword === "" || confirmNewPassword === ""} 
+        className="submit-button"
+      >
+        Save
+      </button>
     </form>
   )
 }
