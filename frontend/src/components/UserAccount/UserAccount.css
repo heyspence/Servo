@@ -76,8 +76,20 @@
 /* media queuries */
 
 @media screen and (max-width: 699px) {
+    .user-account {
+        height: 850px;
+    }
     .update-forms {
         flex-direction: column;
+    }
+
+    .update-forms h2 {
+        margin-top: 10px;
+    }
+
+    .user-account .user-account-backdrop .fake-link {
+        position: relative;
+        top: 10px;
     }
 }
 
