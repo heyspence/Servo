@@ -7,15 +7,15 @@ import { updateUserAddress } from "../../store/session";
 import UpdateFormErrors from "../UpdateFormErrors/UpdateFormErrors";
 
 const UpdateAddressForm = ({ addresses, user }) => {
-  // console.log('🦋🦋🦋 ~ addresses:', addresses);
+  // console.log('🦋🦋🦋 ~ addresses:', Object.entries(addresses)[0][1]);
   const dispatch = useDispatch();
 
-  const [streetAddress, setStreetAddress] = useState(addresses.streetAddress);
-  const [streetAddress2, setStreetAddress2] = useState(addresses.streetAddress2);
-  const [city, setCity] = useState(addresses.city);
-  const [state, setState] = useState(addresses.state);
-  const [zipCode, setZipCode] = useState(addresses.zipCode);
-  // const [defaultAddress, setDefaultAddress] = useState(addresses.default);
+  const [streetAddress, setStreetAddress] = useState(Object.entries(addresses)[0][1].streetAddress);
+  const [streetAddress2, setStreetAddress2] = useState(Object.entries(addresses)[0][1].streetAddress2);
+  const [city, setCity] = useState(Object.entries(addresses)[0][1].city);
+  const [state, setState] = useState(Object.entries(addresses)[0][1].state);
+  const [zipCode, setZipCode] = useState(Object.entries(addresses)[0][1].zipCode);
+  // const [defaultAddress, setDefaultAddress] = useState(Object.entries(addresses)[0][1].default);
 
   const handleUpdateUserAddress = (e) => {
     e.preventDefault();
