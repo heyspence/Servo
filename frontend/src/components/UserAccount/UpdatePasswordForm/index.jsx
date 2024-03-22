@@ -2,10 +2,10 @@ import { useState } from "react";
 import { removeErrors } from "../../store/errors";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../store/users";
-import Errors from "../../Session/Errors";
 import { signIn } from "../../store/session";
 import { useEffect } from "react";
 import "./UpdatePasswordForm.css"
+import UpdateFormErrors from "../UpdateFormErrors/UpdateFormErrors";
 
 const UpdatePasswordForm = ({ user, onClose }) => {
   const dispatch = useDispatch();
@@ -64,7 +64,7 @@ const UpdatePasswordForm = ({ user, onClose }) => {
           placeholder="Confirm New Password"
         />
       {error !== "" && <p className="errors">{error}</p>}
-      <Errors />
+      <UpdateFormErrors />
       <button 
         type="submit" 
         disabled={currentPassword === "" || newPassword === "" || confirmNewPassword === ""} 

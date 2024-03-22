@@ -18,6 +18,8 @@ const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
     if (res?.ok) setEditMode(false);
   };
 
+  const formatPhoneNumber = phoneNumber => phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+
   return (
     <form onSubmit={handleUpdateUser}>
       <h2>General</h2>
@@ -67,6 +69,7 @@ const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
             }}
             placeholder="Email"
           />
+          <UpdateFormErrors formType={"general"} />
           <button type="submit">Save</button>
         </>
       ) : (
@@ -79,7 +82,7 @@ const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
               <span>Last Name:</span> {accountFormValues.lastName}
             </div>
             <div className="info-item">
-              <span>Phone Number:</span> {accountFormValues.phoneNumber}
+              <span>Phone Number:</span> {formatPhoneNumber(accountFormValues.phoneNumber)}
             </div>
             <div className="info-item">
               <span>Email:</span> {accountFormValues.email}
@@ -88,7 +91,6 @@ const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
           <div className="edit-btn" onClick={() => setEditMode(true)}>Edit</div>
         </div>
       )}
-      <UpdateFormErrors formType={"general"} />
     </form>
   );
 };

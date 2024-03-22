@@ -128,12 +128,13 @@ export const updateUserAddress = (address) => async (dispatch) => {
   });
 
   const data = await res.json();
-  
+
   if (res.ok) {
     dispatch({
       type: UPDATE_CURRENT_USER_ADDRESS,
-      payload: { ...data.address }
+      payload: { ...data.address },
     });
+    return res;
   } else {
     dispatch(receiveErrors(data.errors));
   }
