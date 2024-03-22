@@ -46,7 +46,7 @@
 
 .user-account .user-account-backdrop .fake-link {
     position: fixed; 
-    margin: 50px 0;
+    top: 550px;
 }
 
 .user-account input{

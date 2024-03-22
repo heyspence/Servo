@@ -20,7 +20,7 @@ const UpdateAddressForm = ({ addresses }) => {
     e.preventDefault();
     dispatch(removeErrors());
 
-    const updatedUserAdress = {address: { streetAddress, streetAddress2, city, state, zipCode, id: Number(id) }}
+    const updatedUserAdress = {address: { streetAddress, street_address_2: streetAddress2, city, state, zipCode, id: Number(id) }}
     const res = await dispatch(updateUserAddress(updatedUserAdress));
     if (res?.ok) setEditMode(false);
   };
@@ -77,6 +77,9 @@ const UpdateAddressForm = ({ addresses }) => {
             </div>
             <div className="info-item">
               <span>State:</span> {state}
+            </div>
+            <div className="info-item">
+              <span>Zip code:</span> {zipCode}
             </div>
           </div>
           <div className="edit-btn" onClick={() => setEditMode(true)}>Edit</div>
