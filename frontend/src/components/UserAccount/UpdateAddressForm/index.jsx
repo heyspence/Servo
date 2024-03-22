@@ -61,7 +61,7 @@ const UpdateAddressForm = ({ addresses }) => {
             placeholder="Zip Code"
           />
           <UpdateFormErrors formType={"address"}/>
-          <button type="submit" disabled={zipCode === "" || state === "" || city === "" || streetAddress === ""}>Save</button>
+          <button type="submit" className="submit-button" disabled={zipCode === "" || state === "" || city === "" || streetAddress === ""}>Save</button>
         </>
       ) : (
         <div className="display-mode-div">

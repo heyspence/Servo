@@ -8,11 +8,12 @@ const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
   const dispatch = useDispatch();
   const [editMode, setEditMode] = useState(false);
 
+  const { id, firstName, lastName, email, phoneNumber } = accountFormValues;
+
   const handleUpdateUser = async (e) => {
     e.preventDefault();
     dispatch(removeErrors());
 
-    const { id, firstName, lastName, email, phoneNumber } = accountFormValues;
     const updatedUserData = { id, firstName, lastName, email, phoneNumber };
     const res = await dispatch(updateUser(updatedUserData));
     if (res?.ok) setEditMode(false);
@@ -27,7 +28,7 @@ const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
         <>
           <input
             type="text"
-            value={accountFormValues.firstName}
+            value={firstName}
             onChange={(e) => {
               setAccountFormValues((prevValues) => ({
                 ...prevValues,
@@ -38,7 +39,7 @@ const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
           />
           <input
             type="text"
-            value={accountFormValues.lastName}
+            value={lastName}
             onChange={(e) => {
               setAccountFormValues((prevValues) => ({
                 ...prevValues,
@@ -49,7 +50,7 @@ const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
           />
           <input
             type="tel"
-            value={accountFormValues.phoneNumber}
+            value={phoneNumber}
             onChange={(e) => {
               setAccountFormValues((prevValues) => ({
                 ...prevValues,
@@ -60,7 +61,7 @@ const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
           />
           <input
             type="text"
-            value={accountFormValues.email}
+            value={email}
             onChange={(e) => {
               setAccountFormValues((prevValues) => ({
                 ...prevValues,
@@ -70,22 +71,26 @@ const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
             placeholder="Email"
           />
           <UpdateFormErrors formType={"general"} />
-          <button type="submit">Save</button>
+          <button
+          type="submit"
+          className="submit-button"
+          disabled={email === "" || phoneNumber === "" || firstName === "" || lastName === ""} 
+          >Save</button>
         </>
       ) : (
         <div className="display-mode-div">
           <div className="info-content">
             <div className="info-item">
-              <span>First Name:</span> {accountFormValues.firstName}
+              <span>First Name:</span> {firstName}
             </div>
             <div className="info-item">
-              <span>Last Name:</span> {accountFormValues.lastName}
+              <span>Last Name:</span> {lastName}
             </div>
             <div className="info-item">
-              <span>Phone Number:</span> {formatPhoneNumber(accountFormValues.phoneNumber)}
+              <span>Phone Number:</span> {formatPhoneNumber(phoneNumber)}
             </div>
             <div className="info-item">
-              <span>Email:</span> {accountFormValues.email}
+              <span>Email:</span> {email}
             </div>
           </div>
           <div className="edit-btn" onClick={() => setEditMode(true)}>Edit</div>

@@ -68,6 +68,11 @@
     margin-top: 10px;
 }
 
+.update-forms .submit-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
 /* media queuries */
 
 @media screen and (max-width: 699px) {
@@ -80,9 +85,9 @@
 
 .display-mode-div {
     background-color: white;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
     width: 80%;
     margin-top: 2%;
 }

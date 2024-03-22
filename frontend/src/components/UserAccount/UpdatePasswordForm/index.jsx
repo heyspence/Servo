@@ -38,7 +38,7 @@ const UpdatePasswordForm = ({ user, onClose }) => {
 
   return (
     <form onSubmit={handleUpdatePassword} className="update-password-form sign-up-form checkout-form">
-      <h2>Password</h2>
+      <h2>Update Password</h2>
         <input
           type="password"
           value={currentPassword}
