@@ -45,8 +45,8 @@
 }
 
 .user-account .user-account-backdrop .fake-link {
-    position: fixed; 
-    top: 550px;
+    position: relative;
+    top: 60px;
 }
 
 .user-account input{
@@ -88,8 +88,11 @@
     }
 
     .user-account .user-account-backdrop .fake-link {
-        position: relative;
         top: 10px;
+    }
+
+    .update-forms form {
+        margin: 10px 0;
     }
 }
 
