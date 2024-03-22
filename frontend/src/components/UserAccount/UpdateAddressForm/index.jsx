@@ -7,7 +7,7 @@ import { updateUserAddress } from "../../store/session";
 import UpdateFormErrors from "../UpdateFormErrors/UpdateFormErrors";
 
 const UpdateAddressForm = ({ addresses, user }) => {
-  // console.log('🦋🦋🦋 ~ addresses:', Object.entries(addresses)[0][1]);
+  // console.log('🦋🦋🦋 ~ addresses:', Object.entries(addresses)[0][0]);
   const dispatch = useDispatch();
 
   const [streetAddress, setStreetAddress] = useState(Object.entries(addresses)[0][1].streetAddress);
@@ -16,12 +16,13 @@ const UpdateAddressForm = ({ addresses, user }) => {
   const [state, setState] = useState(Object.entries(addresses)[0][1].state);
   const [zipCode, setZipCode] = useState(Object.entries(addresses)[0][1].zipCode);
   // const [defaultAddress, setDefaultAddress] = useState(Object.entries(addresses)[0][1].default);
+  const id = Object.entries(addresses)[0][0]
 
   const handleUpdateUserAddress = (e) => {
     e.preventDefault();
     dispatch(removeErrors());
 
-    const updatedUserAdress = { streetAddress, streetAddress2, city, state, zipCode, id: addresses.addressableId };
+    const updatedUserAdress = {address: { streetAddress, streetAddress2, city, state, zipCode, id: Number(id) }}
     dispatch(updateUserAddress(updatedUserAdress));
   };
 
@@ -59,7 +60,7 @@ const UpdateAddressForm = ({ addresses, user }) => {
         placeholder="Zip Code"
       />
       <UpdateFormErrors formType={"address"}/>
-      <button type="submit" disabled={zipCode === "" || state === "" || city === "" || streetAddress === "" || streetAddress2 === ""}>Save</button>
+      <button type="submit" disabled={zipCode === "" || state === "" || city === "" || streetAddress === ""}>Save</button>
     </form>
   )
 }

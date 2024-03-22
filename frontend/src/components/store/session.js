@@ -78,7 +78,7 @@ export const signIn =
           let data = await res.json();
           dispatch({ type: SET_CURRENT_USER, user: data.user });
           storeCurrentUser(data.user);
-          return res
+          return res;
         } else {
           let data = await res.json();
 
@@ -128,13 +128,18 @@ export const createUserAddress = (address) => async (dispatch) => {
 
 // This function has not yet been tested
 export const updateUserAddress = (address) => async (dispatch) => {
-  const res = await csrfFetch(`/api/addresses/${address.id - 1}`, {
+  // debugger;
+  console.log("🦋🦋🦋 ~ address:", address);
+  const res = await csrfFetch(`/api/addresses/${address.address.id}`, {
+    // get actual address id
     method: "PATCH",
     body: JSON.stringify(address),
   });
 
   if (res.ok) {
     const data = await res.json();
+    // debugger;
+    console.log("🦋🦋🦋 ~ data:", data);
     dispatch({ type: UPDATE_CURRENT_USER_ADDRESS, ...data.user });
   }
 };

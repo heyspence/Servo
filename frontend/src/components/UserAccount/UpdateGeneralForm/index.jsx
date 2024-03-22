@@ -70,22 +70,22 @@ const UpdateGeneralForm = ({ accountFormValues, setAccountFormValues }) => {
           <button type="submit">Save</button>
         </>
       ) : (
-        <div class="display-mode-div">
-          <div class="info-content">
-            <div class="info-item">
+        <div className="display-mode-div">
+          <div className="info-content">
+            <div className="info-item">
               <span>First Name:</span> {accountFormValues.firstName}
             </div>
-            <div class="info-item">
+            <div className="info-item">
               <span>Last Name:</span> {accountFormValues.lastName}
             </div>
-            <div class="info-item">
+            <div className="info-item">
               <span>Phone Number:</span> {accountFormValues.phoneNumber}
             </div>
-            <div class="info-item">
+            <div className="info-item">
               <span>Email:</span> {accountFormValues.email}
             </div>
           </div>
-          <div class="edit-btn" onClick={() => setEditMode(true)}>Edit</div>
+          <div className="edit-btn" onClick={() => setEditMode(true)}>Edit</div>
         </div>
       )}
       <UpdateFormErrors formType={"general"} />

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
     resources :users, only: [:create, :show, :update]
     resources :events, only: [:index, :create]
-    resources :addresses, only: [:create]
+    resources :addresses, only: [:create, :update]
     resources :contact, only: [:create]
     post 'auth/google/callback', to: 'authentication#google_callback'
 
