@@ -11,11 +11,6 @@ const storeCurrentUser = (user) => {
   else sessionStorage.removeItem("currentUser");
 };
 
-// export const getActiveAddress = (state) => {
-//   const addresses = state.session?.user ? state.session.user?.addresses : null;
-//   if (addresses.default) return addresses
-// };
-
 export const getActiveAddress = (state) => {
   const addresses = state.session?.user ? state.session.user?.addresses : null;
   if (addresses) {
@@ -126,21 +121,21 @@ export const createUserAddress = (address) => async (dispatch) => {
   }
 };
 
-// This function has not yet been tested
 export const updateUserAddress = (address) => async (dispatch) => {
-  // debugger;
-  console.log("🦋🦋🦋 ~ address:", address);
   const res = await csrfFetch(`/api/addresses/${address.address.id}`, {
-    // get actual address id
     method: "PATCH",
     body: JSON.stringify(address),
   });
 
+  const data = await res.json();
+  
   if (res.ok) {
-    const data = await res.json();
-    // debugger;
-    console.log("🦋🦋🦋 ~ data:", data);
-    dispatch({ type: UPDATE_CURRENT_USER_ADDRESS, ...data.user });
+    dispatch({
+      type: UPDATE_CURRENT_USER_ADDRESS,
+      payload: { ...data.address }
+    });
+  } else {
+    dispatch(receiveErrors(data.errors));
   }
 };
 
@@ -166,15 +161,15 @@ const sessionReducer = (state = initialState, action) => {
           },
         },
       };
-    // this function has not yet been tested
     case UPDATE_CURRENT_USER_ADDRESS:
+      // debugger
       return {
         ...newState,
         user: {
           ...newState.user,
           addresses: {
             ...newState.user.addresses,
-            [action.address.id]: action.address,
+            [action.payload.id]: action.payload,
           },
         },
       };

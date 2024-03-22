@@ -8,13 +8,15 @@ const UpdateFormErrors = ({ formType }) => {
     const generalErrors = new Set(tempGeneralErrors)
     const tempPasswordErrors = ["password", "Password"]
     const passwordErrors = new Set(tempPasswordErrors)
+    const tempAddressErrors = ["Street", "City", "State", "Zip"]
+    const addressErrors = new Set(tempAddressErrors)
 
     return (
         <ul>
             {errors && errors.map((error, index)=>{
                 if (error === "Password digest can't be blank") return null;
                 if (formType === "address" && error.split(" ").some(word => generalErrors.has(word) || passwordErrors.has(word))) return null
-                if (formType === "general" && error.split(" ").some(word => passwordErrors.has(word))) return null
+                if (formType === "general" && error.split(" ").some(word => passwordErrors.has(word)|| addressErrors.has(word))) return null
                 if (error.includes('Addresses') ){
                     let correctedError = error.replace('Addresses', 'Address')
                     return <li key={index} className="errors">{correctedError}</li>;

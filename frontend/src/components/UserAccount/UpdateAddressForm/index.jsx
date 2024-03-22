@@ -1,12 +1,10 @@
 import { useState } from "react";
-import Errors from "../../Session/Errors";
 import { useDispatch } from "react-redux";
 import { removeErrors } from "../../store/errors";
-import { updateUser } from "../../store/users";
 import { updateUserAddress } from "../../store/session";
 import UpdateFormErrors from "../UpdateFormErrors/UpdateFormErrors";
 
-const UpdateAddressForm = ({ addresses, user }) => {
+const UpdateAddressForm = ({ addresses }) => {
   // console.log('🦋🦋🦋 ~ addresses:', Object.entries(addresses)[0][0]);
   const dispatch = useDispatch();
 

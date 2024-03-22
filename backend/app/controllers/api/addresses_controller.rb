@@ -15,7 +15,6 @@ class Api::AddressesController < ApplicationController
     end    
 
     def update
-        # debugger
         @address = Address.find(params[:id])
         if @address.update(address_params)
             render :show, status: :ok
