@@ -21,10 +21,6 @@ const UpdateFormErrors = ({ formType }) => {
                     let correctedError = error.replace('Addresses', 'Address')
                     return <li key={index} className="errors">{correctedError}</li>;
                 }
-                if (error.includes('Password') ){
-                    let correctedError = error.replace('Password', 'New Password')
-                    return <li key={index} className="errors">{correctedError}</li>;
-                }
                 return <li key={index} className="errors">{error}</li>;
             })}
         </ul>

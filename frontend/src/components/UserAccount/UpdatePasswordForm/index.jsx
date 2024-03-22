@@ -1,9 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { removeErrors } from "../../store/errors";
 import { useDispatch } from "react-redux";
-import { updateUser } from "../../store/users";
-import { signIn } from "../../store/session";
-import { useEffect } from "react";
+import { updatePassword } from "../../store/users";
 import "./UpdatePasswordForm.css"
 import UpdateFormErrors from "../UpdateFormErrors/UpdateFormErrors";
 
@@ -20,19 +18,15 @@ const UpdatePasswordForm = ({ user, onClose }) => {
     setError("");
     dispatch(removeErrors());
 
-    let userData = {
-      email: user.email,
-      password: currentPassword
+    let updatedPasswordData = {
+      password: currentPassword,
+      newPassword,
+      userId: user.id
     }
 
     if (newPassword === confirmNewPassword) { 
-      const res1 = await dispatch(signIn(userData))
-      if (res1?.ok) {
-        const updatedUser = { password: newPassword, id: user.id }; 
-        const res2 = await dispatch(updateUser(updatedUser));
-
-        if (res2?.ok) onClose() // or display msg that password updated successfully
-      } 
+      const res = await dispatch(updatePassword(updatedPasswordData))
+        if (res?.ok) onClose() // or display msg that password updated successfully
     } else {
         setError("Confirm Password field must be the same as the Password field");
       }

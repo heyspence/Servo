@@ -19,7 +19,24 @@ export const updateUser = (userData) => async (dispatch) => {
 
   if (res.ok) {
     receiveUser(data.user);
-    return res
+    return res;
+  } else {
+    dispatch(receiveErrors(data.errors));
+  }
+};
+
+export const updatePassword = (updatePasswordData) => async (dispatch) => {
+  const res = await csrfFetch(`/api/users/${updatePasswordData.userId}/update_password`, {
+      headers: { "Content-Type": "application/json" },
+      method: "PATCH",
+      body: JSON.stringify(updatePasswordData),
+    }
+  );
+
+  let data = await res.json();
+
+  if (res.ok) {
+    return res;
   } else {
     dispatch(receiveErrors(data.errors));
   }
