@@ -1,0 +1,57 @@
+.payment-confirmation{
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.payment-confirmation h2{
+    margin-bottom: 20px;
+}
+
+.recurring-section-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.recurring-options-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.recurring-toggle-background{
+    width: 50px;
+    height: 35px;
+    border-radius: 20px;
+    background-color: var(--secondary-white);
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 7px;
+    margin-top: -5px;
+}
+
+.recurring-toggle-circle{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--secondary-gray);
+    left: 7px;
+    transition: left 0.3s ease, background-color 0.3s ease;
+    position: absolute;
+}
+
+.recurring-circle-active{
+    left: 33px;
+    background-color: var(--primary-green);
+}
+
+.recurring-circle-active:hover{
+    background-color: var(--secondary-green);
+}
+
+.recurring-toggle-background:hover{
+    cursor: pointer;
+}

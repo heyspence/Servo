@@ -1,0 +1,39 @@
+.see-more-modal{
+    background-color: var(--primary-white);
+    border-radius: 15px;
+    margin-top: 50px;
+    width: 40vw;
+    height: 60vh;
+    max-width: 500px;
+    min-width: 325px;
+    padding: 20px;
+}
+
+.see-more-modal *{
+    color: var(--primary-black);
+}
+
+.see-more-modal h2{
+    font-size: 28px;
+    margin-top: 15px;
+}
+
+#google-maps-placeholder{
+    background-color: var(--secondary-white);
+    width: 110%;
+    margin-top: 15px;
+    transform: translate(-5%, 0%);
+    height: 225px;
+}
+
+.see-more-address{
+    height: 50px;
+    width: 100%;
+    padding: 20px 0;
+    font-weight: bold;
+    color: rgb(231 231 231);
+}
+
+.white-font > *{
+    color: var(--primary-white);
+}
