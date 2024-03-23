@@ -19,31 +19,33 @@ class UserMailer < ApplicationMailer
         @booking = booking 
         @user = User.find(booking.user_id)
         @vendor = Vendor.find(booking.vendor_id)
-        @address = @user.addresses[0]
 
         reminder_date = @booking.appointment_at - 5.days
 
         mail(to: @user.email, subject: "Upcoming Service Reminder for #{@user.first_name} with #{@vendor.name}", 
-            body: "Your service with #{@vendor.name} is scheduled for #{booking.appointment_at}.",
-            delivery_time: reminder_date)
+            body: "Your service with #{@vendor.name} is scheduled for #{booking.appointment_at}.")
     end
-
-    def immediate_reminder(booking)
-        @booking = booking 
-        @user = User.find(booking.user_id)
-        @vendor = Vendor.find(booking.vendor_id)
-        @address = @user.addresses[0]
-
-        reminder_date = @booking.appointment_at - 1.days
-
-        mail(to: @user.email, subject: "Upcoming Service Reminder for #{@user.first_name} with #{@vendor.name}", 
-            body: "Your service with #{@vendor.name} is scheduled for #{booking.appointment_at}.",
-            delivery_time: reminder_date)
-    end 
 
     # Service reminders throughout the year for services they have bought in the past (user selected frequency)
 
-    def user_selected_reminder
+    def user_selected_reminder(reminder)
+        @reminder = reminder 
+        @user = User.find(reminder.user_id)
+        @vendor = Vendor.find(reminder.vendor_id)
+
+        mail(to: @user.email, subject: "Reminder to book service with #{@vendor.name}")
+    end 
+
+
+    ## Completed notification, ask for review 
+
+    def order_completed 
+        @booking = booking 
+        @user = User.find(booking.user_id)
+        @vendor = Vendor.find(booking.vendor_id)
+        
+        mail(to: @user.email, subject: "]#{@user.first_name}, Thank you for booking #{@vendor.name} with Servo." , 
+            body: "Your service with #{@vendor.name} is scheduled for #{booking.appointment_at}.")
     end 
 
 
