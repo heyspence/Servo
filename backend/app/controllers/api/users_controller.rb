@@ -3,6 +3,7 @@ class Api::UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
+        @user.email = @user.email.downcase
         if @user.save
             login!(@user)
             unless @user.email.ends_with?('dashdoor.com')

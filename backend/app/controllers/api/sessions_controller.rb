@@ -1,6 +1,6 @@
 class Api::SessionsController < ApplicationController
-    # before_action :require_logged_in, only: [:destory]
-    # before_action :require_logged_out, only: [:create]
+    before_action :require_logged_in, only: [:destory]
+    before_action :require_logged_out, only: [:create]
 
     def show
         if current_user
@@ -12,7 +12,7 @@ class Api::SessionsController < ApplicationController
     end
 
     def create
-        @user = User.find_by_credentials(params[:email], params[:password])
+        @user = User.find_by_credentials(params[:email].downcase, params[:password])
         if @user 
             login!(@user)
             render 'api/users/show'

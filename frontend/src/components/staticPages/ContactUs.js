@@ -55,7 +55,7 @@ const ContactUs = () => {
         <div className="contact-us-container">
             <div className='contact-us'>
                 <h1>Contact Us</h1>
-                <p><span style={{fontWeight: 'bold'}}>Email:</span> spencer@bookservo.com</p>
+                <p><span style={{fontWeight: 'bold'}}>Email:</span> Contact@bookservo.com</p>
                 <p><span style={{fontWeight: 'bold'}}>Call or Text:</span> (971) 777-1485</p>
                 <br/>
                 <hr/>
