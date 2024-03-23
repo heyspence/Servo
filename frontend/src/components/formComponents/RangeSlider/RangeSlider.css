@@ -24,8 +24,8 @@ input[type=range]{
 } */
 
 .range-slider::-webkit-slider-thumb {
-    -webkit-appearance: none !important;
-    appearance: none !important;
+    -webkit-appearance: none;
+    appearance: none;
     width: 0;
     height: 0;
     border-left: 6px solid transparent;
