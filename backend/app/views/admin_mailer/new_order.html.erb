@@ -15,6 +15,5 @@
     <p><span style="font-weight: bold">Profit:</span> $<%= sprintf('%.2f', ((@order.price * ENV["SERVO_VENDOR_COMMISSION"].to_f) + ENV["SERVO_SERVICE_CHARGE"].to_f) - (((@order.price + (ENV['SERVO_SERVICE_CHARGE']).to_f) * 0.029) + 0.3)) %></p> 
     <hr/>
     <p>The attached work order has been sent to the service provider</p>
-    <p style="font-size: 10px">You are living life you used to dream of.</p>
   </body>
 </html>

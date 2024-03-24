@@ -13,9 +13,6 @@ Rails.application.routes.draw do
     post 'auth/google/callback', to: 'authentication#google_callback'
 
     resources :bookings, only: [:create, :destroy, :show, :update]
-    # resources :bookings, only: [:create, :destroy, :show, :update] do
-    #   patch '/create-order', on: :member, to: 'bookings#create_order'
-    # end
 
     resources :user, only: [:index] do
       resources :bookings, only: [:index]

@@ -40,7 +40,7 @@ class Api::PaymentsController < ApplicationController
             amount: total_amount_in_cents,
             currency: 'usd',
             customer: user.stripe_customer_id,
-            statement_descriptor: "SERVO | #{vendor.name.slice(0,14)}",
+            statement_descriptor: "SERVO #{vendor.name.slice(0,16)}",
             metadata: {booking_id: booking_params[:id]},
             setup_future_usage: 'on_session'
         }
