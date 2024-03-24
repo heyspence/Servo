@@ -6,9 +6,11 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resource :session, only: [:create, :destroy, :show]
-    resources :users, only: [:create, :show]
+    resources :users, only: [:create, :show, :update] do
+      patch 'update_password', on: :member, to: 'users#update_password'
+    end
     resources :events, only: [:index, :create]
-    resources :addresses, only: [:create]
+    resources :addresses, only: [:create, :update]
     resources :contact, only: [:create]
     post 'auth/google/callback', to: 'authentication#google_callback'
 

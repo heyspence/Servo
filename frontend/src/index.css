@@ -167,3 +167,12 @@ a:hover{
     color: var(--secondary-blue);
     cursor: pointer;
 }
+
+.fake-link {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.errors {
+    color: red;
+}

@@ -23,14 +23,14 @@ class User < ApplicationRecord
 
     validates :first_name,
         presence: true,
-        length: { in: 3..30 },
+        length: { in: 2..30 },
         format: { with: /\A[a-zA-Z]+\z/,
-        message: "Name can only contain letters" }
+        message: "can only contain letters" }
     validates :last_name,
         presence: true,
-        length: { in: 3..30 },
+        length: { in: 2..30 },
         format: { with: /\A[a-zA-Z]+\z/,
-        message: "Name can only contain letters" }
+        message: "can only contain letters" }
     validates :phone_number,
         length: { is: 10 },
         format: { with: /\A\+?[1-9]\d{1,14}\z/ },

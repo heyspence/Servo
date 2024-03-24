@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     background-color: var(--secondary-white);
+    color: var(--primary-blue);
 }
 
 .user-account-backdrop{
@@ -10,15 +11,111 @@
     width: 80%;
     height: 500px;
     border-radius: 20px;
-    padding: 20px;
+    padding: 20px;    
+    justify-content: space-between;
 }
 
-.user-account input[type=text]{
+.user-account h1 {
+    margin-bottom: 3%;
+}
+
+.update-forms {
+    display: flex;
+}
+
+.update-forms .edit-btn {
+    width: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    margin: 10px 0 0 0;
+    background-color: white;
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    cursor: pointer;
+    border-radius: 8px;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.update-forms .edit-btn:hover {
+    background-color: var(--secondary-white);
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue)
+}
+
+.user-account .user-account-backdrop .fake-link {
+    position: relative;
+    top: 60px;
+}
+
+.user-account input{
     background-color: white;
     margin-top: 15px;
+    width: 90%;
 }
 
 .user-account form{
     display: flex;
     flex-direction: column;
+}
+
+.user-account form button {
+    margin-top: 15px;
+}
+
+.user-account .errors {
+    margin-top: 10px;
+}
+
+.update-forms .submit-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* media queuries */
+
+@media screen and (max-width: 699px) {
+    .user-account {
+        height: 850px;
+    }
+    .update-forms {
+        flex-direction: column;
+    }
+
+    .update-forms h2 {
+        margin-top: 10px;
+    }
+
+    .user-account .user-account-backdrop .fake-link {
+        top: 10px;
+    }
+
+    .update-forms form {
+        margin: 10px 0;
+    }
+}
+
+/* display mode */
+
+.display-mode-div {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
+    width: 80%;
+    margin-top: 2%;
+}
+
+.display-mode-div .info-content {
+    margin-bottom: 25px;
+}
+
+.display-mode-div .info-item {
+    margin-bottom: 15px;
+}
+
+.display-mode-div span {
+    font-weight: bold;
 }

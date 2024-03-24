@@ -23,5 +23,10 @@ class Address < ApplicationRecord
     validates :city, presence: true
     validates :state, presence: true, format: { with: /\A[A-Z]{2}\z/, message: "must be a valid 2-letter state code" }
     validates :street_address, length: { minimum: 5, maximum: 100 }
+    validates :street_address_2, length: { minimum: 5, maximum: 100 }, if: :street_address_2_present?
     validates :city, format: { with: /\A[a-zA-Z\s\-]+\z/, message: "must be a valid city name" }
+
+    def street_address_2_present?
+        street_address_2.present?
+    end
 end

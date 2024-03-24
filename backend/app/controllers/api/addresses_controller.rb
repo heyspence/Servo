@@ -13,11 +13,19 @@ class Api::AddressesController < ApplicationController
             render json: { errors: ["Addressable ID mismatch"] }, status: 422
         end
     end    
-    
 
+    def update
+        @address = Address.find(params[:id])
+        if @address.update(address_params)
+            render :show, status: :ok
+        else
+            render json: { errors: @address.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
+    
     private 
     def address_params
-        normal_params = params.require(:address).permit(:longitude, :latitude, :street_address, :street_address_2, :city, :zip_code, :state, :default, :addressable_type, :addressable_id)
-      end
+        params.require(:address).permit(:id, :longitude, :latitude, :street_address, :street_address_2, :city, :zip_code, :state, :default, :addressable_type, :addressable_id)
+    end
       
 end
