@@ -17,7 +17,7 @@ const PaymentGateway = ({booking}) => {
 
     const getPaymentIntent = booking => {
         setLoadingMessage('Initializing...')
-        csrfFetch("/api/orders/create-payment-intent", {
+        csrfFetch("/api/payments/create-payment-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ booking }),

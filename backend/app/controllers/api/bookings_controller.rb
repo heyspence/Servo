@@ -1,4 +1,6 @@
 class Api::BookingsController < ApplicationController
+    before_action :require_logged_in, only: [:create_order]
+
     require 'byebug'
     def create
         @booking = Booking.new(booking_params)
@@ -18,36 +20,12 @@ class Api::BookingsController < ApplicationController
         end
     end
 
-    def create_order
-        @booking = Booking.find(params[:id])
-        # @user = User.find(@booking.user_id)
-        if @booking.status == 'pending' && params[:booking][:status] == 'paid'
-            if @booking.update(booking_params)
-                VendorMailer.work_order(@booking).deliver_now
-                UserMailer.order_confirmation(@booking).deliver_now
-                AdminMailer.new_order(@booking).deliver_now
-                render :show
-            else
-                render json: { errors: @booking.errors.full_messages }
-            end
-        else
-            render json: {errors: 'Order not found or unprocessable'}, status: 422
-        end
-    end
-
     def destroy
         @booking = Booking.find(params[:id])
         if @booking && @booking.destroy
             render json: { message: "Success" }
         else
             render json: { errors: ["Booking no longer exists"]}
-        end
-    end
-
-    def destroy_all
-        @user = User.find(params[:user_id])
-        if @user.bookings.destroy_all
-            render json: { message: "Success" }
         end
     end
 

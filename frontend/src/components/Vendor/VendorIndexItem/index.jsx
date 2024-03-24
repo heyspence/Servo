@@ -4,7 +4,7 @@ import { ReactComponent as StarSvg } from '../../../assets/svg/reviewStar.svg'
 import { useEffect, useState } from 'react';
 import csrfFetch from '../../store/csrf';
 
-const VendorIndexItem = ({ id, name, imageUrl = '' }) => {
+const VendorIndexItem = ({ id, name, imageUrl = '', logoImageUrl = '' }) => {
     const history = useHistory();
     const [reviews, setReviews] = useState([]);
 
@@ -39,12 +39,17 @@ const VendorIndexItem = ({ id, name, imageUrl = '' }) => {
             <div className="vendor-index-image-container">
                 <img src={imageUrl} alt={`${name} vendor cover image`}/>
             </div>
-            <h3>{name}</h3>
-            <span className="macro-review-container">
-                <p>{average}</p>
-                <StarSvg className="review-star-svg" />
-                <p>({reviewCount})</p>
-            </span>
+            <div className="vendor-index-item-meta-info-container">
+                <img src={logoImageUrl} alt={`${name} logo`}/>
+                <div className="vendor-index-item-meta-info">
+                    <h3>{name}</h3>
+                    <span className="macro-review-container">
+                        <p>{average}</p>
+                        <StarSvg className="review-star-svg" />
+                        <p>({reviewCount})</p>
+                    </span>
+                </div>
+            </div>
         </li>
     )
 }

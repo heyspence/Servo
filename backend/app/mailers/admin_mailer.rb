@@ -1,5 +1,5 @@
 class AdminMailer < ApplicationMailer
-    default to: 'spencer@bookservo.com'
+    default to: 'contact@bookservo.com'
     def new_user(user)
         @user = user
         mail(subject: "New Account: #{@user.email}")

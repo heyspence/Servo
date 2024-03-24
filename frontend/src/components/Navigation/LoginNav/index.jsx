@@ -39,7 +39,7 @@ const LoginNav = ({ display }) => {
     return (
         <div className='main-nav-bar'>
             <div></div>
-            <LogoSvg onClick={() => history.push('/')} alt="White 'SERVO' text logo with a yellow checkmark, representing a St. George, Utah-based company offering online booking for home services like cleaning and pest control." />
+            <LogoSvg onClick={() => history.push('/')} alt="White 'SERVO' text logo with a yellow checkmark, official logo for a St. George, Utah-based company offering online booking for home services like cleaning and pest control." />
             <div className='main-nav-links'>
                 <button className='main-sign-up-button button'onClick={handleSignUpOpen}>Create Account</button>
                 <button className='main-sign-in-button button' onClick={handleSignInOpen}>Sign In</button>

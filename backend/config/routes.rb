@@ -14,19 +14,22 @@ Rails.application.routes.draw do
     resources :contact, only: [:create]
     post 'auth/google/callback', to: 'authentication#google_callback'
 
-    resources :bookings, only: [:create, :destroy, :show, :update] do
-      patch '/create-order', on: :member, to: 'bookings#create_order'
-    end
+    resources :bookings, only: [:create, :destroy, :show, :update]
+    # resources :bookings, only: [:create, :destroy, :show, :update] do
+    #   patch '/create-order', on: :member, to: 'bookings#create_order'
+    # end
 
     resources :user, only: [:index] do
-      resources :bookings, only: [:index] do
-        delete :destroy_all, on: :collection
-      end
+      resources :bookings, only: [:index]
       resources :orders, only: [:index]
     end
 
-    resources :orders do 
-      post '/create-payment-intent', on: :collection, to: 'orders#create_payment_intent'
+    resources :orders, only: [] do 
+      post '/stripe_webhook', on: :collection, to: 'orders#stripe_webhook'
+    end
+
+    resources :payments do 
+      post '/create-payment-intent', on: :collection, to: 'payments#create_payment_intent'
     end
 
     resources :vendors, only: [:index, :show, :update] do

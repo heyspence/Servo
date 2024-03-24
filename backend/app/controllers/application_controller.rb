@@ -41,6 +41,12 @@ class ApplicationController < ActionController::API
         end
     end
 
+    def require_logged_out
+        if current_user
+            render json: {message: 'Unathorized user'}, status: :unauthorized
+        end
+    end
+
     def require_vendor_logged_in
         unless current_user.vendor_id == params[:id].to_i()
             render json: { message: 'Unauthorized user'}, status: :unauthorized

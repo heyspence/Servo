@@ -20,9 +20,9 @@ const Footer = () => {
                     <a onClick={() => handleLinkClick('/terms-of-service')}>Terms of Service</a>
                 </div>
                 <div className="footer-column">
-                    <h3>Service Providers</h3>
+                    <h3>Entreprenuers</h3>
                     {/* <a href={`/vendors/${vendorId}/dashboard`}>Home</a> */}
-                    <a onClick={()=> handleLinkClick('/contact-us')}>Sign Up</a>
+                    <a onClick={()=> handleLinkClick('/vendor-onboarding')}>Sign Up</a>
                 </div>
                 <div className="footer-column">
                     <h3>Get in Touch</h3>

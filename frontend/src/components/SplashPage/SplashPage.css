@@ -64,18 +64,21 @@
 
 .logo-section{
     height: 300px;
+    height: unset;
+    position: relative;
 }
 
 .splash-page-logo-container{
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
+    margin: -30px auto 30px auto;
 }
+
 .section-text{
     display: flex;
     flex-direction: column;
-    height: 300px;
     max-width: 550px;
     justify-content: space-between;
 }
@@ -100,10 +103,6 @@
 
     .splash-page-icon{
         margin: 30px 0;
-    }
-
-    .logo-section{
-        height: unset;
     }
 
     .splash-page-logo{

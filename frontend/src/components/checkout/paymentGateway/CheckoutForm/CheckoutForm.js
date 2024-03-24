@@ -78,14 +78,7 @@ const CheckoutForm = ({price, booking, onStatusChange, checkoutType, prevPayment
             const { status } = paymentIntent;
             onStatusChange(status);
             if (status === 'succeeded') {
-                const bookingData = { booking:{
-                    ...booking,
-                    status: "paid"
-                }}
-                dispatch(createOrder(bookingData)).then(()=>{
-                    // dispatch(deletebookings(1))
-                })
-                onStatusChange('succeeded') // Your success logic here
+                dispatch({type: 'booking/RECEIVE_BOOKING', booking: {...booking, status: "paid"}})
             }
         }
 

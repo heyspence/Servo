@@ -6,6 +6,8 @@ footer{
     padding: 40px;
     box-sizing: border-box;
     background-color: var(--primary-white);
+    box-shadow: inset 0px 5px 10px -9px rgba(0, 0, 0, 0.5);
+
 }
 
 .footer{
