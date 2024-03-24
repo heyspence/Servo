@@ -11,7 +11,8 @@
     width: 80%;
     height: 500px;
     border-radius: 20px;
-    padding: 20px;
+    padding: 20px;    
+    justify-content: space-between;
 }
 
 .user-account h1 {

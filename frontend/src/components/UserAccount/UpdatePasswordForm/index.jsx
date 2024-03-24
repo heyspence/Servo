@@ -59,6 +59,12 @@ const UpdatePasswordForm = ({ user, onClose }) => {
         />
       {error !== "" && <p className="errors">{error}</p>}
       <UpdateFormErrors />
+      <h3 className="suggestion">Password Security Tips:</h3>
+      <ul id="suggestions">
+        <li>1 letter</li>
+        <li>1 number or special character (example: # ? ! &)</li>
+        <li>10 characters</li>
+      </ul>
       <button 
         type="submit" 
         disabled={currentPassword === "" || newPassword === "" || confirmNewPassword === ""} 
