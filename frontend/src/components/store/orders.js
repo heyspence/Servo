@@ -13,9 +13,41 @@ const recieveOrder = order => ({
     order
 })
 
+export const getPastVendorIds = (state) => {
+    const orders = state?.orders ? Object.values(state.orders) : [];
+    const pastVendorIds = [];
+
+    // Collect past vendor IDs
+    orders.forEach(order => {
+        if (!pastVendorIds.includes(order.vendorId)) {
+            pastVendorIds.push(order.vendorId);
+        }
+    });
+
+    return pastVendorIds;
+}
+
+
+
+// export const getPastVendors = (pastVendorIds) => {
+//     const orders = state?.orders ? Object.values(state.orders) : [];
+
+//     // Collect past vendor IDs
+//     orders.forEach(order => {
+//         if (!pastVendorIds.includes(order.vendorId)) {
+//             pastVendorIds.push(order.vendorId);
+//         }
+//     });
+
+//     // Retrieve vendors matching past vendor IDs
+//     const pastVendors = state.vendors.filter(vendor => pastVendorIds.includes(vendor.id));
+
+//     return pastVendors;
+// }
 
 export const fetchOrders = userId => async dispactch => {
     const res = await csrfFetch(`/api/user/${userId}/orders`)
+    
 
     if(res.ok){
         const data = await res.json()
