@@ -4,8 +4,9 @@ import { fetchVendor } from '../../store/vendor';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { ReactComponent as ArrowSvg } from '../../../assets/svg/Arrow.svg'
+import { ReactComponent as DownArrowSvg } from '../../../assets/svg/down-arrow-svgrepo-com.svg'
 
-const OrderIndexItem = ({ order }) =>{
+const OrderIndexItem = ({ order, expanded, onToggle }) =>{
     const vendorId = order.vendorId;
     const dispatch = useDispatch();
     const history = useHistory();
@@ -30,18 +31,42 @@ const OrderIndexItem = ({ order }) =>{
     }
 
     return (
-        <div className="order-index-item">
-            <div className="order-index-item-header">
-                <h3 onClick={handleVendorClick}>{vendor?.name}</h3>
-                <ArrowSvg id="arrow-svg"/>
-            </div>
-            <div className="order-index-item-body">
-                    <p>#{order?.id}</p>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                    <p>{formattedDate}</p>
-                    <p>&nbsp;•&nbsp;</p>
-                    <p>${formattedPrice}</p>
-            </div>
+        <div>
+            {!expanded ? 
+            <div className="order-index-item">
+                <div className="order-index-item-header" onClick={onToggle}>
+                    <h3 onClick={handleVendorClick}>{vendor?.name}</h3>
+                    <ArrowSvg id="arrow-svg" className={expanded ? 'expanded' : ''}/>
+                </div>
+                
+                    <div className="order-index-item-body">
+                        <div className="vendor-index-item-meta-info-container">
+                            <img className='vendor-logo-orders' src={`${vendor?.logoImageUrl}`} alt="Vendor Logo"></img>
+                        </div>
+                        <p>#{order?.id}</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>{formattedDate}</p>
+                        <p>&nbsp;•&nbsp;</p>
+                        <p>${formattedPrice}</p>
+                        <p className='order-status'>Order Status: {order?.status}</p>
+                    </div>
+            </div> :
+            <div className="order-index-item-expanded">
+                <div className="order-index-item-header" onClick={onToggle}>
+                    <h3 onClick={handleVendorClick}>{vendor?.name}</h3>
+                    <ArrowSvg id="rotated-arrow-svg" className={expanded ? 'expanded' : ''}/>
+                </div>
+                    <div className="order-index-item-body-expanded">
+                        <div className="vendor-index-item-meta-info-container">
+                            <img className='vendor-logo-orders' src={`${vendor?.logoImageUrl}`} alt="Vendor Logo"></img>
+                        </div>
+                        <p>{formattedDate}</p>
+                        <p>${formattedPrice}</p>
+                        <p>Order Status: {order?.status}</p>
+                        <a>Company Link</a>
+                        <p>Payment Info</p>
+                    </div>
+            </div>}
         </div>
     )
 }
