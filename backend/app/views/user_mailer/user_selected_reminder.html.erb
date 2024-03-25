@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Selected Reminder</title>
-</head>
-<body>
-    
-</body>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style type="text/css">
+        body { font-family: 'Helvetica', Arial, sans-serif; max-width: 800px; }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-size: 20px">Time to Book a Service</h1>
+    <p>Hello <%= @user.first_name %>,</p>
+    <p>It's time to book a service with <%= @vendor.name %>!</p>
+    <p>Don't forget to schedule your appointment.</p>
+    <p>Thank you!</p>
+    <p>For additional information regarding your booking and order history visit <a href="https://bookservo.com" target="_blank">BookServo.com</a>.</p>
+  </body>
 </html>

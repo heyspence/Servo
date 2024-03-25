@@ -7,10 +7,11 @@
     </style>
   </head>
   <body>
-    <h1 style="font-size: 20px">Upcoming Reminder</h1>
+    <h1 style="font-size: 20px">Order Completed</h1>
     <p>Hello <%= @user.first_name %>,</p>
-    <p>This is a reminder that you have an upcoming visit with <%= @vendor.name %> on <%= @reminder_date %>.</p>
-    <p>Please make sure to keep your appointment.</p>
+    <p>Thank you for booking with Servo! Your order with <%= @vendor.name %> has been completed successfully.</p>
+    <p>We hope you had a great experience. Please consider leaving a review for <%= @vendor.name %> on our website.</p>
+    <p>You can leave a review <a href="https://bookservo.com/vendors/<%= @vendor.id %>" target="_blank">here</a>.</p>
     <p>Thank you!</p>
     <p>For additional information regarding your booking and order history visit <a href="https://bookservo.com" target="_blank">BookServo.com</a>.</p>
   </body>
