@@ -3,6 +3,13 @@ import { ReactComponent as GrayReviewStar } from '../../../assets/svg/grayReview
 import { ReactComponent as CloseIcon } from '../../../assets/svg/Close.svg'
 
 const ReviewShow = ({review, author, onClose}) => {
+
+    function formatDate(originalDate) {
+        const parts = originalDate.split("T")[0].split("-");
+        const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+        return formattedDate;
+    }
+
     return (
         <div className="review-show">
             <CloseIcon className="close-icon" onClick={onClose}/>
