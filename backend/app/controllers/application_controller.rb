@@ -49,7 +49,6 @@ class ApplicationController < ActionController::API
 
     def validate_vendor_permissions
         unless current_user && current_user.user_type == 'vendor'
-            debugger
             render json: { error: "User not authorized." }, status: :unauthorized
             return
         end

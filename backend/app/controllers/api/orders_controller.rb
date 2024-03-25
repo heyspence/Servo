@@ -9,6 +9,9 @@ class Api::OrdersController < ApplicationController
                     .where("(status='paid' OR status='completed') AND user_id=?", @user.id)
                     .order(created_at: :desc)
                     .limit(10)
+
+        # vendor_ids = @orders.pluck(:vendor_id).uniq   
+        # @vendors = Vendor.where(id: vendor_ids)         
         render :index
     end
 

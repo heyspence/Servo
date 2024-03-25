@@ -7,6 +7,8 @@ import { isLoggedIn } from '../store/session';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { fetchVendors, getPastVendors} from '../store/vendor';
 import VendorIndexItem from '../Vendor/VendorIndexItem';
+import { useState } from 'react';
+import ReminderForm from '../Reminders/ReminderForm';
 
 const Orders = () => {
     const userId = useSelector(state => state?.session? state.session.user?.id : null)
@@ -16,6 +18,8 @@ const Orders = () => {
     const dispatch = useDispatch();
     const pastVendorIds = useSelector(getPastVendorIds)
     const vendors = useSelector(state => state?.vendors)
+    const [showDropdown, setShowDropdown] = useState(false);
+    const [reminderFrequency, setReminderFrequency] = useState('');
     
     const getPastVendors = (pastVendorIds = []) => {
         const pastVendors = [];
@@ -27,18 +31,17 @@ const Orders = () => {
         return pastVendors;
     }
     
-    const pastVendors = getPastVendors(pastVendorIds)
-
-    
     useEffect(()=>{
         if(!userLoggedIn){
             history.push('/home')
         }else{
             dispatch(fetchOrders(userId))
             dispatch(fetchVendors())
-            // dispatch(fetchVendors())
+    
         }
-    },[userId, dispatch, userLoggedIn, history, pastVendorIds])
+    },[userId, dispatch, userLoggedIn, history])
+    
+    const pastVendors = getPastVendors(pastVendorIds)
 
     return (
         <div className="orders">
@@ -51,16 +54,21 @@ const Orders = () => {
                 </div>
                 <div> Past Vendors 
                 { pastVendors && pastVendors.map(vendor => {
-                        return <VendorIndexItem key={vendor.id} name={vendor.name} 
-                        imageUrl={vendor.thumbnailImageUrl} 
-                        logoImageUrl={vendor.logoImageUrl}
-                        id={vendor.id} 
-                        />
+                        return (
+                            <>
+                                <VendorIndexItem key={vendor.id} name={vendor.name} 
+                                imageUrl={vendor.thumbnailImageUrl} 
+                                logoImageUrl={vendor.logoImageUrl}
+                                id={vendor.id} 
+                                />
+                                <button onClick={() => setShowDropdown(!showDropdown)}>Create Reminder</button>
+                    {showDropdown && (
+                        <ReminderForm vendorId={vendor.id} userId={userId}/>
+                    )}
+                            </>
+                        )
                     })}
                 </div>
-
-
-
             </div>
         </div>
     )

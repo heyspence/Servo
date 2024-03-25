@@ -30,6 +30,8 @@ class Api::BookingsController < ApplicationController
                 second_reminder = @booking.appointment_at - 1.days
                 UserMailer.upcoming_reminder(@booking).deliver_later(wait_until: first_reminder)
                 UserMailer.upcoming_reminder(@booking).deliver_later(wait_until: second_reminder)
+                UserMailer.upcoming_reminder(@booking).deliver_later(wait_until: @booking.appointment_at)
+                UserMailer.
                 render :show
             else
                 render json: { errors: @booking.errors.full_messages }

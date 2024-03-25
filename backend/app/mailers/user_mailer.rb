@@ -34,6 +34,8 @@ class UserMailer < ApplicationMailer
         @vendor = Vendor.find(reminder.vendor_id)
 
         mail(to: @user.email, subject: "Reminder to book service with #{@vendor.name}")
+
+        # schedule_next_reminder(@user)
     end 
 
 
@@ -45,8 +47,17 @@ class UserMailer < ApplicationMailer
         @vendor = Vendor.find(booking.vendor_id)
         
         mail(to: @user.email, subject: "]#{@user.first_name}, Thank you for booking #{@vendor.name} with Servo." , 
-            body: "Your service with #{@vendor.name} is scheduled for #{booking.appointment_at}.")
+            body: "Please Leave a Review")
     end 
+
+
+    # private
+
+    # def schedule_next_reminder(user)
+    #     frequency_in_months = user.reminder_frequency.to_i
+    #     next_reminder_time = Time.now + frequency_in_months.months
+    #     ReminderMailer.user_selected_reminder(@reminder).deliver_later(wait_until: next_reminder_time)
+    # end
 
 
 
