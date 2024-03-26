@@ -262,15 +262,9 @@ const ProviderShow = () => {
                     </div>
                 </div>
             </div>
-            {/* <Modal isOpen={reviewModalOpen} onClose={toggleReviewModal}>
-                <ReviewForm vendorName={vendor?.name} vendorId={id} onClose={toggleReviewModal} />
-            </Modal> */}
             <Modal isOpen={paymentGatewatOpen} onClose={togglePaymentGateway}>
                 <PaymentGateway booking={vendorBooking} />
             </Modal>
-            {/* <Modal isOpen={reviewShowOpen} onClose={toggleReviewShow}>
-                <ReviewShow review={review} author={author} onClose={toggleReviewShow}/>
-            </Modal> */}
         </>
     )
 }

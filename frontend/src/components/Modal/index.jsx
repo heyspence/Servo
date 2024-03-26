@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../store/ui";
 import "./Modal.css"
 import ReviewShow from "../Reviews/ReviewShow";
+import ReviewForm from "../Reviews/ReviewForm";
 
 const Modal = () => {
   const dispatch = useDispatch()
@@ -14,6 +15,9 @@ const Modal = () => {
   switch (modal.modalTitle) {
     case "review-show":
       component = <ReviewShow props={modal.props}/>;
+      break;
+    case "review-form":
+      component = <ReviewForm props={modal.props}/>;
       break;
     default:
       return null;
@@ -29,23 +33,3 @@ const Modal = () => {
 }
 
 export default Modal
-
-// import React from 'react';
-// import './Modal.css'
-
-// const Modal = ({ isOpen, onClose, children }) => {
-//     if(!isOpen) return null;
-
-//     const childWithOnClose = React.cloneElement(children, { onClose })
-
-//     return (
-//         <>
-//             <div className="modal-backdrop" onClick={onClose}></div>
-//             <div className="modal-content">
-//                 {childWithOnClose}
-//             </div>
-//         </>
-//     )
-// }
-
-// export default Modal;

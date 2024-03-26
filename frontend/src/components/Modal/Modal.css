@@ -1,21 +1,10 @@
-/* .modal-backdrop{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--primary-black);
-    opacity: 0.5;
-    z-index: 98;
-} */
-
 .modal-backdrop {
     position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.349);
+    background: rgba(0, 0, 0, 0.265);
     z-index: 1000;
 }
 

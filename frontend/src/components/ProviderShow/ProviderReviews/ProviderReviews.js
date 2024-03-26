@@ -3,8 +3,9 @@ import "./ProviderReviews.css";
 import ReviewIndexItem from "../../Reviews/ReviewIndexItem";
 import { useEffect } from "react";
 import { fetchReviews } from "../../store/reviews";
+import { openModal } from "../../store/ui";
 
-const ProviderReviews = ({ toggleReviewModal, id }) => {
+const ProviderReviews = ({ id }) => {
   const dispatch = useDispatch();
   const reviews = useSelector((state) =>
     state?.reviews ? Object.values(state.reviews) : []
@@ -17,7 +18,10 @@ const ProviderReviews = ({ toggleReviewModal, id }) => {
   return (
     <div className="reviews">
       <h3 className="reviews-header">Reviews</h3>
-      <button className="vendor-review-button" onClick={toggleReviewModal}>
+      <button
+        className="vendor-review-button"
+        onClick={() => dispatch(openModal("review-form", {vendorId: id}))}
+      >
         Add a Review
       </button>
       <ul className="provider-review-index">
