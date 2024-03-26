@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
 import './ReviewIndexItem.css'
-import ReviewShow from '../ReviewShow';
 import { ReactComponent as GrayReviewStar } from '../../../assets/svg/grayReviewStar.svg'
-import Modal from '../../Modal'
-import ReviewForm from '../ReviewForm';
+import { openModal } from '../../store/ui';
+import { useDispatch } from 'react-redux';
 
 const ReviewIndexItem = ({review}) => {
+    const dispatch = useDispatch()
     const [author, setAuthor] = useState();
-    const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
     useEffect(()=>{
         if(review?.userId){
@@ -39,20 +38,16 @@ const ReviewIndexItem = ({review}) => {
 
     return (
         <>
-            <li className="review-index-item" onClick={() => setIsReviewModalOpen(true)}>
+            <li className="review-index-item" onClick={() => dispatch(openModal("review-show", {review, author}))}>
                 <div className="review-title-container">
                     <div className="name-circle" style={{ backgroundColor: randomColor }}>{ author ? author[0] : ''}</div>
-                    <h3>{author}</h3>
+                    <h3>{author}.</h3>
                     <div className="review-stars-container">
                         {Array.from({ length: review?.score }, (_, index)=><GrayReviewStar key={index} />)}
                     </div>
                 </div>
                 <p className="review-index-item-body">{review?.body}</p>
             </li>
-            <Modal isOpen={isReviewModalOpen} onClose={() => setIsReviewModalOpen(false)}>
-                <ReviewForm/>
-                {/* <ReviewShow review={review} author={author} onClose={() => setIsReviewModalOpen(false)}/> */}
-            </Modal>
         </>
     )
 }

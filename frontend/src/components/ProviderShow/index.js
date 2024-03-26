@@ -47,7 +47,6 @@ const ProviderShow = () => {
     });
 
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
-    const [reviewShowOpen, setReviewShowOpen] = useState(false);
     const [paymentGatewatOpen, setPaymentGatewayOpen] = useState(false);
     const [openComponent, setOpenComponent] = useState({
         pricing: false, 
@@ -160,9 +159,6 @@ const ProviderShow = () => {
         setPaymentGatewayOpen(!paymentGatewatOpen)
     }
 
-    const toggleReviewShow = () => {
-        setReviewShowOpen(!reviewShowOpen)
-    }
 
     const basePricingDiv = <div className="pricing-preview">
                                 Starting at: <br/>${vendor?.minPrice ? vendor.minPrice : "--"}
@@ -266,9 +262,9 @@ const ProviderShow = () => {
                     </div>
                 </div>
             </div>
-            <Modal isOpen={reviewModalOpen} onClose={toggleReviewModal}>
+            {/* <Modal isOpen={reviewModalOpen} onClose={toggleReviewModal}>
                 <ReviewForm vendorName={vendor?.name} vendorId={id} onClose={toggleReviewModal} />
-            </Modal>
+            </Modal> */}
             <Modal isOpen={paymentGatewatOpen} onClose={togglePaymentGateway}>
                 <PaymentGateway booking={vendorBooking} />
             </Modal>
