@@ -166,7 +166,6 @@ const sessionReducer = (state = initialState, action) => {
         },
       };
     case UPDATE_CURRENT_USER_ADDRESS:
-      // debugger
       return {
         ...newState,
         user: {

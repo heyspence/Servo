@@ -13,17 +13,21 @@ export const closeModal = () => ({
 
 export const setHomeView = (view) => ({
   type: SET_HOME_VIEW,
-  payload: view
+  payload: view,
 });
 
-const initialState = {modal: null, homeView: null}
+const initialState = {
+  modal: null,
+  homeView:
+    JSON.parse(sessionStorage.getItem("currentUser"))?.userType || "user", // this is inconsistent sometimes this is undefined even if its in sessionStorage
+};
 
 const uiReducer = (state = initialState, action) => {
   switch (action.type) {
     case OPEN_MODAL:
       return { ...state, modal: { ...action.payload } };
     case CLOSE_MODAL:
-      return initialState;
+      return { ...state, modal: null };
     case SET_HOME_VIEW:
       return { ...state, homeView: action.payload };
     default:
