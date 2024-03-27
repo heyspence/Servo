@@ -13,6 +13,19 @@ const recieveOrder = order => ({
     order
 })
 
+export const getPastVendorIds = (state) => {
+  const orders = state?.orders ? Object.values(state.orders) : [];
+  const pastVendorIds = [];
+  
+  orders.forEach((order) => {
+    if (!pastVendorIds.includes(order.vendorId)) {
+      pastVendorIds.push(order.vendorId);
+    }
+  });
+
+  return pastVendorIds;
+};
+
 
 export const fetchOrders = userId => async dispactch => {
     const res = await csrfFetch(`/api/user/${userId}/orders`)

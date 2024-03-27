@@ -9,8 +9,6 @@ import { isLoggedIn } from "../store/session";
 import { fetchCalendarData, fetchVendor } from "../store/vendor";
 import ProviderPricing from "./ProviderPricing/ProviderPricing";
 import ProviderScheduling from "./ProviderScheduling/ProviderScheduling";
-import Modal from "../Modal";
-import ReviewForm from "../Reviews/ReviewForm";
 import { updateBooking } from "../store/bookings";
 import { addDays, format, parseISO } from "date-fns";
 import ProviderSummary from "./ProviderSummary/ProviderSummary";
@@ -177,10 +175,6 @@ const ProviderShow = () => {
 
   const togglePaymentGateway = () => {
     setPaymentGatewayOpen(!paymentGatewatOpen);
-  };
-
-  const toggleReviewShow = () => {
-    setReviewShowOpen(!reviewShowOpen);
   };
 
   const basePricingDiv = (
