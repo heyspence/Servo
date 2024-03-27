@@ -2,7 +2,7 @@ total = 0
 json.bookings do
     @bookings.each do |booking|
         json.set! booking.id do
-            json.extract! booking, :user_id, :id, :price, :address_id, :vendor_id, :status, :appointment_at, :options_snapshot
+            json.extract! booking, :user_id, :id, :price, :address_id, :vendor_id, :status, :appointment_at, :options_snapshot, :duration
             if booking.status == 'pending'
                 total += booking.price
             end

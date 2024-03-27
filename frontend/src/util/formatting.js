@@ -31,3 +31,19 @@ export const formatDate = (originalDate) => {
   const options = { year: "numeric", month: "long", day: "numeric" };
   return date.toLocaleDateString("en-US", options);
 };
+
+export const formatDurationLong = decimal => {
+    let hours;
+    let minutes;
+
+    hours = decimal - (decimal % 1)
+    minutes = Math.round((60 * (decimal % 1)) / 5) * 5
+
+    if(hours > 0 && minutes > 0){
+        return `${hours} hours ${minutes} minutes`
+    }else if(hours > 0 && minutes === 0){
+        return `${hours}${hours > 1 ? ' hours' : ' hour'}`
+    }else{
+        return `${minutes} minutes`
+    }
+}

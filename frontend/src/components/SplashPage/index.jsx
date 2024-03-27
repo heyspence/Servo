@@ -85,7 +85,7 @@ const SplashPage = () => {
             <div className="splash-page-section" style={{paddingBottom: '100px'}}>
                 <img className="splash-page-image" src="https://spencerheywood.com/images/servo/Pictures/garbage_can_cleaning/Servo%20Pictures-43.jpg" />
                 <div className="section-text">
-                    <h2>Calling Service Providers and Entrepreneurs!</h2>
+                    <h2>Calling All Service Providers and Entrepreneurs!</h2>
                     <h3 style={{fontWeight:'normal', lineHeight:'30px'}}>Do you run a service-oriented business in St. George? Grow your business with Servo.</h3>
                     <p style={{lineHeight:'25px', 'textUnderlineOffset': "8px"}}>Our online booking platform is dedicated to home services, offering your clients a seamless 3-click booking experience integrated into your existing flow. Take the first step to becoming one of our platform's first vendors. Click here to <a href='/vendor-onboarding'>learn more</a>.</p>
                 </div>

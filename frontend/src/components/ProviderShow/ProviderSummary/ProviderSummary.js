@@ -1,6 +1,7 @@
 import { format, parseISO } from 'date-fns';
 import './ProviderSummary.css'
 import { useEffect, useState } from 'react';
+import { formatDurationLong } from '../../../util/formatting';
 
 const ProviderSummary = ({summaryOpen, booking, vendor, onCheckout, serviceCharge}) => {
     const options = booking?.optionsSnapshot ? JSON.parse(booking.optionsSnapshot) : {}
@@ -45,8 +46,8 @@ const ProviderSummary = ({summaryOpen, booking, vendor, onCheckout, serviceCharg
                         <p>{formattedDate()}</p>
                     </div>
                     <div className="pricing-summary-item-container">
-                        <p>Duration</p>
-                        <p>~{(booking?.price / vendor?.priceToDurationRate).toFixed(1)} Hours</p>
+                        <p>Estimated Duration</p>
+                        <p>{formatDurationLong((booking?.price / vendor?.priceToDurationRate).toFixed(1))}</p>
                     </div>
                 </div>
             </div>

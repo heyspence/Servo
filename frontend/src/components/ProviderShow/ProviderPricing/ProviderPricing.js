@@ -21,6 +21,7 @@ const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
     const inputFloats = Object.values(inputValues).map(val => parseFloat(val));
     const currentUserId = useSelector(state => state.session.user?.id)
     const priceToDurationRate = vendor?.priceToDurationRate ? vendor.priceToDurationRate : 35
+    const duration = ((calculatedPrice/priceToDurationRate)*60).toFixed(0)
 
     useEffect(()=>{
         if(inputs && inputFloats.every(val => val !== NaN)){
@@ -97,7 +98,8 @@ const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
             optionsSnapshot: JSON.stringify(parsedInputValues),
             price: calculatedPrice,
             vendorId: vendor.id,
-            status: "priced"
+            status: "priced",
+            duration
         }
         let bookingObject = {
             booking: bookingData

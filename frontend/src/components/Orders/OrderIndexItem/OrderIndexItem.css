@@ -1,6 +1,6 @@
 .order-index-item{
     width: 100%;
-    height: 70px;
+    height: 120px;
     border-radius: 8px;
     margin: 10px 0;
     border: solid 1px rgb(231 231 231);
@@ -10,7 +10,7 @@
     background-color: var(--secondary-white);
     width: 98%;
     padding: 1%;
-    height: 25%;
+    height: 25px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     display: flex;
@@ -21,6 +21,7 @@
 
 #arrow-svg{
     transform: scale(0.8);
+    transition: transform 0.3s ease-in-out;
 }
 
 .order-index-item-body{
@@ -31,6 +32,75 @@
     border-bottom-right-radius: 8px;
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--primary-gray);
+}
+
+.vendor-logo-orders {
+    padding: 0px !important;
+}
+
+.vendor-logo-orders-expanded {
+    transform: scale(1.5)
+}
+
+.order-index-item-expanded{
+    width: 100%;
+    display: flex;
+    height: 240px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    margin: 10px 0;
+    border: solid 1px rgb(231 231 231);
+}
+
+.order-index-item-expanded > p {
+    padding: 10px;
+}
+
+.order-index-item-header {
+    transition: transform 0.3s ease-in-out;
+}
+
+#rotated-arrow-svg {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(0.8) rotate(90deg);
+}
+
+.order-status {
+    padding-left: 20px;
+}
+
+.order-index-item-body,
+.order-index-item-body-expanded {
+    transition: height 0.3s ease-in-out;
+}
+
+.order-index-item-body-expanded {
+    width: 98%;
+    height: calc(100% - 25px);
+    padding: 10px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+}
+
+.order-info-top, 
+.order-info-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-index-item .vendor-index-item-meta-info-container {
+    text-align: right;
+}
+
+.book-again-button {
+    width: 100px !important;
+}
+
+.date-price-order-div > p {
+    padding: 10px;
 }
