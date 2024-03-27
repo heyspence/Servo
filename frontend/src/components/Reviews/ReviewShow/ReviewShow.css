@@ -13,7 +13,6 @@
 
 .review-show .review-show-stars{
     transform: scale(1);
-    /* margin: 15px 0; */
 }
 
 .review-show .review-stars-container {
@@ -23,5 +22,4 @@
 .review-show .review-show-body {
     line-height: 18px;
     font-size: .9rem;
-    width: 80%;
 }
