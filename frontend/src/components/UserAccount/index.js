@@ -5,7 +5,7 @@ import "./UserAccount.css";
 import UpdateAddressForm from "./UpdateAddressForm";
 import UpdateGeneralForm from "./UpdateGeneralForm";
 import UpdatePasswordForm from "./UpdatePasswordForm";
-import Modal from "../Modal";
+import OldModal from "../Modal/OldModal";
 
 const UserAccount = () => {
   const history = useHistory();
@@ -30,15 +30,21 @@ const UserAccount = () => {
             user={user}
           />
         </div>
-        <span className="fake-link" onClick={() => setIsUpdatePasswordOpen(true)}>
+        <span
+          className="fake-link"
+          onClick={() => setIsUpdatePasswordOpen(true)}
+        >
           Update Password
         </span>
-        <Modal
+        <OldModal
           isOpen={isUpdatePasswordOpen}
           onClose={() => setIsUpdatePasswordOpen(false)}
         >
-          <UpdatePasswordForm onClose={() => setIsUpdatePasswordOpen(false)} user={user} />
-        </Modal>
+          <UpdatePasswordForm
+            onClose={() => setIsUpdatePasswordOpen(false)}
+            user={user}
+          />
+        </OldModal>
       </div>
     </div>
   );

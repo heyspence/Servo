@@ -15,7 +15,7 @@ const ReviewShow = ({props}) => {
     }
 
     return (
-        <div className='review-show'>
+        <div className='review-show review-form'>
             <CloseIcon className="close-icon" onClick={() => dispatch(closeModal())}/>
             <h1>{author}.</h1>
             <div className="review-stars-container review-show-stars">
