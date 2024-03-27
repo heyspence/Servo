@@ -21,3 +21,5 @@ coverage/
 # cache
 .cache/
 tmp/
+
+backend/config/master.key

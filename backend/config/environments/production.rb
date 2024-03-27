@@ -14,6 +14,9 @@ Rails.application.configure do
     port: 587,
   }
 
+  # AWS
+  config.active_storage.service = :amazon_prod
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
