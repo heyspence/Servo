@@ -1,33 +1,27 @@
 .review-show {
     min-width: 20vw;
     max-width: 30vw;
-    min-height: 45vh;
-    overflow-y: auto;
-    min-width: 350px;;
-    border-radius: 15px;
-    background-color: var(--primary-white);
-    margin-top: 30%;
-    padding: 15px;
+    min-height: 35vh;
+    padding: 40px !important;
+    box-sizing: border-box;
+    gap: 13px;
 }
 
-.review-show h1{
-    font-size: 20px;
+.review-show .close-icon {
+    margin-bottom: 12px;
 }
 
-.review-show-stars{
+.review-show .review-show-stars{
     transform: scale(1);
-    margin: 15px 0;
+    /* margin: 15px 0; */
 }
 
-.review-show-body{
+.review-show .review-stars-container {
+    margin-left: 0;
+}
+
+.review-show .review-show-body {
     line-height: 18px;
-}
-
-.review-show-button{
-    background-color: rgb(231, 231, 231);
-    color: var(--primary-black)
-}
-
-.review-show-button:hover{
-    background-color: var(--secondary-gray);
+    font-size: .9rem;
+    width: 80%;
 }

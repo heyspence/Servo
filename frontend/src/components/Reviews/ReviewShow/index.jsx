@@ -3,16 +3,11 @@ import { ReactComponent as GrayReviewStar } from '../../../assets/svg/grayReview
 import { ReactComponent as CloseIcon } from '../../../assets/svg/Close.svg'
 import { closeModal } from '../../store/ui';
 import { useDispatch } from 'react-redux';
+import { formatDate } from '../../../util/formatting';
 
 const ReviewShow = ({props}) => {
     const dispatch = useDispatch()
     const {review, author} = props
-
-    const formatDate = originalDate => {
-        const parts = originalDate.split("T")[0].split("-");
-        const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
-        return formattedDate;
-    }
 
     return (
         <div className='review-show review-form'>

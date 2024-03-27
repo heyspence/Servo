@@ -25,3 +25,9 @@ export const formatDuration = decimal => {
         return `${minutes}mins`
     }
 }
+
+export const formatDate = (originalDate) => {
+  const date = new Date(originalDate);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return date.toLocaleDateString("en-US", options);
+};
