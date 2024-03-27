@@ -31,7 +31,7 @@ vendor = Vendor.create([
         logo_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/refresh-ecowash-logo.png",
         min_price: 35,
         pricing_formula:"(#5*35)+(#6*25)",
-        price_to_duration_rate: 70
+        price_to_duration_rate: 80
     },
     #3 - Pest Control
     { name: 'Demo Pest Control', 
@@ -42,7 +42,7 @@ vendor = Vendor.create([
         logo_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Screen%20Shot%202021-06-21%20at%2010.19.09%20PM.png",
         min_price: 65, 
         pricing_formula:"(#2<1700?65:(#2<=3500?75:95))*#9",
-        price_to_duration_rate: 60
+        price_to_duration_rate: 70
     },
     #4 - House Cleaning
     { name: 'Demo House Cleaner', 
@@ -52,8 +52,8 @@ vendor = Vendor.create([
         thumbnail_image_url: "https://spencerheywood.com/images/servo/highlights/Lily%20Maid%20Cleaning%20Shoot-49.jpg", 
         logo_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/lilymaid-logo.png",
         min_price: 35, 
-        pricing_formula:"#8*35",
-        price_to_duration_rate: 35
+        pricing_formula:"#8*40",
+        price_to_duration_rate: 40
     },
 ])
 
@@ -113,6 +113,7 @@ pricing_input_options = PricingInputOption.create([
     {option_type:"max", value:8000, pricing_input_id:2},
     {option_type:"step", value:100, pricing_input_id:2},
     {option_type:"default", value:2500, pricing_input_id:2},
+    {option_type:"tooltip", value:0, name:"Adjust the slider based on the size of your home.", pricing_input_id: 2},
     # WINDOW_CLEANING_SCOPE
     {option_type:"radio", name:"Inside/Out", value:1, pricing_input_id:3, default: true},
     {option_type:"radio", name:"Outside Only", value:0.7, pricing_input_id:3},
@@ -121,24 +122,25 @@ pricing_input_options = PricingInputOption.create([
     {option_type:"select", name:"Outside Only", value:2, pricing_input_id:4},
     {option_type:"select", name:"Alternating Inside & Out / Outside Only", value:3, pricing_input_id:4},
     # NUM_GARBAGE_CANS
-    {option_type:"min", value:"0", pricing_input_id:5},
-    {option_type:"max", value:"4", pricing_input_id:5},
-    {option_type:"step", value:"1", pricing_input_id:5},
-    {option_type:"default", value:"1", pricing_input_id:5},
+    {option_type:"min", value:0, pricing_input_id:5},
+    {option_type:"max", value:4, pricing_input_id:5},
+    {option_type:"step", value:1, pricing_input_id:5},
+    {option_type:"default", value:1, pricing_input_id:5},
     # NUM_RECYCLE_BINS
-    {option_type:"min", value:"0", pricing_input_id:6},
-    {option_type:"max", value:"4", pricing_input_id:6},
-    {option_type:"step", value:"1", pricing_input_id:6},
-    {option_type:"default", value:"1", pricing_input_id:6},
+    {option_type:"min", value:0, pricing_input_id:6},
+    {option_type:"max", value:4, pricing_input_id:6},
+    {option_type:"step", value:1, pricing_input_id:6},
+    {option_type:"default", value:1, pricing_input_id:6},
     # GARBAGE_CAN_ALTERNATING_CLEANING_SCOPE
     {option_type:"select", name:"Clean All Cans Every Service", value:1, pricing_input_id:7, default: true},
     {option_type:"select", name:"Alternate Cleaning: Garbage, Then Recycling", value:2, pricing_input_id:7},
     {option_type:"select", name:"Hybrid Schedule: Garbage + Recycling, Then Garbage Only", value:3, pricing_input_id:7},
     # NUM_CLEANING_HOURS
-    {option_type:"min", value:"1", pricing_input_id:8},
-    {option_type:"max", value:"8", pricing_input_id:8},
-    {option_type:"step", value:"1", pricing_input_id:8},
-    {option_type:"default", value:"3", pricing_input_id:8},
+    {option_type:"min", value:1, pricing_input_id:8},
+    {option_type:"max", value:8, pricing_input_id:8},
+    {option_type:"step", value:1, pricing_input_id:8},
+    {option_type:"default", value:3, pricing_input_id:8},
+    {option_type:"tooltip", value:0, name:"Not sure how much time to book? If cleaned recently, 1500 sqft requires roughly 3 hours", pricing_input_id: 8},
     # PEST_CONTROL_SCOPE
     {option_type:"radio", name:"Inside/Out", value:1, pricing_input_id:9, default: true},
     {option_type:"radio", name:"Outside Only", value:0.7, pricing_input_id:9},

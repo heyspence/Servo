@@ -131,7 +131,7 @@ const ProviderPricing = ({pricingOpen, vendor, onContinue, booking}) => {
             <div className="calculator-right">
                 <div style={{display: 'flex', flexDirection:'column', alignItems:'center', textAlign:'center'}}>
                     <CalculatorResults price={calculatedPrice?.toFixed(2)} duration={(calculatedPrice/priceToDurationRate).toFixed(1)}/>
-                    {vendor?.category === 'house_cleaning' ? '' : <p style={{color: 'var(--primary-gray)', fontSize:'13px', maxWidth: '275px'}}>The provided duration is only an estimate; the actual time required may differ.</p>}
+                    {vendor?.category === 'garbage_can_cleaning' ? '' : <p style={{color: 'var(--primary-gray)', fontSize:'13px', maxWidth: '275px'}}>The provided time is an estimate, additional technicians may decrease time significantly.</p>}
                     <button className="accept-button" onClick={handleContinueClick}>Continue</button>
                 </div>
             </div>

@@ -24,6 +24,11 @@ const HomeNav = ({ display, toggleMenu }) => {
         }
     }
 
+    const handleAddressClick = (e) => {
+        e.preventDefault()
+        history.push('/account')
+    }
+
     return (
         <header>
             <div className="home-nav">
@@ -37,7 +42,11 @@ const HomeNav = ({ display, toggleMenu }) => {
                     </div>
                 </div>
                 <div className="home-nav-right">
-                    <a className="user-address">{userAddress?.streetAddress + " " + userAddress?.streetAddress2}</a>
+                    <a href="/account" 
+                        onClick={handleAddressClick} 
+                        className="user-address">
+                            {userAddress?.streetAddress + " " + userAddress?.streetAddress2}
+                    </a>
                 </div>
             </div>
         </header>

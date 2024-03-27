@@ -1,26 +1,66 @@
 input[type=range]{
     width: 100%;
+    cursor: pointer;
 }
 
 .range-slider-container{
     width: 100%;
     position: relative;
-    /* height: 90px; */
     display: flex;
     flex-direction: column;
+}
+
+.range-slider-container label{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 16px;
 }
 
 .range-slider{
     accent-color: var(--primary-blue);
 }
 
+.tooltip {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+}
+  
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 245px;
+    background-color: rgba(50, 50, 50, 0.95);
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    margin-left: -150px;
+    line-height: 18px;
+}
 
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
 
-.slider-value{
-    color: var(--primary-blue);
-    border-radius: 5px;
-    font-size: 16px;
-    margin: -15px 0 10px 0;
-    display: flex;
-    justify-content: flex-end;
+.tooltip:hover{
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    left: 57%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--primary-gray) transparent transparent transparent;
 }

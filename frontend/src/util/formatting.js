@@ -34,10 +34,10 @@ export const formatDurationLong = decimal => {
     minutes = Math.round((60 * (decimal % 1)) / 5) * 5
 
     if(hours > 0 && minutes > 0){
-        return `${hours} hours ${minutes} minutes`
+        return `${hours} Hours ${minutes} Minutes`
     }else if(hours > 0 && minutes === 0){
-        return `${hours}${hours > 1 ? ' hours' : ' hour'}`
+        return `${hours}${hours > 1 ? ' Hours' : ' Hour'}`
     }else{
-        return `${minutes} minutes`
+        return `${minutes} Minutes`
     }
 }

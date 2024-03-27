@@ -44,12 +44,13 @@ class PdfGenerator
             pdf.move_down 5
             pdf.text "#{client.first_name} #{client.last_name}", size: 12
             pdf.text "#{client_address.street_address}", size: 12
+            pdf.text "#{client_address.street_address_2}", size: 12
             pdf.text "#{client_address.city} #{client_address.state}, #{client_address.zip_code}", size: 12
             pdf.text "(#{client.phone_number.slice(0,3)}) #{client.phone_number.slice(3,3)}-#{client.phone_number.slice(6,4)}"
             pdf.text "#{client.email}"
 
             # Move down to start the body section
-            pdf.move_down 50
+            pdf.move_down 20
             pdf.stroke_horizontal_rule
             pdf.move_down 20
             pdf.text "Service Details", size: 14, style: :bold
@@ -57,16 +58,15 @@ class PdfGenerator
             JSON.parse(order.options_snapshot).map do |option_name, option_value|
                 pdf.text "#{option_name}: #{option_value}"
             end
-            pdf.move_down 30
+            pdf.move_down 40
+            pdf.stroke_horizontal_rule
+            pdf.move_down 20
             pdf.text "Customer Notes", size: 14, style: :bold
             pdf.move_down 5
             pdf.text "N/A"
+            pdf.move_down 30
 
-            pdf.move_down 20
-            pdf.stroke_horizontal_rule
-            pdf.move_down 50
-            
-            pdf.text "Order Placed: #{order.created_at.strftime('%B %d, %Y')}"
+            pdf.text "Date of Issue: #{order.created_at.strftime('%B %d, %Y')}"
             pdf.text "Service Total: $#{sprintf('%.2f', (order.price * (1 - ENV["SERVO_VENDOR_COMMISSION"].to_f)))}", style: :bold
             pdf.move_down 10
 

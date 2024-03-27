@@ -4,11 +4,11 @@ class DurationFormatter
         minutes = ((60 * (decimal % 1)) / 5).round * 5
         
         if hours > 0 && minutes > 0
-            "#{hours} hours and #{minutes} minutes"
+            "#{hours} Hours and #{minutes} Minutes"
         elsif hours > 0 && minutes == 0
-            "#{hours}#{hours > 1 ? ' hours' : ' hour'}"
+            "#{hours}#{hours > 1 ? ' Hours' : ' Hour'}"
         else
-            "#{minutes} minutes"
+            "#{minutes} Minutes"
         end
     end
 end

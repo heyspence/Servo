@@ -12,6 +12,6 @@
 #  default          :boolean          default(FALSE), not null
 #
 class PricingInputOption < ApplicationRecord
-    validates :option_type, inclusion: {in: ["min", "max", "step", "select", "radio", "checkbox", "default"]}
+    validates :option_type, inclusion: {in: ["min", "max", "step", "select", "radio", "checkbox", "default", "tooltip"]}
     belongs_to :pricing_input
 end
