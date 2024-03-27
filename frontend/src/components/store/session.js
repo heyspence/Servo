@@ -1,5 +1,6 @@
 import csrfFetch, { restoreCSRF } from "./csrf";
 import { receiveErrors } from "./errors";
+import { setHomeView } from "./ui";
 
 const SET_CURRENT_USER = "session/SET_CURRENT_USER";
 const REMOVE_CURRENT_USER = "session/REMOVE_CURRENT_USER";
@@ -36,6 +37,7 @@ export const signUp = (user) => async (dispatch) => {
     let data = await res.json();
     dispatch({ type: SET_CURRENT_USER, user: data.user });
     storeCurrentUser(data.user);
+    dispatch(setHomeView(data.user.userType));
   } else {
     let data = await res.json();
     dispatch(receiveErrors(data.errors));
@@ -73,6 +75,7 @@ export const signIn =
           let data = await res.json();
           dispatch({ type: SET_CURRENT_USER, user: data.user });
           storeCurrentUser(data.user);
+          dispatch(setHomeView(data.user.userType));
           return res;
         } else {
           let data = await res.json();
