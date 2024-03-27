@@ -19,7 +19,7 @@ const uiReducer = (state = initialState, action) => {
     case "CLOSE_MODAL":
       return initialState; 
     default:
-      return initialState;
+      return state;
   }
 };
 

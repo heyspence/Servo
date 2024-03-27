@@ -7,9 +7,7 @@ import { closeModal } from '../../store/ui';
 
 const ReviewForm = ({ props }) => {
     const {vendorId} = props
-    console.log('🦋🦋🦋 ~ vendorId:', vendorId);
     const vendorName = useSelector(state => state.vendors[vendorId].name)
-    console.log('🦋🦋🦋 ~ vendorName:', vendorName);
     const user = useSelector(state => state.session?.user)
     const dispatch = useDispatch();
     const [reviewBody, setReviewBody] = useState('');
