@@ -3,8 +3,11 @@ import './ReviewForm.css'
 import { useState } from 'react';
 import { createReview } from '../../store/reviews';
 import { ReactComponent as CloseIcon } from '../../../assets/svg/Close.svg'
+import { closeModal } from '../../store/ui';
 
-const ReviewForm = ({ vendorName, vendorId, onClose }) => {
+const ReviewForm = ({ props }) => {
+    const {vendorId} = props
+    const vendorName = useSelector(state => state.vendors[vendorId].name)
     const user = useSelector(state => state.session?.user)
     const dispatch = useDispatch();
     const [reviewBody, setReviewBody] = useState('');
@@ -28,13 +31,13 @@ const ReviewForm = ({ vendorName, vendorId, onClose }) => {
             }
         }
         if(reviewBody.length > 10 && score !== undefined){
-            dispatch(createReview(vendorId, review)).then(()=>{onClose();})
+            dispatch(createReview(vendorId, review)).then(()=>{dispatch(closeModal())})
         }
     }
 
     return (
         <div className="review-form">
-            <CloseIcon className="close-icon" onClick={onClose}/>
+            <CloseIcon className="close-icon" onClick={() => dispatch(closeModal())}/>
             <h2>Add a Public Review</h2>
             <h3>{ vendorName }</h3>
             <form>

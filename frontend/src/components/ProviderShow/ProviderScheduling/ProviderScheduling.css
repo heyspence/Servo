@@ -30,6 +30,7 @@
     max-width: 567px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
     position: relative;
+    min-width: 326px;
 }
 
 .scheduling-container{

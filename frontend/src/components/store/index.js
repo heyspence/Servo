@@ -9,6 +9,7 @@ import ordersReducer from './orders';
 import imagesReducer from './images';
 import eventsReducer from './events';
 import usersReducer from './users';
+import uiReducer from "./ui";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   images: imagesReducer,
   events: eventsReducer,
   users: usersReducer,
+  ui: uiReducer
 });
 
 let enhancer;

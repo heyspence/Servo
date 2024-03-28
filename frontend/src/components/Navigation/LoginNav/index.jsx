@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Modal from "../../Modal";
 import './LoginNav.css'
 import SignUpForm from "../../Session/SignUpForm";
 import SignInForm from '../../Session/SignInForm'
@@ -7,6 +6,7 @@ import { removeErrors } from "../../store/errors";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import LogoSvg from "../../../assets/svg/LogoSvg";
+import OldModal from "../../Modal/OldModal";
 // import { ReactComponent as LogoSvg} from '../../../assets/svg/logo_master.svg'
 
 const LoginNav = ({ display }) => {
@@ -43,12 +43,12 @@ const LoginNav = ({ display }) => {
             <div className='main-nav-links'>
                 <button className='main-sign-up-button button'onClick={handleSignUpOpen}>Create Account</button>
                 <button className='main-sign-in-button button' onClick={handleSignInOpen}>Sign In</button>
-                <Modal isOpen={isSignUpOpen} onClose={handleSignUpClose}>
+                <OldModal isOpen={isSignUpOpen} onClose={handleSignUpClose}>
                     <SignUpForm />
-                </Modal>
-                <Modal isOpen={isSignInOpen} onClose={handleSignInClose}>
+                </OldModal>
+                <OldModal isOpen={isSignInOpen} onClose={handleSignInClose}>
                     <SignInForm />
-                </Modal>
+                </OldModal>
             </div>
         </div>
     )

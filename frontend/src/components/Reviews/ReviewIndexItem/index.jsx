@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import './ReviewIndexItem.css'
-import ReviewShow from '../ReviewShow';
 import { ReactComponent as GrayReviewStar } from '../../../assets/svg/grayReviewStar.svg'
-import Modal from '../../Modal'
+import { openModal } from '../../store/ui';
+import { useDispatch } from 'react-redux';
 
-const ReviewIndexItem = ({review, onClick}) => {
+const ReviewIndexItem = ({review}) => {
+    const dispatch = useDispatch()
     const [author, setAuthor] = useState();
 
     useEffect(()=>{
@@ -37,19 +38,16 @@ const ReviewIndexItem = ({review, onClick}) => {
 
     return (
         <>
-            <li className="review-index-item" onClick={onClick}>
+            <li className="review-index-item" onClick={() => dispatch(openModal("review-show", {review, author}))}>
                 <div className="review-title-container">
                     <div className="name-circle" style={{ backgroundColor: randomColor }}>{ author ? author[0] : ''}</div>
-                    <h3>{author}</h3>
+                    <h3>{author}.</h3>
                     <div className="review-stars-container">
                         {Array.from({ length: review?.score }, (_, index)=><GrayReviewStar key={index} />)}
                     </div>
                 </div>
                 <p className="review-index-item-body">{review?.body}</p>
             </li>
-            {/* <Modal isOpen={reviewModalisOpen} onClose={toggleReviewModal}>
-                <ReviewShow review={review} author={author} onClose={toggleReviewModal}/>
-            </Modal> */}
         </>
     )
 }

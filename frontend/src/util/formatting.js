@@ -26,6 +26,12 @@ export const formatDuration = decimal => {
     }
 }
 
+export const formatDate = (originalDate) => {
+  const date = new Date(originalDate);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return date.toLocaleDateString("en-US", options);
+};
+
 export const formatDurationLong = decimal => {
     let hours;
     let minutes;

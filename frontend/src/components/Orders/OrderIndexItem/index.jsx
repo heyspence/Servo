@@ -50,7 +50,7 @@ const OrderIndexItem = ({ order, expanded, onToggle }) =>{
             </div> :
             <div className="order-index-item-expanded">
             <div className="order-index-item-header" onClick={onToggle}>
-                <h3 onClick={handleVendorClick}>{vendor?.name}</h3>
+                <h3>{vendor?.name}</h3>
                 <ArrowSvg id="rotated-arrow-svg" className={expanded ? 'expanded' : ''} />
             </div>
             <div className="order-index-item-body-expanded">

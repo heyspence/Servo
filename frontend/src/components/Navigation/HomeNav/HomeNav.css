@@ -63,7 +63,6 @@
 
 
 /* =========================== */
-
 /* ==========ST PATRICKS DAY THEME -- LOGO================= */
 
 /* .main-logo #path68{
@@ -86,6 +85,28 @@
     fill: #42b546 !important;
 } */
 
+/* =========================== */
+/* ==========EASTER THEME -- LOGO================= */
+
+.main-logo #path68{
+    fill: #6de5df  !important;
+}
+
+.main-logo #path72{
+    fill: #a8f75f !important;
+}
+
+.main-logo #path76{
+    fill: #f4eb42 !important;
+}
+
+.main-logo #path80{
+    fill: rgb(244 200 107) !important;
+}
+
+.main-logo #path84{
+    fill: #f575cd!important;
+}
 /* =========================== */
 
 .hamburger-menu{
