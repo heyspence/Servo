@@ -1,6 +1,6 @@
 export const OPEN_MODAL = "ui/OPEN_MODAL";
 export const CLOSE_MODAL = "ui/CLOSE_MODAL";
-// export const SET_HOME_VIEW = "ui/SET_HOME_VIEW";
+export const SET_HOME_VIEW = "ui/SET_HOME_VIEW";
 
 export const openModal = (modalTitle, props) => ({
   type: OPEN_MODAL,
@@ -11,10 +11,10 @@ export const closeModal = () => ({
   type: CLOSE_MODAL,
 });
 
-// export const setHomeView = (view) => ({
-//   type: SET_HOME_VIEW,
-//   payload: view,
-// });
+export const setHomeView = (view) => ({
+  type: SET_HOME_VIEW,
+  payload: view,
+});
 
 // const initialState = {
 //   modal: null,
@@ -26,7 +26,7 @@ export const closeModal = () => ({
 
 const initialState = {
   modal: null,
-  // homeView: localStorage.getItem("homeView") || null,
+  homeView: localStorage.getItem("homeView") || null,
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -35,9 +35,9 @@ const uiReducer = (state = initialState, action) => {
       return { ...state, modal: { ...action.payload } };
     case CLOSE_MODAL:
       return { ...state, modal: null };
-    // case SET_HOME_VIEW:
-    //   localStorage.setItem("homeView", action.payload);
-    //   return { ...state, homeView: action.payload };
+    case SET_HOME_VIEW:
+      localStorage.setItem("homeView", action.payload);
+      return { ...state, homeView: action.payload };
     default:
       return state;
   }

@@ -4,21 +4,18 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getActiveAddress, logout } from '../../store/session'
 import { ReactComponent as LogoSvg} from '../../../assets/svg/logo_master.svg'
-// import { setHomeView } from '../../store/ui';
-
+import { setHomeView } from '../../store/ui';
 
 const HomeNav = ({ display, toggleMenu }) => {
-    const { userAddress, vendorId } = useSelector(state => ({
+    const { userAddress, homeView, vendorId } = useSelector(state => ({
         userAddress: getActiveAddress(state),
-        // userIsVendor: !!state.session.user?.vendorId,
-        // homeView: state.ui?.homeView,
+        homeView: state.ui?.homeView,
         vendorId: state.session.user?.vendorId
     }));
     const dispatch = useDispatch()
     const history = useHistory();
     if(!display) return null
-    const homeView = localStorage.getItem("homeView")
-    console.log('🦋🦋🦋 ~ homeView:', homeView);
+    // const homeView = localStorage.getItem("homeView")
 
     const handleClickToHome = () => {
         if(homeView === "vendor"){
@@ -34,8 +31,10 @@ const HomeNav = ({ display, toggleMenu }) => {
     }
 
     const switchHomeView = () => {
-        if (homeView === "vendor") localStorage.setItem("homeView", "user"); // does not automatically rerender/ switch views unless refresh
-        // dispatch(setHomeView("user"))
+        if (homeView === "vendor") {
+            localStorage.setItem("homeView", "user"); // does not automatically rerender/ switch views unless refresh
+            dispatch(setHomeView("user"));
+        }
     }
 
     return (

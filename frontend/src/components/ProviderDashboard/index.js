@@ -15,20 +15,20 @@ const ProviderDashboard = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const currentTab = useQueryParams().tab || 'scheduling'
-    const {vendor, currentUser, userLoggedIn} = useSelector(state => ({
+    const {vendor, userLoggedIn, homeView} = useSelector(state => ({
             vendor: state.vendors[id],
-            currentUser: state.session.user,
-            userLoggedIn: isLoggedIn(state)
+            userLoggedIn: isLoggedIn(state),
+            homeView: state.ui?.homeView
         })
-    );
-
+        );
+        
     useEffect(()=>{
-        if(currentUser?.vendorId === parseInt(id) && userLoggedIn){
+        if(homeView === 'vendor' && userLoggedIn){
             dispatch(fetchVendor(id))
         }else{
             history.push('/')
         }
-    },[dispatch, history, userLoggedIn])
+    },[dispatch, history, userLoggedIn, homeView, id])
 
     const handleTabClick = name => {
         history.push(`/vendors/${id}/dashboard?tab=${name.toLowerCase()}`)
