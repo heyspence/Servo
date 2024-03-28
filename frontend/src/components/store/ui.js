@@ -16,14 +16,6 @@ export const setHomeView = (view) => ({
   payload: view,
 });
 
-// const initialState = {
-//   modal: null,
-//   homeView:
-//     JSON.parse(sessionStorage.getItem("currentUser"))?.userType || null, // this is inconsistent sometimes this is undefined even if its in sessionStorage. set default to null for now bc only using this when user is logged in
-// };
-
-// console.log("localstorage", localStorage);
-
 const initialState = {
   modal: null,
   homeView: localStorage.getItem("homeView") || 'user',

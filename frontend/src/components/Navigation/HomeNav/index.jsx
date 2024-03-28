@@ -68,22 +68,22 @@ const HomeNav = ({ display, toggleMenu }) => {
         </header>
         :
         <header>
-            <div className="home-nav">
+            <div id="vendor-home-nav" className="home-nav">
                 <div className="home-nav-left">
-                    <div className="home-nav-left-inner-container">
-                        <div className="logo-container" onClick={handleClickToHome}>
-                            <LogoSvg className="main-logo" alt="Servo Official Logo" />
-                        </div>
-                        <h2>{vendors?.[vendorId]?.name}</h2>
+                    <div className="logo-container" onClick={handleClickToHome}>
+                        <LogoSvg className="main-logo" alt="Servo Official Logo" />
                     </div>
+                    <h2>{vendors?.[vendorId]?.name}</h2>
                 </div>
                 <div className="home-nav-right">
-                    <span>User</span>
-                    <div onClick={switchHomeView} className="recurring-toggle-background">
-                        <div className={`recurring-toggle-circle ${homeView === "vendor" && 'recurring-circle-active'}`} />
+                    <div className='toggle-div'>
+                        <span>User</span>
+                        <div onClick={switchHomeView} className="recurring-toggle-background">
+                            <div className={`recurring-toggle-circle ${homeView === "vendor" && 'recurring-circle-active'}`} />
+                        </div>
+                        <span>Vendor</span>
                     </div>
-                    <span>Vendor</span>
-                    <button onClick={handleSignOut}>Sign Out</button>
+                    <button onClick={handleSignOut} className='vendor-logout'>Logout</button>
                 </div>
             </div>
         </header>

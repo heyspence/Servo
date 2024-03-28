@@ -11,10 +11,9 @@ const Home = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const userLoggedIn = useSelector(isLoggedIn);
-    const {currentUser, homeView} = useSelector(state => {
+    const {currentUser} = useSelector(state => {
         return({
             currentUser: state.session.user ? state.session.user : null,
-            homeView: state.ui?.homeView
         })
     })
     const userId = currentUser?.id
@@ -22,14 +21,6 @@ const Home = () => {
     if(!userLoggedIn){
         history.push('/')
     }
-
-    // if (homeView === 'vendor') history.push(destination);
-
-    //     useEffect(()=>{ // When the user's login status or home view changes, it redirects them to the appropriate page.
-    //     // let destination = user?.vendorId ? `/vendors/${user.vendorId}/dashboard` : '/home'
-    //     const destination = homeView === "vendor" ? `/vendors/${user.vendorId}/dashboard` : '/home'
-    //     if(userLoggedIn) history.push(destination);
-    // },[user, userLoggedIn, homeView, history])
 
     useEffect(()=>{
         dispatch(getBookings(userId))

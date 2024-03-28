@@ -143,3 +143,32 @@
         display: none;
     }
 }
+
+/* vendor nav */
+
+#vendor-home-nav .home-nav-left {
+    /* background-color: pink;     */
+    width: 40vw;
+}
+
+#vendor-home-nav .home-nav-right {
+    /* background-color: aquamarine; */
+    width: 40vw;
+    justify-content: end;
+}
+
+#vendor-home-nav .home-nav-right .toggle-div {
+    display: flex;
+    /* background-color: blue; */
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#vendor-home-nav .vendor-logout {
+    border: 1px solid black;
+    background: transparent;
+    color: black;
+    font-weight: 100;
+}
