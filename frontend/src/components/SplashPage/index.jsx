@@ -1,21 +1,22 @@
 import './SplashPage.css'
 import { useSelector } from 'react-redux';
 import { isLoggedIn } from '../store/session';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 
-
 const SplashPage = () => {
-    const { userLoggedIn, user } = useSelector(state => ({
+    const { userLoggedIn, user, homeView } = useSelector(state => ({
         userLoggedIn: isLoggedIn(state),
-        user: state.session?.user
+        user: state.session?.user,
+        homeView: state.ui?.homeView
     }))
     const history = useHistory();
     
-    useEffect(()=>{
-        let destination = user?.vendorId ? `/vendors/${user.vendorId}/dashboard` : '/home'
-        if(userLoggedIn){history.push(destination);}
-    },[user, userLoggedIn])
+    useEffect(()=>{ // When the user's login status or home view changes, it redirects them to the appropriate page.
+        // let destination = user?.vendorId ? `/vendors/${user.vendorId}/dashboard` : '/home'
+        const destination = homeView === "vendor" ? `/vendors/${user.vendorId}/dashboard` : '/home'
+        if(userLoggedIn) history.push(destination);
+    },[user, userLoggedIn, homeView, history])
 
     return (
         <main className="splash-page">

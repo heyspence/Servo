@@ -19,7 +19,7 @@ export const setHomeView = (view) => ({
 const initialState = {
   modal: null,
   homeView:
-    JSON.parse(sessionStorage.getItem("currentUser"))?.userType || "user", // this is inconsistent sometimes this is undefined even if its in sessionStorage
+    JSON.parse(sessionStorage.getItem("currentUser"))?.userType || null, // this is inconsistent sometimes this is undefined even if its in sessionStorage. set default to null for now bc only using this when user is logged in
 };
 
 const uiReducer = (state = initialState, action) => {
