@@ -38,7 +38,6 @@ export const signUp = (user) => async (dispatch) => {
     dispatch({ type: SET_CURRENT_USER, user: data.user });
     storeCurrentUser(data.user);
     dispatch(setHomeView(data.user.userType));
-    localStorage.setItem("homeView", data.user.userType);
   } else {
     let data = await res.json();
     dispatch(receiveErrors(data.errors));
@@ -77,7 +76,6 @@ export const signIn =
           dispatch({ type: SET_CURRENT_USER, user: data.user });
           storeCurrentUser(data.user);
           dispatch(setHomeView(data.user.userType));
-          localStorage.setItem("homeView", data.user.userType);
           return res;
         } else {
           let data = await res.json();

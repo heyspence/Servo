@@ -1,9 +1,17 @@
 import { useSelector } from 'react-redux'
 import './VendorIndex.css'
 import VendorIndexItem from '../VendorIndexItem';
+import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const VendorIndex = ({category}) => {
-    const allVendors = useSelector(state => state?.vendors);
+    const history = useHistory()
+    const { allVendors, homeView, vendorId } = useSelector(state => ({
+        allVendors: state.vendors,
+        homeView: state.ui?.homeView,
+        vendorId: state.session.user?.vendorId,
+    }));
+    // const allVendors = useSelector(state => state?.vendors);
     const vendors = allVendors ? Object.values(allVendors).filter(vendor => vendor.category === category) : [];
     const parsedCategory = category => {
         switch(category){
@@ -23,6 +31,10 @@ const VendorIndex = ({category}) => {
                 return `Unrecognized category: ${category}`
         }
     }
+
+    useEffect(()=>{ 
+        if(homeView === "vendor") history.push( `/vendors/${vendorId}/dashboard`);
+    },[vendorId, homeView, history])
 
     return(
         <>

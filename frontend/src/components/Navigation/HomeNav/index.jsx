@@ -7,15 +7,15 @@ import { ReactComponent as LogoSvg} from '../../../assets/svg/logo_master.svg'
 import { setHomeView } from '../../store/ui';
 
 const HomeNav = ({ display, toggleMenu }) => {
-    const { userAddress, homeView, vendorId } = useSelector(state => ({
+    const { userAddress, homeView, vendorId, vendors } = useSelector(state => ({
         userAddress: getActiveAddress(state),
         homeView: state.ui?.homeView,
-        vendorId: state.session.user?.vendorId
+        vendorId: state.session.user?.vendorId,
+        vendors: state.vendors
     }));
     const dispatch = useDispatch()
     const history = useHistory();
     if(!display) return null
-    // const homeView = localStorage.getItem("homeView")
 
     const handleClickToHome = () => {
         if(homeView === "vendor"){
@@ -32,8 +32,11 @@ const HomeNav = ({ display, toggleMenu }) => {
 
     const switchHomeView = () => {
         if (homeView === "vendor") {
-            localStorage.setItem("homeView", "user"); // does not automatically rerender/ switch views unless refresh
             dispatch(setHomeView("user"));
+            history.push(`/vendors/${vendorId}`);
+        } else {
+            dispatch(setHomeView("vendor"));
+            history.push(`/vendors/${vendorId}/dashboard`);
         }
     }
 
@@ -51,6 +54,14 @@ const HomeNav = ({ display, toggleMenu }) => {
                     </div>
                 </div>
                 <div className="home-nav-right">
+                    {vendorId && <>
+                                    <span>User</span>
+                                    <div onClick={switchHomeView} className="recurring-toggle-background">
+                                        <div className={`recurring-toggle-circle ${homeView !== "user" && 'recurring-circle-active'}`} />
+                                    </div>
+                                    <span>Vendor</span>
+                                </>
+                    }
                     <a className="user-address">{userAddress?.streetAddress + " " + userAddress?.streetAddress2}</a>
                 </div>
             </div>
@@ -63,14 +74,15 @@ const HomeNav = ({ display, toggleMenu }) => {
                         <div className="logo-container" onClick={handleClickToHome}>
                             <LogoSvg className="main-logo" alt="Servo Official Logo" />
                         </div>
-                        {/* get vendor name */}
+                        <h2>{vendors?.[vendorId]?.name}</h2>
                     </div>
                 </div>
                 <div className="home-nav-right">
-                    {/* toggle between accts */}
+                    <span>User</span>
                     <div onClick={switchHomeView} className="recurring-toggle-background">
                         <div className={`recurring-toggle-circle ${homeView === "vendor" && 'recurring-circle-active'}`} />
                     </div>
+                    <span>Vendor</span>
                     <button onClick={handleSignOut}>Sign Out</button>
                 </div>
             </div>

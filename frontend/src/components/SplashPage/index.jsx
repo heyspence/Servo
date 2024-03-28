@@ -13,8 +13,7 @@ const SplashPage = () => {
     const history = useHistory();
     
     useEffect(()=>{ // When the user's login status or home view changes, it redirects them to the appropriate page.
-        // let destination = user?.vendorId ? `/vendors/${user.vendorId}/dashboard` : '/home'
-        const destination = homeView === "vendor" ? `/vendors/${user.vendorId}/dashboard` : '/home'
+        const destination = homeView === "vendor" ? `/vendors/${user?.vendorId}/dashboard` : '/home'
         if(userLoggedIn) history.push(destination);
     },[user, userLoggedIn, homeView, history])
 

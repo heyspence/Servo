@@ -26,7 +26,7 @@ export const setHomeView = (view) => ({
 
 const initialState = {
   modal: null,
-  homeView: localStorage.getItem("homeView") || null,
+  homeView: localStorage.getItem("homeView") || 'user',
 };
 
 const uiReducer = (state = initialState, action) => {
