@@ -1,20 +1,24 @@
 import './HomeNav.css'
 import { ReactComponent as HamburgerMenu } from './HamburgerMenu.svg'
 import { useHistory } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { getActiveAddress } from '../../store/session'
+import { useDispatch, useSelector } from 'react-redux'
+import { getActiveAddress, logout } from '../../store/session'
 import { ReactComponent as LogoSvg} from '../../../assets/svg/logo_master.svg'
+// import { setHomeView } from '../../store/ui';
 
 
 const HomeNav = ({ display, toggleMenu }) => {
-    const { userAddress, homeView, vendorId } = useSelector(state => ({
+    const { userAddress, vendorId } = useSelector(state => ({
         userAddress: getActiveAddress(state),
         // userIsVendor: !!state.session.user?.vendorId,
-        homeView: state.ui?.homeView,
+        // homeView: state.ui?.homeView,
         vendorId: state.session.user?.vendorId
     }));
+    const dispatch = useDispatch()
     const history = useHistory();
     if(!display) return null
+    const homeView = localStorage.getItem("homeView")
+    console.log('🦋🦋🦋 ~ homeView:', homeView);
 
     const handleClickToHome = () => {
         if(homeView === "vendor"){
@@ -22,6 +26,16 @@ const HomeNav = ({ display, toggleMenu }) => {
         }else{
             history.push('/home');
         }
+    }
+
+    const handleSignOut = () => {
+        dispatch(logout());
+        window.location.href = '/';
+    }
+
+    const switchHomeView = () => {
+        if (homeView === "vendor") localStorage.setItem("homeView", "user"); // does not automatically rerender/ switch views unless refresh
+        // dispatch(setHomeView("user"))
     }
 
     return (
@@ -55,7 +69,10 @@ const HomeNav = ({ display, toggleMenu }) => {
                 </div>
                 <div className="home-nav-right">
                     {/* toggle between accts */}
-                    {/* logout */}
+                    <div onClick={switchHomeView} className="recurring-toggle-background">
+                        <div className={`recurring-toggle-circle ${homeView === "vendor" && 'recurring-circle-active'}`} />
+                    </div>
+                    <button onClick={handleSignOut}>Sign Out</button>
                 </div>
             </div>
         </header>
