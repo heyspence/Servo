@@ -21,7 +21,7 @@
 
 #arrow-svg{
     transform: scale(0.8);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 
 .order-index-item-body{
@@ -59,12 +59,8 @@
     padding: 10px;
 }
 
-.order-index-item-header {
-    transition: transform 0.3s ease-in-out;
-}
-
 #rotated-arrow-svg {
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
     transform: scale(0.8) rotate(90deg);
 }
 
@@ -74,7 +70,7 @@
 
 .order-index-item-body,
 .order-index-item-body-expanded {
-    transition: height 0.3s ease-in-out;
+    transition: height 0.3s;
 }
 
 .order-index-item-body-expanded {
