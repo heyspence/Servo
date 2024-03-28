@@ -57,6 +57,22 @@ vendor = Vendor.create([
     },
 ])
 
+vendor5 = Vendor.create( { name: 'Demo Window Cleaner2', 
+        phone_number: "9717771485", 
+        email:"spencer@bookservo.com", 
+        category:"window_cleaning",
+        thumbnail_image_url: "https://spencerheywood.com/images/servo/highlights/E22A3074.jpg", 
+        logo_image_url: "https://spencerheywood.com/images/servo/logos_and_icons/Ease-Logo-A1%20%282%29%20%283%29%20copy%202.png",
+        min_price: 58, 
+        pricing_formula:"(((1705600*#2)/(43658860+#2)+25.5)*#1)*#3",
+        price_to_duration_rate: 60
+    })
+
+    vendor5.photo.attach(
+    io: URI.open("https://servo-seeds.s3.us-east-2.amazonaws.com/Ease-Logo-.png"), 
+    filename: "ease_logo.jpg"
+    )
+
 puts "Creating demo users"
 
 user = User.create([

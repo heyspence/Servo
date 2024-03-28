@@ -31,4 +31,6 @@ class Vendor < ApplicationRecord
             self.build_vendor_calendar
         end
     end
+
+    has_many_attached :photo
 end
